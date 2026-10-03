@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mini-sessions &amp; Gift Vouchers | Joyful Studios</title>
+  <meta name="description" content="Mini-sessions &amp; Gift Vouchers from Joyful Studios, wedding, family and subscription photography in Cape Town.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Mrs+Saint+Delafield&family=Pinyon+Script&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .cat-hero {
+      position: relative; height: clamp(300px, 38vw, 460px);
+      background-size: cover; color: var(--cream);
+      display: grid; place-items: center; text-align: center; padding: 70px var(--pad) 0;
+    }
+    .cat-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(20,18,10,.4), rgba(20,18,10,.25)); }
+    .cat-hero h1 {
+      position: relative; z-index: 2; margin: 0;
+      font-family: var(--font-hero); font-weight: 400;
+      font-size: clamp(38px, 6.4vw, 84px); line-height: 1.12;
+      text-shadow: 0 2px 24px rgba(0,0,0,.4);
+    }
+
+    .cat { max-width: 880px; margin: 0 auto; padding: clamp(40px, 6vw, 80px) var(--pad); }
+    .cat__intro { max-width: 620px; margin: 0 auto 36px; text-align: center; font-weight: 700; }
+    .offer {
+      display: grid; grid-template-columns: 1fr auto; gap: 6px 28px; align-items: baseline;
+      padding: 28px 0; border-top: 1px solid rgba(53, 50, 43, .28);
+    }
+    .offer:last-of-type { border-bottom: 1px solid rgba(53, 50, 43, .28); }
+    .offer h2 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: clamp(24px, 3vw, 34px); line-height: 1.2; }
+    .offer__price { font-family: var(--font-display); font-size: clamp(22px, 2.6vw, 30px); white-space: nowrap; }
+    .offer__body { grid-column: 1 / -1; max-width: 640px; }
+    .offer__body ul { margin: 0; padding-left: 20px; }
+    .offer__body li { margin-bottom: 3px; }
+    .offer__body p { margin: 0; }
+    .cat__note { margin: 34px 0 0; text-align: center; }
+
+    .cat-cta { text-align: center; padding: 0 var(--pad) clamp(48px, 7vw, 90px); }
+    .cat-cta h2 { margin: 0 0 22px; font-family: var(--font-display); font-weight: 400; font-size: clamp(30px, 4vw, 48px); line-height: 1.15; }
+    .cat-more { margin: 30px 0 0; font-size: 15px; }
+    .cat-more a { border-bottom: 1px solid currentColor; margin: 0 8px; white-space: nowrap; }
+    .cat-more a:hover { color: var(--charcoal); }
+
+    @media (max-width: 560px) {
+      .offer { grid-template-columns: 1fr; }
+      .offer__price { white-space: normal; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header" id="site-header">
+    <nav class="nav nav--left" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <div class="has-dropdown"><button class="dd-toggle is-current" aria-expanded="false" aria-haspopup="true" aria-controls="dd-header">Packages</button><ul class="dropdown" id="dd-header"><li><a href="hourly-rates.html">Hourly Rates &amp; Packages</a></li><li><a href="subscription-offers.html">Subscription Offers</a></li><li><a href="mini-sessions.html" aria-current="page">Mini-sessions &amp; Gift Vouchers</a></li></ul></div>
+    </nav>
+
+    <a class="logo" href="index.html" aria-label="Joyful Studios home">
+      <span class="logo__word">joyful</span>
+      <span class="logo__sub">STUDIOS</span>
+    </a>
+
+    <nav class="nav nav--right" aria-label="Secondary">
+      <a href="index.html#testimonials">Testimonials</a>
+      <a href="index.html#inquire">Inquire</a>
+    </nav>
+
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="site-header">Menu</button>
+  </header>
+
+  <section class="cat-hero" style="background-image:url('images/band.jpg'); background-position: center 30%">
+    <h1>Mini-sessions &amp; Gift Vouchers</h1>
+  </section>
+
+  <main>
+    <section class="cat">
+        <article class="offer">
+          <h2>Photobooth Sessions</h2><span class="offer__price">R100–R250</span>
+          <div class="offer__body"><p class="">Offer quick, fun 10-minute photo sessions, with pricing varying depending on the event and setup.</p></div>
+        </article>
+        <article class="offer">
+          <h2>Mini-Sessions</h2><span class="offer__price">R400</span>
+          <div class="offer__body"><p class="">Upgrade to a 20-minute lifestyle session at either Bloubergstrand or Majik Forest, including professionally edited images and an online gallery.</p></div>
+        </article>
+        <article class="offer">
+          <h2>Gift Vouchers</h2><span></span>
+          <div class="offer__body"><p class="">Gift vouchers are an easy way to give someone a Joyful Studios experience.</p></div>
+        </article>
+        <p class="cat__note"><b>Mini-sessions and gift vouchers are exclusively available at Joyful Studios market pop-ups and photobooth events.</b><br>And there’s a little extra…</p>
+    </section>
+
+    <section class="cat-cta">
+      <h2>Let’s capture<br>your story!</h2>
+      <a class="btn" href="index.html#inquire">Connect</a>
+      <p class="cat-more">Explore more: <a href="hourly-rates.html">Hourly Rates &amp; Packages</a> <a href="subscription-offers.html">Subscription Offers</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer">
+      <p class="footer__left">Joy is a wedding, family &amp; subscription based photographer capturing film-inspired photos and special moments.</p>
+      <a class="logo" href="index.html" aria-label="Joyful Studios home">
+        <span class="logo__word">joyful</span>
+        <span class="logo__sub">STUDIOS</span>
+      </a>
+      <p class="footer__right">Based in Cape Town,<br>South Africa.<br>Available for travel.</p>
+    </div>
+    <div class="footer__bar">
+      <nav aria-label="Footer">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <div class="has-dropdown"><button class="dd-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="dd-footer">Packages</button><ul class="dropdown" id="dd-footer"><li><a href="hourly-rates.html">Hourly Rates &amp; Packages</a></li><li><a href="subscription-offers.html">Subscription Offers</a></li><li><a href="mini-sessions.html">Mini-sessions &amp; Gift Vouchers</a></li></ul></div>
+        <a href="index.html#testimonials">Testimonials</a>
+        <a href="index.html#inquire">Inquire</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

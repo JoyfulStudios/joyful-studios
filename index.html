@@ -11,78 +11,8 @@
   <!-- Quattrocento (body), Pinyon Script (hero headline), Italiana (stand-in for Hatton), Mrs Saint Delafield (stand-in for Abramo Script) -->
   <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Mrs+Saint+Delafield&family=Pinyon+Script&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
 
+  <link rel="stylesheet" href="styles.css">
   <style>
-    :root {
-      --sand: #cdc1ab;
-      --sand-deep: #bfb097;
-      --charcoal: #2d2b25;
-      --cream: #f3ead8;
-      --ink: #35322b;
-      --red: #8b1414;
-
-      --font-display: "Hatton", "Italiana", "Cormorant Garamond", Georgia, serif;
-      --font-body: "Quattrocento", Georgia, serif;
-      --font-hero: "Pinyon Script", "Snell Roundhand", cursive;
-      --font-sign: "Abramo Script", "Mrs Saint Delafield", "Pinyon Script", cursive;
-
-      --pad: clamp(20px, 5vw, 64px);
-    }
-
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background: var(--sand);
-      color: var(--ink);
-      font-family: var(--font-body);
-      font-size: 17px;
-      line-height: 1.55;
-      -webkit-font-smoothing: antialiased;
-    }
-    img { display: block; max-width: 100%; }
-    a { color: inherit; text-decoration: none; }
-    :focus-visible { outline: 2px solid var(--cream); outline-offset: 4px; }
-
-    .btn {
-      display: inline-block;
-      padding: 6px 28px;
-      border: 1px solid currentColor;
-      border-radius: 999px;
-      font-family: var(--font-body);
-      font-size: 15px;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-      color: var(--cream);
-      transition: background .25s, color .25s;
-    }
-    .btn:hover { background: var(--cream); color: var(--charcoal); }
-    .btn--soft { text-transform: none; font-size: 14px; padding: 4px 22px; }
-
-    /* ---------- Header ---------- */
-    .site-header {
-      position: absolute; inset: 0 0 auto 0; z-index: 10;
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      padding: 22px var(--pad);
-      color: var(--cream);
-    }
-    .nav { display: flex; gap: clamp(20px, 4vw, 64px); text-transform: uppercase; font-size: 16px; letter-spacing: .02em; }
-    .nav--left { justify-content: flex-start; }
-    .nav--right { justify-content: flex-end; }
-    .nav a { padding: 4px 0; border-bottom: 1px solid transparent; transition: border-color .2s; }
-    .nav a:hover, .nav a[aria-current="page"] { border-color: var(--cream); }
-
-    .logo { text-align: center; line-height: 1; color: var(--cream); display: inline-block; }
-    .logo__word { display: block; font-family: var(--font-display); font-size: clamp(44px, 5.6vw, 72px); letter-spacing: .01em; }
-    .logo__sub { display: block; font-size: 9px; letter-spacing: .5em; margin-top: 4px; padding-left: .5em; font-family: var(--font-body); }
-
-    .menu-toggle {
-      display: none; background: none; border: 0; color: var(--cream);
-      font: inherit; text-transform: uppercase; letter-spacing: .08em; cursor: pointer;
-      justify-self: end; padding: 8px 0;
-    }
-
     /* ---------- Hero slider ---------- */
     .hero { position: relative; height: min(100vh, 780px); min-height: 520px; overflow: hidden; color: var(--cream); background: var(--charcoal); }
     .slide {
@@ -116,7 +46,7 @@
     .hero__dots button { width: 12px; height: 12px; padding: 0; border-radius: 50%; border: 0; background: var(--cream); opacity: .55; cursor: pointer; }
     .hero__dots button[aria-current="true"] { opacity: 1; }
 
-    /* ---------- About ---------- */
+        /* ---------- About ---------- */
     .about {
       padding: clamp(56px, 8vw, 110px) var(--pad);
       display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -151,8 +81,46 @@
       pointer-events: none;
     }
 
-    /* ---------- Photo band ---------- */
+        /* ---------- Photo band ---------- */
     .band { height: clamp(260px, 36vw, 480px); background: url("images/band.jpg") center 30% / cover no-repeat; }
+
+        /* ---------- Gallery ---------- */
+    .gallery {
+      position: relative;
+      background: url("images/calla.jpg") center 22% / cover no-repeat;
+      padding: clamp(60px, 9vw, 130px) var(--pad);
+    }
+    .gallery__row {
+      max-width: 760px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px, 4vw, 54px);
+    }
+    .gallery__row img { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+
+        /* ---------- Testimonial ---------- */
+    .testimonial {
+      max-width: 1000px; margin: 0 auto;
+      padding: clamp(40px, 6vw, 80px) var(--pad);
+      display: flex; align-items: center; justify-content: center; gap: clamp(16px, 4vw, 56px); flex-wrap: wrap;
+    }
+    .testimonial blockquote {
+      margin: 0; max-width: 520px;
+      font-family: var(--font-display); font-size: clamp(22px, 2.6vw, 32px); line-height: 1.2;
+      text-transform: uppercase; letter-spacing: .02em;
+    }
+    .testimonial cite { font-style: normal; font-family: var(--font-sign); color: var(--red); font-size: clamp(54px, 7vw, 88px); line-height: 1; transform: rotate(-4deg); display: inline-block; }
+
+        /* ---------- Instagram ---------- */
+    .insta { background: var(--charcoal); color: #d9cdb6; padding: clamp(44px, 6vw, 80px) var(--pad); }
+    .insta__inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 40px; }
+    .insta h2 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: clamp(30px, 4vw, 46px); line-height: 1.15; color: #cfc3ac; }
+    .insta a.handle { display: inline-block; margin-top: 14px; font-size: 18px; border-bottom: 1px solid transparent; }
+    .insta a.handle:hover { border-color: currentColor; }
+    .insta__photo { width: clamp(180px, 22vw, 250px); aspect-ratio: 1; overflow: hidden; display: block; }
+    .insta__photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+    .insta__photo:hover img { transform: scale(1.04); }
+
+        .btn--soft { font-size: 14px; padding: 4px 22px; }
+    .hero .btn { text-transform: uppercase; }
 
     /* ---------- Packages ---------- */
     .packages { padding: clamp(48px, 7vw, 90px) var(--pad) clamp(56px, 8vw, 110px); }
@@ -168,94 +136,65 @@
     .pkg {
       border: 26px solid transparent;
       border-image: url("images/lace-frame.png") 60 fill / 26px round;
-      padding: 10px clamp(6px, 1vw, 14px) 6px;
+      padding: 10px clamp(8px, 1.2vw, 16px) 6px;
       text-align: center;
       display: flex; flex-direction: column;
       font-size: 14.5px; line-height: 1.45;
+      min-height: 580px;
     }
     .pkg h3 {
-      margin: 6px 0 18px; font-family: var(--font-display); font-weight: 400;
+      margin: 6px 0 10px; font-family: var(--font-display); font-weight: 400;
       font-size: clamp(22px, 2vw, 27px); line-height: 1.15; letter-spacing: .01em;
     }
-    .pkg__list { text-align: left; flex: 1; }
-    .pkg__item { margin: 0 0 14px; }
-    .pkg__item b { display: block; font-weight: 700; }
-    .pkg__item span { display: block; }
-    .pkg__lead { font-weight: 700; margin: 0 0 14px; }
-    .pkg__foot { text-align: center; margin-top: 12px; }
-    .pkg .btn { color: var(--cream); font-size: 13px; padding: 3px 18px; text-transform: none; }
+    .pkg h3 a:hover { text-decoration: underline; text-underline-offset: 5px; }
+    .pkg__hint { margin: 0 0 14px; font-size: 12.5px; font-style: italic; opacity: .75; }
+    .hint-tap { display: none; }
+    @media (hover: none) { .hint-hover { display: none; } .hint-tap { display: inline; } }
+    .pkg__intro { margin: 0 0 8px; text-align: left; font-weight: 700; }
+    .pkg__list { text-align: left; border-top: 1px solid rgba(53, 50, 43, .22); align-self: stretch; }
+    .pkg__note { margin: 14px 0 0; text-align: left; font-size: 13.5px; }
 
-    /* ---------- Gallery ---------- */
-    .gallery {
-      position: relative;
-      background: url("images/calla.jpg") center 22% / cover no-repeat;
-      padding: clamp(60px, 9vw, 130px) var(--pad);
+    .pkg-item { border-bottom: 1px solid rgba(53, 50, 43, .22); }
+    .pkg-item__name {
+      width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 12px;
+      background: none; border: 0; padding: 10px 2px; margin: 0;
+      font: inherit; font-weight: 700; color: inherit; text-align: left; cursor: pointer;
     }
-    .gallery__row {
-      max-width: 760px; margin: 0 auto;
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px, 4vw, 54px);
-    }
-    .gallery__row img { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+    .pkg-item__name::after { content: "+"; font-weight: 400; font-size: 20px; line-height: 1; flex: none; }
+    .pkg-item.is-open .pkg-item__name::after { content: "\2013"; }
+    .pkg-item__name:focus-visible { outline-color: var(--charcoal); outline-offset: 0; }
 
-    /* ---------- Testimonial ---------- */
-    .testimonial {
-      max-width: 1000px; margin: 0 auto;
-      padding: clamp(40px, 6vw, 80px) var(--pad);
-      display: flex; align-items: center; justify-content: center; gap: clamp(16px, 4vw, 56px); flex-wrap: wrap;
+    .pkg-item__detail { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease; }
+    .pkg-item__detail > div { overflow: hidden; min-height: 0; }
+    .pkg-item.is-open .pkg-item__detail,
+    .pkg-item__name:focus-visible + .pkg-item__detail { grid-template-rows: 1fr; }
+    .pkg-detail { padding: 0 2px 12px; }
+    .pkg-price { display: block; margin-bottom: 4px; font-family: var(--font-display); font-size: 21px; line-height: 1.2; }
+    .pkg-points { margin: 0; padding-left: 18px; }
+    .pkg-points li { margin-bottom: 2px; }
+    .pkg-desc { margin: 0; }
+    @media (hover: hover) {
+      .pkg-item:hover .pkg-item__detail { grid-template-rows: 1fr; }
+      .pkg-item:hover .pkg-item__name::after { content: "\2013"; }
     }
-    .testimonial blockquote {
-      margin: 0; max-width: 520px;
-      font-family: var(--font-display); font-size: clamp(22px, 2.6vw, 32px); line-height: 1.2;
-      text-transform: uppercase; letter-spacing: .02em;
-    }
-    .testimonial cite { font-style: normal; font-family: var(--font-sign); color: var(--red); font-size: clamp(54px, 7vw, 88px); line-height: 1; transform: rotate(-4deg); display: inline-block; }
 
-    /* ---------- Instagram ---------- */
-    .insta { background: var(--charcoal); color: #d9cdb6; padding: clamp(44px, 6vw, 80px) var(--pad); }
-    .insta__inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 40px; }
-    .insta h2 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: clamp(30px, 4vw, 46px); line-height: 1.15; color: #cfc3ac; }
-    .insta a.handle { display: inline-block; margin-top: 14px; font-size: 18px; border-bottom: 1px solid transparent; }
-    .insta a.handle:hover { border-color: currentColor; }
-    .insta__photo { width: clamp(180px, 22vw, 250px); aspect-ratio: 1; overflow: hidden; display: block; }
-    .insta__photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
-    .insta__photo:hover img { transform: scale(1.04); }
-
-    /* ---------- Footer ---------- */
-    .footer { padding: 28px var(--pad); display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 24px; font-size: 13px; line-height: 1.4; }
-    .footer .logo { color: var(--charcoal); }
-    .footer .logo__word { font-size: 44px; }
-    .footer__right { text-align: right; }
-    .footer__left { max-width: 200px; }
-    .footer__bar { background: var(--charcoal); padding: 28px var(--pad); }
-    .footer__bar nav { max-width: 1180px; margin: 0 auto; border-top: 2px solid var(--cream); padding-top: 22px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--cream); text-transform: uppercase; font-size: 15px; }
-    .footer__bar a:hover { text-decoration: underline; text-underline-offset: 6px; }
+    .pkg__foot { text-align: center; margin-top: auto; padding-top: 14px; }
+    .pkg .btn { font-size: 13px; padding: 3px 18px; }
 
     /* ---------- Responsive ---------- */
     @media (max-width: 900px) {
       .packages__grid { grid-template-columns: 1fr; max-width: 460px; }
+      .pkg { min-height: 0; }
       .about { grid-template-columns: 1fr; }
       .about__text, .postcard { justify-self: center; }
       .postcard { margin-bottom: 40px; }
     }
     @media (max-width: 760px) {
-      .site-header { grid-template-columns: 1fr auto; row-gap: 0; }
-      .site-header .logo { grid-column: 1; justify-self: start; text-align: left; }
-      .menu-toggle { display: block; }
-      .nav { display: none; }
-      .site-header.is-open { background: rgba(35,32,25,.92); }
-      .site-header.is-open .nav {
-        display: flex; flex-direction: column; gap: 14px; grid-column: 1 / -1; order: 3;
-        padding: 16px 0 12px; justify-content: flex-start; align-items: flex-start;
-      }
       .insta__inner { grid-template-columns: 1fr; }
-      .footer { grid-template-columns: 1fr; text-align: center; justify-items: center; }
-      .footer__right { text-align: center; }
-      .footer__bar nav { justify-content: center; }
       .hero__arrow { width: 36px; }
     }
     @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .slide { transition: none; }
+      .slide, .pkg-item__detail { transition: none; }
     }
   </style>
 </head>
@@ -267,17 +206,17 @@
     <nav class="nav nav--left" aria-label="Primary">
       <a href="index.html" aria-current="page">Home</a>
       <a href="about.html">About</a>
-      <a href="#packages">Packages</a>
+      <div class="has-dropdown"><button class="dd-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="dd-header">Packages</button><ul class="dropdown" id="dd-header"><li><a href="hourly-rates.html">Hourly Rates &amp; Packages</a></li><li><a href="subscription-offers.html">Subscription Offers</a></li><li><a href="mini-sessions.html">Mini-sessions &amp; Gift Vouchers</a></li></ul></div>
     </nav>
 
-    <a class="logo" href="#home" aria-label="Joyful Studios home">
+    <a class="logo" href="index.html" aria-label="Joyful Studios home">
       <span class="logo__word">joyful</span>
       <span class="logo__sub">STUDIOS</span>
     </a>
 
     <nav class="nav nav--right" aria-label="Secondary">
-      <a href="#testimonials">Testimonials</a>
-      <a href="#inquire">Inquire</a>
+      <a href="index.html#testimonials">Testimonials</a>
+      <a href="index.html#inquire">Inquire</a>
     </nav>
 
     <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="site-header">Menu</button>
@@ -330,49 +269,73 @@
       <div class="packages__grid">
 
         <article class="pkg">
-          <h3>Hourly Rates<br>&amp; Packages</h3>
+          <h3><a href="hourly-rates.html">Hourly Rates<br>&amp; Packages</a></h3>
+          <p class="pkg__hint"><span class="hint-hover">Hover over an option to see the details</span><span class="hint-tap">Tap an option to see the details</span></p>
           <div class="pkg__list">
-            <p class="pkg__item"><b>Standard Session: R1,800/hr</b>
-              <span>1-hour minimum • 40+ edited images • Ideal for couples, families, engagements, portraits &amp; lifestyle sessions.</span></p>
-            <p class="pkg__item"><b>Extended Lifestyle: R3,100</b>
-              <span>2 hours • 80–120 edited images • 2 nearby locations or outfit change • Perfect for creative, branding, couples &amp; full family sessions.</span></p>
-            <p class="pkg__item"><b>Intimate Wedding Package: R6,700</b>
-              <span>Up to 4 hours of coverage<br>• 4 hours of photography<br>• 250–350+ edited images</span></p>
-            <p class="pkg__item"><b>Full Wedding Package: R12,500</b>
-              <span>Up to 8 hours of coverage<br>• 8 hours of photography<br>• 500–700+ edited images</span></p>
+            <div class="pkg-item">
+              <button class="pkg-item__name" type="button" aria-expanded="false" aria-controls="hourly-rates-d0">Standard Session</button>
+              <div class="pkg-item__detail" id="hourly-rates-d0"><div><div class="pkg-detail"><span class="pkg-price">R1,800/hr</span><ul class="pkg-points"><li>1-hour minimum</li><li>40+ edited images</li><li>Ideal for couples, families, engagements, portraits &amp; lifestyle sessions</li></ul></div></div></div>
+            </div>
+            <div class="pkg-item">
+              <button class="pkg-item__name" type="button" aria-expanded="false" aria-controls="hourly-rates-d1">Extended Lifestyle</button>
+              <div class="pkg-item__detail" id="hourly-rates-d1"><div><div class="pkg-detail"><span class="pkg-price">R3,100</span><ul class="pkg-points"><li>2 hours</li><li>80–120 edited images</li><li>2 nearby locations or outfit change</li><li>Perfect for creative, branding, couples &amp; full family sessions</li></ul></div></div></div>
+            </div>
+            <div class="pkg-item">
+              <button class="pkg-item__name" type="button" aria-expanded="false" aria-controls="hourly-rates-d2">Intimate Wedding Package</button>
+              <div class="pkg-item__detail" id="hourly-rates-d2"><div><div class="pkg-detail"><span class="pkg-price">R6,700</span><ul class="pkg-points"><li>Up to 4 hours of coverage</li><li>4 hours of photography</li><li>250–350+ edited images</li></ul></div></div></div>
+            </div>
+            <div class="pkg-item">
+              <button class="pkg-item__name" type="button" aria-expanded="false" aria-controls="hourly-rates-d3">Full Wedding Package</button>
+              <div class="pkg-item__detail" id="hourly-rates-d3"><div><div class="pkg-detail"><span class="pkg-price">R12,500</span><ul class="pkg-points"><li>Up to 8 hours of coverage</li><li>8 hours of photography</li><li>500–700+ edited images</li></ul></div></div></div>
+            </div>
           </div>
-          <div class="pkg__foot"><a class="btn" href="#inquire">Find out more</a></div>
+          <div class="pkg__foot"><a class="btn" href="hourly-rates.html">Find out more</a></div>
         </article>
 
         <article class="pkg">
-          <h3>Subscription Offers</h3>
+          <h3><a href="subscription-offers.html">Subscription Offers</a></h3>
+          <p class="pkg__hint"><span class="hint-hover">Hover over an option to see the details</span><span class="hint-tap">Tap an option to see the details</span></p>
+          <p class="pkg__intro">Choose your subscription period, enjoy your complimentary first shoot, and receive ongoing opportunities to create beautiful, meaningful photographs.</p>
           <div class="pkg__list">
-            <p class="pkg__lead">Choose your subscription period, enjoy your complimentary first shoot, and receive ongoing opportunities to create beautiful, meaningful photographs.</p>
-            <p class="pkg__item"><b>Creator Subscription: R250–R800/month</b>
-              <span>For influencers, content creators &amp; personal brands</span></p>
-            <p class="pkg__item"><b>Family / Lifestyle Subscription: R250–R950/month</b>
-              <span>For families/individuals who want their memories documented throughout the year</span></p>
-            <p class="pkg__item"><b>The Wedding Journey Subscription: R400–R1,500/month</b>
-              <span>Covering your engagement, bachelorette &amp; bachelors parties and wedding (plus a complementary family session)</span></p>
-            <p class="pkg__item"><b>The Growing Family Subscription: R300–R1,200/month</b>
-              <span>Covering maternity, newborn and young family photoshoots over 12–24 months.</span></p>
+            <div class="pkg-item">
+              <button class="pkg-item__name" type="button" aria-expanded="false" aria-controls="subscription-offers-d0">Creator Subscription</button>
+              <div class="pkg-item__detail" id="subscription-offers-d0"><div><div class="pkg-detail"><span class="pkg-price">R250–R800/month</span><p class="pkg-desc">For influencers, content creators &amp; personal brands</p></div></div></div>
+            </div>
+            <div class="pkg-item">
+              <button class="pkg-item__name" type="button" aria-expanded="false" aria-controls="subscription-offers-d1">Family / Lifestyle Subscription</button>
+              <div class="pkg-item__detail" id="subscription-offers-d1"><div><div class="pkg-detail"><span class="pkg-price">R250–R950/month</span><p class="pkg-desc">For families/individuals who want their memories documented throughout the year</p></div></div></div>
+            </div>
+            <div class="pkg-item">
+              <button class="pkg-item__name" type="button" aria-expanded="false" aria-controls="subscription-offers-d2">The Wedding Journey Subscription</button>
+              <div class="pkg-item__detail" id="subscription-offers-d2"><div><div class="pkg-detail"><span class="pkg-price">R400–R1,500/month</span><p class="pkg-desc">Covering your engagement, bachelorette &amp; bachelors parties and wedding (plus a complementary family session)</p></div></div></div>
+            </div>
+            <div class="pkg-item">
+              <button class="pkg-item__name" type="button" aria-expanded="false" aria-controls="subscription-offers-d3">The Growing Family Subscription</button>
+              <div class="pkg-item__detail" id="subscription-offers-d3"><div><div class="pkg-detail"><span class="pkg-price">R300–R1,200/month</span><p class="pkg-desc">Covering maternity, newborn and young family photoshoots over 12–24 months.</p></div></div></div>
+            </div>
           </div>
-          <div class="pkg__foot"><a class="btn" href="#inquire">Find out more</a></div>
+          <div class="pkg__foot"><a class="btn" href="subscription-offers.html">Find out more</a></div>
         </article>
 
         <article class="pkg">
-          <h3>Mini-sessions<br>&amp; Gift vouchers</h3>
+          <h3><a href="mini-sessions.html">Mini-sessions<br>&amp; Gift vouchers</a></h3>
+          <p class="pkg__hint"><span class="hint-hover">Hover over an option to see the details</span><span class="hint-tap">Tap an option to see the details</span></p>
           <div class="pkg__list">
-            <p class="pkg__item"><b>Photobooth Sessions — R100–R250</b>
-              <span>Offer quick, fun 10-minute photo sessions, with pricing varying depending on the event and setup.</span></p>
-            <p class="pkg__item"><b>Mini-Sessions — R400</b>
-              <span>Upgrade to a 20-minute lifestyle session at either Bloubergstrand or Majik Forest, including professionally edited images and an online gallery.</span></p>
-            <p class="pkg__item"><b>Gift Vouchers</b>
-              <span>Gift vouchers are an easy way to give someone a Joyful Studios experience.</span></p>
-            <p class="pkg__item"><b>Mini-sessions and gift vouchers are exclusively available at Joyful Studios market pop-ups and photobooth events.</b>
-              <span>And there’s a little extra…</span></p>
+            <div class="pkg-item">
+              <button class="pkg-item__name" type="button" aria-expanded="false" aria-controls="mini-sessions-d0">Photobooth Sessions</button>
+              <div class="pkg-item__detail" id="mini-sessions-d0"><div><div class="pkg-detail"><span class="pkg-price">R100–R250</span><p class="pkg-desc">Offer quick, fun 10-minute photo sessions, with pricing varying depending on the event and setup.</p></div></div></div>
+            </div>
+            <div class="pkg-item">
+              <button class="pkg-item__name" type="button" aria-expanded="false" aria-controls="mini-sessions-d1">Mini-Sessions</button>
+              <div class="pkg-item__detail" id="mini-sessions-d1"><div><div class="pkg-detail"><span class="pkg-price">R400</span><p class="pkg-desc">Upgrade to a 20-minute lifestyle session at either Bloubergstrand or Majik Forest, including professionally edited images and an online gallery.</p></div></div></div>
+            </div>
+            <div class="pkg-item">
+              <button class="pkg-item__name" type="button" aria-expanded="false" aria-controls="mini-sessions-d2">Gift Vouchers</button>
+              <div class="pkg-item__detail" id="mini-sessions-d2"><div><div class="pkg-detail"><p class="pkg-desc">Gift vouchers are an easy way to give someone a Joyful Studios experience.</p></div></div></div>
+            </div>
           </div>
-          <div class="pkg__foot"><a class="btn" href="#inquire">Find out more</a></div>
+          <p class="pkg__note"><b>Mini-sessions and gift vouchers are exclusively available at Joyful Studios market pop-ups and photobooth events.</b><br>And there’s a little extra…</p>
+          <div class="pkg__foot"><a class="btn" href="mini-sessions.html">Find out more</a></div>
         </article>
 
       </div>
@@ -411,7 +374,7 @@
   <footer>
     <div class="footer">
       <p class="footer__left">Joy is a wedding, family &amp; subscription based photographer capturing film-inspired photos and special moments.</p>
-      <a class="logo" href="#home" aria-label="Back to top">
+      <a class="logo" href="index.html" aria-label="Joyful Studios home">
         <span class="logo__word">joyful</span>
         <span class="logo__sub">STUDIOS</span>
       </a>
@@ -419,55 +382,32 @@
     </div>
     <div class="footer__bar">
       <nav aria-label="Footer">
-        <a href="#home">Home</a>
+        <a href="index.html">Home</a>
         <a href="about.html">About</a>
-        <a href="#packages">Packages</a>
-        <a href="#testimonials">Testimonials</a>
-        <a href="#inquire">Inquire</a>
+        <div class="has-dropdown"><button class="dd-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="dd-footer">Packages</button><ul class="dropdown" id="dd-footer"><li><a href="hourly-rates.html">Hourly Rates &amp; Packages</a></li><li><a href="subscription-offers.html">Subscription Offers</a></li><li><a href="mini-sessions.html">Mini-sessions &amp; Gift Vouchers</a></li></ul></div>
+        <a href="index.html#testimonials">Testimonials</a>
+        <a href="index.html#inquire">Inquire</a>
       </nav>
     </div>
   </footer>
 
+  <script src="script.js"></script>
   <script>
-    // Hero slider
+    // Packages: tap to open details on touch screens (mouse users just hover)
     (function () {
-      var slides = document.querySelectorAll('.slide');
-      var dotsWrap = document.querySelector('.hero__dots');
-      var i = 0, timer;
-      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      slides.forEach(function (_, n) {
-        var b = document.createElement('button');
-        b.setAttribute('aria-label', 'Go to slide ' + (n + 1));
-        b.addEventListener('click', function () { go(n); restart(); });
-        dotsWrap.appendChild(b);
-      });
-      var dots = dotsWrap.querySelectorAll('button');
-
-      function go(n) {
-        i = (n + slides.length) % slides.length;
-        slides.forEach(function (s, k) { s.classList.toggle('is-active', k === i); });
-        dots.forEach(function (d, k) { d.setAttribute('aria-current', k === i ? 'true' : 'false'); });
-      }
-      function restart() {
-        clearInterval(timer);
-        if (!reduce) timer = setInterval(function () { go(i + 1); }, 6000);
-      }
-      document.querySelector('.hero__arrow--prev').addEventListener('click', function () { go(i - 1); restart(); });
-      document.querySelector('.hero__arrow--next').addEventListener('click', function () { go(i + 1); restart(); });
-      go(0); restart();
-    })();
-
-    // Mobile menu
-    (function () {
-      var header = document.getElementById('site-header');
-      var btn = document.getElementById('menu-toggle');
-      btn.addEventListener('click', function () {
-        var open = header.classList.toggle('is-open');
-        btn.setAttribute('aria-expanded', open);
-      });
-      header.querySelectorAll('.nav a').forEach(function (a) {
-        a.addEventListener('click', function () { header.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); });
+      var canHover = window.matchMedia('(hover: hover)');
+      document.querySelectorAll('.pkg-item__name').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          if (canHover.matches) return;
+          var item = btn.parentElement;
+          var open = !item.classList.contains('is-open');
+          item.parentElement.querySelectorAll('.pkg-item').forEach(function (other) {
+            other.classList.remove('is-open');
+            other.querySelector('.pkg-item__name').setAttribute('aria-expanded', 'false');
+          });
+          item.classList.toggle('is-open', open);
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
       });
     })();
   </script>

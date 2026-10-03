@@ -70,7 +70,7 @@
 
     /* ---------- Hero slider ---------- */
     .hero { position: relative; height: clamp(360px, 55vw, 780px); overflow: hidden; color: var(--cream); background: var(--charcoal); }
-    .slide { position: absolute; inset: 0; background-size: cover; background-position: center 42%; opacity: 0; transition: opacity 1.2s ease; }
+    .slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.2s ease; }
     .slide.is-active { opacity: 1; }
     .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(20,18,10,.28), rgba(20,18,10,.08) 45%, rgba(20,18,10,.2)); pointer-events: none; }
     .hero__content { position: absolute; z-index: 3; left: 50%; top: 46%; transform: translate(-50%, -50%); text-align: center; width: min(92%, 900px); }
@@ -190,9 +190,9 @@
   </header>
 
   <section class="hero" aria-roledescription="carousel" aria-label="A glance behind the camera">
-    <div class="slide is-active" style="background-image:url('images/about-hero.jpg')" role="group" aria-label="Slide 1 of 3"></div>
-    <div class="slide" style="background-image:url('images/about-strip-1.jpg'); background-position: center 60%" role="group" aria-label="Slide 2 of 3"></div>
-    <div class="slide" style="background-image:url('images/about-portrait.jpg'); background-position: center 40%" role="group" aria-label="Slide 3 of 3"></div>
+    <div class="slide is-active" style="background-image:url('images/hero.jpg')" role="group" aria-label="Slide 1 of 3"></div>
+    <div class="slide" style="background-image:url('images/band.jpg')" role="group" aria-label="Slide 2 of 3"></div>
+    <div class="slide" style="background-image:url('images/calla.jpg'); background-position: center 25%" role="group" aria-label="Slide 3 of 3"></div>
 
     <div class="hero__content">
       <h1>A glance behind<br>the camera</h1>

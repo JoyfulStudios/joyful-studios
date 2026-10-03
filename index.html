@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Joyful Studios | Romance inspired cinematic photography</title>
+  <meta name="description" content="Joyful Studios is a wedding, family and subscription based photographer in Cape Town capturing film-inspired photos and special moments.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Quattrocento (body), Pinyon Script (hero headline), Italiana (stand-in for Hatton), Mrs Saint Delafield (stand-in for Abramo Script) -->
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Mrs+Saint+Delafield&family=Pinyon+Script&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --sand: #cdc1ab;
+      --sand-deep: #bfb097;
+      --charcoal: #2d2b25;
+      --cream: #f3ead8;
+      --ink: #35322b;
+      --red: #8b1414;
+
+      --font-display: "Hatton", "Italiana", "Cormorant Garamond", Georgia, serif;
+      --font-body: "Quattrocento", Georgia, serif;
+      --font-hero: "Pinyon Script", "Snell Roundhand", cursive;
+      --font-sign: "Abramo Script", "Mrs Saint Delafield", "Pinyon Script", cursive;
+
+      --pad: clamp(20px, 5vw, 64px);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--sand);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    :focus-visible { outline: 2px solid var(--cream); outline-offset: 4px; }
+
+    .btn {
+      display: inline-block;
+      padding: 6px 28px;
+      border: 1px solid currentColor;
+      border-radius: 999px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--cream);
+      transition: background .25s, color .25s;
+    }
+    .btn:hover { background: var(--cream); color: var(--charcoal); }
+    .btn--soft { text-transform: none; font-size: 14px; padding: 4px 22px; }
+
+    /* ---------- Header ---------- */
+    .site-header {
+      position: absolute; inset: 0 0 auto 0; z-index: 10;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 22px var(--pad);
+      color: var(--cream);
+    }
+    .nav { display: flex; gap: clamp(20px, 4vw, 64px); text-transform: uppercase; font-size: 16px; letter-spacing: .02em; }
+    .nav--left { justify-content: flex-start; }
+    .nav--right { justify-content: flex-end; }
+    .nav a { padding: 4px 0; border-bottom: 1px solid transparent; transition: border-color .2s; }
+    .nav a:hover, .nav a[aria-current="page"] { border-color: var(--cream); }
+
+    .logo { text-align: center; line-height: 1; color: var(--cream); display: inline-block; }
+    .logo__word { display: block; font-family: var(--font-display); font-size: clamp(44px, 5.6vw, 72px); letter-spacing: .01em; }
+    .logo__sub { display: block; font-size: 9px; letter-spacing: .5em; margin-top: 4px; padding-left: .5em; font-family: var(--font-body); }
+
+    .menu-toggle {
+      display: none; background: none; border: 0; color: var(--cream);
+      font: inherit; text-transform: uppercase; letter-spacing: .08em; cursor: pointer;
+      justify-self: end; padding: 8px 0;
+    }
+
+    /* ---------- Hero slider ---------- */
+    .hero { position: relative; height: min(100vh, 780px); min-height: 520px; overflow: hidden; color: var(--cream); background: var(--charcoal); }
+    .slide {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      opacity: 0; transition: opacity 1.2s ease;
+    }
+    .slide.is-active { opacity: 1; }
+    .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(20,18,10,.25), rgba(20,18,10,.1) 40%, rgba(20,18,10,.2)); pointer-events: none; }
+    .hero__content {
+      position: absolute; z-index: 3; left: 50%; top: 52%;
+      transform: translate(-50%, -50%);
+      text-align: center; width: min(92%, 900px);
+    }
+    .hero h1 {
+      margin: 0 0 clamp(36px, 7vw, 76px);
+      font-family: var(--font-hero); font-weight: 400;
+      font-size: clamp(40px, 7.4vw, 92px);
+      line-height: 1.12;
+      text-shadow: 0 2px 24px rgba(0,0,0,.35);
+    }
+    .hero__arrow {
+      position: absolute; z-index: 4; top: 50%; transform: translateY(-50%);
+      width: 48px; height: 64px; background: none; border: 0; color: var(--cream); cursor: pointer;
+      display: grid; place-items: center;
+    }
+    .hero__arrow--prev { left: clamp(8px, 2.5vw, 36px); }
+    .hero__arrow--next { right: clamp(8px, 2.5vw, 36px); }
+    .hero__arrow svg { width: 22px; height: 40px; stroke: currentColor; fill: none; stroke-width: 2; }
+    .hero__dots { position: absolute; z-index: 4; bottom: 28px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; }
+    .hero__dots button { width: 12px; height: 12px; padding: 0; border-radius: 50%; border: 0; background: var(--cream); opacity: .55; cursor: pointer; }
+    .hero__dots button[aria-current="true"] { opacity: 1; }
+
+    /* ---------- About ---------- */
+    .about {
+      padding: clamp(56px, 8vw, 110px) var(--pad);
+      display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: clamp(32px, 6vw, 96px);
+      align-items: center;
+      max-width: 1180px; margin: 0 auto;
+    }
+    .about__text { max-width: 440px; justify-self: end; }
+    .about h2 {
+      margin: 0; font-family: var(--font-display); font-weight: 400;
+      font-size: clamp(24px, 2.6vw, 32px); letter-spacing: .02em; text-transform: uppercase; line-height: 1.2;
+    }
+    .about h3 {
+      margin: 8px 0 28px; font-family: var(--font-display); font-weight: 400;
+      font-size: clamp(16px, 1.6vw, 20px); letter-spacing: .03em; text-transform: uppercase;
+    }
+    .about p { margin: 0 0 1.1em; }
+    .about .btn { color: var(--cream); border-color: var(--cream); margin-top: 6px; }
+    .about .btn:hover { color: var(--charcoal); }
+
+    .postcard { position: relative; max-width: 440px; justify-self: start; width: 100%; }
+    .postcard__card {
+      background: url("images/postcard.png") center / 100% 100% no-repeat;
+      padding: 3.2% 3.2% 3.2% 4.2%;
+    }
+    .postcard__card img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center top; }
+    .signature {
+      position: absolute; right: -4%; bottom: -9%;
+      font-family: var(--font-sign); color: var(--red);
+      font-size: clamp(54px, 7vw, 92px); line-height: .9;
+      transform: rotate(-6deg); white-space: nowrap;
+      pointer-events: none;
+    }
+
+    /* ---------- Photo band ---------- */
+    .band { height: clamp(260px, 36vw, 480px); background: url("images/band.jpg") center 30% / cover no-repeat; }
+
+    /* ---------- Packages ---------- */
+    .packages { padding: clamp(48px, 7vw, 90px) var(--pad) clamp(56px, 8vw, 110px); }
+    .packages h2 {
+      margin: 0 0 clamp(28px, 4vw, 52px); text-align: center;
+      font-family: var(--font-display); font-weight: 400; font-size: clamp(24px, 2.6vw, 32px);
+      letter-spacing: .03em; text-transform: uppercase;
+    }
+    .packages__grid {
+      max-width: 1180px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(18px, 2.4vw, 36px);
+    }
+    .pkg {
+      border: 26px solid transparent;
+      border-image: url("images/lace-frame.png") 60 fill / 26px round;
+      padding: 10px clamp(6px, 1vw, 14px) 6px;
+      text-align: center;
+      display: flex; flex-direction: column;
+      font-size: 14.5px; line-height: 1.45;
+    }
+    .pkg h3 {
+      margin: 6px 0 18px; font-family: var(--font-display); font-weight: 400;
+      font-size: clamp(22px, 2vw, 27px); line-height: 1.15; letter-spacing: .01em;
+    }
+    .pkg__list { text-align: left; flex: 1; }
+    .pkg__item { margin: 0 0 14px; }
+    .pkg__item b { display: block; font-weight: 700; }
+    .pkg__item span { display: block; }
+    .pkg__lead { font-weight: 700; margin: 0 0 14px; }
+    .pkg__foot { text-align: center; margin-top: 12px; }
+    .pkg .btn { color: var(--cream); font-size: 13px; padding: 3px 18px; text-transform: none; }
+
+    /* ---------- Gallery ---------- */
+    .gallery {
+      position: relative;
+      background: url("images/calla.jpg") center 22% / cover no-repeat;
+      padding: clamp(60px, 9vw, 130px) var(--pad);
+    }
+    .gallery__row {
+      max-width: 760px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px, 4vw, 54px);
+    }
+    .gallery__row img { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+
+    /* ---------- Testimonial ---------- */
+    .testimonial {
+      max-width: 1000px; margin: 0 auto;
+      padding: clamp(40px, 6vw, 80px) var(--pad);
+      display: flex; align-items: center; justify-content: center; gap: clamp(16px, 4vw, 56px); flex-wrap: wrap;
+    }
+    .testimonial blockquote {
+      margin: 0; max-width: 520px;
+      font-family: var(--font-display); font-size: clamp(22px, 2.6vw, 32px); line-height: 1.2;
+      text-transform: uppercase; letter-spacing: .02em;
+    }
+    .testimonial cite { font-style: normal; font-family: var(--font-sign); color: var(--red); font-size: clamp(54px, 7vw, 88px); line-height: 1; transform: rotate(-4deg); display: inline-block; }
+
+    /* ---------- Instagram ---------- */
+    .insta { background: var(--charcoal); color: #d9cdb6; padding: clamp(44px, 6vw, 80px) var(--pad); }
+    .insta__inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 40px; }
+    .insta h2 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: clamp(30px, 4vw, 46px); line-height: 1.15; color: #cfc3ac; }
+    .insta a.handle { display: inline-block; margin-top: 14px; font-size: 18px; border-bottom: 1px solid transparent; }
+    .insta a.handle:hover { border-color: currentColor; }
+    .insta__photo { width: clamp(180px, 22vw, 250px); aspect-ratio: 1; overflow: hidden; display: block; }
+    .insta__photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+    .insta__photo:hover img { transform: scale(1.04); }
+
+    /* ---------- Footer ---------- */
+    .footer { padding: 28px var(--pad); display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 24px; font-size: 13px; line-height: 1.4; }
+    .footer .logo { color: var(--charcoal); }
+    .footer .logo__word { font-size: 44px; }
+    .footer__right { text-align: right; }
+    .footer__left { max-width: 200px; }
+    .footer__bar { background: var(--charcoal); padding: 28px var(--pad); }
+    .footer__bar nav { max-width: 1180px; margin: 0 auto; border-top: 2px solid var(--cream); padding-top: 22px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--cream); text-transform: uppercase; font-size: 15px; }
+    .footer__bar a:hover { text-decoration: underline; text-underline-offset: 6px; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 900px) {
+      .packages__grid { grid-template-columns: 1fr; max-width: 460px; }
+      .about { grid-template-columns: 1fr; }
+      .about__text, .postcard { justify-self: center; }
+      .postcard { margin-bottom: 40px; }
+    }
+    @media (max-width: 760px) {
+      .site-header { grid-template-columns: 1fr auto; row-gap: 0; }
+      .site-header .logo { grid-column: 1; justify-self: start; text-align: left; }
+      .menu-toggle { display: block; }
+      .nav { display: none; }
+      .site-header.is-open { background: rgba(35,32,25,.92); }
+      .site-header.is-open .nav {
+        display: flex; flex-direction: column; gap: 14px; grid-column: 1 / -1; order: 3;
+        padding: 16px 0 12px; justify-content: flex-start; align-items: flex-start;
+      }
+      .insta__inner { grid-template-columns: 1fr; }
+      .footer { grid-template-columns: 1fr; text-align: center; justify-items: center; }
+      .footer__right { text-align: center; }
+      .footer__bar nav { justify-content: center; }
+      .hero__arrow { width: 36px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .slide { transition: none; }
+    }
+  </style>
+</head>
+
+<body id="home">
+
+  <!-- ===== Header + Hero ===== -->
+  <header class="site-header" id="site-header">
+    <nav class="nav nav--left" aria-label="Primary">
+      <a href="#home" aria-current="page">Home</a>
+      <a href="#about">About</a>
+      <a href="#packages">Packages</a>
+    </nav>
+
+    <a class="logo" href="#home" aria-label="Joyful Studios home">
+      <span class="logo__word">joyful</span>
+      <span class="logo__sub">STUDIOS</span>
+    </a>
+
+    <nav class="nav nav--right" aria-label="Secondary">
+      <a href="#testimonials">Testimonials</a>
+      <a href="#inquire">Inquire</a>
+    </nav>
+
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="site-header">Menu</button>
+  </header>
+
+  <section class="hero" aria-roledescription="carousel" aria-label="Featured photography">
+    <div class="slide is-active" style="background-image:url('images/hero.jpg')" role="group" aria-label="Slide 1 of 3"></div>
+    <div class="slide" style="background-image:url('images/band.jpg')" role="group" aria-label="Slide 2 of 3"></div>
+    <div class="slide" style="background-image:url('images/calla.jpg'); background-position: center 25%" role="group" aria-label="Slide 3 of 3"></div>
+
+    <div class="hero__content">
+      <h1>Romance inspired<br>cinematic photography</h1>
+      <a class="btn" href="#packages">Packages</a>
+    </div>
+
+    <button class="hero__arrow hero__arrow--prev" aria-label="Previous slide">
+      <svg viewBox="0 0 22 40" aria-hidden="true"><polyline points="18,2 3,20 18,38"/></svg>
+    </button>
+    <button class="hero__arrow hero__arrow--next" aria-label="Next slide">
+      <svg viewBox="0 0 22 40" aria-hidden="true"><polyline points="4,2 19,20 4,38"/></svg>
+    </button>
+    <div class="hero__dots" role="tablist" aria-label="Choose slide"></div>
+  </section>
+
+  <!-- ===== About ===== -->
+  <main>
+    <section class="about" id="about">
+      <div class="about__text">
+        <h2>Meet your photographer</h2>
+        <h3>Hi! I’m Joy, I’m so glad you’re here</h3>
+        <p>I capture stories and document real moments, so that you can revisit your favorite memories over and over again.</p>
+        <p>My work is inspired by the nostalgia of old films with lots of warmth, raw emotion and dreamy light. I prefer this to a rigid, ultra-polished approach and rather seek to document the moment as it’s felt.</p>
+        <p>I’m based in Durbanville, Cape Town.</p>
+        <a class="btn btn--soft" href="#about">Get to know me</a>
+      </div>
+
+      <div class="postcard">
+        <div class="postcard__card">
+          <img src="images/joy.jpg" alt="Joy, the photographer behind Joyful Studios, standing beside a tree in warm evening light" loading="lazy">
+        </div>
+        <span class="signature" aria-hidden="true">love, Joy</span>
+      </div>
+    </section>
+
+    <div class="band" role="img" aria-label="A woman smiling as she is handed a bouquet of flowers"></div>
+
+    <!-- ===== Packages ===== -->
+    <section class="packages" id="packages">
+      <h2>Packages</h2>
+      <div class="packages__grid">
+
+        <article class="pkg">
+          <h3>Hourly Rates<br>&amp; Packages</h3>
+          <div class="pkg__list">
+            <p class="pkg__item"><b>Standard Session: R1,800/hr</b>
+              <span>1-hour minimum • 40+ edited images • Ideal for couples, families, engagements, portraits &amp; lifestyle sessions.</span></p>
+            <p class="pkg__item"><b>Extended Lifestyle: R3,100</b>
+              <span>2 hours • 80–120 edited images • 2 nearby locations or outfit change • Perfect for creative, branding, couples &amp; full family sessions.</span></p>
+            <p class="pkg__item"><b>Intimate Wedding Package: R6,700</b>
+              <span>Up to 4 hours of coverage<br>• 4 hours of photography<br>• 250–350+ edited images</span></p>
+            <p class="pkg__item"><b>Full Wedding Package: R12,500</b>
+              <span>Up to 8 hours of coverage<br>• 8 hours of photography<br>• 500–700+ edited images</span></p>
+          </div>
+          <div class="pkg__foot"><a class="btn" href="#inquire">Find out more</a></div>
+        </article>
+
+        <article class="pkg">
+          <h3>Subscription Offers</h3>
+          <div class="pkg__list">
+            <p class="pkg__lead">Choose your subscription period, enjoy your complimentary first shoot, and receive ongoing opportunities to create beautiful, meaningful photographs.</p>
+            <p class="pkg__item"><b>Creator Subscription: R250–R800/month</b>
+              <span>For influencers, content creators &amp; personal brands</span></p>
+            <p class="pkg__item"><b>Family / Lifestyle Subscription: R250–R950/month</b>
+              <span>For families/individuals who want their memories documented throughout the year</span></p>
+            <p class="pkg__item"><b>The Wedding Journey Subscription: R400–R1,500/month</b>
+              <span>Covering your engagement, bachelorette &amp; bachelors parties and wedding (plus a complementary family session)</span></p>
+            <p class="pkg__item"><b>The Growing Family Subscription: R300–R1,200/month</b>
+              <span>Covering maternity, newborn and young family photoshoots over 12–24 months.</span></p>
+          </div>
+          <div class="pkg__foot"><a class="btn" href="#inquire">Find out more</a></div>
+        </article>
+
+        <article class="pkg">
+          <h3>Mini-sessions<br>&amp; Gift vouchers</h3>
+          <div class="pkg__list">
+            <p class="pkg__item"><b>Photobooth Sessions — R100–R250</b>
+              <span>Offer quick, fun 10-minute photo sessions, with pricing varying depending on the event and setup.</span></p>
+            <p class="pkg__item"><b>Mini-Sessions — R400</b>
+              <span>Upgrade to a 20-minute lifestyle session at either Bloubergstrand or Majik Forest, including professionally edited images and an online gallery.</span></p>
+            <p class="pkg__item"><b>Gift Vouchers</b>
+              <span>Gift vouchers are an easy way to give someone a Joyful Studios experience.</span></p>
+            <p class="pkg__item"><b>Mini-sessions and gift vouchers are exclusively available at Joyful Studios market pop-ups and photobooth events.</b>
+              <span>And there’s a little extra…</span></p>
+          </div>
+          <div class="pkg__foot"><a class="btn" href="#inquire">Find out more</a></div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ===== Gallery ===== -->
+    <section class="gallery" aria-label="Selected photographs">
+      <div class="gallery__row">
+        <img src="images/gallery-couple.jpg" alt="A couple holding hands in a green park at golden hour" loading="lazy">
+        <img src="images/gallery-family.jpg" alt="Black and white photo of parents lifting their baby" loading="lazy">
+        <img src="images/gallery-grass.jpg" alt="A woman lying on the grass, smiling at the camera" loading="lazy">
+      </div>
+    </section>
+
+    <!-- ===== Testimonial ===== -->
+    <section class="testimonial" id="testimonials">
+      <blockquote>“When I had my photoshoot with Joy, I was…”</blockquote>
+      <cite>Client Name</cite>
+    </section>
+
+    <!-- ===== Instagram ===== -->
+    <section class="insta" id="inquire">
+      <div class="insta__inner">
+        <div>
+          <h2>Take a peek at<br>my Instagram</h2>
+          <a class="handle" href="https://www.instagram.com/joyful_studios_/" target="_blank" rel="noopener">@joyful_studios_</a>
+        </div>
+        <a class="insta__photo" href="https://www.instagram.com/joyful_studios_/" target="_blank" rel="noopener" aria-label="Open Joyful Studios on Instagram">
+          <img src="images/instagram.jpg" alt="A newborn's feet held in a parent's hands" loading="lazy">
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="footer">
+      <p class="footer__left">Joy is a wedding, family &amp; subscription based photographer capturing film-inspired photos and special moments.</p>
+      <a class="logo" href="#home" aria-label="Back to top">
+        <span class="logo__word">joyful</span>
+        <span class="logo__sub">STUDIOS</span>
+      </a>
+      <p class="footer__right">Based in Cape Town,<br>South Africa.<br>Available for travel.</p>
+    </div>
+    <div class="footer__bar">
+      <nav aria-label="Footer">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#packages">Packages</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#inquire">Inquire</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // Hero slider
+    (function () {
+      var slides = document.querySelectorAll('.slide');
+      var dotsWrap = document.querySelector('.hero__dots');
+      var i = 0, timer;
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      slides.forEach(function (_, n) {
+        var b = document.createElement('button');
+        b.setAttribute('aria-label', 'Go to slide ' + (n + 1));
+        b.addEventListener('click', function () { go(n); restart(); });
+        dotsWrap.appendChild(b);
+      });
+      var dots = dotsWrap.querySelectorAll('button');
+
+      function go(n) {
+        i = (n + slides.length) % slides.length;
+        slides.forEach(function (s, k) { s.classList.toggle('is-active', k === i); });
+        dots.forEach(function (d, k) { d.setAttribute('aria-current', k === i ? 'true' : 'false'); });
+      }
+      function restart() {
+        clearInterval(timer);
+        if (!reduce) timer = setInterval(function () { go(i + 1); }, 6000);
+      }
+      document.querySelector('.hero__arrow--prev').addEventListener('click', function () { go(i - 1); restart(); });
+      document.querySelector('.hero__arrow--next').addEventListener('click', function () { go(i + 1); restart(); });
+      go(0); restart();
+    })();
+
+    // Mobile menu
+    (function () {
+      var header = document.getElementById('site-header');
+      var btn = document.getElementById('menu-toggle');
+      btn.addEventListener('click', function () {
+        var open = header.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', open);
+      });
+      header.querySelectorAll('.nav a').forEach(function (a) {
+        a.addEventListener('click', function () { header.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); });
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inquire | Joyful Studios</title>
+  <meta name="description" content="Inquire about a session, wedding package or subscription with Joyful Studios in Cape Town.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Mrs+Saint+Delafield&family=Pinyon+Script&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .cat-hero {
+      position: relative; height: clamp(280px, 34vw, 420px);
+      background: var(--charcoal) url("images/about-cta.jpg") center 30% / cover no-repeat; color: var(--cream);
+      display: grid; place-items: center; text-align: center; padding: 70px var(--pad) 0;
+    }
+    .cat-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(20,18,10,.45), rgba(20,18,10,.3)); }
+    .cat-hero h1 { position: relative; z-index: 2; margin: 0; font-family: var(--font-hero); font-weight: 400; font-size: clamp(38px, 6.4vw, 84px); line-height: 1.12; text-shadow: 0 2px 24px rgba(0,0,0,.4); }
+
+    .inquire { padding: clamp(36px, 6vw, 80px) var(--pad); }
+    .inquire__card { max-width: 760px; margin: 0 auto; background: var(--cream-bg); padding: clamp(24px, 4.5vw, 56px); border-radius: var(--radius); }
+    .inquire h2 { margin: 0 0 8px; font-family: var(--font-body); font-weight: 700; font-size: clamp(22px, 2.6vw, 30px); letter-spacing: .02em; text-transform: uppercase; }
+    .inquire__lead { margin: 0 0 28px; }
+
+    .field { margin-bottom: 20px; }
+    .field label { display: block; margin-bottom: 6px; font-weight: 700; font-size: 14px; letter-spacing: .06em; text-transform: uppercase; }
+    .field .opt { font-weight: 400; text-transform: none; letter-spacing: 0; opacity: .7; }
+    .field input, .field select, .field textarea {
+      width: 100%; padding: 12px 14px; font: inherit; color: var(--ink);
+      background: #fff9ee; border: 1px solid rgba(53, 50, 43, .35); border-radius: 6px;
+    }
+    .field textarea { min-height: 140px; resize: vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid var(--charcoal); outline-offset: 1px; border-color: var(--charcoal); }
+    .field select.is-prefilled { border-color: var(--charcoal); box-shadow: 0 0 0 2px rgba(45, 43, 37, .18); }
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; }
+    .prefill-note { margin: 8px 0 0; font-size: 14px; font-style: italic; }
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+    .submit { margin-top: 8px; padding: 12px 38px; font-size: 16px; color: var(--cream); background: var(--charcoal); border: 1px solid var(--charcoal); border-radius: 999px; cursor: pointer; letter-spacing: .06em; text-transform: uppercase; transition: background .25s, color .25s; }
+    .submit:hover { background: transparent; color: var(--charcoal); }
+    .submit:disabled { opacity: .6; cursor: wait; }
+    .form-msg { margin: 18px 0 0; padding: 12px 16px; border-radius: 6px; font-size: 15px; }
+    .form-msg[hidden] { display: none; }
+    .form-msg--error { background: #f3d9d3; color: #6b1f12; }
+    .thanks { text-align: center; padding: 20px 0; }
+    .thanks h2 { margin-bottom: 12px; }
+
+    @media (max-width: 600px) { .row2 { grid-template-columns: 1fr; } }
+  </style>
+</head>
+
+<body>
+  <header class="site-header" id="site-header">
+    <nav class="nav nav--left" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <div class="has-dropdown"><button class="dd-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="dd-header">Packages</button><ul class="dropdown" id="dd-header"><li><a href="hourly-rates.html">Hourly Rates &amp; Packages</a></li><li><a href="subscription-offers.html">Subscription Offers</a></li><li><a href="mini-sessions.html">Mini-sessions &amp; Gift Vouchers</a></li></ul></div>
+    </nav>
+
+    <a class="logo" href="index.html" aria-label="Joyful Studios home">
+      <span class="logo__word">joyful</span>
+      <span class="logo__sub">STUDIOS</span>
+    </a>
+
+    <nav class="nav nav--right" aria-label="Secondary">
+      <a href="index.html#testimonials">Testimonials</a>
+      <a href="inquire.html" aria-current="page">Inquire</a>
+    </nav>
+
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="site-header">Menu</button>
+  </header>
+
+  <section class="cat-hero"><h1>Let’s capture<br>your story</h1></section>
+
+  <main class="inquire">
+    <div class="inquire__card" id="card">
+      <h2>Inquire</h2>
+      <p class="inquire__lead">Tell me a little about what you have in mind and I’ll get back to you as soon as I can.</p>
+
+      <!--
+        FORM SETUP: this form sends to Formspree (free). Create a form at formspree.io, then replace
+        YOUR_FORM_ID below with your own form ID. Until then the form shows a "not connected yet" message.
+      -->
+      <form id="inquiry-form" data-endpoint="https://formspree.io/f/YOUR_FORM_ID" novalidate>
+        <div class="field">
+          <label for="name">Your name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required>
+        </div>
+
+        <div class="row2">
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="phone">Phone / WhatsApp <span class="opt">(optional)</span></label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="package">Package or service</label>
+          <select id="package" name="package" required>
+            <option value="" disabled selected>Please choose…</option>
+            <optgroup label="Hourly Rates &amp; Packages"><option value="standard-session">Standard Session</option><option value="extended-lifestyle">Extended Lifestyle</option><option value="intimate-wedding-package">Intimate Wedding Package</option><option value="full-wedding-package">Full Wedding Package</option></optgroup>
+            <optgroup label="Subscription Offers"><option value="creator-subscription">Creator Subscription</option><option value="family-lifestyle-subscription">Family / Lifestyle Subscription</option><option value="the-wedding-journey-subscription">The Wedding Journey Subscription</option><option value="the-growing-family-subscription">The Growing Family Subscription</option></optgroup>
+            <optgroup label="Mini-sessions &amp; Gift Vouchers"><option value="photobooth-sessions">Photobooth Sessions</option><option value="mini-sessions">Mini-Sessions</option><option value="gift-vouchers">Gift Vouchers</option></optgroup>
+            <optgroup label="Something else">
+              <option value="general">General enquiry / not sure yet</option>
+            </optgroup>
+          </select>
+          <p class="prefill-note" id="prefill-note" hidden></p>
+        </div>
+
+        <div class="row2">
+          <div class="field">
+            <label for="date">Preferred date <span class="opt">(optional)</span></label>
+            <input id="date" name="preferred_date" type="date">
+          </div>
+          <div class="field">
+            <label for="location">Location / venue <span class="opt">(optional)</span></label>
+            <input id="location" name="location" type="text">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="message">Tell me about your story</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+
+        <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+        <input type="hidden" name="_subject" value="New enquiry from the Joyful Studios website">
+
+        <button class="submit" type="submit">Send enquiry</button>
+        <p class="form-msg form-msg--error" id="form-error" role="alert" hidden></p>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer">
+      <p class="footer__left">Joy is a wedding, family &amp; subscription based photographer capturing film-inspired photos and special moments.</p>
+      <a class="logo" href="index.html" aria-label="Joyful Studios home">
+        <span class="logo__word">joyful</span>
+        <span class="logo__sub">STUDIOS</span>
+      </a>
+      <p class="footer__right">Based in Cape Town,<br>South Africa.<br>Available for travel.</p>
+    </div>
+    <div class="footer__bar">
+      <nav aria-label="Footer">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <div class="has-dropdown"><button class="dd-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="dd-footer">Packages</button><ul class="dropdown" id="dd-footer"><li><a href="hourly-rates.html">Hourly Rates &amp; Packages</a></li><li><a href="subscription-offers.html">Subscription Offers</a></li><li><a href="mini-sessions.html">Mini-sessions &amp; Gift Vouchers</a></li></ul></div>
+        <a href="index.html#testimonials">Testimonials</a>
+        <a href="inquire.html">Inquire</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    (function () {
+      var form = document.getElementById('inquiry-form');
+      var select = document.getElementById('package');
+      var note = document.getElementById('prefill-note');
+      var errorBox = document.getElementById('form-error');
+
+      // 1. Pre-fill the package from the link the visitor clicked (e.g. inquire.html?package=intimate-wedding-package)
+      var wanted = new URLSearchParams(window.location.search).get('package');
+      if (wanted) {
+        var match = Array.prototype.find.call(select.options, function (o) { return o.value === wanted; });
+        if (match) {
+          select.value = match.value;
+          select.classList.add('is-prefilled');
+          note.innerHTML = 'Pre-selected from the packages page: <b></b>. You can change this if you like.';
+          note.querySelector('b').textContent = match.textContent;
+          note.hidden = false;
+        }
+      }
+      select.addEventListener('change', function () { select.classList.remove('is-prefilled'); note.hidden = true; });
+
+      // 2. Send the enquiry
+      function showError(msg) { errorBox.textContent = msg; errorBox.hidden = false; }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        errorBox.hidden = true;
+
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        var endpoint = form.getAttribute('data-endpoint');
+        if (endpoint.indexOf('YOUR_FORM_ID') !== -1) {
+          showError('This form isn’t connected to an email address yet. (Site owner: add your Formspree form ID in inquire.html.)');
+          return;
+        }
+
+        var btn = form.querySelector('.submit');
+        btn.disabled = true; btn.textContent = 'Sending…';
+
+        fetch(endpoint, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
+          .then(function (r) {
+            if (!r.ok) throw new Error('bad response');
+            document.getElementById('card').innerHTML =
+              '<div class="thanks"><h2>Thank you!</h2><p>Your enquiry is on its way. I’ll be in touch very soon.</p></div>';
+          })
+          .catch(function () {
+            btn.disabled = false; btn.textContent = 'Send enquiry';
+            showError('Something went wrong sending your enquiry. Please try again in a moment.');
+          });
+      });
+    })();
+  </script>
+</body>
+</html>

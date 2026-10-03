@@ -4,51 +4,93 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hourly Rates &amp; Packages | Joyful Studios</title>
-  <meta name="description" content="Hourly Rates &amp; Packages from Joyful Studios, wedding, family and subscription photography in Cape Town.">
-
+  <meta name="description" content="Hourly rates and wedding packages from Joyful Studios: standard sessions, extended lifestyle sessions, intimate and full wedding coverage in Cape Town.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Mrs+Saint+Delafield&family=Pinyon+Script&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <style>
-    .cat-hero {
-      position: relative; height: clamp(300px, 38vw, 460px);
-      background-size: cover; color: var(--cream);
-      display: grid; place-items: center; text-align: center; padding: 70px var(--pad) 0;
+    /* ---------- Hero ---------- */
+    .hero { position: relative; height: clamp(340px, 56vw, 800px); overflow: hidden; color: var(--cream); background: var(--charcoal) url("images/rates-hero.jpg") center 40% / cover no-repeat; }
+    .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(20,18,10,.3), rgba(20,18,10,.12) 45%, rgba(20,18,10,.25)); }
+    .hero__content { position: absolute; z-index: 2; left: 50%; top: 53%; transform: translate(-50%, -50%); text-align: center; width: min(92%, 900px); }
+    .hero h1 { margin: 0 0 clamp(26px, 5vw, 56px); font-family: var(--font-hero); font-weight: 400; font-size: clamp(38px, 6.6vw, 88px); line-height: 1.12; text-shadow: 0 2px 24px rgba(0,0,0,.4); }
+    .hero .btn { text-transform: uppercase; font-size: 14px; padding: 6px 24px; }
+
+    /* ---------- Rates ---------- */
+    .rates { padding: clamp(40px, 6vw, 72px) var(--pad) clamp(30px, 4.5vw, 52px); }
+    .rates--dark { background: var(--charcoal); padding-top: clamp(32px, 5vw, 60px); }
+    .rates h2 { margin: 0 0 clamp(24px, 3.4vw, 44px); text-align: center; font-family: var(--font-body); font-weight: 700; font-size: clamp(22px, 2.6vw, 32px); letter-spacing: .02em; text-transform: uppercase; }
+    .rates__list { max-width: 1180px; margin: 0 auto; display: grid; gap: clamp(14px, 2.6vw, 36px); }
+
+    .rate { display: grid; grid-template-columns: 2fr 1fr; background: var(--cream-bg); min-height: clamp(170px, 19vw, 270px); }
+    .rate--flip { grid-template-columns: 1fr 2fr; }
+    .rate--flip .rate__img { order: -1; }
+    .rate__body { align-self: center; padding: clamp(18px, 2.4vw, 38px) clamp(18px, 2.8vw, 42px); }
+    .rate h3 { margin: 0 0 clamp(12px, 1.6vw, 22px); font-family: var(--font-body); font-weight: 700; font-size: clamp(15px, 1.6vw, 21px); letter-spacing: .02em; text-transform: uppercase; }
+    .rate p { margin: 0 0 1em; font-size: clamp(14px, 1.4vw, 18px); line-height: 1.4; }
+    .rate p:last-child { margin-bottom: 0; }
+
+    .rate__img { position: relative; display: block; overflow: hidden; min-height: 190px; background: var(--charcoal); }
+    .rate__img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .7s ease; }
+    .rate__cta { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(35, 32, 25, .55); opacity: 0; transition: opacity .3s ease; }
+    .rate__cta span { padding: 9px 28px; border: 1px solid var(--cream); border-radius: 999px; color: var(--cream); font-size: 15px; letter-spacing: .1em; text-transform: uppercase; transform: translateY(8px); transition: transform .3s ease, background .25s, color .25s; }
+    .rate__img:focus-visible { outline-offset: -4px; }
+    .rate__img:focus-visible .rate__cta { opacity: 1; }
+    .rate__img:focus-visible .rate__cta span { transform: none; }
+    @media (hover: hover) {
+      .rate:hover .rate__cta { opacity: 1; }
+      .rate:hover .rate__cta span { transform: none; }
+      .rate:hover .rate__img img { transform: scale(1.05); }
+      .rate__img:hover .rate__cta span { background: var(--cream); color: var(--charcoal); }
     }
-    .cat-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(20,18,10,.4), rgba(20,18,10,.25)); }
-    .cat-hero h1 {
-      position: relative; z-index: 2; margin: 0;
-      font-family: var(--font-hero); font-weight: 400;
-      font-size: clamp(38px, 6.4vw, 84px); line-height: 1.12;
-      text-shadow: 0 2px 24px rgba(0,0,0,.4);
+    /* touch screens can't hover: keep a small "Inquire now" label visible */
+    @media (hover: none) {
+      .rate__cta { opacity: 1; place-items: end center; padding-bottom: 14px; background: linear-gradient(transparent 50%, rgba(35, 32, 25, .7)); }
+      .rate__cta span { transform: none; padding: 6px 20px; font-size: 13px; }
     }
 
-    .cat { max-width: 880px; margin: 0 auto; padding: clamp(40px, 6vw, 80px) var(--pad); }
-    .cat__intro { max-width: 620px; margin: 0 auto 36px; text-align: center; font-weight: 700; }
-    .offer {
-      display: grid; grid-template-columns: 1fr auto; gap: 6px 28px; align-items: baseline;
-      padding: 28px 0; border-top: 1px solid rgba(53, 50, 43, .28);
-    }
-    .offer:last-of-type { border-bottom: 1px solid rgba(53, 50, 43, .28); }
-    .offer h2 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: clamp(24px, 3vw, 34px); line-height: 1.2; }
-    .offer__price { font-family: var(--font-display); font-size: clamp(22px, 2.6vw, 30px); white-space: nowrap; }
-    .offer__body { grid-column: 1 / -1; max-width: 640px; }
-    .offer__body ul { margin: 0; padding-left: 20px; }
-    .offer__body li { margin-bottom: 3px; }
-    .offer__body p { margin: 0; }
-    .cat__note { margin: 34px 0 0; text-align: center; }
+    /* ---------- First steps of the process ---------- */
+    .process { position: relative; aspect-ratio: 1456 / 820; overflow: hidden; background: var(--charcoal) url("images/process.jpg") center / cover no-repeat; color: #fff; }
+    .process::after { content: ""; position: absolute; inset: 0; background: rgba(25, 22, 10, .18); }
+    .process > * { position: relative; z-index: 2; }
+    .process h2 { position: absolute; left: 5.7%; top: 10.5%; margin: 0; font-family: var(--font-body); font-weight: 400; font-size: clamp(22px, 3.9vw, 58px); line-height: 1.1; letter-spacing: .02em; text-transform: uppercase; color: var(--cream); text-shadow: 0 2px 18px rgba(0,0,0,.35); }
+    .process__line { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; }
+    .process__line polyline { fill: none; stroke: #fff; stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+    .steps { list-style: none; margin: 0; padding: 0; position: absolute; inset: 0; z-index: 3; }
+    .step { position: absolute; inset: 0; pointer-events: none; }
+    .step__dot { position: absolute; left: var(--dx); top: var(--dy); width: clamp(10px, 1.1vw, 16px); height: clamp(10px, 1.1vw, 16px); transform: translate(-50%, -50%); border-radius: 50%; border: clamp(2px, .25vw, 4px) solid #fff; background: rgba(45, 40, 20, .75); }
+    .step__label { position: absolute; left: var(--lx); top: var(--ly); font-size: clamp(11px, 1.15vw, 17px); line-height: 1.18; text-shadow: 0 1px 10px rgba(0,0,0,.55); }
 
-    .cat-cta { text-align: center; padding: 0 var(--pad) clamp(48px, 7vw, 90px); }
-    .cat-cta h2 { margin: 0 0 22px; font-family: var(--font-display); font-weight: 400; font-size: clamp(30px, 4vw, 48px); line-height: 1.15; }
-    .cat-more { margin: 30px 0 0; font-size: 15px; }
-    .cat-more a { border-bottom: 1px solid currentColor; margin: 0 8px; white-space: nowrap; }
-    .cat-more a:hover { color: var(--charcoal); }
+    /* ---------- Instagram ---------- */
+    .insta { background: var(--charcoal); color: #d9cdb6; padding: clamp(36px, 5vw, 64px) var(--pad); }
+    .insta__inner { max-width: 1060px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.15fr; align-items: center; gap: clamp(24px, 5vw, 70px); }
+    .insta__text { justify-self: center; }
+    .insta h2 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: clamp(30px, 4vw, 46px); line-height: 1.15; color: var(--soft); }
+    .insta a.handle { display: inline-block; margin-top: 14px; font-size: 18px; border-bottom: 1px solid transparent; }
+    .insta a.handle:hover { border-color: currentColor; }
+    .insta__photo { display: block; overflow: hidden; border-radius: 8px; }
+    .insta__photo img { width: 100%; aspect-ratio: 2 / 1; object-fit: cover; object-position: center 28%; transition: transform .6s; }
+    .insta__photo:hover img { transform: scale(1.04); }
 
-    @media (max-width: 560px) {
-      .offer { grid-template-columns: 1fr; }
-      .offer__price { white-space: normal; }
+    /* ---------- Responsive ---------- */
+    @media (max-width: 760px) {
+      .rate, .rate--flip { grid-template-columns: 1fr; }
+      .rate .rate__img { order: -1; min-height: 230px; }
+      .insta__inner { grid-template-columns: 1fr; }
+      .insta__text { justify-self: start; }
+
+      /* process: swap the graph for a simple vertical list */
+      .process { aspect-ratio: auto; padding: 38px 24px 44px; }
+      .process h2 { position: relative; left: auto; top: auto; margin-bottom: 26px; font-size: 30px; }
+      .process__line { display: none; }
+      .steps { position: relative; inset: auto; display: grid; gap: 18px; }
+      .step { position: static; display: flex; gap: 14px; align-items: flex-start; }
+      .step__dot { position: static; transform: none; flex: none; width: 14px; height: 14px; margin-top: 5px; border-width: 3px; }
+      .step__label { position: static; font-size: 17px; }
+      .process::after { background: rgba(25, 22, 10, .45); }
     }
+    @media (prefers-reduced-motion: reduce) { .rate__img img, .rate__cta, .rate__cta span { transition: none; } }
   </style>
 </head>
 
@@ -67,40 +109,97 @@
 
     <nav class="nav nav--right" aria-label="Secondary">
       <a href="index.html#testimonials">Testimonials</a>
-      <a href="index.html#inquire">Inquire</a>
+      <a href="inquire.html">Inquire</a>
     </nav>
 
     <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="site-header">Menu</button>
   </header>
 
-  <section class="cat-hero" style="background-image:url('images/hero.jpg'); background-position: center">
-    <h1>Hourly Rates &amp; Packages</h1>
+  <section class="hero" aria-label="Your memories are worth investing in">
+    <div class="hero__content">
+      <h1>Your memories are<br>worth investing in</h1>
+      <a class="btn" href="subscription-offers.html">See subscription offers</a>
+    </div>
   </section>
 
   <main>
-    <section class="cat">
-        <article class="offer">
-          <h2>Standard Session</h2><span class="offer__price">R1,800/hr</span>
-          <div class="offer__body"><ul class=""><li>1-hour minimum</li><li>40+ edited images</li><li>Ideal for couples, families, engagements, portraits &amp; lifestyle sessions</li></ul></div>
+    <section class="rates">
+      <h2>Hourly Rates &amp; Packages</h2>
+      <div class="rates__list">
+        <article class="rate">
+          <div class="rate__body">
+            <h3>Standard Session: R1,800/hr</h3>
+            <p>1-hour minimum • 40+ edited images • Online gallery</p>
+            <p>Ideal for couples, families, engagements, portraits &amp; lifestyle sessions.</p>
+          </div>
+          <a class="rate__img" href="inquire.html?package=standard-session" aria-label="Inquire now about the Standard Session">
+            <img src="images/rate-standard.jpg" alt="A father, mother and baby laughing together in a sunny park" style="object-position:center" loading="lazy">
+            <span class="rate__cta"><span>Inquire now</span></span>
+          </a>
         </article>
-        <article class="offer">
-          <h2>Extended Lifestyle</h2><span class="offer__price">R3,100</span>
-          <div class="offer__body"><ul class=""><li>2 hours</li><li>80–120 edited images</li><li>2 nearby locations or outfit change</li><li>Perfect for creative, branding, couples &amp; full family sessions</li></ul></div>
+        <article class="rate rate--flip">
+          <div class="rate__body">
+            <h3>Extended Lifestyle: R3,100</h3>
+            <p>2 hours • 80–120 edited images • 2 nearby locations or outfit change • Online gallery</p>
+            <p>Perfect for creative, branding, couples &amp; full family sessions.</p>
+          </div>
+          <a class="rate__img" href="inquire.html?package=extended-lifestyle" aria-label="Inquire now about the Extended Lifestyle">
+            <img src="images/rate-extended.jpg" alt="Close-up portrait of a woman beside a white calla lily" style="object-position:center" loading="lazy">
+            <span class="rate__cta"><span>Inquire now</span></span>
+          </a>
         </article>
-        <article class="offer">
-          <h2>Intimate Wedding Package</h2><span class="offer__price">R6,700</span>
-          <div class="offer__body"><ul class=""><li>Up to 4 hours of coverage</li><li>4 hours of photography</li><li>250–350+ edited images</li></ul></div>
-        </article>
-        <article class="offer">
-          <h2>Full Wedding Package</h2><span class="offer__price">R12,500</span>
-          <div class="offer__body"><ul class=""><li>Up to 8 hours of coverage</li><li>8 hours of photography</li><li>500–700+ edited images</li></ul></div>
-        </article>
+      </div>
     </section>
 
-    <section class="cat-cta">
-      <h2>Let’s capture<br>your story!</h2>
-      <a class="btn" href="index.html#inquire">Connect</a>
-      <p class="cat-more">Explore more: <a href="subscription-offers.html">Subscription Offers</a> <a href="mini-sessions.html">Mini-sessions &amp; Gift Vouchers</a></p>
+    <section class="rates rates--dark" aria-label="Wedding packages">
+      <div class="rates__list">
+        <article class="rate">
+          <div class="rate__body">
+            <h3>Intimate Wedding Package: R6,700</h3>
+            <p>Up to 4 hours of coverage • 250–350+ edited images • Online gallery • Coverage of key moments such as ceremony, family/group photos, couple portraits &amp; reception • Pre-wedding planning consultation</p>
+            <p>Ideal for intimate weddings, elopements and shorter celebrations.</p>
+          </div>
+          <a class="rate__img" href="inquire.html?package=intimate-wedding-package" aria-label="Inquire now about the Intimate Wedding Package">
+            <img src="images/rate-intimate.jpg" alt="A bride embracing her groom, holding a bouquet of white roses" style="object-position:center" loading="lazy">
+            <span class="rate__cta"><span>Inquire now</span></span>
+          </a>
+        </article>
+        <article class="rate rate--flip">
+          <div class="rate__body">
+            <h3>Full Wedding Package: R12,500</h3>
+            <p>Up to 8 hours of coverage • 500–700+ edited images • Online gallery • Pre-wedding planning consultation • Timeline &amp; photography planning • Getting ready, ceremony, couple portraits, family/group photos &amp; reception coverage</p>
+            <p>Designed to tell the full story of your wedding day.</p>
+          </div>
+          <a class="rate__img" href="inquire.html?package=full-wedding-package" aria-label="Inquire now about the Full Wedding Package">
+            <img src="images/rate-full.jpg" alt="A groom lifting his bride in a kiss beneath a willow tree" style="object-position:center 35%" loading="lazy">
+            <span class="rate__cta"><span>Inquire now</span></span>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section class="process" aria-label="First steps of the process">
+      <h2>First steps of<br>the process</h2>
+      <svg class="process__line" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><polyline points="8.6,33.8 27.5,40.6 41.2,16.3 60.0,24.9 81.5,47.0"/></svg>
+      <ol class="steps">
+          <li class="step" style="--dx:8.6%; --dy:33.8%; --lx:5.6%; --ly:38.5%"><span class="step__dot"></span><span class="step__label">01 Inquire about<br>your date</span></li>
+          <li class="step" style="--dx:27.5%; --dy:40.6%; --lx:24.2%; --ly:43.5%"><span class="step__dot"></span><span class="step__label">02 Review package<br>&amp; subscription<br>options</span></li>
+          <li class="step" style="--dx:41.2%; --dy:16.3%; --lx:40.7%; --ly:10.4%"><span class="step__dot"></span><span class="step__label">03 Secure date<br>with deposit</span></li>
+          <li class="step" style="--dx:60.0%; --dy:24.9%; --lx:54.6%; --ly:28.7%"><span class="step__dot"></span><span class="step__label">04 Sign contract</span></li>
+          <li class="step" style="--dx:81.5%; --dy:47.0%; --lx:83.0%; --ly:46.0%"><span class="step__dot"></span><span class="step__label">05 Weddings:<br>online introduction<br>&amp; support call</span></li>
+      </ol>
+    </section>
+
+    <section class="insta">
+      <div class="insta__inner">
+        <div class="insta__text">
+          <h2>Take a peek at<br>my Instagram</h2>
+          <a class="handle" href="https://www.instagram.com/joyful_studios_/" target="_blank" rel="noopener">@joyful_studios_</a>
+        </div>
+        <a class="insta__photo" href="https://www.instagram.com/joyful_studios_/" target="_blank" rel="noopener" aria-label="Open Joyful Studios on Instagram">
+          <img src="images/insta-red.jpg" alt="A woman in a white dress with a red cardigan standing in a green garden" loading="lazy">
+        </a>
+      </div>
     </section>
   </main>
 
@@ -119,7 +218,7 @@
         <a href="about.html">About</a>
         <div class="has-dropdown"><button class="dd-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="dd-footer">Packages</button><ul class="dropdown" id="dd-footer"><li><a href="hourly-rates.html">Hourly Rates &amp; Packages</a></li><li><a href="subscription-offers.html">Subscription Offers</a></li><li><a href="mini-sessions.html">Mini-sessions &amp; Gift Vouchers</a></li></ul></div>
         <a href="index.html#testimonials">Testimonials</a>
-        <a href="index.html#inquire">Inquire</a>
+        <a href="inquire.html">Inquire</a>
       </nav>
     </div>
   </footer>

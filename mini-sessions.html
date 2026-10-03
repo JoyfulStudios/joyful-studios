@@ -37,6 +37,8 @@
     .offer__body ul { margin: 0; padding-left: 20px; }
     .offer__body li { margin-bottom: 3px; }
     .offer__body p { margin: 0; }
+    .offer__inquire { grid-column: 1 / -1; justify-self: start; margin-top: 8px; font-size: 14px; letter-spacing: .06em; text-transform: uppercase; border-bottom: 1px solid currentColor; }
+    .offer__inquire:hover { color: var(--cream); }
     .cat__note { margin: 34px 0 0; text-align: center; }
 
     .cat-cta { text-align: center; padding: 0 var(--pad) clamp(48px, 7vw, 90px); }
@@ -67,7 +69,7 @@
 
     <nav class="nav nav--right" aria-label="Secondary">
       <a href="index.html#testimonials">Testimonials</a>
-      <a href="index.html#inquire">Inquire</a>
+      <a href="inquire.html">Inquire</a>
     </nav>
 
     <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="site-header">Menu</button>
@@ -82,21 +84,24 @@
         <article class="offer">
           <h2>Photobooth Sessions</h2><span class="offer__price">R100–R250</span>
           <div class="offer__body"><p class="">Offer quick, fun 10-minute photo sessions, with pricing varying depending on the event and setup.</p></div>
+          <a class="offer__inquire" href="inquire.html?package=photobooth-sessions">Inquire now</a>
         </article>
         <article class="offer">
           <h2>Mini-Sessions</h2><span class="offer__price">R400</span>
           <div class="offer__body"><p class="">Upgrade to a 20-minute lifestyle session at either Bloubergstrand or Majik Forest, including professionally edited images and an online gallery.</p></div>
+          <a class="offer__inquire" href="inquire.html?package=mini-sessions">Inquire now</a>
         </article>
         <article class="offer">
           <h2>Gift Vouchers</h2><span></span>
           <div class="offer__body"><p class="">Gift vouchers are an easy way to give someone a Joyful Studios experience.</p></div>
+          <a class="offer__inquire" href="inquire.html?package=gift-vouchers">Inquire now</a>
         </article>
         <p class="cat__note"><b>Mini-sessions and gift vouchers are exclusively available at Joyful Studios market pop-ups and photobooth events.</b><br>And there’s a little extra…</p>
     </section>
 
     <section class="cat-cta">
       <h2>Let’s capture<br>your story!</h2>
-      <a class="btn" href="index.html#inquire">Connect</a>
+      <a class="btn" href="inquire.html">Connect</a>
       <p class="cat-more">Explore more: <a href="hourly-rates.html">Hourly Rates &amp; Packages</a> <a href="subscription-offers.html">Subscription Offers</a></p>
     </section>
   </main>
@@ -116,7 +121,7 @@
         <a href="about.html">About</a>
         <div class="has-dropdown"><button class="dd-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="dd-footer">Packages</button><ul class="dropdown" id="dd-footer"><li><a href="hourly-rates.html">Hourly Rates &amp; Packages</a></li><li><a href="subscription-offers.html">Subscription Offers</a></li><li><a href="mini-sessions.html">Mini-sessions &amp; Gift Vouchers</a></li></ul></div>
         <a href="index.html#testimonials">Testimonials</a>
-        <a href="index.html#inquire">Inquire</a>
+        <a href="inquire.html">Inquire</a>
       </nav>
     </div>
   </footer>

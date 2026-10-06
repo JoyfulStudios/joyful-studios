@@ -5,46 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About Joy | Joyful Studios</title>
   <meta name="description" content="Meet Joy, the Cape Town photographer behind Joyful Studios: a glance behind the camera and the story behind the work.">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Quattrocento (body), Pinyon Script (hero headline), Italiana (stand-in for Hatton) -->
-  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Pinyon+Script&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Mrs+Saint+Delafield&family=Pinyon+Script&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* ---------- Hero slider ---------- */
-    .hero { position: relative; height: clamp(360px, 55vw, 780px); overflow: hidden; color: var(--cream); background: var(--charcoal); }
-    .slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.2s ease; }
-    .slide.is-active { opacity: 1; }
-    .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(20,18,10,.28), rgba(20,18,10,.08) 45%, rgba(20,18,10,.2)); pointer-events: none; }
-    .hero__content { position: absolute; z-index: 3; left: 50%; top: 46%; transform: translate(-50%, -50%); text-align: center; width: min(92%, 900px); }
-    .hero h1 {
-      margin: 0; font-family: var(--font-hero); font-weight: 400;
-      font-size: clamp(38px, 6.6vw, 88px); line-height: 1.12;
-      text-shadow: 0 2px 24px rgba(0,0,0,.4);
-    }
-    .hero__arrow {
-      position: absolute; z-index: 4; top: 85%; transform: translateY(-50%);
-      width: 48px; height: 64px; background: none; border: 0; color: var(--cream); cursor: pointer; display: grid; place-items: center;
-    }
-    .hero__arrow--prev { left: clamp(8px, 2.5vw, 36px); }
-    .hero__arrow--next { right: clamp(8px, 2.5vw, 36px); }
-    .hero__arrow svg { width: 22px; height: 40px; stroke: currentColor; fill: none; stroke-width: 2; }
-    .hero__dots { position: absolute; z-index: 4; bottom: 22px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; }
-    .hero__dots button { width: 12px; height: 12px; padding: 0; border-radius: 50%; border: 0; background: var(--cream); opacity: .55; cursor: pointer; }
-    .hero__dots button[aria-current="true"] { opacity: 1; }
+    /* ---------- Hero ---------- */
+    .hero { position: relative; height: clamp(340px, 55vw, 780px); overflow: hidden; color: var(--cream); background: var(--charcoal) url("images/about-hero2.jpg") center 45% / cover no-repeat; }
+    .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(20,18,10,.3), rgba(20,18,10,.05) 45%, rgba(20,18,10,.15)); }
+    .hero__content { position: absolute; z-index: 2; left: 50%; top: 46%; transform: translate(-50%, -50%); text-align: center; width: min(92%, 900px); }
+    .hero h1 { margin: 0; font-family: var(--font-hero); font-weight: 400; font-size: clamp(38px, 6.6vw, 88px); line-height: 1.12; text-shadow: 0 2px 24px rgba(0,0,0,.4); }
 
-        /* ---------- Get to know my why ---------- */
-    .why { background: var(--cream-bg); padding: clamp(32px, 5vw, 56px) var(--pad); }
-    .why__inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(28px, 6vw, 90px); align-items: center; }
-    .why__photo { border-radius: var(--radius); overflow: hidden; }
-    .why__photo img { width: 100%; aspect-ratio: 4 / 4.6; object-fit: cover; }
+    /* ---------- Get to know my why ---------- */
+    .why { background: var(--cream-bg); padding: clamp(32px, 5vw, 60px) var(--pad); }
+    .why__inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 5vw, 80px); align-items: center; }
     .why__text { max-width: 440px; }
     .why h2 { margin: 0 0 14px; font-family: var(--font-display); font-weight: 400; font-size: clamp(26px, 3vw, 36px); letter-spacing: .02em; text-transform: uppercase; line-height: 1.2; }
     .why p { margin: 0 0 1.1em; font-size: 16.5px; line-height: 1.45; }
 
-        /* ---------- About me ---------- */
+    /* film strip graphic */
+    .film { position: relative; width: 100%; max-width: 540px; aspect-ratio: 1036 / 1153; justify-self: center; }
+    .film__strip { position: absolute; left: 5.3%; top: 4.2%; width: 36.4%; height: 92.3%; background: #000; }
+    .film__strip figure { position: absolute; left: 9.5%; width: 79.8%; margin: 0; overflow: hidden; }
+    .film__strip figure:nth-of-type(1) { top: 4.1%; height: 29.1%; }
+    .film__strip figure:nth-of-type(2) { top: 36.1%; height: 28.3%; }
+    .film__strip figure:nth-of-type(3) { top: 66.6%; height: 28.7%; }
+    .film img { width: 100%; height: 100%; object-fit: cover; }
+    .film__mark { position: absolute; color: #fff; font: 700 clamp(7px, 1.1vw, 13px)/1 Arial, sans-serif; }
+    .film__mark--l { left: 3.2%; writing-mode: vertical-rl; transform: rotate(180deg); }
+    .film__mark--r { right: 3.4%; writing-mode: vertical-rl; }
+    .film__oval { position: absolute; width: 3.4%; aspect-ratio: 1 / 2; background: #fff; border-radius: 50%; }
+    .film__frame { position: absolute; left: 34.7%; top: 29.9%; width: 58.4%; height: 44.8%; margin: 0; background: #111114; transform: rotate(-1.1deg); box-shadow: 0 6px 20px rgba(0,0,0,.18); }
+    .film__frame img { position: absolute; left: 3.8%; top: 10.6%; width: 92.9%; height: 85.1%; }
+    .film__frame .film__mark { color: #cfcac0; font-size: clamp(7px, 1vw, 12px); }
+
+    /* ---------- About me ---------- */
     .me { background: var(--charcoal); color: var(--soft); padding: clamp(36px, 5vw, 60px) var(--pad) clamp(40px, 6vw, 70px); }
     .me__inner { max-width: 1180px; margin: 0 auto; }
     .me h2 { margin: 0 0 clamp(24px, 3vw, 40px); font-family: var(--font-display); font-weight: 400; font-size: clamp(26px, 3vw, 36px); letter-spacing: .02em; text-transform: uppercase; color: var(--cream); }
@@ -53,50 +48,36 @@
     .me__col h3 { margin: 0 0 14px; font-family: var(--font-body); font-weight: 400; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.1; color: var(--cream); }
     .me__col p { margin: 0 0 1em; font-size: 15px; line-height: 1.4; max-width: 230px; }
 
-    .me__strip { margin-top: clamp(24px, 4vw, 44px); padding: 0 clamp(0px, 2vw, 28px); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(12px, 2vw, 22px); }
-    .me__strip img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 6px; }
+    .lace { height: clamp(40px, 5.2vw, 76px); background: var(--charcoal) url("images/lace-cream.png") repeat-x left center / auto 100%; }
 
-        /* ---------- Lace divider ---------- */
-    .lace {
-      height: clamp(34px, 4.2vw, 58px);
-      background: var(--sand) url("images/lace-divider.png") repeat-x left top / auto 100%;
-      margin-top: -1px;
-    }
-
-        /* ---------- CTA ---------- */
+    /* ---------- CTA ---------- */
     .cta { padding: clamp(36px, 5vw, 60px) var(--pad); }
     .cta__inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(24px, 5vw, 60px); align-items: start; }
     .cta__text { padding: clamp(10px, 3vw, 40px) 0 0 clamp(0px, 2vw, 24px); }
-    .cta h2 { margin: 0 0 22px; font-family: var(--font-display); font-weight: 400; font-size: clamp(32px, 4.4vw, 56px); line-height: 1.15; }
+    .cta h2 { margin: 0 0 22px; font-family: var(--font-body); font-weight: 700; font-size: clamp(30px, 4vw, 52px); line-height: 1.15; }
     .cta__photo { max-width: 340px; justify-self: end; border-radius: var(--radius); overflow: hidden; }
     .cta__photo img { width: 100%; aspect-ratio: 1 / 1.1; object-fit: cover; object-position: center 30%; }
 
-    
     /* ---------- Responsive ---------- */
     @media (max-width: 900px) {
       .why__inner, .cta__inner { grid-template-columns: 1fr; }
       .why__text { max-width: 560px; }
       .me__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 32px; }
-      .me__strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .cta__photo { justify-self: start; max-width: 420px; }
     }
-    @media (max-width: 760px) { .hero__arrow { width: 36px; top: 88%; } }
     @media (max-width: 480px) {
       .me__cols { grid-template-columns: 1fr; }
       .me__col p { max-width: none; }
     }
-    @media (prefers-reduced-motion: reduce) { .slide { transition: none; } }
   </style>
 </head>
 
 <body>
-
-  <!-- ===== Header + Hero ===== -->
   <header class="site-header" id="site-header">
     <nav class="nav nav--left" aria-label="Primary">
       <a href="index.html">Home</a>
       <a href="about.html" aria-current="page">About</a>
-      <div class="has-dropdown"><button class="dd-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="dd-header">Packages</button><ul class="dropdown" id="dd-header"><li><a href="hourly-rates.html">Hourly Rates &amp; Packages</a></li><li><a href="subscription-offers.html">Subscription Offers</a></li><li><a href="mini-sessions.html">Mini-sessions &amp; Gift Vouchers</a></li></ul></div>
+      <div class="has-dropdown"><button class="dd-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="dd-header">Pricing</button><ul class="dropdown" id="dd-header"><li><a href="hourly-rates.html">Hourly Rates &amp; Packages</a></li><li><a href="subscription-offers.html">Subscription Offers</a></li><li><a href="mini-sessions.html">Mini-sessions &amp; Gift Vouchers</a></li></ul></div>
     </nav>
 
     <a class="logo" href="index.html" aria-label="Joyful Studios home">
@@ -105,38 +86,39 @@
     </a>
 
     <nav class="nav nav--right" aria-label="Secondary">
-      <a href="index.html#testimonials">Testimonials</a>
+      <a href="testimonials.html">Testimonials</a>
       <a href="inquire.html">Inquire</a>
     </nav>
 
     <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="site-header">Menu</button>
   </header>
 
-  <section class="hero" aria-roledescription="carousel" aria-label="A glance behind the camera">
-    <div class="slide is-active" style="background-image:url('images/hero.jpg')" role="group" aria-label="Slide 1 of 3"></div>
-    <div class="slide" style="background-image:url('images/band.jpg')" role="group" aria-label="Slide 2 of 3"></div>
-    <div class="slide" style="background-image:url('images/calla.jpg'); background-position: center 25%" role="group" aria-label="Slide 3 of 3"></div>
-
-    <div class="hero__content">
-      <h1>A glance behind<br>the camera</h1>
-    </div>
-
-    <button class="hero__arrow hero__arrow--prev" aria-label="Previous slide">
-      <svg viewBox="0 0 22 40" aria-hidden="true"><polyline points="18,2 3,20 18,38"/></svg>
-    </button>
-    <button class="hero__arrow hero__arrow--next" aria-label="Next slide">
-      <svg viewBox="0 0 22 40" aria-hidden="true"><polyline points="4,2 19,20 4,38"/></svg>
-    </button>
-    <div class="hero__dots" role="tablist" aria-label="Choose slide"></div>
+  <section class="hero" aria-label="A glance behind the camera">
+    <div class="hero__content"><h1>A glance behind<br>the camera</h1></div>
   </section>
 
   <main>
-    <!-- ===== Get to know my why ===== -->
     <section class="why">
       <div class="why__inner">
-        <div class="why__photo">
-          <img src="images/about-portrait.jpg" alt="Black and white photo of Joy standing in a field of tall grass, holding her camera" loading="lazy">
+        <div class="film">
+          <div class="film__strip">
+            <span class="film__mark film__mark--l" style="top:5%">▲ 7 ▼</span>
+            <figure><img src="images/film-1.jpg" alt="Black and white photo of Joy standing in a field of tall grass, holding her camera" loading="lazy"></figure>
+            <figure><img src="images/film-2.jpg" alt="Joy and her husband in a black and white selfie" loading="lazy" style="object-position:left center"></figure>
+            <figure><img src="images/film-3.jpg" alt="Joy taking a mirror selfie with a film camera" loading="lazy"></figure>
+            <span class="film__oval" style="left:3.6%; top:62%"></span><span class="film__mark film__mark--l" style="top:65.5%">7</span>
+            <span class="film__mark film__mark--r" style="top:90%">7</span><span class="film__oval" style="right:3.6%; top:93%"></span>
+          </div>
+          <figure class="film__frame">
+            <span class="film__mark" style="left:12.5%; top:4%">15</span>
+            <span class="film__mark" style="left:21%; top:4%">2030</span>
+            <span class="film__mark" style="right:7%; top:3%">16</span>
+            <img src="images/film-4.jpg" alt="Joy photographing the greenery beside a lake" loading="lazy" style="object-position:center 40%">
+            <span class="film__mark" style="left:6%; bottom:2.5%">▶ 20</span>
+            <span class="film__mark" style="right:7%; bottom:2.5%">▶</span>
+          </figure>
         </div>
+
         <div class="why__text">
           <h2>Get to know my why</h2>
           <p>I believe that I was created by the Creator to create. I seek to be a disciple of Jesus in everything I do.</p>
@@ -147,11 +129,9 @@
       </div>
     </section>
 
-    <!-- ===== About me ===== -->
     <section class="me" id="about-me">
       <div class="me__inner">
         <h2>About me</h2>
-
         <div class="me__cols">
           <div class="me__col">
             <div class="me__num">01</div>
@@ -175,23 +155,14 @@
             <p>Alongside my photography, my husband and I serve at a local church where we lead the next generation ministries.<br>I will not force Jesus onto anyone - but if you want to hear the Good News, ask me about it!</p>
           </div>
         </div>
-
-        <div class="me__strip">
-          <img src="images/about-strip-1.jpg" alt="Joy being lifted into the air by her husband in a golden field below a hill" loading="lazy">
-          <img src="images/about-strip-2.jpg" alt="A wall of pinned notes and maps about ancient history" loading="lazy">
-          <img src="images/about-strip-3.jpg" alt="Joy taking a mirror selfie with a film camera" loading="lazy">
-          <img src="images/about-strip-4.jpg" alt="Joy and her husband smiling in a selfie outdoors" loading="lazy">
-        </div>
       </div>
     </section>
-
     <div class="lace" role="presentation"></div>
 
-    <!-- ===== Call to action ===== -->
     <section class="cta">
       <div class="cta__inner">
         <div class="cta__text">
-          <h2>Let’s capture<br>your story!</h2>
+          <h2>Let’s capture your story!</h2>
           <a class="btn" href="inquire.html">Connect</a>
         </div>
         <div class="cta__photo">
@@ -201,7 +172,6 @@
     </section>
   </main>
 
-  <!-- ===== Footer ===== -->
   <footer class="footer--cream">
     <div class="footer">
       <p class="footer__left">Joy is a wedding, family &amp; subscription based photographer capturing film-inspired photos and special moments.</p>
@@ -215,8 +185,8 @@
       <nav aria-label="Footer">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
-        <div class="has-dropdown"><button class="dd-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="dd-footer">Packages</button><ul class="dropdown" id="dd-footer"><li><a href="hourly-rates.html">Hourly Rates &amp; Packages</a></li><li><a href="subscription-offers.html">Subscription Offers</a></li><li><a href="mini-sessions.html">Mini-sessions &amp; Gift Vouchers</a></li></ul></div>
-        <a href="index.html#testimonials">Testimonials</a>
+        <div class="has-dropdown"><button class="dd-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="dd-footer">Pricing</button><ul class="dropdown" id="dd-footer"><li><a href="hourly-rates.html">Hourly Rates &amp; Packages</a></li><li><a href="subscription-offers.html">Subscription Offers</a></li><li><a href="mini-sessions.html">Mini-sessions &amp; Gift Vouchers</a></li></ul></div>
+        <a href="testimonials.html">Testimonials</a>
         <a href="inquire.html">Inquire</a>
       </nav>
     </div>

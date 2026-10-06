@@ -197,6 +197,20 @@
     @media (prefers-reduced-motion: reduce) {
       .slide, .pkg-item__detail { transition: none; }
     }
+
+    /* ---------- Design update: bolder headings, band text ---------- */
+    .about h2 { font-family: var(--font-body); font-weight: 700; letter-spacing: .01em; }
+    .about h3 { font-family: var(--font-body); font-weight: 400; color: var(--cream); letter-spacing: .02em; }
+    .packages h2 { font-family: var(--font-body); font-weight: 700; }
+    .pkg h3 { font-family: var(--font-body); font-weight: 400; font-size: clamp(19px, 1.8vw, 24px); }
+    .band { position: relative; height: clamp(300px, 44vw, 640px); background-position: center 28%; }
+    .band::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top right, rgba(20,18,10,.5), transparent 60%); }
+    .band__text {
+      position: absolute; z-index: 2; left: var(--pad); bottom: clamp(24px, 7vw, 100px); max-width: 92%; margin: 0;
+      font-family: var(--font-body); font-weight: 700; font-size: clamp(20px, 2.8vw, 40px); line-height: 1.12;
+      letter-spacing: .01em; text-transform: uppercase; color: var(--cream); text-shadow: 0 2px 16px rgba(0,0,0,.45);
+    }
+    .band__text:hover { text-decoration: underline; text-underline-offset: 8px; }
   </style>
 </head>
 
@@ -207,7 +221,7 @@
     <nav class="nav nav--left" aria-label="Primary">
       <a href="index.html" aria-current="page">Home</a>
       <a href="about.html">About</a>
-      <div class="has-dropdown"><button class="dd-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="dd-header">Packages</button><ul class="dropdown" id="dd-header"><li><a href="hourly-rates.html">Hourly Rates &amp; Packages</a></li><li><a href="subscription-offers.html">Subscription Offers</a></li><li><a href="mini-sessions.html">Mini-sessions &amp; Gift Vouchers</a></li></ul></div>
+      <div class="has-dropdown"><button class="dd-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="dd-header">Pricing</button><ul class="dropdown" id="dd-header"><li><a href="hourly-rates.html">Hourly Rates &amp; Packages</a></li><li><a href="subscription-offers.html">Subscription Offers</a></li><li><a href="mini-sessions.html">Mini-sessions &amp; Gift Vouchers</a></li></ul></div>
     </nav>
 
     <a class="logo" href="index.html" aria-label="Joyful Studios home">
@@ -216,7 +230,7 @@
     </a>
 
     <nav class="nav nav--right" aria-label="Secondary">
-      <a href="index.html#testimonials">Testimonials</a>
+      <a href="testimonials.html">Testimonials</a>
       <a href="inquire.html">Inquire</a>
     </nav>
 
@@ -230,7 +244,7 @@
 
     <div class="hero__content">
       <h1>Romance inspired<br>cinematic photography</h1>
-      <a class="btn" href="#packages">Packages</a>
+      <a class="btn" href="#packages">Pricing</a>
     </div>
 
     <button class="hero__arrow hero__arrow--prev" aria-label="Previous slide">
@@ -262,7 +276,9 @@
       </div>
     </section>
 
-    <div class="band" role="img" aria-label="A woman smiling as she is handed a bouquet of flowers"></div>
+    <section class="band" aria-label="A woman smiling as she is handed a bouquet of flowers">
+      <a class="band__text" href="subscription-offers.html">Join any subscription &amp; receive<br>your first 40min shoot free.</a>
+    </section>
 
     <!-- ===== Packages ===== -->
     <section class="packages" id="packages">
@@ -299,20 +315,20 @@
           <p class="pkg__intro">Choose your subscription period, enjoy your complimentary first shoot, and receive ongoing opportunities to create beautiful, meaningful photographs.</p>
           <div class="pkg__list">
             <div class="pkg-item">
-              <button class="pkg-item__name" type="button" aria-expanded="false" aria-controls="subscription-offers-d0">Creator Subscription</button>
-              <div class="pkg-item__detail" id="subscription-offers-d0"><div><div class="pkg-detail"><span class="pkg-price">R250–R800/month</span><p class="pkg-desc">For influencers, content creators &amp; personal brands</p></div></div></div>
+              <button class="pkg-item__name" type="button" aria-expanded="false" aria-controls="subscription-offers-d0">Creator &amp; Influencer Subscription</button>
+              <div class="pkg-item__detail" id="subscription-offers-d0"><div><div class="pkg-detail"><span class="pkg-price">Averaging R250–R800/month</span><p class="pkg-desc">For influencers, content creators &amp; personal brands</p></div></div></div>
             </div>
             <div class="pkg-item">
-              <button class="pkg-item__name" type="button" aria-expanded="false" aria-controls="subscription-offers-d1">Family / Lifestyle Subscription</button>
-              <div class="pkg-item__detail" id="subscription-offers-d1"><div><div class="pkg-detail"><span class="pkg-price">R250–R950/month</span><p class="pkg-desc">For families/individuals who want their memories documented throughout the year</p></div></div></div>
+              <button class="pkg-item__name" type="button" aria-expanded="false" aria-controls="subscription-offers-d1">Family &amp; Lifestyle Subscription</button>
+              <div class="pkg-item__detail" id="subscription-offers-d1"><div><div class="pkg-detail"><span class="pkg-price">Averaging R250–R900/month</span><p class="pkg-desc">For the families, couples and individuals who want to capture more than just the big milestones</p></div></div></div>
             </div>
             <div class="pkg-item">
               <button class="pkg-item__name" type="button" aria-expanded="false" aria-controls="subscription-offers-d2">The Wedding Journey Subscription</button>
-              <div class="pkg-item__detail" id="subscription-offers-d2"><div><div class="pkg-detail"><span class="pkg-price">R400–R1,500/month</span><p class="pkg-desc">Covering your engagement, bachelorette &amp; bachelors parties and wedding (plus a complementary family session)</p></div></div></div>
+              <div class="pkg-item__detail" id="subscription-offers-d2"><div><div class="pkg-detail"><span class="pkg-price">Averaging R400–R2,000/month</span><p class="pkg-desc">Covering your engagement, bachelorette &amp; bachelors parties and wedding (plus a complementary family session)</p></div></div></div>
             </div>
             <div class="pkg-item">
               <button class="pkg-item__name" type="button" aria-expanded="false" aria-controls="subscription-offers-d3">The Growing Family Subscription</button>
-              <div class="pkg-item__detail" id="subscription-offers-d3"><div><div class="pkg-detail"><span class="pkg-price">R300–R1,200/month</span><p class="pkg-desc">Covering maternity, newborn and young family photoshoots over 12–24 months.</p></div></div></div>
+              <div class="pkg-item__detail" id="subscription-offers-d3"><div><div class="pkg-detail"><span class="pkg-price">Averaging R300–R1,500/month</span><p class="pkg-desc">For capturing every beautiful chapter as your family grows: maternity, newborn and young family photoshoots</p></div></div></div>
             </div>
           </div>
           <div class="pkg__foot"><a class="btn" href="subscription-offers.html">Find out more</a></div>
@@ -385,8 +401,8 @@
       <nav aria-label="Footer">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
-        <div class="has-dropdown"><button class="dd-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="dd-footer">Packages</button><ul class="dropdown" id="dd-footer"><li><a href="hourly-rates.html">Hourly Rates &amp; Packages</a></li><li><a href="subscription-offers.html">Subscription Offers</a></li><li><a href="mini-sessions.html">Mini-sessions &amp; Gift Vouchers</a></li></ul></div>
-        <a href="index.html#testimonials">Testimonials</a>
+        <div class="has-dropdown"><button class="dd-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="dd-footer">Pricing</button><ul class="dropdown" id="dd-footer"><li><a href="hourly-rates.html">Hourly Rates &amp; Packages</a></li><li><a href="subscription-offers.html">Subscription Offers</a></li><li><a href="mini-sessions.html">Mini-sessions &amp; Gift Vouchers</a></li></ul></div>
+        <a href="testimonials.html">Testimonials</a>
         <a href="inquire.html">Inquire</a>
       </nav>
     </div>

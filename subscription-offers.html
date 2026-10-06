@@ -4,52 +4,75 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Subscription Offers | Joyful Studios</title>
-  <meta name="description" content="Subscription Offers from Joyful Studios, wedding, family and subscription photography in Cape Town.">
-
+  <meta name="description" content="Joyful Studios subscriptions for creators, families, couples and weddings: ongoing photography throughout your story, with your first 40 minute shoot free.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Mrs+Saint+Delafield&family=Pinyon+Script&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <style>
-    .cat-hero {
-      position: relative; height: clamp(300px, 38vw, 460px);
-      background-size: cover; color: var(--cream);
-      display: grid; place-items: center; text-align: center; padding: 70px var(--pad) 0;
-    }
-    .cat-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(20,18,10,.4), rgba(20,18,10,.25)); }
-    .cat-hero h1 {
-      position: relative; z-index: 2; margin: 0;
-      font-family: var(--font-hero); font-weight: 400;
-      font-size: clamp(38px, 6.4vw, 84px); line-height: 1.12;
-      text-shadow: 0 2px 24px rgba(0,0,0,.4);
-    }
+    /* ---------- Hero ---------- */
+    .hero { position: relative; height: clamp(340px, 56vw, 800px); overflow: hidden; color: var(--cream); background: var(--charcoal) url("images/sub-hero.jpg") center 60% / cover no-repeat; }
+    .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(20,18,10,.28), rgba(20,18,10,.08) 45%, rgba(20,18,10,.2)); }
+    .hero__content { position: absolute; z-index: 2; left: 50%; top: 53%; transform: translate(-50%, -50%); text-align: center; width: min(92%, 900px); }
+    .hero h1 { margin: 0 0 clamp(26px, 5vw, 56px); font-family: var(--font-hero); font-weight: 400; font-size: clamp(38px, 6.6vw, 88px); line-height: 1.12; text-shadow: 0 2px 24px rgba(0,0,0,.4); }
+    .hero .btn { text-transform: uppercase; font-size: 14px; padding: 15px 14px; border-width: 2px; }
 
-    .cat { max-width: 880px; margin: 0 auto; padding: clamp(40px, 6vw, 80px) var(--pad); }
-    .cat__intro { max-width: 620px; margin: 0 auto 36px; text-align: center; font-weight: 700; }
-    .offer {
-      display: grid; grid-template-columns: 1fr auto; gap: 6px 28px; align-items: baseline;
-      padding: 28px 0; border-top: 1px solid rgba(53, 50, 43, .28);
+    /* ---------- Intro ---------- */
+    .intro { padding: clamp(34px, 5vw, 56px) var(--pad) clamp(30px, 4.5vw, 52px); text-align: center; }
+    .intro h2 { margin: 0 0 18px; font-family: var(--font-body); font-weight: 700; font-size: clamp(26px, 3.2vw, 42px); letter-spacing: .02em; text-transform: uppercase; color: #15140f; }
+    .intro p { max-width: 760px; margin: 0 auto 1.1em; font-size: clamp(16px, 1.75vw, 21px); line-height: 1.3; }
+
+    /* ---------- How it works ---------- */
+    .how { position: relative; background: var(--charcoal) url("images/how-bg.jpg") center / cover no-repeat; padding: clamp(30px, 4vw, 52px) var(--pad) clamp(40px, 6vw, 84px); }
+    .how::before { content: ""; position: absolute; inset: 0; background: rgba(25, 22, 10, .38); }
+    .how > * { position: relative; }
+    .how h2 { margin: 0 0 clamp(20px, 3vw, 36px); text-align: center; font-family: var(--font-body); font-weight: 700; font-size: clamp(26px, 3.4vw, 42px); letter-spacing: .02em; text-transform: uppercase; color: var(--cream); }
+    .how__grid { max-width: 880px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(12px, 3.2vw, 36px); }
+    .how__card { background: #efe7ce; padding: clamp(16px, 2vw, 26px); color: var(--ink); }
+    .how__card h3 { margin: 0 0 14px; font-family: var(--font-body); font-weight: 700; font-size: clamp(17px, 1.6vw, 21px); line-height: 1.2; }
+    .how__card h4 { margin: 12px 0 0; font-family: var(--font-body); font-weight: 700; font-size: clamp(16px, 1.5vw, 19px); }
+    .how__card p { margin: 0 0 .7em; font-size: clamp(14px, 1.15vw, 16px); line-height: 1.32; }
+    .how__card p:last-child { margin-bottom: 0; }
+
+    /* ---------- Offers ---------- */
+    .offers { background: var(--charcoal); color: var(--cream); }
+    .offer { padding: clamp(40px, 6vw, 72px) clamp(24px, 5.6vw, 90px) clamp(26px, 3.6vw, 44px); }
+    .offer__in { max-width: 840px; }
+    .offer--right { text-align: right; }
+    .offer--right .offer__in { margin-left: auto; }
+    .offer h2 { margin: 0 0 clamp(14px, 2vw, 24px); font-family: var(--font-body); font-weight: 400; font-size: clamp(30px, 4.2vw, 56px); line-height: 1.1; color: #f6ecd9; }
+    .offer__sub { margin: 0 0 clamp(12px, 1.6vw, 20px); font-weight: 700; font-size: clamp(17px, 1.9vw, 24px); line-height: 1.25; }
+    .offer p { margin: 0 0 1em; font-size: clamp(16px, 1.8vw, 22px); line-height: 1.3; }
+    .offer p.is-bold { font-weight: 700; }
+    .offer__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 26px; margin-top: clamp(14px, 2vw, 24px); }
+    .offer--right .offer__cta { justify-content: flex-end; }
+    .offer__price { font-size: clamp(18px, 2vw, 25px); }
+    .btn-line { display: inline-block; padding: 10px 28px; border: 1px solid var(--cream); border-radius: 999px; color: var(--cream); font-size: 15px; letter-spacing: .05em; text-transform: uppercase; transition: background .25s, color .25s; }
+    .btn-line:hover, .btn-line:focus-visible { background: var(--cream); color: var(--charcoal); }
+
+    .strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: clamp(14px, 2.4vw, 30px); }
+    .strip img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+    .offer:first-child { padding-top: clamp(44px, 6vw, 70px); }
+    .lace-m { height: clamp(40px, 5.4vw, 78px); margin: clamp(22px, 3vw, 40px) 0 0; background: url("images/lace-muted.png") repeat-x left center / auto 100%; }
+
+    /* ---------- Banner ---------- */
+    .banner { position: relative; min-height: clamp(280px, 40vw, 540px); background: var(--charcoal) url("images/sub-banner.jpg") center 35% / cover no-repeat; display: grid; place-items: center; text-align: center; color: var(--cream); padding: 40px var(--pad); }
+    .banner::before { content: ""; position: absolute; inset: 0; background: rgba(20, 18, 10, .42); }
+    .banner > div { position: relative; }
+    .banner h2 { margin: 0; font-family: var(--font-hero); font-weight: 400; font-size: clamp(44px, 7vw, 96px); line-height: 1.05; text-shadow: 0 2px 22px rgba(0,0,0,.4); }
+    .banner p { margin: 6px 0 0; font-size: clamp(20px, 3vw, 38px); line-height: 1.2; text-shadow: 0 2px 16px rgba(0,0,0,.4); }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 860px) {
+      .how__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
-    .offer:last-of-type { border-bottom: 1px solid rgba(53, 50, 43, .28); }
-    .offer h2 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: clamp(24px, 3vw, 34px); line-height: 1.2; }
-    .offer__price { font-family: var(--font-display); font-size: clamp(22px, 2.6vw, 30px); white-space: nowrap; }
-    .offer__body { grid-column: 1 / -1; max-width: 640px; }
-    .offer__body ul { margin: 0; padding-left: 20px; }
-    .offer__body li { margin-bottom: 3px; }
-    .offer__body p { margin: 0; }
-    .offer__inquire { grid-column: 1 / -1; justify-self: start; margin-top: 8px; font-size: 14px; letter-spacing: .06em; text-transform: uppercase; border-bottom: 1px solid currentColor; }
-    .offer__inquire:hover { color: var(--cream); }
-    .cat__note { margin: 34px 0 0; text-align: center; }
-
-    .cat-cta { text-align: center; padding: 0 var(--pad) clamp(48px, 7vw, 90px); }
-    .cat-cta h2 { margin: 0 0 22px; font-family: var(--font-display); font-weight: 400; font-size: clamp(30px, 4vw, 48px); line-height: 1.15; }
-    .cat-more { margin: 30px 0 0; font-size: 15px; }
-    .cat-more a { border-bottom: 1px solid currentColor; margin: 0 8px; white-space: nowrap; }
-    .cat-more a:hover { color: var(--charcoal); }
-
-    @media (max-width: 560px) {
-      .offer { grid-template-columns: 1fr; }
-      .offer__price { white-space: normal; }
+    @media (max-width: 600px) {
+      .how__grid { grid-template-columns: 1fr; }
+      .offer--right { text-align: left; }
+      .offer--right .offer__in { margin-left: 0; }
+      .offer--right .offer__cta { justify-content: flex-start; }
+      .offer--right .offer__cta .btn-line { order: 2; }
+      .strip { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -59,7 +82,7 @@
     <nav class="nav nav--left" aria-label="Primary">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
-      <div class="has-dropdown"><button class="dd-toggle is-current" aria-expanded="false" aria-haspopup="true" aria-controls="dd-header">Packages</button><ul class="dropdown" id="dd-header"><li><a href="hourly-rates.html">Hourly Rates &amp; Packages</a></li><li><a href="subscription-offers.html" aria-current="page">Subscription Offers</a></li><li><a href="mini-sessions.html">Mini-sessions &amp; Gift Vouchers</a></li></ul></div>
+      <div class="has-dropdown"><button class="dd-toggle is-current" aria-expanded="false" aria-haspopup="true" aria-controls="dd-header">Pricing</button><ul class="dropdown" id="dd-header"><li><a href="hourly-rates.html">Hourly Rates &amp; Packages</a></li><li><a href="subscription-offers.html" aria-current="page">Subscription Offers</a></li><li><a href="mini-sessions.html">Mini-sessions &amp; Gift Vouchers</a></li></ul></div>
     </nav>
 
     <a class="logo" href="index.html" aria-label="Joyful Studios home">
@@ -68,46 +91,86 @@
     </a>
 
     <nav class="nav nav--right" aria-label="Secondary">
-      <a href="index.html#testimonials">Testimonials</a>
+      <a href="testimonials.html">Testimonials</a>
       <a href="inquire.html">Inquire</a>
     </nav>
 
     <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="site-header">Menu</button>
   </header>
 
-  <section class="cat-hero" style="background-image:url('images/calla.jpg'); background-position: center 25%">
-    <h1>Subscription Offers</h1>
+  <section class="hero" aria-label="Photography, throughout your story">
+    <div class="hero__content">
+      <h1>Photography, throughout<br>your story.</h1>
+      <a class="btn" href="hourly-rates.html">Compare hourly rates &amp; packages</a>
+    </div>
   </section>
 
   <main>
-    <section class="cat">
-        <p class="cat__intro">Choose your subscription period, enjoy your complimentary first shoot, and receive ongoing opportunities to create beautiful, meaningful photographs.</p>
-        <article class="offer">
-          <h2>Creator Subscription</h2><span class="offer__price">R250–R800/month</span>
-          <div class="offer__body"><p class="">For influencers, content creators &amp; personal brands</p></div>
-          <a class="offer__inquire" href="inquire.html?package=creator-subscription">Inquire now</a>
-        </article>
-        <article class="offer">
-          <h2>Family / Lifestyle Subscription</h2><span class="offer__price">R250–R950/month</span>
-          <div class="offer__body"><p class="">For families/individuals who want their memories documented throughout the year</p></div>
-          <a class="offer__inquire" href="inquire.html?package=family-lifestyle-subscription">Inquire now</a>
-        </article>
-        <article class="offer">
-          <h2>The Wedding Journey Subscription</h2><span class="offer__price">R400–R1,500/month</span>
-          <div class="offer__body"><p class="">Covering your engagement, bachelorette &amp; bachelors parties and wedding (plus a complementary family session)</p></div>
-          <a class="offer__inquire" href="inquire.html?package=the-wedding-journey-subscription">Inquire now</a>
-        </article>
-        <article class="offer">
-          <h2>The Growing Family Subscription</h2><span class="offer__price">R300–R1,200/month</span>
-          <div class="offer__body"><p class="">Covering maternity, newborn and young family photoshoots over 12–24 months.</p></div>
-          <a class="offer__inquire" href="inquire.html?package=the-growing-family-subscription">Inquire now</a>
-        </article>
+    <section class="intro">
+      <h2>Subscription Offers</h2>
+      <p>Joyful Studios subscriptions are designed for people who want to document their lives over time - whether you’re building a personal brand, watching your family grow, or beginning a new chapter together.</p>
+      <p>Choose your subscription period, enjoy your complimentary first shoot, and receive ongoing opportunities to create beautiful, meaningful photographs throughout the year.</p>
     </section>
 
-    <section class="cat-cta">
-      <h2>Let’s capture<br>your story!</h2>
-      <a class="btn" href="inquire.html">Connect</a>
-      <p class="cat-more">Explore more: <a href="hourly-rates.html">Hourly Rates &amp; Packages</a> <a href="mini-sessions.html">Mini-sessions &amp; Gift Vouchers</a></p>
+    <section class="how" aria-labelledby="how-title">
+      <h2 id="how-title">How it works</h2>
+      <div class="how__grid">
+        <article class="how__card"><h3>01 Choose your Subscription</h3><p>Choose the subscription that fits you - whether you’re a creator, family or couple. The longer you commit, the more sessions and flexibility you receive.</p></article>
+        <article class="how__card"><h3>02 Choose a commitment period</h3><p>Choose a commitment period of either 6, 12, or 24 months, depending on your kind of subscription.</p></article>
+        <article class="how__card"><h3>03 Get Your Complimentary Shoot</h3><p>Every new subscriber receives a complimentary 40min photoshoot when they join. Consider it your first introduction to the Joyful Studios experience.</p></article>
+        <article class="how__card"><h3>04 Watch your Inbox</h3><p>At least once a month, subscribers will have the opportunity to book a short photoshoot on a Saturday morning or late afternoon. You’ll receive an email with all the details - including the date, location, concept and style guide.</p><h4>OR book your Sessions</h4></article>
+        <article class="how__card"><h3>05 Choose your Shoot</h3><p>For families, monthly opportunities will generally be styled/location-based shoots. You can choose whether you’d like to join that month’s session.</p><p>For creators, there will be occasional styled content shoots, but you can also book your own sessions in advance depending on your subscription level.</p></article>
+        <article class="how__card"><h3>06 Show up</h3><p>Most subscriber sessions will be around 20 minutes, keeping them relaxed, easy to fit into your schedule and focused on creating a beautiful set of images.</p><p>Higher-tier subscriptions receive more flexibility and time, including the ability to book their sessions further in advance and choose dates that work for them.</p></article>
+      </div>
+    </section>
+
+    <div class="offers">
+    <section class="offer" id="creator-influencer-subscription">
+      <div class="offer__in">
+        <h2>Creator &amp; Influencer Subscription</h2>
+        <p class="offer__sub">For influencers, content creators &amp; personal brands</p><p>Subscribers receive invitations to styled lifestyle shoots, seasonal locations and special Saturday sessions, with guidance on what to wear and what to expect. Depending on your subscription level, you can also book your own sessions in advance.</p>
+        <div class="offer__cta"><span class="offer__price">Averaging R250-R800/month</span><a class="btn-line" href="inquire.html?package=creator-influencer-subscription">Inquire now</a></div>
+      </div>
+    </section>
+    <div class="strip"><img src="images/sa-1.jpg" alt="Black and white portrait of a woman holding a calla lily in a field" style="object-position:center 22%" loading="lazy"><img src="images/sa-2.jpg" alt="A woman sitting on the grass beneath a tree" style="object-position:center" loading="lazy"><img src="images/sa-3.jpg" alt="A woman lying on the grass holding an apple" style="object-position:center 62%" loading="lazy"><img src="images/sa-4.jpg" alt="A man looking away as a woman smiles over her shoulder" style="object-position:center" loading="lazy"></div>
+    <div class="lace-m" role="presentation"></div>
+
+    <section class="offer offer--right" id="family-lifestyle-subscription">
+      <div class="offer__in">
+        <h2>Family &amp; Lifestyle Subscription</h2>
+        <p class="offer__sub">For the families, couples and individuals who want to capture more than just the big milestones</p><p>Subscribers receive invitations to styled lifestyle shoots, seasonal locations and special Saturday sessions, with guidance on what to wear and what to expect. Depending on your subscription level, you can also book your own sessions in advance.</p>
+        <div class="offer__cta"><a class="btn-line" href="inquire.html?package=family-lifestyle-subscription">Inquire now</a><span class="offer__price">Averaging R250-R900/month</span></div>
+      </div>
+    </section>
+    <div class="strip"><img src="images/sb-1.jpg" alt="A mother smiling at her newborn" style="object-position:center 28%" loading="lazy"><img src="images/sb-2.jpg" alt="A woman in a floral dress holding flowers, wearing yellow boots" style="object-position:center 70%" loading="lazy"><img src="images/sb-3.jpg" alt="A parent holding a sleeping baby’s hand" style="object-position:center 35%" loading="lazy"><img src="images/sb-4.jpg" alt="A couple laughing together on a kerb" style="object-position:center" loading="lazy"></div>
+    <div class="lace-m" role="presentation"></div>
+
+    <section class="offer" id="the-wedding-journey-subscription">
+      <div class="offer__in">
+        <h2>The Wedding Journey Subscription</h2>
+        <p class="is-bold">Choose the level of coverage that suits your wedding journey — from wedding-day photography to a more complete experience including engagements, rehearsal dinners, bachelor/bachelorette celebrations, couple sessions and more.</p><p class="is-bold">The longer and more comprehensive your subscription, the more of your story we get to document.</p>
+        <div class="offer__cta"><span class="offer__price">Averaging R400-R2,000/month</span><a class="btn-line" href="inquire.html?package=the-wedding-journey-subscription">Inquire now</a></div>
+      </div>
+    </section>
+    <div class="strip"><img src="images/sc-1.jpg" alt="Hand with a ring holding white calla lilies" style="object-position:center 35%" loading="lazy"><img src="images/sc-2.jpg" alt="A couple kissing beneath a willow tree" style="object-position:center 40%" loading="lazy"><img src="images/sc-3.jpg" alt="A couple laughing in a field of long grass" style="object-position:center" loading="lazy"><img src="images/sc-4.jpg" alt="A bride embracing her groom" style="object-position:center" loading="lazy"></div>
+    <div class="lace-m" role="presentation"></div>
+
+    <section class="offer offer--right" id="the-growing-family-subscription">
+      <div class="offer__in">
+        <h2>The Growing Family Subscription</h2>
+        <p class="is-bold">For capturing every beautiful chapter as your family grows.</p><p class="is-bold">Choose the level of coverage that suits your journey — from family lifestyle sessions to a more complete experience including pregnancy announcements, maternity, baby showers, newborn sessions and young family shoots.</p><p class="is-bold">The longer and more comprehensive your subscription, the more milestones we can capture along the way - creating a collection of photographs that tells the story of your growing family.</p>
+        <div class="offer__cta"><a class="btn-line" href="inquire.html?package=the-growing-family-subscription">Inquire now</a><span class="offer__price">Averaging R300-R1,500/month</span></div>
+      </div>
+    </section>
+    <div class="strip"><img src="images/sd-1.jpg" alt="Black and white photo of a parent holding a baby" style="object-position:center 30%" loading="lazy"><img src="images/sd-2.jpg" alt="A couple kissing with their baby between them" style="object-position:center 38%" loading="lazy"><img src="images/sd-3.jpg" alt="A family sitting together on a picnic blanket by a lake" style="object-position:center 68%" loading="lazy"><img src="images/sd-4.jpg" alt="A newborn’s feet held in a parent’s hands" style="object-position:center 40%" loading="lazy"></div>
+    <div class="lace-m" role="presentation"></div>
+    </div>
+
+    <section class="banner" aria-label="Join any subscription and receive your first 40 minute shoot free">
+      <div>
+        <h2>Join any Subscription</h2>
+        <p>&amp; receive your first 40min shoot FREE.</p>
+      </div>
     </section>
   </main>
 
@@ -124,8 +187,8 @@
       <nav aria-label="Footer">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
-        <div class="has-dropdown"><button class="dd-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="dd-footer">Packages</button><ul class="dropdown" id="dd-footer"><li><a href="hourly-rates.html">Hourly Rates &amp; Packages</a></li><li><a href="subscription-offers.html">Subscription Offers</a></li><li><a href="mini-sessions.html">Mini-sessions &amp; Gift Vouchers</a></li></ul></div>
-        <a href="index.html#testimonials">Testimonials</a>
+        <div class="has-dropdown"><button class="dd-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="dd-footer">Pricing</button><ul class="dropdown" id="dd-footer"><li><a href="hourly-rates.html">Hourly Rates &amp; Packages</a></li><li><a href="subscription-offers.html">Subscription Offers</a></li><li><a href="mini-sessions.html">Mini-sessions &amp; Gift Vouchers</a></li></ul></div>
+        <a href="testimonials.html">Testimonials</a>
         <a href="inquire.html">Inquire</a>
       </nav>
     </div>

@@ -111,6 +111,12 @@
             </optgroup>
           </select>
           <p class="prefill-note" id="prefill-note" hidden></p>
+          <p class="prefill-note" id="agreement-note" hidden>After your enquiry I’ll send you the subscription agreement to read before you commit. <a href="subscription-offers.html#good-to-know" style="text-decoration:underline">See the subscription details</a>.</p>
+        </div>
+
+        <div class="field" id="plan-field" hidden>
+          <label for="plan">Chosen plan <span class="opt">(optional)</span></label>
+          <input id="plan" name="chosen_plan" type="text">
         </div>
 
         <div class="row2">
@@ -178,7 +184,18 @@
           note.hidden = false;
         }
       }
-      select.addEventListener('change', function () { select.classList.remove('is-prefilled'); note.hidden = true; });
+      var agreementNote = document.getElementById('agreement-note');
+      var agreementPlans = ['creator-influencer-subscription', 'family-lifestyle-subscription'];
+      function updateAgreementNote() { agreementNote.hidden = agreementPlans.indexOf(select.value) === -1; }
+      updateAgreementNote();
+      select.addEventListener('change', function () { select.classList.remove('is-prefilled'); note.hidden = true; updateAgreementNote(); });
+
+      // Pre-fill the chosen plan (e.g. "Priority, 12 months (R500 / month)") when it comes from the subscription tables
+      var plan = new URLSearchParams(window.location.search).get('plan');
+      if (plan) {
+        document.getElementById('plan').value = plan;
+        document.getElementById('plan-field').hidden = false;
+      }
 
       // 2. Send the enquiry
       function showError(msg) { errorBox.textContent = msg; errorBox.hidden = false; }

@@ -111,7 +111,7 @@
             </optgroup>
           </select>
           <p class="prefill-note" id="prefill-note" hidden></p>
-          <p class="prefill-note" id="agreement-note" hidden>After your enquiry I’ll send you the subscription agreement to read before you commit. <a href="subscription-offers.html#good-to-know" style="text-decoration:underline">See the subscription details</a>.</p>
+          <p class="prefill-note" id="agreement-note" hidden>After your enquiry I’ll send you the subscription agreement to read before you commit. <a id="agreement-link" href="subscription-offers.html#good-to-know" style="text-decoration:underline">See the subscription details</a>.</p>
         </div>
 
         <div class="field" id="plan-field" hidden>
@@ -185,8 +185,17 @@
         }
       }
       var agreementNote = document.getElementById('agreement-note');
-      var agreementPlans = ['creator-influencer-subscription', 'family-lifestyle-subscription'];
-      function updateAgreementNote() { agreementNote.hidden = agreementPlans.indexOf(select.value) === -1; }
+      var agreementPlans = {
+        'creator-influencer-subscription': '#gtk-sessions',
+        'family-lifestyle-subscription': '#gtk-sessions',
+        'the-wedding-journey-subscription': '#gtk-milestones',
+        'the-growing-family-subscription': '#gtk-milestones'
+      };
+      function updateAgreementNote() {
+        var target = agreementPlans[select.value];
+        agreementNote.hidden = !target;
+        if (target) document.getElementById('agreement-link').setAttribute('href', 'subscription-offers.html' + target);
+      }
       updateAgreementNote();
       select.addEventListener('change', function () { select.classList.remove('is-prefilled'); note.hidden = true; updateAgreementNote(); });
 

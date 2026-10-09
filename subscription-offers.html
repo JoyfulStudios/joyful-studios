@@ -10,6 +10,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Mrs+Saint+Delafield&family=Pinyon+Script&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <style>
+    /* Canva palette for this page */
+    :root { --cream: #faf1e1; }
+
     /* ---------- Hero ---------- */
     .hero { position: relative; height: clamp(340px, 56vw, 800px); overflow: hidden; color: var(--cream); background: var(--charcoal) url("images/sub-hero.jpg") center 60% / cover no-repeat; }
     .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(20,18,10,.28), rgba(20,18,10,.08) 45%, rgba(20,18,10,.2)); }
@@ -17,38 +20,45 @@
     .hero h1 { margin: 0 0 clamp(26px, 5vw, 56px); font-family: var(--font-hero); font-weight: 400; font-size: clamp(38px, 6.6vw, 88px); line-height: 1.12; text-shadow: 0 2px 24px rgba(0,0,0,.4); }
     .hero .btn { text-transform: uppercase; font-size: 14px; padding: 15px 14px; border-width: 2px; }
 
-    /* ---------- Intro ---------- */
-    .intro { padding: clamp(34px, 5vw, 56px) var(--pad) clamp(30px, 4.5vw, 52px); text-align: center; }
-    .intro h2 { margin: 0 0 18px; font-family: var(--font-body); font-weight: 700; font-size: clamp(26px, 3.2vw, 42px); letter-spacing: .02em; text-transform: uppercase; color: #15140f; }
-    .intro p { max-width: 760px; margin: 0 auto 1.1em; font-size: clamp(16px, 1.75vw, 21px); line-height: 1.3; }
 
-    /* ---------- Offers ---------- */
-    .offers { background: var(--charcoal); color: var(--cream); }
-    .offer { padding: clamp(40px, 6vw, 72px) clamp(24px, 5.6vw, 90px) clamp(26px, 3.6vw, 44px); }
-    .offer__in { max-width: 1000px; }
-    .offer__in > h2, .offer__in > p, .offer__tags { max-width: 840px; }
-    .offer--right .offer__in > h2, .offer--right .offer__in > p, .offer--right .offer__tags { margin-left: auto; }
-    .offer--right { text-align: right; }
+    /* ---------- Intro ---------- */
+    .intro { padding: clamp(34px, 5vw, 56px) var(--pad) clamp(30px, 4.5vw, 52px); text-align: center; color: var(--charcoal); }
+    .intro h2 { margin: 0 0 18px; font-family: var(--font-body); font-weight: 700; font-size: clamp(26px, 3.2vw, 42px); letter-spacing: .02em; text-transform: uppercase; }
+    .intro p { max-width: 800px; margin: 0 auto 1.1em; font-size: clamp(16px, 1.75vw, 21px); line-height: 1.3; }
+
+    /* ---------- Offers (text + two-photo column) ---------- */
+    .offers { background: var(--charcoal); }
+    .offer { display: grid; grid-template-columns: minmax(0, 1fr) 26%; }
+    .offer--right { grid-template-columns: 26% minmax(0, 1fr); }
+    .offer--right .offer__photos { order: -1; }
+    .offer--dark { background: var(--charcoal); color: var(--cream); }
+    .offer--sand { background: var(--sand); color: var(--charcoal); }
+    .offer__content { padding: clamp(40px, 5.4vw, 78px) clamp(22px, 4.6vw, 70px); min-width: 0; }
+    .offer--right .offer__content { text-align: right; }
+    .offer__in { max-width: 980px; }
     .offer--right .offer__in { margin-left: auto; }
-    .offer h2 { margin: 0 0 clamp(14px, 2vw, 24px); font-family: var(--font-body); font-weight: 400; font-size: clamp(30px, 4.2vw, 56px); line-height: 1.1; color: #f6ecd9; }
+    .offer h2 { margin: 0 0 clamp(14px, 2vw, 24px); font-family: var(--font-body); font-weight: 400; font-size: clamp(30px, 4vw, 54px); line-height: 1.1; color: inherit; }
     .offer__sub { margin: 0 0 clamp(12px, 1.6vw, 20px); font-weight: 700; font-size: clamp(17px, 1.9vw, 24px); line-height: 1.25; }
     .offer p { margin: 0 0 1em; font-size: clamp(16px, 1.8vw, 22px); line-height: 1.3; }
     .offer p.is-bold { font-weight: 700; }
+    .offer__in > h2, .offer__in > p, .offer__tags { max-width: 840px; }
+    .offer--right .offer__in > h2, .offer--right .offer__in > p, .offer--right .offer__tags { margin-left: auto; }
+
+    .offer__photos { display: grid; grid-template-rows: 1fr 1fr; min-height: 100%; }
+    .offer__photos figure { position: relative; margin: 0; min-height: 220px; overflow: hidden; background: var(--charcoal); }
+    .offer__photos img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+    .offer__panel { margin-top: clamp(18px, 2.6vw, 30px); text-align: left; }
+    .offer--sand .offer__panel { background: var(--charcoal); color: var(--cream); padding: clamp(16px, 2.2vw, 30px); }
     .offer__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 26px; margin-top: clamp(14px, 2vw, 24px); }
     .offer--right .offer__cta { justify-content: flex-end; }
     .offer__price { font-size: clamp(18px, 2vw, 25px); }
     .btn-line { display: inline-block; padding: 10px 28px; border: 1px solid var(--cream); border-radius: 999px; color: var(--cream); font-size: 15px; letter-spacing: .05em; text-transform: uppercase; transition: background .25s, color .25s; }
     .btn-line:hover, .btn-line:focus-visible { background: var(--cream); color: var(--charcoal); }
 
-    .strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: clamp(14px, 2.4vw, 30px); }
-    .strip img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
-    .offer:first-child { padding-top: clamp(44px, 6vw, 70px); }
-    .lace-m { height: clamp(40px, 5.4vw, 78px); margin: clamp(22px, 3vw, 40px) 0 0; background: url("images/lace-muted.png") repeat-x left center / auto 100%; }
-
-
     /* ---------- Plan tables (flip cards) ---------- */
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-    .plans { margin-top: clamp(20px, 2.8vw, 32px); text-align: left; }
+    .plans { margin: 0; text-align: left; }
     .offer p.plans__hint { margin: 0 0 4px; font-size: 14px; font-style: italic; opacity: .8; }
     .hint-tap { display: none; }
     @media (hover: none) { .hint-hover { display: none; } .hint-tap { display: inline; } }
@@ -62,8 +72,8 @@
     .flip:focus-visible { outline: 2px solid var(--cream); outline-offset: 3px; }
     .flip__inner { position: relative; display: grid; height: 100%; min-height: inherit; transform-style: preserve-3d; transition: transform .7s cubic-bezier(.2, .75, .25, 1); }
     .flip__face { grid-area: 1 / 1; position: relative; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 4px; padding: clamp(12px, 1.3vw, 16px); }
-    .flip__front { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: var(--cream); background: rgba(243, 234, 216, .06); border: 1px solid rgba(243, 234, 216, .3); }
-    .flip__back { transform: rotateY(180deg); display: flex; flex-direction: column; justify-content: center; text-align: left; background: #efe7ce; color: var(--ink); border: 1px solid #efe7ce; font-size: clamp(12.5px, 1vw, 14px); line-height: 1.28; }
+    .flip__front { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: var(--cream); background: #38362f; border: 1px solid #49463e; }
+    .flip__back { transform: rotateY(180deg); display: flex; flex-direction: column; justify-content: center; text-align: left; background: #faf1e1; color: #2d2b25; border: 1px solid #faf1e1; font-size: clamp(12.5px, 1vw, 14px); line-height: 1.28; }
 
     .cell__tier { display: none; }
     .cell__price { display: block; }
@@ -104,38 +114,40 @@
       .offer .flip__back .back__name { display: block; }
     }
 
+
     /* ---------- Session tags + add-on ---------- */
     .offer__tags { margin: clamp(14px, 2vw, 22px) 0 0; }
     .offer p.offer__tags-label { margin: 0 0 10px; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; opacity: .75; }
     .offer__tags ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
     .offer--right .offer__tags ul { justify-content: flex-end; }
-    .offer__tags li { padding: 5px 14px; border: 1px solid rgba(243, 234, 216, .4); border-radius: 999px; font-size: clamp(13px, 1.2vw, 15px); line-height: 1.2; }
+    .offer__tags li { padding: 5px 14px; border: 1px solid currentColor; border-radius: 999px; font-size: clamp(13px, 1.2vw, 15px); line-height: 1.2; }
+    @supports (color: color-mix(in srgb, red 50%, blue)) { .offer__tags li { border-color: color-mix(in srgb, currentColor 45%, transparent); } }
     .offer p.offer__addon { margin: clamp(14px, 2vw, 20px) 0 0; font-size: clamp(14px, 1.4vw, 17px); font-style: italic; opacity: .9; }
     .offer__addon a { border-bottom: 1px solid currentColor; font-style: normal; white-space: nowrap; }
-    .offer__addon a:hover { color: #fff; }
 
-    /* ---------- Good to know ---------- */
+    /* ---------- Good to know (one subscription group at a time) ---------- */
     .details { background: var(--charcoal); color: var(--cream); padding: clamp(40px, 6vw, 80px) var(--pad) clamp(44px, 6vw, 84px); scroll-margin-top: 20px; }
     .details__in { max-width: 860px; margin: 0 auto; }
-    .details h2 { margin: 0 0 14px; text-align: center; font-family: var(--font-body); font-weight: 700; font-size: clamp(26px, 3.4vw, 42px); letter-spacing: .02em; text-transform: uppercase; }
+    .details h2 { margin: 0 0 14px; text-align: center; font-family: var(--font-body); font-weight: 400; font-size: clamp(30px, 3.8vw, 48px); letter-spacing: .02em; text-transform: uppercase; }
     .details__lead { max-width: 640px; margin: 0 auto clamp(20px, 3vw, 32px); text-align: center; font-size: clamp(15px, 1.5vw, 18px); line-height: 1.4; opacity: .9; }
 
-    .gtk-jump { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(10px, 2vw, 20px); margin-bottom: clamp(34px, 5vw, 56px); }
-    .gtk-jump a { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 14px 12px; text-align: center; border: 1px solid rgba(243, 234, 216, .4); border-radius: 4px; font-size: clamp(14px, 1.5vw, 18px); line-height: 1.25; transition: background .25s, color .25s; }
-    .gtk-jump a:hover, .gtk-jump a:focus-visible { background: var(--cream); color: var(--charcoal); }
-
-    .gtk-group { scroll-margin-top: 20px; }
-    .gtk-group h3 { margin: 0 0 8px; font-family: var(--font-body); font-weight: 400; font-size: clamp(24px, 3vw, 38px); line-height: 1.15; color: #f6ecd9; }
-    .gtk-group h3 i { font-style: normal; opacity: .6; }
+    .gtk-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(10px, 2vw, 20px); }
+    .gtk-tab { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 14px 12px; text-align: center; border: 1px solid rgba(250, 241, 225, .4); border-radius: 4px; background: none; color: inherit; font: inherit; font-size: clamp(14px, 1.5vw, 18px); line-height: 1.25; cursor: pointer; transition: background .25s, color .25s, border-color .25s; }
+    .gtk-tab:hover, .gtk-tab:focus-visible, .gtk-tab[aria-selected="true"] { background: var(--cream); color: var(--charcoal); border-color: var(--cream); }
+    .gtk-hint { margin: 18px 0 0; text-align: center; font-style: italic; opacity: .7; }
+    .gtk-hint[hidden] { display: none; }
+    .gtk-panel { margin-top: clamp(30px, 4.4vw, 52px); scroll-margin-top: 20px; }
+    .gtk-panel[hidden] { display: none; }
+    .gtk-panel h3 { margin: 0 0 8px; font-family: var(--font-body); font-weight: 400; font-size: clamp(24px, 3vw, 38px); line-height: 1.15; }
+    .gtk-panel h3 i { font-style: normal; opacity: .6; }
     .gtk-group__lead { margin: 0 0 clamp(14px, 2vw, 22px); font-size: clamp(15px, 1.5vw, 18px); font-style: italic; opacity: .85; }
-    .details .lace-m { margin: clamp(36px, 5vw, 64px) 0; }
 
-    .acc details { border-top: 1px solid rgba(243, 234, 216, .28); }
-    .acc details:last-child { border-bottom: 1px solid rgba(243, 234, 216, .28); }
+    .acc details { border-top: 1px solid rgba(250, 241, 225, .28); }
+    .acc details:last-child { border-bottom: 1px solid rgba(250, 241, 225, .28); }
     .acc summary { display: flex; align-items: center; gap: 12px; padding: clamp(14px, 1.8vw, 20px) 4px; cursor: pointer; list-style: none; font-weight: 700; font-size: clamp(17px, 1.8vw, 22px); }
     .acc summary::-webkit-details-marker { display: none; }
     .acc__title { flex: 1; }
-    .acc__tag { flex: none; padding: 3px 10px; border: 1px solid rgba(243, 234, 216, .4); border-radius: 999px; font-size: 11px; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
+    .acc__tag { flex: none; padding: 3px 10px; border: 1px solid rgba(250, 241, 225, .4); border-radius: 999px; font-size: 11px; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
     .acc summary::after { content: "+"; font-weight: 400; font-size: 26px; line-height: 1; flex: none; }
     .acc details[open] summary::after { content: "–"; }
     .acc summary:hover { color: #fff; }
@@ -143,13 +155,6 @@
     .acc__body { padding: 0 4px clamp(14px, 2vw, 22px); max-width: 740px; font-size: clamp(15px, 1.5vw, 18px); line-height: 1.5; }
     .acc__body p { margin: 0 0 .9em; }
     .acc__body p:last-child { margin-bottom: 0; }
-    @media (max-width: 520px) {
-      .acc summary { flex-wrap: wrap; row-gap: 6px; }
-      .acc__title { flex: 1 1 70%; }
-      .acc__tag { order: 3; }
-      .acc summary::after { order: 2; }
-      .gtk-jump { grid-template-columns: 1fr; }
-    }
 
     /* ---------- Banner ---------- */
     .banner { position: relative; min-height: clamp(280px, 40vw, 540px); background: var(--charcoal) url("images/sub-banner.jpg") center 35% / cover no-repeat; display: grid; place-items: center; text-align: center; color: var(--cream); padding: 40px var(--pad); }
@@ -158,14 +163,26 @@
     .banner h2 { margin: 0; font-family: var(--font-hero); font-weight: 400; font-size: clamp(44px, 7vw, 96px); line-height: 1.05; text-shadow: 0 2px 22px rgba(0,0,0,.4); }
     .banner p { margin: 6px 0 0; font-size: clamp(20px, 3vw, 38px); line-height: 1.2; text-shadow: 0 2px 16px rgba(0,0,0,.4); }
 
+
     /* ---------- Responsive ---------- */
+    @media (max-width: 900px) {
+      .offer, .offer--right { grid-template-columns: 1fr; }
+      .offer__photos, .offer--right .offer__photos { order: 2; grid-template-rows: none; grid-template-columns: 1fr 1fr; min-height: 0; }
+      .offer__photos figure { min-height: 0; aspect-ratio: 1 / 1; }
+    }
     @media (max-width: 600px) {
-      .offer--right .offer__tags ul { justify-content: flex-start; }
-      .offer--right { text-align: left; }
+      .offer--right .offer__content { text-align: left; }
       .offer--right .offer__in { margin-left: 0; }
-      .offer--right .offer__cta { justify-content: flex-start; }
+      .offer--right .offer__in > h2, .offer--right .offer__in > p, .offer--right .offer__tags { margin-left: 0; }
+      .offer--right .offer__tags ul, .offer--right .offer__cta { justify-content: flex-start; }
       .offer--right .offer__cta .btn-line { order: 2; }
-      .strip { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 520px) {
+      .acc summary { flex-wrap: wrap; row-gap: 6px; }
+      .acc__title { flex: 1 1 70%; }
+      .acc__tag { order: 3; }
+      .acc summary::after { order: 2; }
+      .gtk-tabs { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -206,12 +223,14 @@
     </section>
 
     <div class="offers">
-    <section class="offer" id="creator-influencer-subscription">
-      <div class="offer__in">
-        <h2>Creator &amp; Influencer Subscription</h2>
-        <p class="offer__sub">For influencers, content creators &amp; personal brands</p><p>Subscribers receive invitations to styled lifestyle shoots, seasonal locations and special Saturday sessions, with guidance on what to wear and what to expect. Depending on your subscription level, you can also book your own sessions in advance.</p>
-        <div class="offer__tags"><p class="offer__tags-label">Sessions may include</p><ul><li>Personal branding content</li><li>Social media content</li><li>Lifestyle photography</li><li>Product or service content</li><li>Seasonal content</li><li>Campaign content</li><li>Styled photography sessions</li></ul></div><p class="offer__addon">Bring friends or collaborators: add up to 5 people to a session for 20% of your monthly fee. <a href="#good-to-know">See how it works</a></p>
-        <div class="plans">
+    <section class="offer offer--dark" id="creator-influencer-subscription">
+      <div class="offer__content">
+        <div class="offer__in">
+          <h2>Creator &amp; Influencer Subscription</h2>
+          <p class="offer__sub">For influencers, content creators &amp; personal brands</p><p>Subscribers receive invitations to styled lifestyle shoots, seasonal locations and special Saturday sessions, with guidance on what to wear and what to expect. Depending on your subscription level, you can also book your own sessions in advance.</p>
+          <div class="offer__tags"><p class="offer__tags-label">Sessions may include</p><ul><li>Personal branding content</li><li>Social media content</li><li>Lifestyle photography</li><li>Product or service content</li><li>Seasonal content</li><li>Campaign content</li><li>Styled photography sessions</li></ul></div><p class="offer__addon">Bring friends or collaborators: add up to 5 people to a session for 20% of your monthly fee. <a href="#gtk-sessions">See how it works</a></p>
+          <div class="offer__panel">
+            <div class="plans">
           <p class="plans__hint"><span class="hint-hover">Hover over a price to see what’s included.</span><span class="hint-tap">Tap a price to see what’s included.</span></p>
           <table class="plans__table">
             <caption class="sr-only">Creator &amp; Influencer Subscription prices by plan and commitment period</caption>
@@ -219,18 +238,20 @@
             <tbody><tr><th scope="row">6 Months</th><td><div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Community, 6 months: R350 per month, R2,100 in total. Includes Access to 20-min Creator Sessions; Standard booking." data-plan="Community, 6 months (R350 / month)"><div class="flip__inner"><div class="flip__face flip__front" aria-hidden="true"><span class="cell__tier">Community</span><span class="cell__price"><span class="cell__p">R350</span><small>/ month</small></span></div><div class="flip__face flip__back" aria-hidden="true"><p class="back__name">Community · 6 months</p><p class="back__price">R350 / month<span>R2,100 total</span></p><ul class="back__list"><li>Access to 20-min Creator Sessions</li><li>Standard booking</li></ul><p class="back__note">Session credits only valid over 3 sessions.</p></div></div></div></td><td><div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Priority, 6 months: R600 per month, R3,600 in total. Includes 2 × 40-min sessions; Limited advance booking." data-plan="Priority, 6 months (R600 / month)"><div class="flip__inner"><div class="flip__face flip__front" aria-hidden="true"><span class="cell__tier">Priority</span><span class="cell__price"><span class="cell__p">R600</span><small>/ month</small></span></div><div class="flip__face flip__back" aria-hidden="true"><p class="back__name">Priority · 6 months</p><p class="back__price">R600 / month<span>R3,600 total</span></p><ul class="back__list"><li>2 × 40-min sessions</li><li>Limited advance booking</li></ul></div></div></div></td><td><div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Pro Creator, 6 months: R800 per month, R4,800 in total. Includes 4 × 40-min sessions; Priority advance booking." data-plan="Pro Creator, 6 months (R800 / month)"><div class="flip__inner"><div class="flip__face flip__front" aria-hidden="true"><span class="cell__tier">Pro Creator</span><span class="cell__price"><span class="cell__p">R800</span><small>/ month</small></span></div><div class="flip__face flip__back" aria-hidden="true"><p class="back__name">Pro Creator · 6 months</p><p class="back__price">R800 / month<span>R4,800 total</span></p><ul class="back__list"><li>4 × 40-min sessions</li><li>Priority advance booking</li></ul></div></div></div></td></tr><tr><th scope="row">12 Months</th><td><div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Community, 12 months: R300 per month, R3,600 in total. Includes Access to 20-min Creator Sessions; Standard booking." data-plan="Community, 12 months (R300 / month)"><div class="flip__inner"><div class="flip__face flip__front" aria-hidden="true"><span class="cell__tier">Community</span><span class="cell__price"><span class="cell__p">R300</span><small>/ month</small></span></div><div class="flip__face flip__back" aria-hidden="true"><p class="back__name">Community · 12 months</p><p class="back__price">R300 / month<span>R3,600 total</span></p><ul class="back__list"><li>Access to 20-min Creator Sessions</li><li>Standard booking</li></ul><p class="back__note">Session credits only valid over 3 sessions.</p></div></div></div></td><td><div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Priority, 12 months: R500 per month, R6,000 in total. Includes 4 × 40-min sessions; Limited advance booking." data-plan="Priority, 12 months (R500 / month)"><div class="flip__inner"><div class="flip__face flip__front" aria-hidden="true"><span class="cell__tier">Priority</span><span class="cell__price"><span class="cell__p">R500</span><small>/ month</small></span></div><div class="flip__face flip__back" aria-hidden="true"><p class="back__name">Priority · 12 months</p><p class="back__price">R500 / month<span>R6,000 total</span></p><ul class="back__list"><li>4 × 40-min sessions</li><li>Limited advance booking</li></ul></div></div></div></td><td><div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Pro Creator, 12 months: R700 per month, R8,400 in total. Includes 8 × 40-min sessions; Priority advance booking." data-plan="Pro Creator, 12 months (R700 / month)"><div class="flip__inner"><div class="flip__face flip__front" aria-hidden="true"><span class="cell__tier">Pro Creator</span><span class="cell__price"><span class="cell__p">R700</span><small>/ month</small></span></div><div class="flip__face flip__back" aria-hidden="true"><p class="back__name">Pro Creator · 12 months</p><p class="back__price">R700 / month<span>R8,400 total</span></p><ul class="back__list"><li>8 × 40-min sessions</li><li>Priority advance booking</li></ul></div></div></div></td></tr><tr><th scope="row">24 Months</th><td><div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Community, 24 months: R250 per month, R6,000 in total. Includes Access to 20-min Creator Sessions; Standard booking." data-plan="Community, 24 months (R250 / month)"><div class="flip__inner"><div class="flip__face flip__front" aria-hidden="true"><span class="cell__tier">Community</span><span class="cell__price"><span class="cell__p">R250</span><small>/ month</small></span></div><div class="flip__face flip__back" aria-hidden="true"><p class="back__name">Community · 24 months</p><p class="back__price">R250 / month<span>R6,000 total</span></p><ul class="back__list"><li>Access to 20-min Creator Sessions</li><li>Standard booking</li></ul><p class="back__note">Session credits only valid over 3 sessions.</p></div></div></div></td><td><div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Priority, 24 months: R450 per month, R10,800 in total. Includes 8 × 40-min sessions; Limited advance booking." data-plan="Priority, 24 months (R450 / month)"><div class="flip__inner"><div class="flip__face flip__front" aria-hidden="true"><span class="cell__tier">Priority</span><span class="cell__price"><span class="cell__p">R450</span><small>/ month</small></span></div><div class="flip__face flip__back" aria-hidden="true"><p class="back__name">Priority · 24 months</p><p class="back__price">R450 / month<span>R10,800 total</span></p><ul class="back__list"><li>8 × 40-min sessions</li><li>Limited advance booking</li></ul></div></div></div></td><td><div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Pro Creator, 24 months: R650 per month, R15,600 in total. Includes 16 × 40-min sessions; Priority advance booking." data-plan="Pro Creator, 24 months (R650 / month)"><div class="flip__inner"><div class="flip__face flip__front" aria-hidden="true"><span class="cell__tier">Pro Creator</span><span class="cell__price"><span class="cell__p">R650</span><small>/ month</small></span></div><div class="flip__face flip__back" aria-hidden="true"><p class="back__name">Pro Creator · 24 months</p><p class="back__price">R650 / month<span>R15,600 total</span></p><ul class="back__list"><li>16 × 40-min sessions</li><li>Priority advance booking</li></ul></div></div></div></td></tr></tbody>
           </table>
         </div>
-        <div class="offer__cta"><span class="offer__price">Averaging R250-R800/month</span><a class="btn-line" data-subscribe href="inquire.html?package=creator-influencer-subscription">Subscribe now</a></div>
+            <div class="offer__cta"><span class="offer__price">Averaging R250-R800/month</span><a class="btn-line" data-subscribe href="inquire.html?package=creator-influencer-subscription">Subscribe now</a></div>
+          </div>
+        </div>
       </div>
+      <div class="offer__photos"><figure><img src="images/sub-cr-1.jpg" alt="A woman lying on the grass holding an apple" style="object-position:center 35%" loading="lazy"></figure><figure><img src="images/sub-cr-2.jpg" alt="Black and white portrait of a woman holding a calla lily in a field" style="object-position:center 30%" loading="lazy"></figure></div>
     </section>
-    <div class="strip"><img src="images/sa-1.jpg" alt="Black and white portrait of a woman holding a calla lily in a field" style="object-position:center 22%" loading="lazy"><img src="images/sa-2.jpg" alt="A woman sitting on the grass beneath a tree" style="object-position:center" loading="lazy"><img src="images/sa-3.jpg" alt="A woman lying on the grass holding an apple" style="object-position:center 62%" loading="lazy"><img src="images/sa-4.jpg" alt="A man looking away as a woman smiles over her shoulder" style="object-position:center" loading="lazy"></div>
-    <div class="lace-m" role="presentation"></div>
-
-    <section class="offer offer--right" id="family-lifestyle-subscription">
-      <div class="offer__in">
-        <h2>Family &amp; Lifestyle Subscription</h2>
-        <p class="offer__sub">For the families, couples and individuals who want to capture more than just the big milestones</p><p>Subscribers receive invitations to styled lifestyle shoots, seasonal locations and special Saturday sessions, with guidance on what to wear and what to expect. Depending on your subscription level, you can also book your own sessions in advance.</p>
-        <div class="offer__tags"><p class="offer__tags-label">Sessions may include</p><ul><li>Pregnancy announcements</li><li>Maternity sessions</li><li>Baby showers</li><li>Newborn sessions</li><li>Family sessions</li><li>Couples sessions</li><li>Birthday sessions</li><li>Seasonal family photography</li><li>Lifestyle sessions</li><li>Milestone sessions</li></ul></div><p class="offer__addon">Bring friends or collaborators: add up to 5 people to a session for 20% of your monthly fee. <a href="#good-to-know">See how it works</a></p>
-        <div class="plans">
+    <section class="offer offer--sand offer--right" id="family-lifestyle-subscription">
+      <div class="offer__content">
+        <div class="offer__in">
+          <h2>Family &amp; Lifestyle Subscription</h2>
+          <p class="offer__sub">For the families, couples and individuals who want to capture more than just the big milestones</p><p>Subscribers receive invitations to styled lifestyle shoots, seasonal locations and special Saturday sessions, with guidance on what to wear and what to expect. Depending on your subscription level, you can also book your own sessions in advance.</p>
+          <div class="offer__tags"><p class="offer__tags-label">Sessions may include</p><ul><li>Pregnancy announcements</li><li>Maternity sessions</li><li>Baby showers</li><li>Newborn sessions</li><li>Family sessions</li><li>Couples sessions</li><li>Birthday sessions</li><li>Seasonal family photography</li><li>Lifestyle sessions</li><li>Milestone sessions</li></ul></div><p class="offer__addon">Bring friends or collaborators: add up to 5 people to a session for 20% of your monthly fee. <a href="#gtk-sessions">See how it works</a></p>
+          <div class="offer__panel">
+            <div class="plans">
           <p class="plans__hint"><span class="hint-hover">Hover over a price to see what’s included.</span><span class="hint-tap">Tap a price to see what’s included.</span></p>
           <table class="plans__table">
             <caption class="sr-only">Family &amp; Lifestyle Subscription prices by plan and commitment period</caption>
@@ -238,18 +259,20 @@
             <tbody><tr><th scope="row">6 Months</th><td><div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Community, 6 months: R350 per month, R2,100 in total." data-plan="Community, 6 months (R350 / month)"><div class="flip__inner"><div class="flip__face flip__front" aria-hidden="true"><span class="cell__tier">Community</span><span class="cell__price"><span class="cell__p">R350</span><small>/ month</small></span></div><div class="flip__face flip__back" aria-hidden="true"><p class="back__name">Community · 6 months</p><p class="back__price">R350 / month<span>R2,100 total</span></p></div></div></div></td><td><div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Priority, 6 months: R600 per month, R3,600 in total." data-plan="Priority, 6 months (R600 / month)"><div class="flip__inner"><div class="flip__face flip__front" aria-hidden="true"><span class="cell__tier">Priority</span><span class="cell__price"><span class="cell__p">R600</span><small>/ month</small></span></div><div class="flip__face flip__back" aria-hidden="true"><p class="back__name">Priority · 6 months</p><p class="back__price">R600 / month<span>R3,600 total</span></p></div></div></div></td><td><div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Premium, 6 months: R950 per month, R5,700 in total." data-plan="Premium, 6 months (R950 / month)"><div class="flip__inner"><div class="flip__face flip__front" aria-hidden="true"><span class="cell__tier">Premium</span><span class="cell__price"><span class="cell__p">R950</span><small>/ month</small></span></div><div class="flip__face flip__back" aria-hidden="true"><p class="back__name">Premium · 6 months</p><p class="back__price">R950 / month<span>R5,700 total</span></p></div></div></div></td></tr><tr><th scope="row">12 Months</th><td><div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Community, 12 months: R300 per month, R3,600 in total." data-plan="Community, 12 months (R300 / month)"><div class="flip__inner"><div class="flip__face flip__front" aria-hidden="true"><span class="cell__tier">Community</span><span class="cell__price"><span class="cell__p">R300</span><small>/ month</small></span></div><div class="flip__face flip__back" aria-hidden="true"><p class="back__name">Community · 12 months</p><p class="back__price">R300 / month<span>R3,600 total</span></p></div></div></div></td><td><div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Priority, 12 months: R500 per month, R6,000 in total." data-plan="Priority, 12 months (R500 / month)"><div class="flip__inner"><div class="flip__face flip__front" aria-hidden="true"><span class="cell__tier">Priority</span><span class="cell__price"><span class="cell__p">R500</span><small>/ month</small></span></div><div class="flip__face flip__back" aria-hidden="true"><p class="back__name">Priority · 12 months</p><p class="back__price">R500 / month<span>R6,000 total</span></p></div></div></div></td><td><div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Premium, 12 months: R800 per month, R9,600 in total." data-plan="Premium, 12 months (R800 / month)"><div class="flip__inner"><div class="flip__face flip__front" aria-hidden="true"><span class="cell__tier">Premium</span><span class="cell__price"><span class="cell__p">R800</span><small>/ month</small></span></div><div class="flip__face flip__back" aria-hidden="true"><p class="back__name">Premium · 12 months</p><p class="back__price">R800 / month<span>R9,600 total</span></p></div></div></div></td></tr><tr><th scope="row">24 Months</th><td><div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Community, 24 months: R250 per month, R6,000 in total." data-plan="Community, 24 months (R250 / month)"><div class="flip__inner"><div class="flip__face flip__front" aria-hidden="true"><span class="cell__tier">Community</span><span class="cell__price"><span class="cell__p">R250</span><small>/ month</small></span></div><div class="flip__face flip__back" aria-hidden="true"><p class="back__name">Community · 24 months</p><p class="back__price">R250 / month<span>R6,000 total</span></p></div></div></div></td><td><div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Priority, 24 months: R450 per month, R10,800 in total." data-plan="Priority, 24 months (R450 / month)"><div class="flip__inner"><div class="flip__face flip__front" aria-hidden="true"><span class="cell__tier">Priority</span><span class="cell__price"><span class="cell__p">R450</span><small>/ month</small></span></div><div class="flip__face flip__back" aria-hidden="true"><p class="back__name">Priority · 24 months</p><p class="back__price">R450 / month<span>R10,800 total</span></p></div></div></div></td><td><div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Premium, 24 months: R650 per month, R15,600 in total." data-plan="Premium, 24 months (R650 / month)"><div class="flip__inner"><div class="flip__face flip__front" aria-hidden="true"><span class="cell__tier">Premium</span><span class="cell__price"><span class="cell__p">R650</span><small>/ month</small></span></div><div class="flip__face flip__back" aria-hidden="true"><p class="back__name">Premium · 24 months</p><p class="back__price">R650 / month<span>R15,600 total</span></p></div></div></div></td></tr></tbody>
           </table>
         </div>
-        <div class="offer__cta"><a class="btn-line" data-subscribe href="inquire.html?package=family-lifestyle-subscription">Subscribe now</a><span class="offer__price">Averaging R250-R950/month</span></div>
+            <div class="offer__cta"><a class="btn-line" data-subscribe href="inquire.html?package=family-lifestyle-subscription">Subscribe now</a><span class="offer__price">Averaging R250-R950/month</span></div>
+          </div>
+        </div>
       </div>
+      <div class="offer__photos"><figure><img src="images/sub-fa-1.jpg" alt="A mother smiling at her newborn" style="object-position:center 25%" loading="lazy"></figure><figure><img src="images/sub-fa-2.jpg" alt="A couple laughing together on a kerb" style="object-position:center" loading="lazy"></figure></div>
     </section>
-    <div class="strip"><img src="images/sb-1.jpg" alt="A mother smiling at her newborn" style="object-position:center 28%" loading="lazy"><img src="images/sb-2.jpg" alt="A woman in a floral dress holding flowers, wearing yellow boots" style="object-position:center 70%" loading="lazy"><img src="images/sb-3.jpg" alt="A parent holding a sleeping baby’s hand" style="object-position:center 35%" loading="lazy"><img src="images/sb-4.jpg" alt="A couple laughing together on a kerb" style="object-position:center" loading="lazy"></div>
-    <div class="lace-m" role="presentation"></div>
-
-    <section class="offer" id="the-wedding-journey-subscription">
-      <div class="offer__in">
-        <h2>The Wedding Journey Subscription</h2>
-        <p class="is-bold">Choose the level of coverage that suits your wedding journey — from wedding-day photography to a more complete experience including engagements, rehearsal dinners, bachelor/bachelorette celebrations, couple sessions and more.</p><p class="is-bold">The longer and more comprehensive your subscription, the more of your story we get to document.</p>
-        
-        <div class="plans">
+    <section class="offer offer--dark" id="the-wedding-journey-subscription">
+      <div class="offer__content">
+        <div class="offer__in">
+          <h2>The Wedding Journey Subscription</h2>
+          <p>Choose the level of coverage that suits your wedding journey — from wedding-day photography to a more complete experience including engagements, rehearsal dinners, bachelor/bachelorette celebrations, couple sessions and more.</p><p>The longer and more comprehensive your subscription, the more of your story we get to document.</p>
+          
+          <div class="offer__panel">
+            <div class="plans">
           <p class="plans__hint"><span class="hint-hover">Hover over a price to see what’s included.</span><span class="hint-tap">Tap a price to see what’s included.</span></p>
           <table class="plans__table">
             <caption class="sr-only">The Wedding Journey Subscription prices by plan and commitment period</caption>
@@ -257,18 +280,20 @@
             <tbody><tr><th scope="row">6 Months</th><td><div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Essential, 6 months: R600 per month, R3,600 in total. Includes Wedding photography of 4+ hours." data-plan="Essential, 6 months (R600 / month)"><div class="flip__inner"><div class="flip__face flip__front" aria-hidden="true"><span class="cell__tier">Essential</span><span class="cell__price"><span class="cell__p">R600</span><small>/ month</small></span></div><div class="flip__face flip__back" aria-hidden="true"><p class="back__name">Essential · 6 months</p><p class="back__price">R600 / month<span>R3,600 total</span></p><p class="back__tag">Best for simple wedding coverage</p><ul class="back__list"><li>Wedding photography of 4+ hours</li></ul></div></div></div></td><td><div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Celebration, 6 months: R1,000 per month, R6,000 in total. Includes Wedding photography of approximately 4–6 hours; Engagement photography." data-plan="Celebration, 6 months (R1,000 / month)"><div class="flip__inner"><div class="flip__face flip__front" aria-hidden="true"><span class="cell__tier">Celebration</span><span class="cell__price"><span class="cell__p">R1,000</span><small>/ month</small></span></div><div class="flip__face flip__back" aria-hidden="true"><p class="back__name">Celebration · 6 months</p><p class="back__price">R1,000 / month<span>R6,000 total</span></p><p class="back__tag">Best for the full wedding experience</p><ul class="back__list"><li>Wedding photography of approximately 4–6 hours</li><li>Engagement photography</li></ul></div></div></div></td><td><div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Love Story, 6 months: R2,000 per month, R12,000 in total. Includes Wedding photography of 6+ hours; Engagement photography." data-plan="Love Story, 6 months (R2,000 / month)"><div class="flip__inner"><div class="flip__face flip__front" aria-hidden="true"><span class="cell__tier">Love Story</span><span class="cell__price"><span class="cell__p">R2,000</span><small>/ month</small></span></div><div class="flip__face flip__back" aria-hidden="true"><p class="back__name">Love Story · 6 months</p><p class="back__price">R2,000 / month<span>R12,000 total</span></p><p class="back__tag">Best for documenting the whole story</p><ul class="back__list"><li>Wedding photography of 6+ hours</li><li>Engagement photography</li></ul></div></div></div></td></tr><tr><th scope="row">12 Months</th><td><div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Essential, 12 months: R500 per month, R6,000 in total. Includes Wedding photography of 4+ hours." data-plan="Essential, 12 months (R500 / month)"><div class="flip__inner"><div class="flip__face flip__front" aria-hidden="true"><span class="cell__tier">Essential</span><span class="cell__price"><span class="cell__p">R500</span><small>/ month</small></span></div><div class="flip__face flip__back" aria-hidden="true"><p class="back__name">Essential · 12 months</p><p class="back__price">R500 / month<span>R6,000 total</span></p><p class="back__tag">Best for simple wedding coverage</p><ul class="back__list"><li>Wedding photography of 4+ hours</li></ul></div></div></div></td><td><div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Celebration, 12 months: R850 per month, R10,200 in total. Includes Wedding photography of approximately 4–6 hours; Engagement photography." data-plan="Celebration, 12 months (R850 / month)"><div class="flip__inner"><div class="flip__face flip__front" aria-hidden="true"><span class="cell__tier">Celebration</span><span class="cell__price"><span class="cell__p">R850</span><small>/ month</small></span></div><div class="flip__face flip__back" aria-hidden="true"><p class="back__name">Celebration · 12 months</p><p class="back__price">R850 / month<span>R10,200 total</span></p><p class="back__tag">Best for the full wedding experience</p><ul class="back__list"><li>Wedding photography of approximately 4–6 hours</li><li>Engagement photography</li></ul></div></div></div></td><td><div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Love Story, 12 months: R1,600 per month, R19,200 in total. Includes Wedding photography of 6+ hours; Engagement photography; 12-month bonus: bachelor/bachelorette coverage." data-plan="Love Story, 12 months (R1,600 / month)"><div class="flip__inner"><div class="flip__face flip__front" aria-hidden="true"><span class="cell__tier">Love Story</span><span class="cell__price"><span class="cell__p">R1,600</span><small>/ month</small></span></div><div class="flip__face flip__back" aria-hidden="true"><p class="back__name">Love Story · 12 months</p><p class="back__price">R1,600 / month<span>R19,200 total</span></p><p class="back__tag">Best for documenting the whole story</p><ul class="back__list"><li>Wedding photography of 6+ hours</li><li>Engagement photography</li><li>12-month bonus: bachelor/bachelorette coverage</li></ul></div></div></div></td></tr><tr><th scope="row">24 Months</th><td><div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Essential, 24 months: R400 per month, R9,600 in total. Includes Wedding photography of 4+ hours; 24-month bonus: an additional 2 hours of wedding coverage or an engagement session." data-plan="Essential, 24 months (R400 / month)"><div class="flip__inner"><div class="flip__face flip__front" aria-hidden="true"><span class="cell__tier">Essential</span><span class="cell__price"><span class="cell__p">R400</span><small>/ month</small></span></div><div class="flip__face flip__back" aria-hidden="true"><p class="back__name">Essential · 24 months</p><p class="back__price">R400 / month<span>R9,600 total</span></p><p class="back__tag">Best for simple wedding coverage</p><ul class="back__list"><li>Wedding photography of 4+ hours</li><li>24-month bonus: an additional 2 hours of wedding coverage or an engagement session</li></ul></div></div></div></td><td><div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Celebration, 24 months: R700 per month, R16,800 in total. Includes Wedding photography of approximately 4–6 hours; Engagement photography; 24-month bonus: bachelor/bachelorette coverage." data-plan="Celebration, 24 months (R700 / month)"><div class="flip__inner"><div class="flip__face flip__front" aria-hidden="true"><span class="cell__tier">Celebration</span><span class="cell__price"><span class="cell__p">R700</span><small>/ month</small></span></div><div class="flip__face flip__back" aria-hidden="true"><p class="back__name">Celebration · 24 months</p><p class="back__price">R700 / month<span>R16,800 total</span></p><p class="back__tag">Best for the full wedding experience</p><ul class="back__list"><li>Wedding photography of approximately 4–6 hours</li><li>Engagement photography</li><li>24-month bonus: bachelor/bachelorette coverage</li></ul></div></div></div></td><td><div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Love Story, 24 months: R1,300 per month, R31,200 in total. Includes Wedding photography of 6+ hours; Engagement photography; 24-month bonus: rehearsal dinner or an additional 2-hour photoshoot." data-plan="Love Story, 24 months (R1,300 / month)"><div class="flip__inner"><div class="flip__face flip__front" aria-hidden="true"><span class="cell__tier">Love Story</span><span class="cell__price"><span class="cell__p">R1,300</span><small>/ month</small></span></div><div class="flip__face flip__back" aria-hidden="true"><p class="back__name">Love Story · 24 months</p><p class="back__price">R1,300 / month<span>R31,200 total</span></p><p class="back__tag">Best for documenting the whole story</p><ul class="back__list"><li>Wedding photography of 6+ hours</li><li>Engagement photography</li><li>24-month bonus: rehearsal dinner or an additional 2-hour photoshoot</li></ul></div></div></div></td></tr></tbody>
           </table>
         </div>
-        <div class="offer__cta"><span class="offer__price">Averaging R400-R2,000/month</span><a class="btn-line" data-subscribe href="inquire.html?package=the-wedding-journey-subscription">Subscribe now</a></div>
+            <div class="offer__cta"><span class="offer__price">Averaging R400-R2,000/month</span><a class="btn-line" data-subscribe href="inquire.html?package=the-wedding-journey-subscription">Subscribe now</a></div>
+          </div>
+        </div>
       </div>
+      <div class="offer__photos"><figure><img src="images/sub-we-1.jpg" alt="A bride embracing her groom" style="object-position:center" loading="lazy"></figure><figure><img src="images/sub-we-2.jpg" alt="Hands holding white calla lilies" style="object-position:center 30%" loading="lazy"></figure></div>
     </section>
-    <div class="strip"><img src="images/sc-1.jpg" alt="Hand with a ring holding white calla lilies" style="object-position:center 35%" loading="lazy"><img src="images/sc-2.jpg" alt="A couple kissing beneath a willow tree" style="object-position:center 40%" loading="lazy"><img src="images/sc-3.jpg" alt="A couple laughing in a field of long grass" style="object-position:center" loading="lazy"><img src="images/sc-4.jpg" alt="A bride embracing her groom" style="object-position:center" loading="lazy"></div>
-    <div class="lace-m" role="presentation"></div>
-
-    <section class="offer offer--right" id="the-growing-family-subscription">
-      <div class="offer__in">
-        <h2>The Growing Family Subscription</h2>
-        <p class="is-bold">For capturing every beautiful chapter as your family grows.</p><p class="is-bold">Choose the level of coverage that suits your journey — from family lifestyle sessions to a more complete experience including pregnancy announcements, maternity, baby showers, newborn sessions and young family shoots.</p><p class="is-bold">The longer and more comprehensive your subscription, the more milestones we can capture along the way - creating a collection of photographs that tells the story of your growing family.</p>
-        
-        <div class="plans">
+    <section class="offer offer--sand offer--right" id="the-growing-family-subscription">
+      <div class="offer__content">
+        <div class="offer__in">
+          <h2>The Growing Family Subscription</h2>
+          <p class="is-bold">For capturing every beautiful chapter as your family grows.</p><p class="is-bold">Choose the level of coverage that suits your journey — from family lifestyle sessions to a more complete experience including pregnancy announcements, maternity, baby showers, newborn sessions and young family shoots.</p><p class="is-bold">The longer and more comprehensive your subscription, the more milestones we can capture along the way - creating a collection of photographs that tells the story of your growing family.</p>
+          
+          <div class="offer__panel">
+            <div class="plans">
           <p class="plans__hint"><span class="hint-hover">Hover over a price to see what’s included.</span><span class="hint-tap">Tap a price to see what’s included.</span></p>
           <table class="plans__table">
             <caption class="sr-only">The Growing Family Subscription prices by plan and commitment period</caption>
@@ -276,59 +301,61 @@
             <tbody><tr><th scope="row">12 Months</th><td><div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Essential, 12 months: R350 per month, R4,200 in total. Includes Pregnancy announcement session (approx. 1 hour); Maternity session (approx. 2 hours)." data-plan="Essential, 12 months (R350 / month)"><div class="flip__inner"><div class="flip__face flip__front" aria-hidden="true"><span class="cell__tier">Essential</span><span class="cell__price"><span class="cell__p">R350</span><small>/ month</small></span></div><div class="flip__face flip__back" aria-hidden="true"><p class="back__name">Essential · 12 months</p><p class="back__price">R350 / month<span>R4,200 total</span></p><p class="back__tag">For the beginning</p><ul class="back__list"><li>Pregnancy announcement session (approx. 1 hour)</li><li>Maternity session (approx. 2 hours)</li></ul></div></div></div></td><td><div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Story, 12 months: R600 per month, R7,200 in total. Includes Pregnancy announcement session (approx. 2 hours); Maternity session (approx. 2 hours)." data-plan="Story, 12 months (R600 / month)"><div class="flip__inner"><div class="flip__face flip__front" aria-hidden="true"><span class="cell__tier">Story</span><span class="cell__price"><span class="cell__p">R600</span><small>/ month</small></span></div><div class="flip__face flip__back" aria-hidden="true"><p class="back__name">Story · 12 months</p><p class="back__price">R600 / month<span>R7,200 total</span></p><p class="back__tag">For the journey</p><ul class="back__list"><li>Pregnancy announcement session (approx. 2 hours)</li><li>Maternity session (approx. 2 hours)</li></ul></div></div></div></td><td><div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Legacy, 12 months: R1,500 per month, R18,000 in total. Includes Pregnancy announcement session (approx. 1 hour); Maternity session (approx. 2 hours); Newborn session (approx. 1–2 hours); Additional young-family session." data-plan="Legacy, 12 months (R1,500 / month)"><div class="flip__inner"><div class="flip__face flip__front" aria-hidden="true"><span class="cell__tier">Legacy</span><span class="cell__price"><span class="cell__p">R1,500</span><small>/ month</small></span></div><div class="flip__face flip__back" aria-hidden="true"><p class="back__name">Legacy · 12 months</p><p class="back__price">R1,500 / month<span>R18,000 total</span></p><p class="back__tag">For the whole story</p><ul class="back__list"><li>Pregnancy announcement session (approx. 1 hour)</li><li>Maternity session (approx. 2 hours)</li><li>Newborn session (approx. 1–2 hours)</li><li>Additional young-family session</li></ul></div></div></div></td></tr><tr><th scope="row">24 Months</th><td><div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Essential, 24 months: R300 per month, R7,200 in total. Includes Pregnancy announcement session (approx. 1 hour); Maternity session (approx. 2 hours)." data-plan="Essential, 24 months (R300 / month)"><div class="flip__inner"><div class="flip__face flip__front" aria-hidden="true"><span class="cell__tier">Essential</span><span class="cell__price"><span class="cell__p">R300</span><small>/ month</small></span></div><div class="flip__face flip__back" aria-hidden="true"><p class="back__name">Essential · 24 months</p><p class="back__price">R300 / month<span>R7,200 total</span></p><p class="back__tag">For the beginning</p><ul class="back__list"><li>Pregnancy announcement session (approx. 1 hour)</li><li>Maternity session (approx. 2 hours)</li></ul></div></div></div></td><td><div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Story, 24 months: R550 per month, R13,200 in total. Includes Pregnancy announcement session (approx. 2 hours); Maternity session (approx. 2 hours)." data-plan="Story, 24 months (R550 / month)"><div class="flip__inner"><div class="flip__face flip__front" aria-hidden="true"><span class="cell__tier">Story</span><span class="cell__price"><span class="cell__p">R550</span><small>/ month</small></span></div><div class="flip__face flip__back" aria-hidden="true"><p class="back__name">Story · 24 months</p><p class="back__price">R550 / month<span>R13,200 total</span></p><p class="back__tag">For the journey</p><ul class="back__list"><li>Pregnancy announcement session (approx. 2 hours)</li><li>Maternity session (approx. 2 hours)</li></ul></div></div></div></td><td><div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Legacy, 24 months: R950 per month, R22,800 in total. Includes Pregnancy announcement session (approx. 1 hour); Maternity session (approx. 2 hours); Newborn session (approx. 1–2 hours); Additional young-family session." data-plan="Legacy, 24 months (R950 / month)"><div class="flip__inner"><div class="flip__face flip__front" aria-hidden="true"><span class="cell__tier">Legacy</span><span class="cell__price"><span class="cell__p">R950</span><small>/ month</small></span></div><div class="flip__face flip__back" aria-hidden="true"><p class="back__name">Legacy · 24 months</p><p class="back__price">R950 / month<span>R22,800 total</span></p><p class="back__tag">For the whole story</p><ul class="back__list"><li>Pregnancy announcement session (approx. 1 hour)</li><li>Maternity session (approx. 2 hours)</li><li>Newborn session (approx. 1–2 hours)</li><li>Additional young-family session</li></ul></div></div></div></td></tr></tbody>
           </table>
         </div>
-        <div class="offer__cta"><a class="btn-line" data-subscribe href="inquire.html?package=the-growing-family-subscription">Subscribe now</a><span class="offer__price">Averaging R300-R1,500/month</span></div>
+            <div class="offer__cta"><a class="btn-line" data-subscribe href="inquire.html?package=the-growing-family-subscription">Subscribe now</a><span class="offer__price">Averaging R300-R1,500/month</span></div>
+          </div>
+        </div>
       </div>
+      <div class="offer__photos"><figure><img src="images/sub-gr-1.jpg" alt="A newborn’s feet held in a parent’s hands" style="object-position:center 40%" loading="lazy"></figure><figure><img src="images/sub-gr-2.jpg" alt="A family sitting together on a picnic blanket by a lake" style="object-position:center 60%" loading="lazy"></figure></div>
     </section>
-    <div class="strip"><img src="images/sd-1.jpg" alt="Black and white photo of a parent holding a baby" style="object-position:center 30%" loading="lazy"><img src="images/sd-2.jpg" alt="A couple kissing with their baby between them" style="object-position:center 38%" loading="lazy"><img src="images/sd-3.jpg" alt="A family sitting together on a picnic blanket by a lake" style="object-position:center 68%" loading="lazy"><img src="images/sd-4.jpg" alt="A newborn’s feet held in a parent’s hands" style="object-position:center 40%" loading="lazy"></div>
-    <div class="lace-m" role="presentation"></div>
     </div>
 
     <section class="details" id="good-to-know" aria-labelledby="gtk-title">
       <div class="details__in">
         <h2 id="gtk-title">Good to know</h2>
         <p class="details__lead">The practical details for each kind of subscription. You’ll receive the full subscription agreement to read and sign before you begin.</p>
-        <nav class="gtk-jump" aria-label="Choose your subscription">
-          <a href="#gtk-sessions"><span>Creator &amp; Influencer</span><span>Family &amp; Lifestyle</span></a>
-          <a href="#gtk-milestones"><span>The Wedding Journey</span><span>The Growing Family</span></a>
-        </nav>
 
-        <div class="gtk-group" id="gtk-sessions">
+        <div class="gtk-tabs" role="tablist" aria-label="Choose your subscription">
+          <button type="button" class="gtk-tab" role="tab" id="tab-sessions" aria-controls="gtk-sessions" aria-selected="false" data-target="gtk-sessions"><span>Creator &amp; Influencer</span><span>Family &amp; Lifestyle</span></button>
+          <button type="button" class="gtk-tab" role="tab" id="tab-milestones" aria-controls="gtk-milestones" aria-selected="false" data-target="gtk-milestones"><span>The Wedding Journey</span><span>The Growing Family</span></button>
+        </div>
+        <p class="gtk-hint" id="gtk-hint">Choose a subscription above to see its details.</p>
+
+        <div class="gtk-panel" id="gtk-sessions" role="tabpanel" aria-labelledby="tab-sessions" hidden>
           <h3>Creator &amp; Influencer <i>&amp;</i> Family &amp; Lifestyle</h3>
           <p class="gtk-group__lead">These details apply to the Creator &amp; Influencer and Family &amp; Lifestyle subscriptions.</p>
           <div class="acc">
-          <details open><summary><span class="acc__title">Your sessions</span></summary><div class="acc__body"><p>Your included sessions are planned <b>20-minute sessions</b>, styled around the monthly concepts, themes, seasons or photography opportunities I share with you. Twenty minutes keeps things relaxed and easy to fit into your life.</p><p>A <b>40-minute session</b> isn’t a standard monthly session unless your subscription lists it as a benefit (as the Priority and Pro Creator plans do). Where your plan includes one, it’s booked in advance and is ideal for birthdays and special events, a particular location, a more involved lifestyle session or a specific content need.</p></div></details>
-          <details><summary><span class="acc__title">Monthly planning &amp; booking</span></summary><div class="acc__body"><p>At the beginning of each month you’ll receive an email with that month’s styled sessions, concepts and locations. Reply to choose the session(s) you’d like to attend.</p><p>Sessions have limited availability and are booked <b>first-come, first-served</b>. Your subscription guarantees you access to the monthly booking opportunity, but not a place in one particular session, date, location or concept, so book early, especially for 40-minute sessions, specific locations, birthdays and events.</p><p>If you’ve confirmed a session and can’t make it, please let me know as soon as you can. Without reasonable notice, the session may be treated as used.</p></div></details>
-          <details><summary><span class="acc__title">Bring friends or collaborators</span></summary><div class="acc__body"><p>For an additional fee equal to <b>20% of your monthly subscription</b>, you can include <b>up to 5 additional people</b> in a single session: a friends’ photoshoot, a creator collaboration, a group content session or a small friendship group.</p><p>Please arrange this in advance and let me know before the session. For larger groups, or sessions that become more complex, I may suggest a longer session or a separate quote. Additional people don’t become subscribers, so they don’t receive credits or booking rights.</p></div></details>
-          <details><summary><span class="acc__title">Session credits</span></summary><div class="acc__body"><p>If you don’t use an included session in a month, it carries forward as a <b>session credit</b>. You can hold up to <b>3 unused sessions</b> at any time; beyond that, extra unused sessions are forfeited.</p><p>Credits and sessions have no cash value and can’t be refunded, exchanged or transferred to someone else.</p></div></details>
-          <details><summary><span class="acc__title">Payment</span></summary><div class="acc__body"><p>Subscriptions are paid monthly, on a payment date we agree when you join. Each month’s payment is made before that month’s sessions and benefits are used.</p><p>If a payment is missed, the subscription may be suspended: no new sessions are scheduled and no new galleries are delivered until the account is up to date. Photographs you’ve already received are always yours to keep.</p></div></details>
-          <details><summary><span class="acc__title">Changing or cancelling</span></summary><div class="acc__body"><p>You can ask to change your subscription level at any time. Changes are subject to availability and take effect once confirmed in writing.</p><p>You can cancel with <b>30 days’ written notice</b>. A cancellation fee of <b>50% of your total subscription fees over the agreed term</b> applies; it covers planning, scheduling and the availability reserved for you. For example, a 6-month subscription at R350 a month (R2,100 in total) would carry a cancellation fee of R1,050.</p></div></details>
-          <details><summary><span class="acc__title">Your photographs</span></summary><div class="acc__body"><p>Professionally edited photographs from standard 20-minute sessions are delivered within <b>10 business days</b>, usually through an online gallery. If a gallery is especially large, I’ll let you know about any delay.</p><p>Please download and safely store your photographs once your gallery arrives. Galleries aren’t kept online permanently and gallery links may expire.</p></div></details>
-          <details><summary><span class="acc__title">Locations, travel &amp; weather</span></summary><div class="acc__body"><p>Sessions within <b>40 km of Durbanville, Cape Town</b> are included. Further than that, a travel fee applies and is confirmed with you before the session. Any location costs such as entrance fees, parking or permits are paid by the client.</p><p>If the weather makes an outdoor session impractical or unsafe, we’ll reschedule it, and that won’t count as a missed session.</p></div></details>
+            <details open><summary><span class="acc__title">Your sessions</span></summary><div class="acc__body"><p>Your included sessions are planned <b>20-minute sessions</b>, styled around the monthly concepts, themes, seasons or photography opportunities I share with you. Twenty minutes keeps things relaxed and easy to fit into your life.</p><p>A <b>40-minute session</b> isn’t a standard monthly session unless your subscription lists it as a benefit (as the Priority and Pro Creator plans do). Where your plan includes one, it’s booked in advance and is ideal for birthdays and special events, a particular location, a more involved lifestyle session or a specific content need.</p></div></details>
+            <details><summary><span class="acc__title">Monthly planning &amp; booking</span></summary><div class="acc__body"><p>At the beginning of each month you’ll receive an email with that month’s styled sessions, concepts and locations. Reply to choose the session(s) you’d like to attend.</p><p>Sessions have limited availability and are booked <b>first-come, first-served</b>. Your subscription guarantees you access to the monthly booking opportunity, but not a place in one particular session, date, location or concept, so book early, especially for 40-minute sessions, specific locations, birthdays and events.</p><p>If you’ve confirmed a session and can’t make it, please let me know as soon as you can. Without reasonable notice, the session may be treated as used.</p></div></details>
+            <details><summary><span class="acc__title">Bring friends or collaborators</span></summary><div class="acc__body"><p>For an additional fee equal to <b>20% of your monthly subscription</b>, you can include <b>up to 5 additional people</b> in a single session: a friends’ photoshoot, a creator collaboration, a group content session or a small friendship group.</p><p>Please arrange this in advance and let me know before the session. For larger groups, or sessions that become more complex, I may suggest a longer session or a separate quote. Additional people don’t become subscribers, so they don’t receive credits or booking rights.</p></div></details>
+            <details><summary><span class="acc__title">Session credits</span></summary><div class="acc__body"><p>If you don’t use an included session in a month, it carries forward as a <b>session credit</b>. You can hold up to <b>3 unused sessions</b> at any time; beyond that, extra unused sessions are forfeited.</p><p>Credits and sessions have no cash value and can’t be refunded, exchanged or transferred to someone else.</p></div></details>
+            <details><summary><span class="acc__title">Payment</span></summary><div class="acc__body"><p>Subscriptions are paid monthly, on a payment date we agree when you join. Each month’s payment is made before that month’s sessions and benefits are used.</p><p>If a payment is missed, the subscription may be suspended: no new sessions are scheduled and no new galleries are delivered until the account is up to date. Photographs you’ve already received are always yours to keep.</p></div></details>
+            <details><summary><span class="acc__title">Changing or cancelling</span></summary><div class="acc__body"><p>You can ask to change your subscription level at any time. Changes are subject to availability and take effect once confirmed in writing.</p><p>You can cancel with <b>30 days’ written notice</b>. A cancellation fee of <b>50% of your total subscription fees over the agreed term</b> applies; it covers planning, scheduling and the availability reserved for you. For example, a 6-month subscription at R350 a month (R2,100 in total) would carry a cancellation fee of R1,050.</p></div></details>
+            <details><summary><span class="acc__title">Your photographs</span></summary><div class="acc__body"><p>Professionally edited photographs from standard 20-minute sessions are delivered within <b>10 business days</b>, usually through an online gallery. If a gallery is especially large, I’ll let you know about any delay.</p><p>Please download and safely store your photographs once your gallery arrives. Galleries aren’t kept online permanently and gallery links may expire.</p></div></details>
+            <details><summary><span class="acc__title">Locations, travel &amp; weather</span></summary><div class="acc__body"><p>Sessions within <b>40 km of Durbanville, Cape Town</b> are included. Further than that, a travel fee applies and is confirmed with you before the session. Any location costs such as entrance fees, parking or permits are paid by the client.</p><p>If the weather makes an outdoor session impractical or unsafe, we’ll reschedule it, and that won’t count as a missed session.</p></div></details>
           </div>
         </div>
 
-        <div class="lace-m" role="presentation"></div>
-
-        <div class="gtk-group" id="gtk-milestones">
+        <div class="gtk-panel" id="gtk-milestones" role="tabpanel" aria-labelledby="tab-milestones" hidden>
           <h3>The Wedding Journey <i>&amp;</i> The Growing Family</h3>
           <p class="gtk-group__lead">These details apply to The Wedding Journey and The Growing Family subscriptions. Where something applies to only one, it’s labelled.</p>
           <div class="acc">
-          <details open><summary><span class="acc__title">How your subscription works</span><span class="acc__tag">Both</span></summary><div class="acc__body"><p><b>Wedding Journey:</b> rather than booking each session or event separately, you commit to a subscription period of 6, 12 or 24 months and receive the photography services of your chosen tier: Essential, Celebration or Love Story.</p><p><b>Growing Family:</b> this isn’t simply a set of individual photoshoots, but a continuing visual record of your family’s story over 12 or 24 months. You don’t need to know your session dates when you sign; we plan each stage together as your family’s season unfolds.</p></div></details>
-          <details><summary><span class="acc__title">Booking &amp; your wedding date</span><span class="acc__tag">Wedding Journey</span></summary><div class="acc__body"><p>All sessions and wedding dates are subject to my availability, and a subscription doesn’t guarantee availability on every date you request. Please share your preferred dates as early as you reasonably can.</p><p>Reserve your wedding date as early as possible. Once I’ve confirmed it in writing, that date is reserved for you under the terms of your agreement.</p></div></details>
-          <details><summary><span class="acc__title">Wedding coverage</span><span class="acc__tag">Wedding Journey</span></summary><div class="acc__body"><p>The hours in your tier refer to <b>photography coverage</b>, not necessarily the total length of your wedding day. Extra hours can be added at my current additional-hour rate, subject to availability.</p><p>Travel outside my standard service area may carry a travel fee, which I’ll confirm before your booking is confirmed.</p></div></details>
-          <details><summary><span class="acc__title">Engagement &amp; additional sessions</span><span class="acc__tag">Wedding Journey</span></summary><div class="acc__body"><p>Where your tier includes an engagement session or additional photoshoot, we’ll schedule it at a mutually agreed date and location, within your active subscription period unless we agree otherwise in writing.</p><p>Additional sessions can be booked separately at my current rates.</p></div></details>
-          <details><summary><span class="acc__title">Your family’s timeline</span><span class="acc__tag">Growing Family</span></summary><div class="acc__body"><p>Your sessions follow the seasons of your family: pregnancy announcement, maternity, newborn, then young family. The exact timing depends on your circumstances, and we plan each stage together.</p></div></details>
-          <details><summary><span class="acc__title">What counts as a session</span><span class="acc__tag">Growing Family</span></summary><div class="acc__body"><p>A session is one photography experience of the approximate length shown in your plan. It can take place at your home, outdoors, in a studio or at another agreed location.</p><p>Location fees, entrance fees, studio hire, travel outside my standard service area and other third-party costs aren’t included unless stated.</p></div></details>
-          <details><summary><span class="acc__title">Newborn photography</span><span class="acc__tag">Growing Family</span></summary><div class="acc__body"><p>Newborn sessions are planned around your baby’s needs, with a calm, safe, baby-led approach. I won’t perform any pose or action I reasonably consider unsafe, and parents or guardians remain responsible for their child throughout the session.</p></div></details>
-          <details><summary><span class="acc__title">Payment</span><span class="acc__tag">Both</span></summary><div class="acc__body"><p>Your subscription is paid monthly for the full term, on the payment date we agree when you sign.</p><p><b>Wedding Journey:</b> a subscription is not a credit facility. If payments are overdue, services may be paused, subject to applicable law and your agreement.</p></div></details>
-          <details><summary><span class="acc__title">Rescheduling &amp; missed sessions</span><span class="acc__tag">Both</span></summary><div class="acc__body"><p>With reasonable notice, sessions can be rescheduled, subject to my availability. If weather affects a session, it moves to another mutually suitable date.</p><p><b>Growing Family:</b> if a session needs to move because of illness, pregnancy-related circumstances, your baby’s needs or another reasonable circumstance, I’ll work with you to find a new date, and genuine family and pregnancy circumstances are always considered sympathetically.</p><p>If a confirmed session is repeatedly missed without reasonable notice, it may be treated as used, where reasonable and lawful.</p></div></details>
-          <details><summary><span class="acc__title">Cancellation</span><span class="acc__tag">Both</span></summary><div class="acc__body"><p>You can cancel in line with South African consumer law and the rules for fixed-term consumer agreements, by giving written notice. If you cancel before the end of your term, any cancellation fee or other amount payable is determined in accordance with applicable law and the circumstances. Nothing in your agreement limits your rights under the Consumer Protection Act or other applicable law.</p><p>I may end the agreement if there is a material breach that isn’t put right within a reasonable period after written notice.</p><p><b>Wedding Journey:</b> if I’m unable to fulfil a confirmed booking for reasons within my control, I’ll make reasonable efforts to provide a suitable alternative, including (with your agreement) a replacement photographer. If no suitable alternative is accepted, you’ll receive the remedy required by the circumstances and the law. I’m not responsible for failure to perform caused by circumstances beyond reasonable control, such as serious illness, natural disasters, venue closure or government restrictions.</p></div></details>
-          <details><summary><span class="acc__title">Expiry &amp; renewal</span><span class="acc__tag">Both</span></summary><div class="acc__body"><p>Your subscription ends at the end of the agreed term unless it’s renewed or continued in line with applicable law. I’ll contact you before it expires with your renewal options, and any renewal is subject to the pricing and terms that apply at the time.</p></div></details>
-          <details><summary><span class="acc__title">Your photographs &amp; copyright</span><span class="acc__tag">Both</span></summary><div class="acc__body"><p>Final photographs are professionally edited and delivered through an online gallery. You may download and share them for personal use, and with a Wedding Journey subscription you also receive a personal, non-exclusive licence to print them.</p><p>Copyright remains with Joyful Studios unless we agree otherwise in writing. <b>Wedding Journey:</b> photographs may not be sold, commercially licensed, substantially altered or used for commercial purposes without written permission.</p></div></details>
-          <details><summary><span class="acc__title">Photographic style</span><span class="acc__tag">Both</span></summary><div class="acc__body"><p>I work in a film-inspired, documentary and cinematic style, aiming to capture authentic moments and the character of your story rather than identical or heavily posed photographs. Your final gallery will reflect my artistic style and creative judgement, including composition, lighting, editing and image selection.</p></div></details>
-          <details><summary><span class="acc__title">Portfolio, children &amp; privacy</span><span class="acc__tag">Both</span></summary><div class="acc__body"><p>You choose whether I may use photographs from your sessions for my portfolio, website and social media. This is part of your agreement, and you can withdraw permission for future use by contacting me in writing.</p><p><b>Growing Family:</b> where photographs include children, you confirm that you’re authorised to consent to their participation.</p><p>Personal information is used only to administer your subscription, communicate with you, arrange sessions and deliver your photographs, and is handled in line with POPIA where applicable.</p></div></details>
+            <details open><summary><span class="acc__title">How your subscription works</span><span class="acc__tag">Both</span></summary><div class="acc__body"><p><b>Wedding Journey:</b> rather than booking each session or event separately, you commit to a subscription period of 6, 12 or 24 months and receive the photography services of your chosen tier: Essential, Celebration or Love Story.</p><p><b>Growing Family:</b> this isn’t simply a set of individual photoshoots, but a continuing visual record of your family’s story over 12 or 24 months. You don’t need to know your session dates when you sign; we plan each stage together as your family’s season unfolds.</p></div></details>
+            <details><summary><span class="acc__title">Booking &amp; your wedding date</span><span class="acc__tag">Wedding Journey</span></summary><div class="acc__body"><p>All sessions and wedding dates are subject to my availability, and a subscription doesn’t guarantee availability on every date you request. Please share your preferred dates as early as you reasonably can.</p><p>Reserve your wedding date as early as possible. Once I’ve confirmed it in writing, that date is reserved for you under the terms of your agreement.</p></div></details>
+            <details><summary><span class="acc__title">Wedding coverage</span><span class="acc__tag">Wedding Journey</span></summary><div class="acc__body"><p>The hours in your tier refer to <b>photography coverage</b>, not necessarily the total length of your wedding day. Extra hours can be added at my current additional-hour rate, subject to availability.</p><p>Travel outside my standard service area may carry a travel fee, which I’ll confirm before your booking is confirmed.</p></div></details>
+            <details><summary><span class="acc__title">Engagement &amp; additional sessions</span><span class="acc__tag">Wedding Journey</span></summary><div class="acc__body"><p>Where your tier includes an engagement session or additional photoshoot, we’ll schedule it at a mutually agreed date and location, within your active subscription period unless we agree otherwise in writing.</p><p>Additional sessions can be booked separately at my current rates.</p></div></details>
+            <details><summary><span class="acc__title">Your family’s timeline</span><span class="acc__tag">Growing Family</span></summary><div class="acc__body"><p>Your sessions follow the seasons of your family: pregnancy announcement, maternity, newborn, then young family. The exact timing depends on your circumstances, and we plan each stage together.</p></div></details>
+            <details><summary><span class="acc__title">What counts as a session</span><span class="acc__tag">Growing Family</span></summary><div class="acc__body"><p>A session is one photography experience of the approximate length shown in your plan. It can take place at your home, outdoors, in a studio or at another agreed location.</p><p>Location fees, entrance fees, studio hire, travel outside my standard service area and other third-party costs aren’t included unless stated.</p></div></details>
+            <details><summary><span class="acc__title">Newborn photography</span><span class="acc__tag">Growing Family</span></summary><div class="acc__body"><p>Newborn sessions are planned around your baby’s needs, with a calm, safe, baby-led approach. I won’t perform any pose or action I reasonably consider unsafe, and parents or guardians remain responsible for their child throughout the session.</p></div></details>
+            <details><summary><span class="acc__title">Payment</span><span class="acc__tag">Both</span></summary><div class="acc__body"><p>Your subscription is paid monthly for the full term, on the payment date we agree when you sign.</p><p><b>Wedding Journey:</b> a subscription is not a credit facility. If payments are overdue, services may be paused, subject to applicable law and your agreement.</p></div></details>
+            <details><summary><span class="acc__title">Rescheduling &amp; missed sessions</span><span class="acc__tag">Both</span></summary><div class="acc__body"><p>With reasonable notice, sessions can be rescheduled, subject to my availability. If weather affects a session, it moves to another mutually suitable date.</p><p><b>Growing Family:</b> if a session needs to move because of illness, pregnancy-related circumstances, your baby’s needs or another reasonable circumstance, I’ll work with you to find a new date, and genuine family and pregnancy circumstances are always considered sympathetically.</p><p>If a confirmed session is repeatedly missed without reasonable notice, it may be treated as used, where reasonable and lawful.</p></div></details>
+            <details><summary><span class="acc__title">Cancellation</span><span class="acc__tag">Both</span></summary><div class="acc__body"><p>You can cancel in line with South African consumer law and the rules for fixed-term consumer agreements, by giving written notice. If you cancel before the end of your term, any cancellation fee or other amount payable is determined in accordance with applicable law and the circumstances. Nothing in your agreement limits your rights under the Consumer Protection Act or other applicable law.</p><p>I may end the agreement if there is a material breach that isn’t put right within a reasonable period after written notice.</p><p><b>Wedding Journey:</b> if I’m unable to fulfil a confirmed booking for reasons within my control, I’ll make reasonable efforts to provide a suitable alternative, including (with your agreement) a replacement photographer. If no suitable alternative is accepted, you’ll receive the remedy required by the circumstances and the law. I’m not responsible for failure to perform caused by circumstances beyond reasonable control, such as serious illness, natural disasters, venue closure or government restrictions.</p></div></details>
+            <details><summary><span class="acc__title">Expiry &amp; renewal</span><span class="acc__tag">Both</span></summary><div class="acc__body"><p>Your subscription ends at the end of the agreed term unless it’s renewed or continued in line with applicable law. I’ll contact you before it expires with your renewal options, and any renewal is subject to the pricing and terms that apply at the time.</p></div></details>
+            <details><summary><span class="acc__title">Your photographs &amp; copyright</span><span class="acc__tag">Both</span></summary><div class="acc__body"><p>Final photographs are professionally edited and delivered through an online gallery. You may download and share them for personal use, and with a Wedding Journey subscription you also receive a personal, non-exclusive licence to print them.</p><p>Copyright remains with Joyful Studios unless we agree otherwise in writing. <b>Wedding Journey:</b> photographs may not be sold, commercially licensed, substantially altered or used for commercial purposes without written permission.</p></div></details>
+            <details><summary><span class="acc__title">Photographic style</span><span class="acc__tag">Both</span></summary><div class="acc__body"><p>I work in a film-inspired, documentary and cinematic style, aiming to capture authentic moments and the character of your story rather than identical or heavily posed photographs. Your final gallery will reflect my artistic style and creative judgement, including composition, lighting, editing and image selection.</p></div></details>
+            <details><summary><span class="acc__title">Portfolio, children &amp; privacy</span><span class="acc__tag">Both</span></summary><div class="acc__body"><p>You choose whether I may use photographs from your sessions for my portfolio, website and social media. This is part of your agreement, and you can withdraw permission for future use by contacting me in writing.</p><p><b>Growing Family:</b> where photographs include children, you confirm that you’re authorised to consent to their participation.</p><p>Personal information is used only to administer your subscription, communicate with you, arrange sessions and deliver your photographs, and is handled in line with POPIA where applicable.</p></div></details>
           </div>
         </div>
+        <noscript><style>.gtk-panel[hidden] { display: block; } .gtk-hint { display: none; }</style></noscript>
       </div>
     </section>
 
@@ -362,7 +389,7 @@
 
   <script src="script.js"></script>
   <script>
-    // Plan tables: cards flip on hover (or tap) to show what's included
+    // 1) Plan tables: cards flip on hover (or tap) to show what's included
     (function () {
       var mobile = window.matchMedia('(max-width: 700px)');
       document.querySelectorAll('.plans').forEach(function (plans) {
@@ -406,6 +433,51 @@
         if (mobile.addEventListener) mobile.addEventListener('change', sizeAll);
         if (document.fonts && document.fonts.ready) document.fonts.ready.then(sizeAll);
       });
+    })();
+
+    // 2) Good to know: click a subscription group to reveal only that group's details
+    (function () {
+      var tabs = Array.prototype.slice.call(document.querySelectorAll('.gtk-tab'));
+      var hint = document.getElementById('gtk-hint');
+      var section = document.getElementById('good-to-know');
+      if (!tabs.length) return;
+
+      function show(id) {
+        tabs.forEach(function (t) {
+          var on = (t.getAttribute('data-target') === id);
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+          document.getElementById(t.getAttribute('data-target')).hidden = !on;
+        });
+        hint.hidden = !!id;
+      }
+      function toggle(id) {
+        var already = document.getElementById(id) && !document.getElementById(id).hidden;
+        show(already ? null : id);
+      }
+
+      tabs.forEach(function (t) {
+        t.addEventListener('click', function () { toggle(t.getAttribute('data-target')); });
+      });
+
+      // links elsewhere on the page / other pages (…#gtk-sessions or …#gtk-milestones) open the right group
+      function fromHash() {
+        var id = window.location.hash.replace('#', '');
+        if (id === 'gtk-sessions' || id === 'gtk-milestones') {
+          show(id);
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest ? e.target.closest('a[href^="#gtk-"]') : null;
+        if (!a) return;
+        e.preventDefault();
+        var id = a.getAttribute('href').replace('#', '');
+        show(id);
+        history.replaceState(null, '', '#' + id);
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      window.addEventListener('hashchange', fromHash);
+      fromHash();
     })();
   </script>
 </body>

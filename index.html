@@ -122,70 +122,8 @@
         .btn--soft { font-size: 14px; padding: 4px 22px; }
     .hero .btn { text-transform: uppercase; }
 
-    /* ---------- Packages ---------- */
-    .packages { padding: clamp(48px, 7vw, 90px) var(--pad) clamp(56px, 8vw, 110px); }
-    .packages h2 {
-      margin: 0 0 clamp(28px, 4vw, 52px); text-align: center;
-      font-family: var(--font-display); font-weight: 400; font-size: clamp(24px, 2.6vw, 32px);
-      letter-spacing: .03em; text-transform: uppercase;
-    }
-    .packages__grid {
-      max-width: 1180px; margin: 0 auto;
-      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(18px, 2.4vw, 36px);
-    }
-    .pkg {
-      border: 26px solid transparent;
-      border-image: url("images/lace-frame.png") 60 fill / 26px round;
-      padding: 10px clamp(8px, 1.2vw, 16px) 6px;
-      text-align: center;
-      display: flex; flex-direction: column;
-      font-size: 14.5px; line-height: 1.45;
-      min-height: 580px;
-    }
-    .pkg h3 {
-      margin: 6px 0 10px; font-family: var(--font-display); font-weight: 400;
-      font-size: clamp(22px, 2vw, 27px); line-height: 1.15; letter-spacing: .01em;
-    }
-    .pkg h3 a:hover { text-decoration: underline; text-underline-offset: 5px; }
-    .pkg__hint { margin: 0 0 14px; font-size: 12.5px; font-style: italic; opacity: .75; }
-    .hint-tap { display: none; }
-    @media (hover: none) { .hint-hover { display: none; } .hint-tap { display: inline; } }
-    .pkg__intro { margin: 0 0 8px; text-align: left; font-weight: 700; }
-    .pkg__list { text-align: left; border-top: 1px solid rgba(53, 50, 43, .22); align-self: stretch; }
-    .pkg__note { margin: 14px 0 0; text-align: left; font-size: 13.5px; }
-
-    .pkg-item { border-bottom: 1px solid rgba(53, 50, 43, .22); }
-    .pkg-item__name {
-      width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 12px;
-      background: none; border: 0; padding: 10px 2px; margin: 0;
-      font: inherit; font-weight: 700; color: inherit; text-align: left; cursor: pointer;
-    }
-    .pkg-item__name::after { content: "+"; font-weight: 400; font-size: 20px; line-height: 1; flex: none; }
-    .pkg-item.is-open .pkg-item__name::after { content: "\2013"; }
-    .pkg-item__name:focus-visible { outline-color: var(--charcoal); outline-offset: 0; }
-
-    .pkg-item__detail { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease; }
-    .pkg-item__detail > div { overflow: hidden; min-height: 0; }
-    .pkg-item.is-open .pkg-item__detail,
-    .pkg-item__name:focus-visible + .pkg-item__detail { grid-template-rows: 1fr; }
-    .pkg-detail { padding: 0 2px 12px; }
-    .pkg-price { display: block; margin-bottom: 4px; font-family: var(--font-display); font-size: 21px; line-height: 1.2; }
-    .pkg-points { margin: 0; padding-left: 18px; }
-    .pkg-points li { margin-bottom: 2px; }
-    .pkg-desc { margin: 0; }
-    .pkg-blurb { margin: 8px 0 0; font-style: italic; }
-    @media (hover: hover) {
-      .pkg-item:hover .pkg-item__detail { grid-template-rows: 1fr; }
-      .pkg-item:hover .pkg-item__name::after { content: "\2013"; }
-    }
-
-    .pkg__foot { text-align: center; margin-top: auto; padding-top: 14px; }
-    .pkg .btn { font-size: 13px; padding: 3px 18px; }
-
     /* ---------- Responsive ---------- */
     @media (max-width: 900px) {
-      .packages__grid { grid-template-columns: 1fr; max-width: 460px; }
-      .pkg { min-height: 0; }
       .about { grid-template-columns: 1fr; }
       .about__text, .postcard { justify-self: center; }
       .postcard { margin-bottom: 40px; }
@@ -195,22 +133,91 @@
       .hero__arrow { width: 36px; }
     }
     @media (prefers-reduced-motion: reduce) {
-      .slide, .pkg-item__detail { transition: none; }
     }
 
     /* ---------- Design update: bolder headings, band text ---------- */
     .about h2 { font-family: var(--font-body); font-weight: 700; letter-spacing: .01em; }
     .about h3 { font-family: var(--font-body); font-weight: 400; color: var(--cream); letter-spacing: .02em; }
-    .packages h2 { font-family: var(--font-body); font-weight: 700; }
-    .pkg h3 { font-family: var(--font-body); font-weight: 400; font-size: clamp(19px, 1.8vw, 24px); }
     .band { position: relative; height: clamp(300px, 44vw, 640px); background-position: center 28%; }
     .band::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top right, rgba(20,18,10,.5), transparent 60%); }
-    .band__text {
-      position: absolute; z-index: 2; left: var(--pad); bottom: clamp(24px, 7vw, 100px); max-width: 92%; margin: 0;
-      font-family: var(--font-body); font-weight: 700; font-size: clamp(20px, 2.8vw, 40px); line-height: 1.12;
-      letter-spacing: .01em; text-transform: uppercase; color: var(--cream); text-shadow: 0 2px 16px rgba(0,0,0,.45);
+  
+    /* ---------- Pricing component ---------- */
+    .pricer { display: grid; grid-template-columns: minmax(0, 1fr) 24%; background: #2d2b25; color: #faf1e1; }
+    .pricer__content { min-width: 0; padding: clamp(34px, 4.6vw, 64px) clamp(18px, 3.6vw, 54px) clamp(40px, 5vw, 70px); }
+    .pricer__head { position: relative; display: flex; justify-content: center; margin-bottom: clamp(18px, 2.6vw, 32px); }
+    .pricer__cat { display: inline-flex; align-items: center; gap: clamp(12px, 1.6vw, 18px); padding: 4px 10px; background: none; border: 0; color: inherit; font-family: var(--font-body); font-size: clamp(28px, 3.6vw, 46px); line-height: 1.1; cursor: pointer; }
+    .pricer__cat:focus-visible { outline: 2px solid #faf1e1; outline-offset: 4px; border-radius: 8px; }
+    .pricer__chev { display: grid; place-items: center; flex: none; width: clamp(30px, 3vw, 40px); aspect-ratio: 1; border-radius: 50%; background: #faf1e1; color: #2d2b25; transition: transform .25s; }
+    .pricer__cat[aria-expanded="true"] .pricer__chev { transform: rotate(180deg); }
+    .pricer__menu { position: absolute; top: calc(100% + 6px); left: 50%; transform: translateX(-50%); z-index: 20; min-width: min(320px, 90vw); padding: 8px; background: #38362f; border: 1px solid #49463e; border-radius: 10px; box-shadow: 0 16px 36px rgba(0, 0, 0, .4); }
+    .pricer__menu[hidden] { display: none; }
+    .pricer__menu button { display: block; width: 100%; padding: 12px 16px; text-align: left; background: none; border: 0; border-radius: 6px; color: inherit; font: inherit; font-size: 18px; cursor: pointer; }
+    .pricer__menu button:hover, .pricer__menu button:focus-visible, .pricer__menu button[aria-checked="true"] { background: rgba(250, 241, 225, .14); }
+
+    .pricer__panel[hidden], .pset[hidden], .pricer__ph[hidden] { display: none; }
+    .pricer__grid { display: grid; grid-template-columns: minmax(120px, 190px) minmax(0, 1fr) minmax(0, 1fr); column-gap: clamp(14px, 2.2vw, 28px); row-gap: 12px; max-width: 1000px; margin: 0 auto; }
+    .pset, .pcard { display: contents; }
+    .pset > .pcard:nth-child(1) > * { grid-column: 2; }
+    .pset > .pcard:nth-child(2) > * { grid-column: 3; }
+    .pcard__tier { grid-row: 1; align-self: end; margin: 0; text-align: center; font-family: var(--font-body); font-weight: 700; font-size: clamp(16px, 1.9vw, 25px); letter-spacing: .06em; text-transform: uppercase; }
+    .pcard__box { grid-row: 2; display: flex; flex-direction: column; padding: clamp(12px, 1.5vw, 20px); background: #cdc1ab; color: #2d2b25; border-radius: 18px; }
+    .pcard__price { padding: clamp(14px, 2vw, 24px) 10px clamp(12px, 1.6vw, 20px); text-align: center; background: #faf1e1; border-radius: 22px; }
+    .pcard__price strong { display: block; font-weight: 400; font-size: clamp(30px, 3.8vw, 50px); line-height: 1.05; }
+    .pcard__price small { display: block; margin-top: 6px; font-size: clamp(11px, 1vw, 13px); letter-spacing: .04em; opacity: .7; }
+    .pcard__tag { margin: 14px 4px 0; font-style: italic; font-size: clamp(14px, 1.3vw, 17px); opacity: .85; }
+    .pcard__list { flex: 1; margin: 12px 0 18px; padding-left: 1.2em; font-size: clamp(14px, 1.4vw, 18px); line-height: 1.35; }
+    .pcard__list li { margin-bottom: 5px; }
+    .pcard__btn { align-self: center; margin-top: auto; padding: 8px 30px; border: 1px solid #faf1e1; border-radius: 999px; color: #faf1e1; font-size: clamp(15px, 1.5vw, 19px); letter-spacing: .03em; transition: background .25s, color .25s; }
+    .pcard__btn:hover, .pcard__btn:focus-visible { background: #2d2b25; border-color: #2d2b25; color: #faf1e1; }
+
+    .tl { grid-column: 1; grid-row: 2; position: relative; display: flex; flex-direction: column; justify-content: space-between; --dot: 24px; padding: 4px 0; }
+    .tl::before { content: ""; position: absolute; top: 18px; bottom: 18px; right: calc(var(--dot) / 2 - 2px); width: 4px; border-radius: 2px; background: #faf1e1; }
+    .tl__node { position: relative; z-index: 1; display: flex; align-items: center; justify-content: flex-end; gap: 14px; padding: 6px 0; background: none; border: 0; color: inherit; font: inherit; font-size: clamp(14px, 1.55vw, 21px); line-height: 1.15; text-align: right; cursor: pointer; }
+    .tl__dot { flex: none; box-sizing: border-box; width: var(--dot); height: var(--dot); border: 5px solid #faf1e1; border-radius: 50%; background: #2d2b25; transition: background .2s, transform .2s; }
+    .tl__node[aria-checked="true"] .tl__dot { background: #faf1e1; transform: scale(1.3); }
+    .tl__node:hover .tl__dot { background: rgba(250, 241, 225, .55); }
+    .tl__node[aria-checked="true"]:hover .tl__dot { background: #faf1e1; }
+    .tl__node:focus-visible { outline: 2px solid #faf1e1; outline-offset: 2px; border-radius: 6px; }
+
+    .pricer__info { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(20px, 3.4vw, 50px); max-width: 1000px; margin: clamp(32px, 4vw, 54px) auto 0; align-items: start; }
+    .pricer__sub { margin: 0 0 12px; font-weight: 700; font-size: clamp(15px, 1.4vw, 18px); line-height: 1.3; }
+    .pricer__about p { margin: 0 0 1em; font-size: clamp(14px, 1.3vw, 17px); line-height: 1.4; }
+    .pricer__gtk { display: inline-block; margin-top: 8px; padding: 9px 30px; border: 1px solid #faf1e1; border-radius: 999px; color: #faf1e1; font-size: clamp(17px, 1.8vw, 22px); transition: background .25s, color .25s; }
+    .pricer__gtk:hover, .pricer__gtk:focus-visible { background: #faf1e1; color: #2d2b25; }
+    .ptags__label { margin: 0 0 10px; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; opacity: .75; }
+    .ptags { list-style: none; margin: 0 0 14px; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+    .ptags li { padding: 4px 13px; border: 1px solid rgba(250, 241, 225, .45); border-radius: 999px; font-size: clamp(12px, 1.1vw, 14px); line-height: 1.2; }
+    .pricer__addon { margin: 0; font-size: clamp(13px, 1.2vw, 16px); font-style: italic; opacity: .9; }
+    .pricer__addon a { border-bottom: 1px solid currentColor; font-style: normal; white-space: nowrap; }
+
+    .pricer__photos { position: relative; min-height: 100%; }
+    .pricer__ph { position: absolute; inset: 0; display: grid; grid-template-rows: 1fr 1fr; }
+    .pricer__ph figure { position: relative; margin: 0; overflow: hidden; background: #2d2b25; }
+    .pricer__ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+    @media (max-width: 900px) {
+      .pricer { grid-template-columns: 1fr; }
+      .pricer__photos { min-height: 0; }
+      .pricer__ph { position: static; grid-template-rows: none; grid-template-columns: 1fr 1fr; }
+      .pricer__ph figure { aspect-ratio: 1 / 1; }
     }
-    .band__text:hover { text-decoration: underline; text-underline-offset: 8px; }
+    @media (max-width: 760px) {
+      .pricer__grid { grid-template-columns: 1fr; row-gap: 10px; }
+      .pset > .pcard:nth-child(n) > * { grid-column: 1; grid-row: auto; }
+      .pcard__tier { margin-top: 10px; }
+      .tl { grid-column: 1; grid-row: 1; flex-direction: row; justify-content: space-between; padding: 0 2px; margin-bottom: 6px; }
+      .tl::before { top: 16px; bottom: auto; left: 12%; right: 12%; width: auto; height: 4px; }
+      .tl__node { flex: 1; flex-direction: column-reverse; align-items: center; justify-content: flex-start; gap: 8px; text-align: center; font-size: 13px; padding: 6px 2px; }
+      .pricer__info { grid-template-columns: 1fr; }
+    }
+
+    /* ---------- Offer text on the photo band ---------- */
+    .band::after { background: linear-gradient(to bottom left, rgba(20, 18, 10, .38), transparent 55%); }
+    .band__offer { position: absolute; z-index: 2; top: 11%; right: 4%; display: flex; flex-direction: column; align-items: center; text-align: center; color: var(--cream); text-shadow: 0 2px 16px rgba(0, 0, 0, .45); }
+    .band__script { font-family: var(--font-hero); font-size: clamp(30px, 5vw, 72px); line-height: 1.05; }
+    .band__sub { margin-top: 4px; font-weight: 700; font-size: clamp(15px, 2.1vw, 30px); line-height: 1.2; }
+    .band__offer:hover .band__sub { text-decoration: underline; text-underline-offset: 6px; }
+    @media (max-width: 600px) { .band__offer { top: 8%; right: 5%; left: 5%; } }
   </style>
 </head>
 
@@ -221,7 +228,7 @@
     <nav class="nav nav--left" aria-label="Primary">
       <a href="index.html" aria-current="page">Home</a>
       <a href="about.html">About</a>
-      <div class="has-dropdown"><button class="dd-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="dd-header">Pricing</button><ul class="dropdown" id="dd-header"><li><a href="hourly-rates.html">Hourly Rates &amp; Packages</a></li><li><a href="subscription-offers.html">Subscription Offers</a></li><li><a href="mini-sessions.html">Mini-sessions &amp; Gift Vouchers</a></li></ul></div>
+      <a href="pricing.html">Pricing</a>
     </nav>
 
     <a class="logo" href="index.html" aria-label="Joyful Studios home">
@@ -244,7 +251,7 @@
 
     <div class="hero__content">
       <h1>Romance inspired<br>cinematic photography</h1>
-      <a class="btn" href="#packages">Pricing</a>
+      <a class="btn" href="pricing.html">Pricing</a>
     </div>
 
     <button class="hero__arrow hero__arrow--prev" aria-label="Previous slide">
@@ -276,89 +283,17 @@
       </div>
     </section>
 
+    <section class="pricer" id="pricing" data-pricer data-gtk-base="pricing.html" aria-label="Pricing"><div class="pricer__content"><div class="pricer__head"><button type="button" class="pricer__cat" aria-haspopup="menu" aria-expanded="false" aria-label="Choose a subscription type"><span class="pricer__cat-name">Creator &amp; Influencer</span><span class="pricer__chev"><svg viewBox="0 0 24 24" width="58%" height="58%" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="pricer__menu" role="menu" hidden><button type="button" role="menuitemradio" aria-checked="true" data-cat="creator">Creator &amp; Influencer</button><button type="button" role="menuitemradio" aria-checked="false" data-cat="family">Family &amp; Lifestyle</button><button type="button" role="menuitemradio" aria-checked="false" data-cat="wedding">The Wedding Journey</button><button type="button" role="menuitemradio" aria-checked="false" data-cat="growing">The Growing Family</button></div></div><div class="pricer__panel" data-cat="creator" data-label="Creator &amp; Influencer"><div class="pricer__grid"><div class="tl" role="radiogroup" aria-label="Choose how you’d like to book"><button type="button" class="tl__node" role="radio" aria-checked="false" aria-label="Once-off" data-period="once"><span class="tl__label">Once-off</span><span class="tl__dot"></span></button><button type="button" class="tl__node" role="radio" aria-checked="true" aria-label="6 month subscription" data-period="6"><span class="tl__label">6 month<br>Subscription</span><span class="tl__dot"></span></button><button type="button" class="tl__node" role="radio" aria-checked="false" aria-label="12 month subscription" data-period="12"><span class="tl__label">12 month<br>Subscription</span><span class="tl__dot"></span></button><button type="button" class="tl__node" role="radio" aria-checked="false" aria-label="24 month subscription" data-period="24"><span class="tl__label">24 month<br>Subscription</span><span class="tl__dot"></span></button></div><div class="pset" data-period="once" hidden><div class="pcard"><h3 class="pcard__tier">Standard Session</h3><div class="pcard__box"><div class="pcard__price"><strong>R1,800</strong><small>per hour</small></div><ul class="pcard__list"><li>1-hour minimum.</li><li>40+ edited images.</li><li>Online gallery.</li><li>Ideal for couples, families, engagements, portraits &amp; lifestyle sessions.</li></ul><a class="pcard__btn" href="inquire.html?package=standard-session">Inquire Now</a></div></div><div class="pcard"><h3 class="pcard__tier">Extended Lifestyle</h3><div class="pcard__box"><div class="pcard__price"><strong>R3,100</strong><small>once-off · 2 hours</small></div><ul class="pcard__list"><li>2 hours.</li><li>80–120 edited images.</li><li>2 nearby locations or outfit change.</li><li>Online gallery.</li><li>Perfect for creative, branding, couples &amp; full family sessions.</li></ul><a class="pcard__btn" href="inquire.html?package=extended-lifestyle">Inquire Now</a></div></div></div><div class="pset" data-period="6"><div class="pcard"><h3 class="pcard__tier">Starter</h3><div class="pcard__box"><div class="pcard__price"><strong>R350</strong><small>per month · R2,100 total</small></div><ul class="pcard__list"><li>Access to 20-minute Creator Sessions.</li><li>Flexible opportunities to create fresh content for your personal brand or social media.</li><li>Session credits are only valid when used over 3 sessions.</li></ul><a class="pcard__btn" href="inquire.html?package=creator-influencer-subscription&plan=Starter%2C%206%20months%20%28R350%20%2F%20month%29">Inquire Now</a></div></div><div class="pcard"><h3 class="pcard__tier">Professional</h3><div class="pcard__box"><div class="pcard__price"><strong>R800</strong><small>per month · R4,800 total</small></div><ul class="pcard__list"><li>4 × 40-minute photography sessions over 6 months.</li><li>Priority advance booking.</li><li>Ideal for creators and influencers who need consistent, professional content.</li></ul><a class="pcard__btn" href="inquire.html?package=creator-influencer-subscription&plan=Professional%2C%206%20months%20%28R800%20%2F%20month%29">Inquire Now</a></div></div></div><div class="pset" data-period="12" hidden><div class="pcard"><h3 class="pcard__tier">Starter</h3><div class="pcard__box"><div class="pcard__price"><strong>R300</strong><small>per month · R3,600 total</small></div><ul class="pcard__list"><li>Access to 20-minute Creator Sessions.</li><li>Flexible opportunities to create fresh content for your personal brand or social media.</li><li>Session credits are only valid when used over 3 sessions.</li></ul><a class="pcard__btn" href="inquire.html?package=creator-influencer-subscription&plan=Starter%2C%2012%20months%20%28R300%20%2F%20month%29">Inquire Now</a></div></div><div class="pcard"><h3 class="pcard__tier">Professional</h3><div class="pcard__box"><div class="pcard__price"><strong>R700</strong><small>per month · R8,400 total</small></div><ul class="pcard__list"><li>8 × 40-minute photography sessions over 12 months.</li><li>Priority advance booking.</li><li>Ideal for creators and influencers who need consistent, professional content.</li></ul><a class="pcard__btn" href="inquire.html?package=creator-influencer-subscription&plan=Professional%2C%2012%20months%20%28R700%20%2F%20month%29">Inquire Now</a></div></div></div><div class="pset" data-period="24" hidden><div class="pcard"><h3 class="pcard__tier">Starter</h3><div class="pcard__box"><div class="pcard__price"><strong>R250</strong><small>per month · R6,000 total</small></div><ul class="pcard__list"><li>Access to 20-minute Creator Sessions.</li><li>Flexible opportunities to create fresh content for your personal brand or social media.</li><li>Session credits are only valid when used over 3 sessions.</li></ul><a class="pcard__btn" href="inquire.html?package=creator-influencer-subscription&plan=Starter%2C%2024%20months%20%28R250%20%2F%20month%29">Inquire Now</a></div></div><div class="pcard"><h3 class="pcard__tier">Professional</h3><div class="pcard__box"><div class="pcard__price"><strong>R650</strong><small>per month · R15,600 total</small></div><ul class="pcard__list"><li>16 × 40-minute photography sessions over 24 months.</li><li>Priority advance booking.</li><li>Ideal for creators and influencers who need consistent, professional content.</li></ul><a class="pcard__btn" href="inquire.html?package=creator-influencer-subscription&plan=Professional%2C%2024%20months%20%28R650%20%2F%20month%29">Inquire Now</a></div></div></div></div><div class="pricer__info"><div class="pricer__about"><p class="pricer__sub">For influencers, content creators &amp; personal brands</p><p>Subscribers receive invitations to styled lifestyle shoots, seasonal locations and special Saturday sessions, with guidance on what to wear and what to expect. Depending on your subscription level, you can also book your own sessions in advance.</p><a class="pricer__gtk" href="pricing.html#gtk-sessions">Good to Know</a></div><div class="pricer__more"><p class="ptags__label">Sessions may include</p><ul class="ptags"><li>Personal branding content</li><li>Social media content</li><li>Lifestyle photography</li><li>Product or service content</li><li>Seasonal content</li><li>Campaign content</li><li>Styled photography sessions</li></ul><p class="pricer__addon">Bring friends or collaborators: add up to 5 people to a session for 20% of your monthly fee. <a href="pricing.html#gtk-sessions">See how it works</a></p></div></div></div><div class="pricer__panel" data-cat="family" data-label="Family &amp; Lifestyle" hidden><div class="pricer__grid"><div class="tl" role="radiogroup" aria-label="Choose how you’d like to book"><button type="button" class="tl__node" role="radio" aria-checked="false" aria-label="Once-off" data-period="once"><span class="tl__label">Once-off</span><span class="tl__dot"></span></button><button type="button" class="tl__node" role="radio" aria-checked="true" aria-label="6 month subscription" data-period="6"><span class="tl__label">6 month<br>Subscription</span><span class="tl__dot"></span></button><button type="button" class="tl__node" role="radio" aria-checked="false" aria-label="12 month subscription" data-period="12"><span class="tl__label">12 month<br>Subscription</span><span class="tl__dot"></span></button><button type="button" class="tl__node" role="radio" aria-checked="false" aria-label="24 month subscription" data-period="24"><span class="tl__label">24 month<br>Subscription</span><span class="tl__dot"></span></button></div><div class="pset" data-period="once" hidden><div class="pcard"><h3 class="pcard__tier">Standard Session</h3><div class="pcard__box"><div class="pcard__price"><strong>R1,800</strong><small>per hour</small></div><ul class="pcard__list"><li>1-hour minimum.</li><li>40+ edited images.</li><li>Online gallery.</li><li>Ideal for couples, families, engagements, portraits &amp; lifestyle sessions.</li></ul><a class="pcard__btn" href="inquire.html?package=standard-session">Inquire Now</a></div></div><div class="pcard"><h3 class="pcard__tier">Extended Lifestyle</h3><div class="pcard__box"><div class="pcard__price"><strong>R3,100</strong><small>once-off · 2 hours</small></div><ul class="pcard__list"><li>2 hours.</li><li>80–120 edited images.</li><li>2 nearby locations or outfit change.</li><li>Online gallery.</li><li>Perfect for creative, branding, couples &amp; full family sessions.</li></ul><a class="pcard__btn" href="inquire.html?package=extended-lifestyle">Inquire Now</a></div></div></div><div class="pset" data-period="6"><div class="pcard"><h3 class="pcard__tier">Starter</h3><div class="pcard__box"><div class="pcard__price"><strong>R350</strong><small>per month · R2,100 total</small></div><ul class="pcard__list"><li>Styled, planned 20-minute sessions.</li><li>Monthly invitations to choose your sessions.</li><li>Unused sessions carry forward as credits (up to 3).</li><li>Edited photos delivered within 10 business days.</li></ul><a class="pcard__btn" href="inquire.html?package=family-lifestyle-subscription&plan=Starter%2C%206%20months%20%28R350%20%2F%20month%29">Inquire Now</a></div></div><div class="pcard"><h3 class="pcard__tier">Premium</h3><div class="pcard__box"><div class="pcard__price"><strong>R950</strong><small>per month · R5,700 total</small></div><ul class="pcard__list"><li>Styled, planned 20-minute sessions.</li><li>Monthly invitations to choose your sessions.</li><li>Unused sessions carry forward as credits (up to 3).</li><li>Edited photos delivered within 10 business days.</li></ul><a class="pcard__btn" href="inquire.html?package=family-lifestyle-subscription&plan=Premium%2C%206%20months%20%28R950%20%2F%20month%29">Inquire Now</a></div></div></div><div class="pset" data-period="12" hidden><div class="pcard"><h3 class="pcard__tier">Starter</h3><div class="pcard__box"><div class="pcard__price"><strong>R300</strong><small>per month · R3,600 total</small></div><ul class="pcard__list"><li>Styled, planned 20-minute sessions.</li><li>Monthly invitations to choose your sessions.</li><li>Unused sessions carry forward as credits (up to 3).</li><li>Edited photos delivered within 10 business days.</li></ul><a class="pcard__btn" href="inquire.html?package=family-lifestyle-subscription&plan=Starter%2C%2012%20months%20%28R300%20%2F%20month%29">Inquire Now</a></div></div><div class="pcard"><h3 class="pcard__tier">Premium</h3><div class="pcard__box"><div class="pcard__price"><strong>R800</strong><small>per month · R9,600 total</small></div><ul class="pcard__list"><li>Styled, planned 20-minute sessions.</li><li>Monthly invitations to choose your sessions.</li><li>Unused sessions carry forward as credits (up to 3).</li><li>Edited photos delivered within 10 business days.</li></ul><a class="pcard__btn" href="inquire.html?package=family-lifestyle-subscription&plan=Premium%2C%2012%20months%20%28R800%20%2F%20month%29">Inquire Now</a></div></div></div><div class="pset" data-period="24" hidden><div class="pcard"><h3 class="pcard__tier">Starter</h3><div class="pcard__box"><div class="pcard__price"><strong>R250</strong><small>per month · R6,000 total</small></div><ul class="pcard__list"><li>Styled, planned 20-minute sessions.</li><li>Monthly invitations to choose your sessions.</li><li>Unused sessions carry forward as credits (up to 3).</li><li>Edited photos delivered within 10 business days.</li></ul><a class="pcard__btn" href="inquire.html?package=family-lifestyle-subscription&plan=Starter%2C%2024%20months%20%28R250%20%2F%20month%29">Inquire Now</a></div></div><div class="pcard"><h3 class="pcard__tier">Premium</h3><div class="pcard__box"><div class="pcard__price"><strong>R650</strong><small>per month · R15,600 total</small></div><ul class="pcard__list"><li>Styled, planned 20-minute sessions.</li><li>Monthly invitations to choose your sessions.</li><li>Unused sessions carry forward as credits (up to 3).</li><li>Edited photos delivered within 10 business days.</li></ul><a class="pcard__btn" href="inquire.html?package=family-lifestyle-subscription&plan=Premium%2C%2024%20months%20%28R650%20%2F%20month%29">Inquire Now</a></div></div></div></div><div class="pricer__info"><div class="pricer__about"><p class="pricer__sub">For the families, couples and individuals who want to capture more than just the big milestones</p><p>Subscribers receive invitations to styled lifestyle shoots, seasonal locations and special Saturday sessions, with guidance on what to wear and what to expect. Depending on your subscription level, you can also book your own sessions in advance.</p><a class="pricer__gtk" href="pricing.html#gtk-sessions">Good to Know</a></div><div class="pricer__more"><p class="ptags__label">Sessions may include</p><ul class="ptags"><li>Pregnancy announcements</li><li>Maternity sessions</li><li>Baby showers</li><li>Newborn sessions</li><li>Family sessions</li><li>Couples sessions</li><li>Birthday sessions</li><li>Seasonal family photography</li><li>Lifestyle sessions</li><li>Milestone sessions</li></ul><p class="pricer__addon">Bring friends or collaborators: add up to 5 people to a session for 20% of your monthly fee. <a href="pricing.html#gtk-sessions">See how it works</a></p></div></div></div><div class="pricer__panel" data-cat="wedding" data-label="The Wedding Journey" hidden><div class="pricer__grid"><div class="tl" role="radiogroup" aria-label="Choose how you’d like to book"><button type="button" class="tl__node" role="radio" aria-checked="false" aria-label="Once-off" data-period="once"><span class="tl__label">Once-off</span><span class="tl__dot"></span></button><button type="button" class="tl__node" role="radio" aria-checked="true" aria-label="6 month subscription" data-period="6"><span class="tl__label">6 month<br>Subscription</span><span class="tl__dot"></span></button><button type="button" class="tl__node" role="radio" aria-checked="false" aria-label="12 month subscription" data-period="12"><span class="tl__label">12 month<br>Subscription</span><span class="tl__dot"></span></button><button type="button" class="tl__node" role="radio" aria-checked="false" aria-label="24 month subscription" data-period="24"><span class="tl__label">24 month<br>Subscription</span><span class="tl__dot"></span></button></div><div class="pset" data-period="once" hidden><div class="pcard"><h3 class="pcard__tier">Intimate Wedding Package</h3><div class="pcard__box"><div class="pcard__price"><strong>R6,700</strong><small>once-off · up to 4 hours</small></div><ul class="pcard__list"><li>Up to 4 hours of coverage.</li><li>250–350+ edited images.</li><li>Online gallery.</li><li>Coverage of key moments such as ceremony, family/group photos, couple portraits &amp; reception.</li><li>Pre-wedding planning consultation.</li><li>Ideal for intimate weddings, elopements and shorter celebrations.</li></ul><a class="pcard__btn" href="inquire.html?package=intimate-wedding-package">Inquire Now</a></div></div><div class="pcard"><h3 class="pcard__tier">Full Wedding Package</h3><div class="pcard__box"><div class="pcard__price"><strong>R12,500</strong><small>once-off · up to 8 hours</small></div><ul class="pcard__list"><li>Up to 8 hours of coverage.</li><li>500–700+ edited images.</li><li>Online gallery.</li><li>Pre-wedding planning consultation.</li><li>Timeline &amp; photography planning.</li><li>Getting ready, ceremony, couple portraits, family/group photos &amp; reception coverage.</li><li>Designed to tell the full story of your wedding day.</li></ul><a class="pcard__btn" href="inquire.html?package=full-wedding-package">Inquire Now</a></div></div></div><div class="pset" data-period="6"><div class="pcard"><h3 class="pcard__tier">Essential</h3><div class="pcard__box"><div class="pcard__price"><strong>R600</strong><small>per month · R3,600 total</small></div><p class="pcard__tag">Best for simple wedding coverage</p><ul class="pcard__list"><li>Wedding photography of 4+ hours.</li></ul><a class="pcard__btn" href="inquire.html?package=the-wedding-journey-subscription&plan=Essential%2C%206%20months%20%28R600%20%2F%20month%29">Inquire Now</a></div></div><div class="pcard"><h3 class="pcard__tier">Love Story</h3><div class="pcard__box"><div class="pcard__price"><strong>R2,000</strong><small>per month · R12,000 total</small></div><p class="pcard__tag">Best for documenting the whole story</p><ul class="pcard__list"><li>Wedding photography of 6+ hours.</li><li>Engagement photography.</li></ul><a class="pcard__btn" href="inquire.html?package=the-wedding-journey-subscription&plan=Love%20Story%2C%206%20months%20%28R2%2C000%20%2F%20month%29">Inquire Now</a></div></div></div><div class="pset" data-period="12" hidden><div class="pcard"><h3 class="pcard__tier">Essential</h3><div class="pcard__box"><div class="pcard__price"><strong>R500</strong><small>per month · R6,000 total</small></div><p class="pcard__tag">Best for simple wedding coverage</p><ul class="pcard__list"><li>Wedding photography of 4+ hours.</li></ul><a class="pcard__btn" href="inquire.html?package=the-wedding-journey-subscription&plan=Essential%2C%2012%20months%20%28R500%20%2F%20month%29">Inquire Now</a></div></div><div class="pcard"><h3 class="pcard__tier">Love Story</h3><div class="pcard__box"><div class="pcard__price"><strong>R1,600</strong><small>per month · R19,200 total</small></div><p class="pcard__tag">Best for documenting the whole story</p><ul class="pcard__list"><li>Wedding photography of 6+ hours.</li><li>Engagement photography.</li><li>12-month bonus: bachelor/bachelorette coverage.</li></ul><a class="pcard__btn" href="inquire.html?package=the-wedding-journey-subscription&plan=Love%20Story%2C%2012%20months%20%28R1%2C600%20%2F%20month%29">Inquire Now</a></div></div></div><div class="pset" data-period="24" hidden><div class="pcard"><h3 class="pcard__tier">Essential</h3><div class="pcard__box"><div class="pcard__price"><strong>R400</strong><small>per month · R9,600 total</small></div><p class="pcard__tag">Best for simple wedding coverage</p><ul class="pcard__list"><li>Wedding photography of 4+ hours.</li><li>24-month bonus: an additional 2 hours of wedding coverage or an engagement session.</li></ul><a class="pcard__btn" href="inquire.html?package=the-wedding-journey-subscription&plan=Essential%2C%2024%20months%20%28R400%20%2F%20month%29">Inquire Now</a></div></div><div class="pcard"><h3 class="pcard__tier">Love Story</h3><div class="pcard__box"><div class="pcard__price"><strong>R1,300</strong><small>per month · R31,200 total</small></div><p class="pcard__tag">Best for documenting the whole story</p><ul class="pcard__list"><li>Wedding photography of 6+ hours.</li><li>Engagement photography.</li><li>24-month bonus: rehearsal dinner or an additional 2-hour photoshoot.</li></ul><a class="pcard__btn" href="inquire.html?package=the-wedding-journey-subscription&plan=Love%20Story%2C%2024%20months%20%28R1%2C300%20%2F%20month%29">Inquire Now</a></div></div></div></div><div class="pricer__info"><div class="pricer__about"><p>Choose the level of coverage that suits your wedding journey — from wedding-day photography to a more complete experience including engagements, rehearsal dinners, bachelor/bachelorette celebrations, couple sessions and more.</p><p>The longer and more comprehensive your subscription, the more of your story we get to document.</p><a class="pricer__gtk" href="pricing.html#gtk-milestones">Good to Know</a></div><div class="pricer__more"></div></div></div><div class="pricer__panel" data-cat="growing" data-label="The Growing Family" hidden><div class="pricer__grid"><div class="tl" role="radiogroup" aria-label="Choose how you’d like to book"><button type="button" class="tl__node" role="radio" aria-checked="false" aria-label="Once-off" data-period="once"><span class="tl__label">Once-off</span><span class="tl__dot"></span></button><button type="button" class="tl__node" role="radio" aria-checked="true" aria-label="12 month subscription" data-period="12"><span class="tl__label">12 month<br>Subscription</span><span class="tl__dot"></span></button><button type="button" class="tl__node" role="radio" aria-checked="false" aria-label="24 month subscription" data-period="24"><span class="tl__label">24 month<br>Subscription</span><span class="tl__dot"></span></button></div><div class="pset" data-period="once" hidden><div class="pcard"><h3 class="pcard__tier">Standard Session</h3><div class="pcard__box"><div class="pcard__price"><strong>R1,800</strong><small>per hour</small></div><ul class="pcard__list"><li>1-hour minimum.</li><li>40+ edited images.</li><li>Online gallery.</li><li>Ideal for couples, families, engagements, portraits &amp; lifestyle sessions.</li></ul><a class="pcard__btn" href="inquire.html?package=standard-session">Inquire Now</a></div></div><div class="pcard"><h3 class="pcard__tier">Extended Lifestyle</h3><div class="pcard__box"><div class="pcard__price"><strong>R3,100</strong><small>once-off · 2 hours</small></div><ul class="pcard__list"><li>2 hours.</li><li>80–120 edited images.</li><li>2 nearby locations or outfit change.</li><li>Online gallery.</li><li>Perfect for creative, branding, couples &amp; full family sessions.</li></ul><a class="pcard__btn" href="inquire.html?package=extended-lifestyle">Inquire Now</a></div></div></div><div class="pset" data-period="12"><div class="pcard"><h3 class="pcard__tier">Essential</h3><div class="pcard__box"><div class="pcard__price"><strong>R350</strong><small>per month · R4,200 total</small></div><p class="pcard__tag">For the beginning</p><ul class="pcard__list"><li>Pregnancy announcement session (approx. 1 hour).</li><li>Maternity session (approx. 2 hours).</li></ul><a class="pcard__btn" href="inquire.html?package=the-growing-family-subscription&plan=Essential%2C%2012%20months%20%28R350%20%2F%20month%29">Inquire Now</a></div></div><div class="pcard"><h3 class="pcard__tier">Legacy</h3><div class="pcard__box"><div class="pcard__price"><strong>R1,500</strong><small>per month · R18,000 total</small></div><p class="pcard__tag">For the whole story</p><ul class="pcard__list"><li>Pregnancy announcement session (approx. 1 hour).</li><li>Maternity session (approx. 2 hours).</li><li>Newborn session (approx. 1–2 hours).</li><li>Additional young-family session.</li></ul><a class="pcard__btn" href="inquire.html?package=the-growing-family-subscription&plan=Legacy%2C%2012%20months%20%28R1%2C500%20%2F%20month%29">Inquire Now</a></div></div></div><div class="pset" data-period="24" hidden><div class="pcard"><h3 class="pcard__tier">Essential</h3><div class="pcard__box"><div class="pcard__price"><strong>R300</strong><small>per month · R7,200 total</small></div><p class="pcard__tag">For the beginning</p><ul class="pcard__list"><li>Pregnancy announcement session (approx. 1 hour).</li><li>Maternity session (approx. 2 hours).</li></ul><a class="pcard__btn" href="inquire.html?package=the-growing-family-subscription&plan=Essential%2C%2024%20months%20%28R300%20%2F%20month%29">Inquire Now</a></div></div><div class="pcard"><h3 class="pcard__tier">Legacy</h3><div class="pcard__box"><div class="pcard__price"><strong>R950</strong><small>per month · R22,800 total</small></div><p class="pcard__tag">For the whole story</p><ul class="pcard__list"><li>Pregnancy announcement session (approx. 1 hour).</li><li>Maternity session (approx. 2 hours).</li><li>Newborn session (approx. 1–2 hours).</li><li>Additional young-family session.</li></ul><a class="pcard__btn" href="inquire.html?package=the-growing-family-subscription&plan=Legacy%2C%2024%20months%20%28R950%20%2F%20month%29">Inquire Now</a></div></div></div></div><div class="pricer__info"><div class="pricer__about"><p class="pricer__sub">For capturing every beautiful chapter as your family grows.</p><p>Choose the level of coverage that suits your journey — from family lifestyle sessions to a more complete experience including pregnancy announcements, maternity, baby showers, newborn sessions and young family shoots.</p><p>The longer and more comprehensive your subscription, the more milestones we can capture along the way - creating a collection of photographs that tells the story of your growing family.</p><a class="pricer__gtk" href="pricing.html#gtk-milestones">Good to Know</a></div><div class="pricer__more"></div></div></div></div><div class="pricer__photos"><div class="pricer__ph" data-cat="creator"><figure><img src="images/sub-cr-1.jpg" alt="A woman lying on the grass holding an apple" style="object-position:center 35%" loading="lazy"></figure><figure><img src="images/sub-cr-2.jpg" alt="Black and white portrait of a woman holding a calla lily in a field" style="object-position:center 30%" loading="lazy"></figure></div><div class="pricer__ph" data-cat="family" hidden><figure><img src="images/sub-fa-1.jpg" alt="A mother smiling at her newborn" style="object-position:center 25%" loading="lazy"></figure><figure><img src="images/sub-fa-2.jpg" alt="A couple laughing together on a kerb" style="object-position:center" loading="lazy"></figure></div><div class="pricer__ph" data-cat="wedding" hidden><figure><img src="images/sub-we-1.jpg" alt="A bride embracing her groom" style="object-position:center" loading="lazy"></figure><figure><img src="images/sub-we-2.jpg" alt="Hands holding white calla lilies" style="object-position:center 30%" loading="lazy"></figure></div><div class="pricer__ph" data-cat="growing" hidden><figure><img src="images/sub-gr-1.jpg" alt="A newborn’s feet held in a parent’s hands" style="object-position:center 40%" loading="lazy"></figure><figure><img src="images/sub-gr-2.jpg" alt="A family sitting together on a picnic blanket by a lake" style="object-position:center 60%" loading="lazy"></figure></div></div></section>
+
     <section class="band" aria-label="A woman smiling as she is handed a bouquet of flowers">
-      <a class="band__text" href="subscription-offers.html">Join any subscription &amp; receive<br>your first 40min shoot free.</a>
+      <a class="band__offer" href="pricing.html"><span class="band__script">Join a Subscription</span><span class="band__sub">&amp; Get a 40-Minute Photoshoot FREE.</span></a>
     </section>
 
-    <!-- ===== Packages ===== -->
-    <section class="packages" id="packages">
-      <h2>Packages</h2>
-      <div class="packages__grid">
-
-        <article class="pkg">
-          <h3><a href="hourly-rates.html">Hourly Rates<br>&amp; Packages</a></h3>
-          <p class="pkg__hint"><span class="hint-hover">Hover over an option to see the details</span><span class="hint-tap">Tap an option to see the details</span></p>
-          <div class="pkg__list">
-            <div class="pkg-item">
-              <button class="pkg-item__name" type="button" aria-expanded="false" aria-controls="hourly-rates-d0">Standard Session</button>
-              <div class="pkg-item__detail" id="hourly-rates-d0"><div><div class="pkg-detail"><span class="pkg-price">R1,800/hr</span><ul class="pkg-points"><li>1-hour minimum</li><li>40+ edited images</li><li>Online gallery</li></ul><p class="pkg-blurb">Ideal for couples, families, engagements, portraits &amp; lifestyle sessions.</p></div></div></div>
-            </div>
-            <div class="pkg-item">
-              <button class="pkg-item__name" type="button" aria-expanded="false" aria-controls="hourly-rates-d1">Extended Lifestyle</button>
-              <div class="pkg-item__detail" id="hourly-rates-d1"><div><div class="pkg-detail"><span class="pkg-price">R3,100</span><ul class="pkg-points"><li>2 hours</li><li>80–120 edited images</li><li>2 nearby locations or outfit change</li><li>Online gallery</li></ul><p class="pkg-blurb">Perfect for creative, branding, couples &amp; full family sessions.</p></div></div></div>
-            </div>
-            <div class="pkg-item">
-              <button class="pkg-item__name" type="button" aria-expanded="false" aria-controls="hourly-rates-d2">Intimate Wedding Package</button>
-              <div class="pkg-item__detail" id="hourly-rates-d2"><div><div class="pkg-detail"><span class="pkg-price">R6,700</span><ul class="pkg-points"><li>Up to 4 hours of coverage</li><li>250–350+ edited images</li><li>Online gallery</li><li>Coverage of key moments such as ceremony, family/group photos, couple portraits &amp; reception</li><li>Pre-wedding planning consultation</li></ul><p class="pkg-blurb">Ideal for intimate weddings, elopements and shorter celebrations.</p></div></div></div>
-            </div>
-            <div class="pkg-item">
-              <button class="pkg-item__name" type="button" aria-expanded="false" aria-controls="hourly-rates-d3">Full Wedding Package</button>
-              <div class="pkg-item__detail" id="hourly-rates-d3"><div><div class="pkg-detail"><span class="pkg-price">R12,500</span><ul class="pkg-points"><li>Up to 8 hours of coverage</li><li>500–700+ edited images</li><li>Online gallery</li><li>Pre-wedding planning consultation</li><li>Timeline &amp; photography planning</li><li>Getting ready, ceremony, couple portraits, family/group photos &amp; reception coverage</li></ul><p class="pkg-blurb">Designed to tell the full story of your wedding day.</p></div></div></div>
-            </div>
-          </div>
-          <div class="pkg__foot"><a class="btn" href="hourly-rates.html">Find out more</a></div>
-        </article>
-
-        <article class="pkg">
-          <h3><a href="subscription-offers.html">Subscription Offers</a></h3>
-          <p class="pkg__hint"><span class="hint-hover">Hover over an option to see the details</span><span class="hint-tap">Tap an option to see the details</span></p>
-          <p class="pkg__intro">Choose your subscription period, enjoy your complimentary first shoot, and receive ongoing opportunities to create beautiful, meaningful photographs.</p>
-          <div class="pkg__list">
-            <div class="pkg-item">
-              <button class="pkg-item__name" type="button" aria-expanded="false" aria-controls="subscription-offers-d0">Creator &amp; Influencer Subscription</button>
-              <div class="pkg-item__detail" id="subscription-offers-d0"><div><div class="pkg-detail"><span class="pkg-price">Averaging R250–R800/month</span><p class="pkg-desc">For influencers, content creators &amp; personal brands</p></div></div></div>
-            </div>
-            <div class="pkg-item">
-              <button class="pkg-item__name" type="button" aria-expanded="false" aria-controls="subscription-offers-d1">Family &amp; Lifestyle Subscription</button>
-              <div class="pkg-item__detail" id="subscription-offers-d1"><div><div class="pkg-detail"><span class="pkg-price">Averaging R250–R950/month</span><p class="pkg-desc">For the families, couples and individuals who want to capture more than just the big milestones</p></div></div></div>
-            </div>
-            <div class="pkg-item">
-              <button class="pkg-item__name" type="button" aria-expanded="false" aria-controls="subscription-offers-d2">The Wedding Journey Subscription</button>
-              <div class="pkg-item__detail" id="subscription-offers-d2"><div><div class="pkg-detail"><span class="pkg-price">Averaging R400–R2,000/month</span><p class="pkg-desc">Covering your engagement, bachelorette &amp; bachelors parties and wedding (plus a complementary family session)</p></div></div></div>
-            </div>
-            <div class="pkg-item">
-              <button class="pkg-item__name" type="button" aria-expanded="false" aria-controls="subscription-offers-d3">The Growing Family Subscription</button>
-              <div class="pkg-item__detail" id="subscription-offers-d3"><div><div class="pkg-detail"><span class="pkg-price">Averaging R300–R1,500/month</span><p class="pkg-desc">For capturing every beautiful chapter as your family grows: maternity, newborn and young family photoshoots</p></div></div></div>
-            </div>
-          </div>
-          <div class="pkg__foot"><a class="btn" href="subscription-offers.html">Find out more</a></div>
-        </article>
-
-        <article class="pkg">
-          <h3><a href="mini-sessions.html">Mini-sessions<br>&amp; Gift vouchers</a></h3>
-          <p class="pkg__hint"><span class="hint-hover">Hover over an option to see the details</span><span class="hint-tap">Tap an option to see the details</span></p>
-          <div class="pkg__list">
-            <div class="pkg-item">
-              <button class="pkg-item__name" type="button" aria-expanded="false" aria-controls="mini-sessions-d0">Photobooth Sessions</button>
-              <div class="pkg-item__detail" id="mini-sessions-d0"><div><div class="pkg-detail"><span class="pkg-price">R100–R250</span><p class="pkg-desc">Offer quick, fun 10-minute photo sessions, with pricing varying depending on the event and setup.</p></div></div></div>
-            </div>
-            <div class="pkg-item">
-              <button class="pkg-item__name" type="button" aria-expanded="false" aria-controls="mini-sessions-d1">Mini-Sessions</button>
-              <div class="pkg-item__detail" id="mini-sessions-d1"><div><div class="pkg-detail"><span class="pkg-price">R400</span><p class="pkg-desc">Upgrade to a 20-minute lifestyle session at either Bloubergstrand or Majik Forest, including professionally edited images and an online gallery.</p></div></div></div>
-            </div>
-            <div class="pkg-item">
-              <button class="pkg-item__name" type="button" aria-expanded="false" aria-controls="mini-sessions-d2">Gift Vouchers</button>
-              <div class="pkg-item__detail" id="mini-sessions-d2"><div><div class="pkg-detail"><p class="pkg-desc">Gift vouchers are an easy way to give someone a Joyful Studios experience.</p></div></div></div>
-            </div>
-          </div>
-          <p class="pkg__note"><b>Mini-sessions and gift vouchers are exclusively available at Joyful Studios market pop-ups and photobooth events.</b><br>And there’s a little extra…</p>
-          <div class="pkg__foot"><a class="btn" href="mini-sessions.html">Find out more</a></div>
-        </article>
-
-      </div>
+    <section class="testimonial" id="testimonials">
+      <blockquote>“When I had my photoshoot with Joy, I was…”</blockquote>
+      <cite>Client Name</cite>
     </section>
 
-    <!-- ===== Gallery ===== -->
     <section class="gallery" aria-label="Selected photographs">
       <div class="gallery__row">
         <img src="images/gallery-couple.jpg" alt="A couple holding hands in a green park at golden hour" loading="lazy">
@@ -367,13 +302,6 @@
       </div>
     </section>
 
-    <!-- ===== Testimonial ===== -->
-    <section class="testimonial" id="testimonials">
-      <blockquote>“When I had my photoshoot with Joy, I was…”</blockquote>
-      <cite>Client Name</cite>
-    </section>
-
-    <!-- ===== Instagram ===== -->
     <section class="insta" id="inquire">
       <div class="insta__inner">
         <div>
@@ -401,7 +329,7 @@
       <nav aria-label="Footer">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
-        <div class="has-dropdown"><button class="dd-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="dd-footer">Pricing</button><ul class="dropdown" id="dd-footer"><li><a href="hourly-rates.html">Hourly Rates &amp; Packages</a></li><li><a href="subscription-offers.html">Subscription Offers</a></li><li><a href="mini-sessions.html">Mini-sessions &amp; Gift Vouchers</a></li></ul></div>
+        <a href="pricing.html">Pricing</a>
         <a href="testimonials.html">Testimonials</a>
         <a href="inquire.html">Inquire</a>
       </nav>
@@ -410,21 +338,81 @@
 
   <script src="script.js"></script>
   <script>
-    // Packages: tap to open details on touch screens (mouse users just hover)
+    // Pricing component: choose a subscription type (drop-down) and a length (timeline)
     (function () {
-      var canHover = window.matchMedia('(hover: hover)');
-      document.querySelectorAll('.pkg-item__name').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          if (canHover.matches) return;
-          var item = btn.parentElement;
-          var open = !item.classList.contains('is-open');
-          item.parentElement.querySelectorAll('.pkg-item').forEach(function (other) {
-            other.classList.remove('is-open');
-            other.querySelector('.pkg-item__name').setAttribute('aria-expanded', 'false');
+      document.querySelectorAll('[data-pricer]').forEach(function (root) {
+        var btn = root.querySelector('.pricer__cat');
+        var nameEl = root.querySelector('.pricer__cat-name');
+        var menu = root.querySelector('.pricer__menu');
+        var items = Array.prototype.slice.call(menu.querySelectorAll('button'));
+        var panels = Array.prototype.slice.call(root.querySelectorAll('.pricer__panel'));
+        var photoSets = Array.prototype.slice.call(root.querySelectorAll('.pricer__ph'));
+        var cat = panels[0].getAttribute('data-cat');
+        var period = '6';
+
+        function panel(id) { return root.querySelector('.pricer__panel[data-cat="' + id + '"]'); }
+
+        function setPeriod(p) {
+          var pan = panel(cat);
+          var nodes = Array.prototype.slice.call(pan.querySelectorAll('.tl__node'));
+          var avail = nodes.map(function (n) { return n.getAttribute('data-period'); });
+          if (avail.indexOf(p) === -1) p = ['6', '12', '24', 'once'].filter(function (x) { return avail.indexOf(x) !== -1; })[0];
+          period = p;
+          nodes.forEach(function (n) {
+            var on = n.getAttribute('data-period') === p;
+            n.setAttribute('aria-checked', on ? 'true' : 'false');
+            n.tabIndex = on ? 0 : -1;
           });
-          item.classList.toggle('is-open', open);
-          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+          Array.prototype.forEach.call(pan.querySelectorAll('.pset'), function (s) { s.hidden = s.getAttribute('data-period') !== p; });
+        }
+
+        function setCat(id) {
+          cat = id;
+          panels.forEach(function (p) { p.hidden = p.getAttribute('data-cat') !== id; });
+          photoSets.forEach(function (p) { p.hidden = p.getAttribute('data-cat') !== id; });
+          items.forEach(function (i) { i.setAttribute('aria-checked', i.getAttribute('data-cat') === id ? 'true' : 'false'); });
+          nameEl.textContent = panel(id).getAttribute('data-label');
+          setPeriod(period);
+        }
+
+        // length timeline (click + arrow keys)
+        root.addEventListener('click', function (e) {
+          var n = e.target.closest ? e.target.closest('.tl__node') : null;
+          if (n) setPeriod(n.getAttribute('data-period'));
         });
+        root.addEventListener('keydown', function (e) {
+          var n = e.target.closest ? e.target.closest('.tl__node') : null;
+          if (!n) return;
+          var nodes = Array.prototype.slice.call(n.parentNode.querySelectorAll('.tl__node'));
+          var i = nodes.indexOf(n), d = 0;
+          if (e.key === 'ArrowDown' || e.key === 'ArrowRight') d = 1;
+          if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') d = -1;
+          if (!d) return;
+          e.preventDefault();
+          var next = nodes[(i + d + nodes.length) % nodes.length];
+          setPeriod(next.getAttribute('data-period'));
+          next.focus();
+        });
+
+        // category drop-down
+        function openMenu(open) { menu.hidden = !open; btn.setAttribute('aria-expanded', open ? 'true' : 'false'); }
+        btn.addEventListener('click', function () {
+          var open = menu.hidden;
+          openMenu(open);
+          if (open) { var cur = menu.querySelector('[aria-checked="true"]'); if (cur) cur.focus(); }
+        });
+        items.forEach(function (i) {
+          i.addEventListener('click', function () { setCat(i.getAttribute('data-cat')); openMenu(false); btn.focus(); });
+        });
+        menu.addEventListener('keydown', function (e) {
+          var i = items.indexOf(document.activeElement);
+          if (e.key === 'ArrowDown') { e.preventDefault(); items[(i + 1) % items.length].focus(); }
+          if (e.key === 'ArrowUp') { e.preventDefault(); items[(i - 1 + items.length) % items.length].focus(); }
+        });
+        document.addEventListener('click', function (e) { if (!root.querySelector('.pricer__head').contains(e.target)) openMenu(false); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) { openMenu(false); btn.focus(); } });
+
+        setCat(cat);
       });
     })();
   </script>

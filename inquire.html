@@ -55,7 +55,7 @@
     <nav class="nav nav--left" aria-label="Primary">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
-      <div class="has-dropdown"><button class="dd-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="dd-header">Pricing</button><ul class="dropdown" id="dd-header"><li><a href="hourly-rates.html">Hourly Rates &amp; Packages</a></li><li><a href="subscription-offers.html">Subscription Offers</a></li><li><a href="mini-sessions.html">Mini-sessions &amp; Gift Vouchers</a></li></ul></div>
+      <a href="pricing.html">Pricing</a>
     </nav>
 
     <a class="logo" href="index.html" aria-label="Joyful Studios home">
@@ -111,7 +111,7 @@
             </optgroup>
           </select>
           <p class="prefill-note" id="prefill-note" hidden></p>
-          <p class="prefill-note" id="agreement-note" hidden>After your enquiry I’ll send you the subscription agreement to read before you commit. <a id="agreement-link" href="subscription-offers.html#good-to-know" style="text-decoration:underline">See the subscription details</a>.</p>
+          <p class="prefill-note" id="agreement-note" hidden>After your enquiry I’ll send you the subscription agreement to read before you commit. <a id="agreement-link" href="pricing.html#good-to-know" style="text-decoration:underline">See the subscription details</a>.</p>
         </div>
 
         <div class="field" id="plan-field" hidden>
@@ -157,7 +157,7 @@
       <nav aria-label="Footer">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
-        <div class="has-dropdown"><button class="dd-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="dd-footer">Pricing</button><ul class="dropdown" id="dd-footer"><li><a href="hourly-rates.html">Hourly Rates &amp; Packages</a></li><li><a href="subscription-offers.html">Subscription Offers</a></li><li><a href="mini-sessions.html">Mini-sessions &amp; Gift Vouchers</a></li></ul></div>
+        <a href="pricing.html">Pricing</a>
         <a href="testimonials.html">Testimonials</a>
         <a href="inquire.html">Inquire</a>
       </nav>
@@ -194,7 +194,7 @@
       function updateAgreementNote() {
         var target = agreementPlans[select.value];
         agreementNote.hidden = !target;
-        if (target) document.getElementById('agreement-link').setAttribute('href', 'subscription-offers.html' + target);
+        if (target) document.getElementById('agreement-link').setAttribute('href', 'pricing.html' + target);
       }
       updateAgreementNote();
       select.addEventListener('change', function () { select.classList.remove('is-prefilled'); note.hidden = true; updateAgreementNote(); });

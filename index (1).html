@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Joyful Studios | Romantic, documentary-style photography</title>
+  <meta name="description" content="Joyful Studios is a romantic, documentary-style wedding, couples and lifestyle photographer in Cape Town capturing film-inspired photos and special moments.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Quattrocento (body), Pinyon Script (hero headline), Italiana (stand-in for Hatton), Mrs Saint Delafield (stand-in for Abramo Script) -->
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Mrs+Saint+Delafield&family=Pinyon+Script&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ---------- Hero slider ---------- */
+    .hero { position: relative; height: min(100vh, 780px); min-height: 520px; overflow: hidden; color: var(--cream); background: var(--charcoal); }
+    .slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.2s ease; }
+    .slide.is-active { opacity: 1; }
+    .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(20,18,10,.38), rgba(20,18,10,.12) 40%, rgba(20,18,10,.42)); pointer-events: none; }
+    .hero__content { position: absolute; z-index: 3; left: 50%; top: 56%; transform: translate(-50%, -50%); text-align: center; width: min(92%, 900px); }
+    .hero h1 { margin: 0; font-family: var(--font-hero); font-weight: 400; font-size: clamp(36px, 6vw, 76px); line-height: 1.1; text-shadow: 0 2px 24px rgba(0,0,0,.4); }
+    .hero__sub { margin: 10px 0 clamp(22px, 3.4vw, 36px); font-size: clamp(10px, 1.1vw, 13px); letter-spacing: .06em; text-shadow: 0 1px 12px rgba(0,0,0,.5); }
+    .hero .btn { text-transform: uppercase; font-size: 13px; letter-spacing: .12em; padding: 7px 30px; }
+    .hero__arrow { position: absolute; z-index: 4; top: 50%; transform: translateY(-50%); width: 48px; height: 64px; background: none; border: 0; color: var(--cream); cursor: pointer; display: grid; place-items: center; }
+    .hero__arrow--prev { left: clamp(8px, 2.5vw, 36px); }
+    .hero__arrow--next { right: clamp(8px, 2.5vw, 36px); }
+    .hero__arrow svg { width: 22px; height: 40px; stroke: currentColor; fill: none; stroke-width: 2; }
+    .hero__dots { position: absolute; z-index: 4; bottom: 28px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; }
+    .hero__dots button { width: 12px; height: 12px; padding: 0; border-radius: 50%; border: 0; background: var(--cream); opacity: .55; cursor: pointer; }
+    .hero__dots button[aria-current="true"] { opacity: 1; }
+
+    /* ---------- About ---------- */
+    .about { padding: clamp(56px, 8vw, 110px) var(--pad); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); align-items: center; max-width: 1180px; margin: 0 auto; }
+    .about__text { max-width: 440px; justify-self: end; }
+    .about h2 { margin: 0; font-family: var(--font-body); font-weight: 700; font-size: clamp(24px, 2.6vw, 32px); letter-spacing: .01em; text-transform: uppercase; line-height: 1.2; }
+    .about h3 { margin: 8px 0 28px; font-family: var(--font-body); font-weight: 400; color: var(--cream); font-size: clamp(16px, 1.6vw, 20px); letter-spacing: .02em; text-transform: uppercase; }
+    .about p { margin: 0 0 1.1em; }
+    .about .btn { color: var(--cream); border-color: var(--cream); margin-top: 6px; }
+    .about .btn:hover { color: var(--charcoal); }
+    .postcard { position: relative; max-width: 440px; justify-self: start; width: 100%; }
+    .postcard__card { background: url("images/postcard.png") center / 100% 100% no-repeat; padding: 3.2% 3.2% 3.2% 4.2%; }
+    .postcard__card img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center top; }
+    .postcard__clip { position: absolute; z-index: 2; top: -26px; left: 5%; width: clamp(20px, 3vw, 30px); transform: rotate(-3deg); filter: drop-shadow(0 2px 3px rgba(0,0,0,.3)); pointer-events: none; }
+    .signature { position: absolute; right: -4%; bottom: -9%; font-family: var(--font-sign); color: var(--red); font-size: clamp(54px, 7vw, 92px); line-height: .9; transform: rotate(-6deg); white-space: nowrap; pointer-events: none; }
+
+    /* ---------- Services strip over the calla photo ---------- */
+    .gallery { position: relative; background: url("images/calla.jpg") center 22% / cover no-repeat; padding: clamp(26px, 3.4vw, 44px) var(--pad) clamp(60px, 9vw, 120px); color: var(--cream); }
+    .gallery::before { content: ""; position: absolute; inset: 0; background: rgba(55, 38, 16, .34); }
+    .gallery > * { position: relative; }
+    .gallery__cats { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px clamp(14px, 2.6vw, 38px); margin: 0 0 clamp(36px, 6vw, 80px); padding: 0; list-style: none; font-family: var(--font-display); text-transform: uppercase; letter-spacing: .3em; font-size: clamp(11px, 1.5vw, 17px); }
+    .gallery__row { max-width: 760px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px, 4vw, 54px); }
+    .gallery__row img { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,.3); }
+
+    /* ---------- Artfully preserved band ---------- */
+    .moments { background: #8d8d59; color: var(--cream); text-align: center; padding: clamp(54px, 8vw, 100px) var(--pad); }
+    .moments__script { font-family: var(--font-sign); font-size: clamp(48px, 8vw, 100px); line-height: 1; }
+    .moments__title { margin: -.1em 0 0; font-family: var(--font-display); font-weight: 400; text-transform: uppercase; letter-spacing: .04em; font-size: clamp(24px, 3.4vw, 42px); }
+    .moments__btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px clamp(18px, 6vw, 80px); margin-top: clamp(28px, 4vw, 52px); }
+    .moments .btn { text-transform: uppercase; font-size: 13px; letter-spacing: .1em; padding: 6px 30px; }
+
+    /* ---------- Instagram ---------- */
+    .insta { background: var(--charcoal); color: #d9cdb6; padding: clamp(44px, 6vw, 80px) var(--pad); }
+    .insta__inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 40px; }
+    .insta h2 { margin: 0; font-family: var(--font-body); font-weight: 400; font-size: clamp(30px, 4vw, 46px); line-height: 1.15; color: #cfc3ac; }
+    .insta a.handle { display: inline-block; margin-top: 14px; font-size: 18px; border-bottom: 1px solid transparent; }
+    .insta a.handle:hover { border-color: currentColor; }
+    .insta__photo { position: relative; display: block; width: clamp(170px, 20vw, 230px); transform: rotate(1.5deg); }
+    .insta__photo img.insta__img { width: 100%; aspect-ratio: 1; object-fit: cover; object-position: center 55%; border-radius: 10px; box-shadow: 0 12px 28px rgba(0,0,0,.45); transition: transform .6s; }
+    .insta__photo:hover img.insta__img { transform: scale(1.03); }
+    .insta__pin { position: absolute; z-index: 2; top: -14px; left: 50%; width: clamp(22px, 2.6vw, 30px); transform: translateX(-50%); }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 900px) {
+      .about { grid-template-columns: 1fr; }
+      .about__text, .postcard { justify-self: center; }
+      .postcard { margin-bottom: 40px; }
+    }
+    @media (max-width: 760px) {
+      .insta__inner { grid-template-columns: 1fr; justify-items: start; }
+      .hero__arrow { width: 36px; }
+    }
+  </style>
+</head>
+
+<body id="home">
+
+  <!-- ===== Header + Hero ===== -->
+  <header class="site-header" id="site-header">
+    <nav class="nav nav--left" aria-label="Primary">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="about.html">About</a>
+      <div class="has-dropdown">
+        <button type="button" class="dd-toggle" aria-haspopup="true" aria-expanded="false">Pricing</button>
+        <ul class="dropdown">
+          <li><a href="pricing.html#rates">Rates &amp; Packages</a></li>
+          <li><a href="pricing.html#subscriptions">Subscription Plans</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <a class="logo" href="index.html" aria-label="Joyful Studios home">
+      <span class="logo__word">joyful</span>
+      <span class="logo__sub">STUDIOS</span>
+    </a>
+
+    <nav class="nav nav--right" aria-label="Secondary">
+      <a href="testimonials.html">Testimonials</a>
+      <a href="inquire.html">Inquire</a>
+    </nav>
+
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="site-header">Menu</button>
+  </header>
+
+  <section class="hero" aria-roledescription="carousel" aria-label="Featured photography">
+    <div class="slide is-active" style="background-image:url('hero-reeds.jpg'); background-position: center 32%" role="group" aria-label="Slide 1 of 3"></div>
+    <div class="slide" style="background-image:url('hero-lake.jpg'); background-position: center 62%" role="group" aria-label="Slide 2 of 3"></div>
+    <div class="slide" style="background-image:url('hero-meadow.jpg'); background-position: center 55%" role="group" aria-label="Slide 3 of 3"></div>
+
+    <div class="hero__content">
+      <h1>Romantic, documentary&#8209;style photography</h1>
+      <p class="hero__sub">Cape Town, South Africa &amp; Destinations</p>
+      <a class="btn" href="pricing.html#rates">Rates &amp; Packages</a>
+    </div>
+
+    <button class="hero__arrow hero__arrow--prev" aria-label="Previous slide">
+      <svg viewBox="0 0 22 40" aria-hidden="true"><polyline points="18,2 3,20 18,38"/></svg>
+    </button>
+    <button class="hero__arrow hero__arrow--next" aria-label="Next slide">
+      <svg viewBox="0 0 22 40" aria-hidden="true"><polyline points="4,2 19,20 4,38"/></svg>
+    </button>
+    <div class="hero__dots" role="tablist" aria-label="Choose slide"></div>
+  </section>
+
+  <!-- ===== About ===== -->
+  <main>
+    <section class="about" id="about">
+      <div class="about__text">
+        <h2>Meet your photographer</h2>
+        <h3>Hi! I’m Joy, I’m so glad you’re here</h3>
+        <p>I capture stories and document real moments, so that you can revisit your favorite memories over and over again.</p>
+        <p>My work is inspired by the nostalgia of old films with lots of warmth, raw emotion and dreamy light. I prefer this to a rigid, ultra-polished approach and rather seek to document the moment as it’s felt.</p>
+        <p>I’m based in Durbanville, Cape Town.</p>
+        <a class="btn btn--soft" href="about.html">Get to know me</a>
+      </div>
+
+      <div class="postcard">
+        <img class="postcard__clip" src="clip.png" alt="" aria-hidden="true">
+        <div class="postcard__card">
+          <img src="images/joy.jpg" alt="Joy, the photographer behind Joyful Studios, standing beside a tree in warm evening light" loading="lazy">
+        </div>
+        <span class="signature" aria-hidden="true">love, Joy</span>
+      </div>
+    </section>
+
+    <!-- ===== What I photograph ===== -->
+    <section class="gallery" aria-label="Selected photographs">
+      <ul class="gallery__cats">
+        <li>Weddings</li><li>Elopements</li><li>Couples</li><li>Families</li><li>Personal Brands</li>
+      </ul>
+      <div class="gallery__row">
+        <img src="strip-bride.jpg" alt="A bride in an off-the-shoulder gown leaning against a tree" loading="lazy">
+        <img src="strip-fence.jpg" alt="A woman reading on a wooden fence while her partner stands beside her" loading="lazy">
+        <img src="strip-horse.jpg" alt="A person in a green cap leaning on a horse" loading="lazy">
+      </div>
+    </section>
+
+    <!-- ===== Artfully preserved ===== -->
+    <section class="moments" aria-label="Pricing options">
+      <div class="moments__script">your special moments</div>
+      <h2 class="moments__title">Artfully preserved</h2>
+      <div class="moments__btns">
+        <a class="btn" href="pricing.html#rates">Hourly Rates</a>
+        <a class="btn" href="pricing.html#subscriptions">Subscription Plans</a>
+        <a class="btn" href="pricing.html#weddings">Wedding Packages</a>
+      </div>
+    </section>
+
+    <!-- ===== Instagram ===== -->
+    <section class="insta" id="inquire">
+      <div class="insta__inner">
+        <div>
+          <h2>Take a peek at<br>my Instagram</h2>
+          <a class="handle" href="https://www.instagram.com/joyful_studios_/" target="_blank" rel="noopener">@joyful_studios_</a>
+        </div>
+        <a class="insta__photo" href="https://www.instagram.com/joyful_studios_/" target="_blank" rel="noopener" aria-label="Open Joyful Studios on Instagram">
+          <img class="insta__pin" src="pin.png" alt="">
+          <img class="insta__img" src="insta-bouquet.jpg" alt="A bride holding a bouquet of peach and cream flowers" loading="lazy">
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="footer">
+      <p class="footer__left">Joy is a wedding, couples &amp; lifestyle photographer capturing film-inspired photos and special moments.</p>
+      <a class="logo" href="index.html" aria-label="Joyful Studios home">
+        <span class="logo__word">joyful</span>
+        <span class="logo__sub">STUDIOS</span>
+      </a>
+      <p class="footer__right">Based in Cape Town,<br>South Africa.<br>Available for travel.</p>
+    </div>
+    <div class="footer__bar">
+      <nav aria-label="Footer">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <div class="has-dropdown">
+          <button type="button" class="dd-toggle" aria-haspopup="true" aria-expanded="false">Packages</button>
+          <ul class="dropdown">
+            <li><a href="pricing.html#rates">Rates &amp; Packages</a></li>
+            <li><a href="pricing.html#subscriptions">Subscription Plans</a></li>
+          </ul>
+        </div>
+        <a href="testimonials.html">Testimonials</a>
+        <a href="inquire.html">Inquire</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

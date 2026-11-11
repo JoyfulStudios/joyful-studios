@@ -190,10 +190,10 @@
     }
     /* ---------- Hero photos: full photo on desktop (no zoom), phone crops to portrait ---------- */
     .slide--2 { background-position: center 35%; }
-    .slide--3 { background-position: center 50%; }
+    .slide--3 { background-image: url('hero-3.jpg'); background-position: center 50%; }
     @media (max-width: 900px) {
       .slide--2 { background-position: 56% center; }
-      .slide--3 { background-position: 34% center; }
+      .slide--3 { background-image: url('hero-3-phone.jpg'); background-position: 54% center; }
     }
   </style>
 </head>
@@ -230,7 +230,7 @@
   <section class="hero" aria-roledescription="carousel" aria-label="Featured photography">
     <div class="slide is-active" style="background-image:url('hero-1.jpg'); background-position: center 32%" role="group" aria-label="Slide 1 of 3"></div>
     <div class="slide slide--2" style="background-image:url('hero-2.jpg')" role="group" aria-label="Slide 2 of 3: a woman smiles up as she is handed a bouquet"></div>
-    <div class="slide slide--3" style="background-image:url('hero-3.jpg')" role="group" aria-label="Slide 3 of 3: a couple on a woodland path, he reads a red book"></div>
+    <div class="slide slide--3" role="group" aria-label="Slide 3 of 3"></div>
 
     <div class="hero__content">
       <h1>Romantic, documentary-<br class="br-desk">style photography</h1>

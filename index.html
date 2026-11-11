@@ -188,6 +188,15 @@
     @media (max-width: 760px) {
       .site-header.is-open .nav { font-size: 14px; }
     }
+    /* ---------- Hero framing: keeps the people clear of the headline ---------- */
+    @media (min-width: 901px) {
+      .slide--lake { background-size: 160% auto; background-position: 5% 75%; }
+      .slide--meadow { background-size: 140% auto; background-position: 8% 52%; }
+    }
+    @media (max-width: 900px) {
+      .slide--lake { background-size: auto 150%; background-position: 47% 32%; }
+      .slide--meadow { background-size: auto 150%; background-position: 47% 11%; }
+    }
   </style>
 </head>
 
@@ -222,8 +231,8 @@
 
   <section class="hero" aria-roledescription="carousel" aria-label="Featured photography">
     <div class="slide is-active" style="background-image:url('hero-reeds.jpg'); background-position: center 32%" role="group" aria-label="Slide 1 of 3"></div>
-    <div class="slide" style="background-image:url('hero-lake.jpg'); background-position: center 62%" role="group" aria-label="Slide 2 of 3"></div>
-    <div class="slide" style="background-image:url('hero-meadow.jpg'); background-position: center 55%" role="group" aria-label="Slide 3 of 3"></div>
+    <div class="slide slide--lake" style="background-image:url('hero-lake.jpg')" role="group" aria-label="Slide 2 of 3"></div>
+    <div class="slide slide--meadow" style="background-image:url('hero-meadow.jpg')" role="group" aria-label="Slide 3 of 3"></div>
 
     <div class="hero__content">
       <h1>Romantic, documentary-<br class="br-desk">style photography</h1>

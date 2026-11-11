@@ -188,14 +188,12 @@
     @media (max-width: 760px) {
       .site-header.is-open .nav { font-size: 14px; }
     }
-    /* ---------- Hero framing: keeps the people clear of the headline ---------- */
-    @media (min-width: 901px) {
-      .slide--lake { background-size: 160% auto; background-position: 5% 75%; }
-      .slide--meadow { background-size: 140% auto; background-position: 8% 52%; }
-    }
+    /* ---------- Hero photos: full photo on desktop (no zoom), phone crops to portrait ---------- */
+    .slide--2 { background-position: center 35%; }
+    .slide--3 { background-position: center 50%; }
     @media (max-width: 900px) {
-      .slide--lake { background-size: auto 150%; background-position: 47% 32%; }
-      .slide--meadow { background-size: auto 150%; background-position: 47% 11%; }
+      .slide--2 { background-position: 56% center; }
+      .slide--3 { background-position: 34% center; }
     }
   </style>
 </head>
@@ -230,9 +228,9 @@
   </header>
 
   <section class="hero" aria-roledescription="carousel" aria-label="Featured photography">
-    <div class="slide is-active" style="background-image:url('hero-reeds.jpg'); background-position: center 32%" role="group" aria-label="Slide 1 of 3"></div>
-    <div class="slide slide--lake" style="background-image:url('hero-lake.jpg')" role="group" aria-label="Slide 2 of 3"></div>
-    <div class="slide slide--meadow" style="background-image:url('hero-meadow.jpg')" role="group" aria-label="Slide 3 of 3"></div>
+    <div class="slide is-active" style="background-image:url('hero-1.jpg'); background-position: center 32%" role="group" aria-label="Slide 1 of 3"></div>
+    <div class="slide slide--2" style="background-image:url('hero-2.jpg')" role="group" aria-label="Slide 2 of 3: a woman smiles up as she is handed a bouquet"></div>
+    <div class="slide slide--3" style="background-image:url('hero-3.jpg')" role="group" aria-label="Slide 3 of 3: a couple on a woodland path, he reads a red book"></div>
 
     <div class="hero__content">
       <h1>Romantic, documentary-<br class="br-desk">style photography</h1>

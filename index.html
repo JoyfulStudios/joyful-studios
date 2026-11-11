@@ -87,8 +87,8 @@
     @media (min-width: 901px) {
       .site-header { grid-template-columns: 1fr auto 1fr; padding: 2.2vw 0 0; }
       .nav { font-size: clamp(13px, 1.6vw, 28px); gap: 6vw; }
-      .nav--left { justify-content: flex-end; margin-right: 7.8vw; }
-      .nav--right { justify-content: flex-start; margin-left: 10.5vw; }
+      .nav--left { justify-content: flex-end; margin-right: 8.5vw; }
+      .nav--right { justify-content: flex-start; margin-left: 8.5vw; }
       .logo__word { font-size: clamp(44px, 6vw, 120px); }
       .logo__sub { font-size: clamp(8px, .8vw, 15px); }
 
@@ -205,13 +205,6 @@
     <nav class="nav nav--left" aria-label="Primary">
       <a href="index.html" aria-current="page">Home</a>
       <a href="about.html">About</a>
-      <div class="has-dropdown">
-        <button type="button" class="dd-toggle" aria-haspopup="true" aria-expanded="false">Pricing</button>
-        <ul class="dropdown">
-          <li><a href="pricing.html#rates">Rates &amp; Packages</a></li>
-          <li><a href="pricing.html#subscriptions">Subscription Plans</a></li>
-        </ul>
-      </div>
     </nav>
 
     <a class="logo" href="index.html" aria-label="Joyful Studios home">
@@ -220,7 +213,13 @@
     </a>
 
     <nav class="nav nav--right" aria-label="Secondary">
-      <a href="testimonials.html">Testimonials</a>
+      <div class="has-dropdown">
+        <button type="button" class="dd-toggle" aria-haspopup="true" aria-expanded="false">Pricing</button>
+        <ul class="dropdown">
+          <li><a href="pricing.html#rates">Rates &amp; Packages</a></li>
+          <li><a href="pricing.html#subscriptions">Subscription Plans</a></li>
+        </ul>
+      </div>
       <a href="inquire.html">Inquire</a>
     </nav>
 
@@ -327,7 +326,6 @@
             <li><a href="pricing.html#subscriptions">Subscription Plans</a></li>
           </ul>
         </div>
-        <a href="testimonials.html">Testimonials</a>
         <a href="inquire.html">Inquire</a>
       </nav>
     </div>

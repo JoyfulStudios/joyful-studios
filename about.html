@@ -77,7 +77,6 @@
     <nav class="nav nav--left" aria-label="Primary">
       <a href="index.html">Home</a>
       <a href="about.html" aria-current="page">About</a>
-      <a href="pricing.html">Pricing</a>
     </nav>
 
     <a class="logo" href="index.html" aria-label="Joyful Studios home">
@@ -86,7 +85,13 @@
     </a>
 
     <nav class="nav nav--right" aria-label="Secondary">
-      <a href="testimonials.html">Testimonials</a>
+      <div class="has-dropdown">
+        <button type="button" class="dd-toggle" aria-haspopup="true" aria-expanded="false">Pricing</button>
+        <ul class="dropdown">
+          <li><a href="pricing.html#rates">Rates &amp; Packages</a></li>
+          <li><a href="pricing.html#subscriptions">Subscription Plans</a></li>
+        </ul>
+      </div>
       <a href="inquire.html">Inquire</a>
     </nav>
 
@@ -185,8 +190,13 @@
       <nav aria-label="Footer">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="testimonials.html">Testimonials</a>
+        <div class="has-dropdown">
+          <button type="button" class="dd-toggle" aria-haspopup="true" aria-expanded="false">Pricing</button>
+          <ul class="dropdown">
+            <li><a href="pricing.html#rates">Rates &amp; Packages</a></li>
+            <li><a href="pricing.html#subscriptions">Subscription Plans</a></li>
+          </ul>
+        </div>
         <a href="inquire.html">Inquire</a>
       </nav>
     </div>

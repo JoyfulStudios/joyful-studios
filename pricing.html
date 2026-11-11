@@ -149,7 +149,6 @@
     <nav class="nav nav--left" aria-label="Primary">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
-      <a href="pricing.html" aria-current="page">Pricing</a>
     </nav>
 
     <a class="logo" href="index.html" aria-label="Joyful Studios home">
@@ -158,7 +157,13 @@
     </a>
 
     <nav class="nav nav--right" aria-label="Secondary">
-      <a href="testimonials.html">Testimonials</a>
+      <div class="has-dropdown">
+        <button type="button" class="dd-toggle is-current" aria-haspopup="true" aria-expanded="false">Pricing</button>
+        <ul class="dropdown">
+          <li><a href="pricing.html#rates">Rates &amp; Packages</a></li>
+          <li><a href="pricing.html#subscriptions">Subscription Plans</a></li>
+        </ul>
+      </div>
       <a href="inquire.html">Inquire</a>
     </nav>
 
@@ -252,8 +257,13 @@
       <nav aria-label="Footer">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="testimonials.html">Testimonials</a>
+        <div class="has-dropdown">
+          <button type="button" class="dd-toggle" aria-haspopup="true" aria-expanded="false">Pricing</button>
+          <ul class="dropdown">
+            <li><a href="pricing.html#rates">Rates &amp; Packages</a></li>
+            <li><a href="pricing.html#subscriptions">Subscription Plans</a></li>
+          </ul>
+        </div>
         <a href="inquire.html">Inquire</a>
       </nav>
     </div>
@@ -381,6 +391,25 @@
       });
       window.addEventListener('hashchange', fromHash);
       fromHash();
+    })();
+  </script>
+
+  <script>
+    /* Makes the menu links pricing.html#rates / #subscriptions / #weddings open the right tab of the pricing table */
+    (function () {
+      function go() {
+        var id = location.hash.replace('#', '');
+        var root = document.getElementById('pricing-table');
+        if (!root) return;
+        function click(sel) { var el = root.querySelector(sel); if (el) el.click(); }
+        if (id === 'rates') click('.pricer__panel:not([hidden]) .tl__node[data-period="once"]');
+        else if (id === 'subscriptions') click('.pricer__panel:not([hidden]) .tl__node[data-period="6"]');
+        else if (id === 'weddings') { click('.pricer__menu [data-cat="wedding"]'); click('.pricer__panel:not([hidden]) .tl__node[data-period="once"]'); }
+        else return;
+        root.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      window.addEventListener('hashchange', go);
+      window.addEventListener('load', go);
     })();
   </script>
 </body>

@@ -17,7 +17,7 @@
     .hero { position: relative; height: 58vw; min-height: 420px; overflow: hidden; color: var(--cream); background: var(--charcoal) url('rates-hero.jpg') center 35% / cover no-repeat; }
     .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(20,18,10,.4), rgba(20,18,10,.1) 40%, rgba(20,18,10,.3)); }
     .hero__content { position: absolute; z-index: 3; left: 50%; top: 56%; transform: translate(-50%, -50%); text-align: center; width: min(92%, 900px); }
-    .hero h1 { margin: 0 0 clamp(18px, 4vw, 60px); font-family: var(--font-hero); font-weight: 400; font-size: clamp(30px, 5.9vw, 110px); line-height: 1.12; text-shadow: 0 2px 24px rgba(0,0,0,.45); }
+    .hero h1 { margin: 0 0 clamp(18px, 4vw, 60px); font-family: var(--font-hero); font-weight: 400; font-size: clamp(28px, 5vw, 96px); line-height: 1.12; text-shadow: 0 2px 24px rgba(0,0,0,.45); }
     .hero .btn { text-transform: uppercase; letter-spacing: .1em; font-size: clamp(10px, 1.05vw, 18px); padding: .4vw 2.4vw; min-width: 11vw; }
 
     /* ---------- Shared type for the rate / package blocks ---------- */
@@ -29,9 +29,9 @@
     /* ---------- Standard Rates ---------- */
     .rates { position: relative; background: var(--sand); color: var(--ink); overflow: hidden; padding: 5.6vw 5.4vw 4.6vw; min-height: 34.4vw; }
     .rates .block { position: relative; z-index: 2; max-width: 72vw; }
-    .rates h2 { font-size: clamp(26px, 4vw, 72px); }
-    .rates ul { margin-top: 2.2vw; font-size: clamp(14px, 1.9vw, 34px); line-height: .98; }
-    .rates .btn { color: var(--ink); border-color: var(--ink); margin-top: 3.2vw; font-size: clamp(13px, 1.75vw, 31px); padding: .45vw 3vw; border-width: 1.5px; }
+    .rates h2 { font-size: clamp(24px, 3.4vw, 62px); }
+    .rates ul { margin-top: 2vw; font-size: clamp(13px, 1.6vw, 29px); line-height: 1.12; }
+    .rates .btn { color: var(--ink); border-color: var(--ink); margin-top: 2.8vw; font-size: clamp(12px, 1.5vw, 27px); padding: .4vw 2.6vw; border-width: 1.5px; }
     .rates__branch { position: absolute; z-index: 1; right: -7vw; top: -6vw; width: 50vw; opacity: .3; mix-blend-mode: multiply; pointer-events: none; }
     .rates__letter { position: absolute; z-index: 2; right: 6.4vw; top: -2vw; width: 8.6vw; transform: rotate(1deg); filter: drop-shadow(0 .3vw .5vw rgba(45,43,37,.25)); }
     .rates__hands { position: absolute; z-index: 3; right: -1vw; bottom: 3.4vw; width: 11.6vw; aspect-ratio: 1 / 1.05; object-fit: cover; transform: rotate(-6deg); box-shadow: 0 .6vw 1.2vw rgba(45,43,37,.35); }
@@ -44,25 +44,25 @@
     .pkg--essential .pkg__photo { background-image: url('rates-bride.jpg'); background-position: center 30%; }
     .pkg--celebration .pkg__photo { background-image: url('rates-chair.jpg'); background-position: center 40%; }
     .pkg__text { display: flex; flex-direction: column; justify-content: center; padding: 4vw 4vw 4vw 3.9vw; }
-    .pkg h2 { font-size: clamp(24px, 3.95vw, 70px); }
-    .pkg ul { margin-top: 2.4vw; font-size: clamp(13px, 1.9vw, 34px); line-height: .96; max-width: 51vw; }
+    .pkg h2 { font-size: clamp(22px, 3.35vw, 60px); }
+    .pkg ul { margin-top: 2.2vw; font-size: clamp(12px, 1.6vw, 29px); line-height: 1.1; max-width: 51vw; }
     .pkg li + li { margin-top: .05vw; }
-    .pkg .btn { align-self: flex-start; margin-top: 2.8vw; color: var(--cream); border-color: var(--cream); font-size: clamp(12px, 1.75vw, 31px); padding: .45vw 3vw; border-width: 1.5px; }
+    .pkg .btn { align-self: flex-start; margin-top: 2.8vw; color: var(--cream); border-color: var(--cream); font-size: clamp(12px, 1.5vw, 27px); padding: .4vw 2.6vw; border-width: 1.5px; }
     .pkg .btn:hover { color: var(--charcoal); }
 
     /* ---------- First steps ---------- */
     .steps { position: relative; height: 56.3vw; background: var(--charcoal) url('rates-lake.jpg') center 60% / cover no-repeat; color: var(--cream); overflow: hidden; }
     .steps::before { content: ""; position: absolute; inset: 0; background: rgba(20,24,14,.18); }
-    .steps h2 { position: absolute; z-index: 2; left: 5.7vw; top: 5vw; margin: 0; width: 34vw; font-family: var(--font-body); font-weight: 400; text-transform: uppercase; letter-spacing: .03em; font-size: clamp(22px, 3.25vw, 60px); line-height: 1.12; }
+    .steps h2 { position: absolute; z-index: 2; left: 5.7vw; top: 5vw; margin: 0; width: 34vw; font-family: var(--font-body); font-weight: 400; text-transform: uppercase; letter-spacing: .03em; font-size: clamp(20px, 2.8vw, 52px); line-height: 1.12; }
     .steps svg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; }
-    .steps svg text { font-family: var(--font-body); fill: #fff; font-size: 13px; letter-spacing: .02em; }
+    .steps svg text { font-family: var(--font-body); fill: #fff; font-size: 11.5px; letter-spacing: .02em; }
     .steps__list { display: none; }
 
     /* ---------- FAQ ---------- */
     .faq { background: var(--sand); color: var(--ink); padding: 5vw 5vw 5.4vw; min-height: 35.9vw; }
-    .faq h2 { margin: 0 0 3.2vw; text-align: center; font-family: var(--font-body); font-weight: 400; font-size: clamp(24px, 4.1vw, 74px); }
+    .faq h2 { margin: 0 0 3vw; text-align: center; font-family: var(--font-body); font-weight: 400; font-size: clamp(22px, 3.5vw, 64px); }
     .faq__list { max-width: 62vw; margin: 0 auto; padding: 0; list-style: none; counter-reset: q; }
-    .faq details { counter-increment: q; font-size: clamp(14px, 2.15vw, 38px); letter-spacing: .05em; line-height: 1.5; }
+    .faq details { counter-increment: q; font-size: clamp(13px, 1.8vw, 32px); letter-spacing: .05em; line-height: 1.5; }
     .faq summary { cursor: pointer; list-style: none; padding: .15vw 0; }
     .faq summary::-webkit-details-marker { display: none; }
     .faq summary::before { content: counter(q) ". "; }
@@ -110,14 +110,14 @@
       .block ul { letter-spacing: .05em; }
       .rates ul, .pkg ul { line-height: 1.4; }
       .pkg li + li { margin-top: 3px; }
-      .rates { padding: 44px 24px 150px; min-height: 0; }
+      .rates { padding: 34px 20px 30px; min-height: 0; }
       .rates .block { max-width: none; }
-      .rates h2 { font-size: 28px; }
-      .rates ul { margin-top: 18px; font-size: 14.5px; }
-      .rates .btn { margin-top: 24px; font-size: 15px; padding: 6px 28px; }
-      .rates__branch { width: 90vw; right: -22vw; top: auto; bottom: -12vw; opacity: .25; }
-      .rates__letter { width: 78px; right: 26px; top: auto; bottom: 22px; }
-      .rates__hands { width: 108px; right: -8px; bottom: 6px; }
+      .rates h2 { font-size: 24px; }
+      .rates ul { margin-top: 12px; font-size: 13px; line-height: 1.4; }
+      .rates .btn { margin-top: 18px; font-size: 14px; padding: 5px 24px; }
+      .rates__branch { width: 70vw; right: -24vw; top: auto; bottom: -14vw; opacity: .22; }
+      .rates__letter { width: 40px; right: 88px; top: 14px; bottom: auto; }
+      .rates__hands { width: 66px; right: 12px; top: 26px; bottom: auto; transform: rotate(-6deg); }
 
       .pkg { grid-template-columns: 1fr !important; min-height: 0; }
       .pkg__photo { aspect-ratio: 4 / 4.4; order: -1; }
@@ -134,7 +134,7 @@
       .steps svg { display: none; }
       .steps__list { display: block; position: relative; z-index: 2; margin: 0; padding: 0 0 0 22px; list-style: none; border-left: 2px solid #fff; }
       .steps__list li { position: relative; padding: 0 0 22px 18px; font-size: 15px; line-height: 1.35; }
-      .steps__list li::before { content: ""; position: absolute; left: -29px; top: 3px; width: 12px; height: 12px; border: 2px solid #fff; border-radius: 50%; background: rgba(20,24,14,.9); }
+      .steps__list li::before { content: ""; position: absolute; left: -29px; top: 3px; width: 12px; height: 12px; border: 2px solid #fff; border-radius: 50%; background: #fff; }
       .steps__list li:last-child { padding-bottom: 0; }
 
       .faq { padding: 44px 24px 48px; min-height: 0; }
@@ -155,6 +155,27 @@
       .footer__bar .dropdown a { font-size: inherit; }
     }
   </style>
+<style id="menu-uniform">
+  .nav--right .has-dropdown .dropdown { left: auto; right: -20px; }
+  /* Same menu text size and spacing on every page (header + footer) */
+  @media (min-width: 901px) {
+    .site-header { grid-template-columns: 1fr auto 1fr; }
+    .site-header .nav { font-size: clamp(12px, 1.44vw, 26px); line-height: 1.722; letter-spacing: .02em; gap: 9.9vw; }
+    .site-header .nav--left { justify-content: flex-end; margin-right: 12vw; }
+    .site-header .nav--right { justify-content: flex-start; margin-left: 11.6vw; }
+    .site-header .logo__word { font-size: clamp(44px, 6vw, 120px); }
+    .site-header .logo__sub { font-size: clamp(8px, .8vw, 15px); }
+    .footer__bar nav { justify-content: center; gap: 9vw; font-size: clamp(12px, 1.44vw, 26px); line-height: 1.722; letter-spacing: .02em; }
+    .footer__bar .has-dropdown { margin-left: 23vw; }
+    .site-header .dd-toggle, .footer__bar .dd-toggle { font-size: inherit; letter-spacing: inherit; line-height: inherit; }
+  }
+  @media (max-width: 900px) {
+    .site-header .nav { font-size: 14px; letter-spacing: .02em; }
+    .footer__bar { padding-left: 14px; padding-right: 14px; }
+    .footer__bar nav { flex-wrap: nowrap; justify-content: space-between; align-items: flex-start; gap: 0; font-size: clamp(8px, 2.8vw, 13px); letter-spacing: 0; line-height: 1.55; }
+    .footer__bar .dd-toggle, .footer__bar .dropdown a { font-size: inherit; letter-spacing: inherit; }
+  }
+</style>
 </head>
 
 <body id="home">
@@ -245,7 +266,7 @@
       <h2 id="steps-title">First steps for booking your wedding</h2>
       <svg viewBox="0 0 1000 563" preserveAspectRatio="none" aria-hidden="true">
         <polyline points="87,200 282,240 423,98 617,147 838,275" fill="none" stroke="#fff" stroke-width="3.6" stroke-linejoin="round"/>
-        <g fill="none" stroke="#fff" stroke-width="3.2">
+        <g fill="#fff" stroke="#fff" stroke-width="3.2">
           <circle cx="87" cy="200" r="6"/><circle cx="282" cy="240" r="6"/><circle cx="423" cy="98" r="6"/><circle cx="617" cy="147" r="6"/><circle cx="838" cy="275" r="6"/>
         </g>
         <text x="57" y="236">01 Inquire about</text><text x="57" y="250">your date</text>

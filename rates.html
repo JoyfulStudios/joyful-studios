@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rates &amp; Packages | Joyful Studios</title>
+  <meta name="description" content="Standard rates and wedding packages for Joyful Studios: romantic, documentary-style photography in Durbanville, Cape Town and beyond.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Quattrocento (body), Pinyon Script (hero headline), Italiana (stand-in for Hatton), Mrs Saint Delafield (stand-in for Abramo Script) -->
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Mrs+Saint+Delafield&family=Pinyon+Script&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ---------- Hero ---------- */
+    .hero { position: relative; height: 58vw; min-height: 420px; overflow: hidden; color: var(--cream); background: var(--charcoal) url('rates-hero.jpg') center 35% / cover no-repeat; }
+    .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(20,18,10,.4), rgba(20,18,10,.1) 40%, rgba(20,18,10,.3)); }
+    .hero__content { position: absolute; z-index: 3; left: 50%; top: 56%; transform: translate(-50%, -50%); text-align: center; width: min(92%, 900px); }
+    .hero h1 { margin: 0 0 clamp(18px, 4vw, 60px); font-family: var(--font-hero); font-weight: 400; font-size: clamp(30px, 5.9vw, 110px); line-height: 1.12; text-shadow: 0 2px 24px rgba(0,0,0,.45); }
+    .hero .btn { text-transform: uppercase; letter-spacing: .1em; font-size: clamp(10px, 1.05vw, 18px); padding: .4vw 2.4vw; min-width: 11vw; }
+
+    /* ---------- Shared type for the rate / package blocks ---------- */
+    .block h2 { margin: 0; font-family: var(--font-body); font-weight: 400; line-height: 1.15; }
+    .block ul { margin: 0; padding-left: 1.2em; list-style: disc; letter-spacing: .1em; }
+    .block .btn { text-transform: none; letter-spacing: .04em; }
+    .rates .btn:hover { color: var(--cream); background: var(--ink); }
+
+    /* ---------- Standard Rates ---------- */
+    .rates { position: relative; background: var(--sand); color: var(--ink); overflow: hidden; padding: 5.6vw 5.4vw 4.6vw; min-height: 34.4vw; }
+    .rates .block { position: relative; z-index: 2; max-width: 72vw; }
+    .rates h2 { font-size: clamp(26px, 4vw, 72px); }
+    .rates ul { margin-top: 2.2vw; font-size: clamp(14px, 1.9vw, 34px); line-height: .98; }
+    .rates .btn { color: var(--ink); border-color: var(--ink); margin-top: 3.2vw; font-size: clamp(13px, 1.75vw, 31px); padding: .45vw 3vw; border-width: 1.5px; }
+    .rates__branch { position: absolute; z-index: 1; right: -7vw; top: -6vw; width: 50vw; opacity: .3; mix-blend-mode: multiply; pointer-events: none; }
+    .rates__letter { position: absolute; z-index: 2; right: 6.4vw; top: -2vw; width: 8.6vw; transform: rotate(1deg); filter: drop-shadow(0 .3vw .5vw rgba(45,43,37,.25)); }
+    .rates__hands { position: absolute; z-index: 3; right: -1vw; bottom: 3.4vw; width: 11.6vw; aspect-ratio: 1 / 1.05; object-fit: cover; transform: rotate(-6deg); box-shadow: 0 .6vw 1.2vw rgba(45,43,37,.35); }
+
+    /* ---------- Wedding packages (split rows) ---------- */
+    .pkg { display: grid; min-height: 49vw; }
+    .pkg--essential { grid-template-columns: 41fr 59fr; background: var(--charcoal); color: var(--cream); }
+    .pkg--celebration { grid-template-columns: 59fr 41fr; background: #8d8d59; color: var(--cream); }
+    .pkg__photo { background-size: cover; background-position: center; min-height: 100%; }
+    .pkg--essential .pkg__photo { background-image: url('rates-bride.jpg'); background-position: center 30%; }
+    .pkg--celebration .pkg__photo { background-image: url('rates-chair.jpg'); background-position: center 40%; }
+    .pkg__text { display: flex; flex-direction: column; justify-content: center; padding: 4vw 4vw 4vw 3.9vw; }
+    .pkg h2 { font-size: clamp(24px, 3.95vw, 70px); }
+    .pkg ul { margin-top: 2.4vw; font-size: clamp(13px, 1.9vw, 34px); line-height: .96; max-width: 51vw; }
+    .pkg li + li { margin-top: .05vw; }
+    .pkg .btn { align-self: flex-start; margin-top: 2.8vw; color: var(--cream); border-color: var(--cream); font-size: clamp(12px, 1.75vw, 31px); padding: .45vw 3vw; border-width: 1.5px; }
+    .pkg .btn:hover { color: var(--charcoal); }
+
+    /* ---------- First steps ---------- */
+    .steps { position: relative; height: 56.3vw; background: var(--charcoal) url('rates-lake.jpg') center 60% / cover no-repeat; color: var(--cream); overflow: hidden; }
+    .steps::before { content: ""; position: absolute; inset: 0; background: rgba(20,24,14,.18); }
+    .steps h2 { position: absolute; z-index: 2; left: 5.7vw; top: 5vw; margin: 0; width: 34vw; font-family: var(--font-body); font-weight: 400; text-transform: uppercase; letter-spacing: .03em; font-size: clamp(22px, 3.25vw, 60px); line-height: 1.12; }
+    .steps svg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; }
+    .steps svg text { font-family: var(--font-body); fill: #fff; font-size: 13px; letter-spacing: .02em; }
+    .steps__list { display: none; }
+
+    /* ---------- FAQ ---------- */
+    .faq { background: var(--sand); color: var(--ink); padding: 5vw 5vw 5.4vw; min-height: 35.9vw; }
+    .faq h2 { margin: 0 0 3.2vw; text-align: center; font-family: var(--font-body); font-weight: 400; font-size: clamp(24px, 4.1vw, 74px); }
+    .faq__list { max-width: 62vw; margin: 0 auto; padding: 0; list-style: none; counter-reset: q; }
+    .faq details { counter-increment: q; font-size: clamp(14px, 2.15vw, 38px); letter-spacing: .05em; line-height: 1.5; }
+    .faq summary { cursor: pointer; list-style: none; padding: .15vw 0; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::before { content: counter(q) ". "; }
+    .faq summary:hover { color: var(--red); }
+    .faq details p { margin: .4vw 0 1.2vw 1.6em; font-size: .78em; letter-spacing: .02em; line-height: 1.55; max-width: 48em; }
+
+    /* ---------- Instagram ---------- */
+    .insta { background: var(--charcoal); color: #d9cdb6; padding: clamp(44px, 6vw, 80px) var(--pad); }
+    .insta__inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 40px; }
+    .insta h2 { margin: 0; font-family: var(--font-body); font-weight: 400; font-size: clamp(30px, 4vw, 46px); line-height: 1.15; color: #cfc3ac; }
+    .insta a.handle { display: inline-block; margin-top: 14px; font-size: 18px; border-bottom: 1px solid transparent; }
+    .insta a.handle:hover { border-color: currentColor; }
+    .insta__photo { position: relative; display: block; width: clamp(170px, 20vw, 230px); transform: rotate(1.5deg); }
+    .insta__photo img.insta__img { width: 100%; aspect-ratio: 1; object-fit: cover; object-position: center 55%; border-radius: 10px; box-shadow: 0 12px 28px rgba(0,0,0,.45); }
+    .insta__pin { position: absolute; z-index: 2; top: -14px; left: 50%; width: clamp(22px, 2.6vw, 30px); transform: translateX(-50%); }
+
+    /* ---------- Desktop header proportions (same as home page) ---------- */
+    @media (min-width: 901px) {
+      .pkg h2 { white-space: nowrap; }
+      .footer__bar nav { justify-content: center; gap: 9vw; }
+      .footer__bar .has-dropdown { margin-left: 23vw; }
+      .pkg--celebration .pkg__text { padding-right: 1.5vw; }
+      .site-header { grid-template-columns: 1fr auto 1fr; padding: 2.2vw 0 0; }
+      .nav { font-size: clamp(12px, 1.44vw, 25px); line-height: 1.722; gap: 9.9vw; }
+      .nav--left { justify-content: flex-end; margin-right: 12vw; }
+      .nav--right { justify-content: flex-start; margin-left: 11.6vw; }
+      .logo__word { font-size: clamp(44px, 6vw, 120px); }
+      .logo__sub { font-size: clamp(8px, .8vw, 15px); }
+      .insta { padding: 5.8vw 0 3.3vw; }
+      .insta__inner { max-width: none; padding: 0 12vw 0 14.6vw; margin: 0; }
+      .insta h2 { font-size: clamp(23px, 4.32vw, 79px); line-height: 1.222; }
+      .insta a.handle { font-size: clamp(12px, 1.58vw, 27px); margin: 1.6vw 0 0 .8vw; line-height: 1.722; }
+      .insta__photo { width: 25vw; transform: none; }
+      .insta__img { aspect-ratio: 195 / 200; border-radius: .8vw; }
+      .insta__pin { top: -1.4vw; width: clamp(22px, 2.7vw, 48px); }
+    }
+
+    /* ---------- Phone / tablet ---------- */
+    @media (max-width: 900px) {
+      .hero { height: 110vw; min-height: 440px; max-height: 720px; background-position: 50% 30%; }
+      .hero__content { top: 58%; }
+      .hero h1 { font-size: clamp(26px, 8vw, 44px); }
+      .hero .btn { font-size: 11px; padding: 6px 26px; }
+
+      .block ul { letter-spacing: .05em; }
+      .rates ul, .pkg ul { line-height: 1.4; }
+      .pkg li + li { margin-top: 3px; }
+      .rates { padding: 44px 24px 150px; min-height: 0; }
+      .rates .block { max-width: none; }
+      .rates h2 { font-size: 28px; }
+      .rates ul { margin-top: 18px; font-size: 14.5px; }
+      .rates .btn { margin-top: 24px; font-size: 15px; padding: 6px 28px; }
+      .rates__branch { width: 90vw; right: -22vw; top: auto; bottom: -12vw; opacity: .25; }
+      .rates__letter { width: 78px; right: 26px; top: auto; bottom: 22px; }
+      .rates__hands { width: 108px; right: -8px; bottom: 6px; }
+
+      .pkg { grid-template-columns: 1fr !important; min-height: 0; }
+      .pkg__photo { aspect-ratio: 4 / 4.4; order: -1; }
+      .pkg--celebration .pkg__text { order: -1; }
+      .pkg--celebration .pkg__photo { order: 0; }
+      .pkg__text { padding: 44px 24px; }
+      .pkg h2 { font-size: 26px; }
+      .pkg ul { margin-top: 18px; font-size: 14px; max-width: none; }
+      .pkg .btn { margin-top: 24px; font-size: 14px; padding: 6px 28px; }
+
+      .steps { height: auto; padding: 48px 24px 56px; background-position: center; }
+      .steps::before { background: rgba(20,24,14,.5); }
+      .steps h2 { position: relative; left: auto; top: auto; width: auto; font-size: 24px; margin-bottom: 26px; }
+      .steps svg { display: none; }
+      .steps__list { display: block; position: relative; z-index: 2; margin: 0; padding: 0 0 0 22px; list-style: none; border-left: 2px solid #fff; }
+      .steps__list li { position: relative; padding: 0 0 22px 18px; font-size: 15px; line-height: 1.35; }
+      .steps__list li::before { content: ""; position: absolute; left: -29px; top: 3px; width: 12px; height: 12px; border: 2px solid #fff; border-radius: 50%; background: rgba(20,24,14,.9); }
+      .steps__list li:last-child { padding-bottom: 0; }
+
+      .faq { padding: 44px 24px 48px; min-height: 0; }
+      .faq h2 { font-size: 26px; margin-bottom: 22px; }
+      .faq__list { max-width: none; }
+      .faq details { font-size: 14.5px; margin-bottom: 8px; }
+      .faq details p { margin: 6px 0 10px 1.5em; font-size: 13.5px; }
+
+      .insta__inner { grid-template-columns: 1fr auto; justify-items: stretch; align-items: center; gap: 16px; }
+      .insta h2 { font-size: clamp(20px, 6vw, 34px); }
+      .insta a.handle { font-size: 13.5px; margin-top: 10px; }
+      .insta__photo { width: clamp(110px, 36vw, 220px); }
+
+      .footer__left, .footer__right { font-size: 11.5px; }
+      .footer__bar { padding-left: 14px; padding-right: 14px; }
+      .footer__bar nav { flex-wrap: nowrap; justify-content: space-between; align-items: flex-start; gap: 0; font-size: clamp(8px, 2.8vw, 13px); letter-spacing: 0; }
+      .footer__bar .dd-toggle { font-size: inherit; letter-spacing: inherit; }
+      .footer__bar .dropdown a { font-size: inherit; }
+    }
+  </style>
+</head>
+
+<body id="home">
+
+  <header class="site-header" id="site-header">
+    <nav class="nav nav--left" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+    </nav>
+
+    <a class="logo" href="index.html" aria-label="Joyful Studios home">
+      <span class="logo__word">joyful</span>
+      <span class="logo__sub">STUDIOS</span>
+    </a>
+
+    <nav class="nav nav--right" aria-label="Secondary">
+      <div class="has-dropdown">
+        <button type="button" class="dd-toggle is-current" aria-haspopup="true" aria-expanded="false">Pricing</button>
+        <ul class="dropdown">
+          <li><a href="rates.html">Rates &amp; Packages</a></li>
+          <li><a href="pricing.html#subscriptions">Subscription Plans</a></li>
+        </ul>
+      </div>
+      <a href="inquire.html">Inquire</a>
+    </nav>
+
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="site-header">Menu</button>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="Rates and packages">
+      <div class="hero__content">
+        <h1>Your memories are<br>worth investing in</h1>
+        <a class="btn" href="inquire.html">Inquire now</a>
+      </div>
+    </section>
+
+    <section class="rates block" id="standard-rates">
+      <img class="rates__branch" src="rates-branch.png" alt="" aria-hidden="true">
+      <img class="rates__letter" src="rates-letter.png" alt="" aria-hidden="true">
+      <img class="rates__hands" src="rates-hands.jpg" alt="Two hands reaching toward each other at sunset" loading="lazy">
+      <div class="block">
+        <h2>Standard Rates</h2>
+        <ul>
+          <li>R1,900 per hour</li>
+          <li>Minimum booking of 1 hour.</li>
+          <li>40+ professionally edited images per hour.</li>
+          <li>Private online gallery for viewing, downloading and sharing.</li>
+          <li>Travel fee included within 30km radius of Durbanville, Cape Town.</li>
+        </ul>
+        <a class="btn btn--soft" href="inquire.html">Inquire Now</a>
+      </div>
+    </section>
+
+    <section class="pkg pkg--essential block" id="weddings">
+      <div class="pkg__photo" role="img" aria-label="A bride in a vintage gown leaning against a tree"></div>
+      <div class="pkg__text">
+        <h2>Essential Wedding Package</h2>
+        <ul>
+          <li>R7,500</li>
+          <li>Up to 4 hours of wedding photography coverage.</li>
+          <li>Approximately 250&ndash;350+ professionally edited images.</li>
+          <li>Online gallery to view, download and share your photographs.</li>
+          <li>Pre-wedding consultation to discuss your plans and preferences.</li>
+          <li>Emotional, documentary-style photography that covers every moment of your celebration from start to finish.</li>
+        </ul>
+        <a class="btn" href="inquire.html">Inquire Now</a>
+      </div>
+    </section>
+
+    <section class="pkg pkg--celebration block" id="celebration">
+      <div class="pkg__text">
+        <h2>Celebration Wedding Package</h2>
+        <ul>
+          <li>R13,500</li>
+          <li>Up to 8 hours of wedding photography coverage.</li>
+          <li>Approximately 500&ndash;700+ professionally edited images.</li>
+          <li>Online gallery to view, download and share your photographs.</li>
+          <li>Pre-wedding consultation and wedding timeline planning.</li>
+          <li>Emotional, documentary-style photography that covers every moment of your celebration from start to finish.</li>
+        </ul>
+        <a class="btn" href="inquire.html">Inquire Now</a>
+      </div>
+      <div class="pkg__photo" role="img" aria-label="A bride in a white dress sitting in an armchair by a window"></div>
+    </section>
+
+    <section class="steps" id="steps" aria-labelledby="steps-title">
+      <h2 id="steps-title">First steps for booking your wedding</h2>
+      <svg viewBox="0 0 1000 563" preserveAspectRatio="none" aria-hidden="true">
+        <polyline points="87,200 282,240 423,98 617,147 838,275" fill="none" stroke="#fff" stroke-width="3.6" stroke-linejoin="round"/>
+        <g fill="none" stroke="#fff" stroke-width="3.2">
+          <circle cx="87" cy="200" r="6"/><circle cx="282" cy="240" r="6"/><circle cx="423" cy="98" r="6"/><circle cx="617" cy="147" r="6"/><circle cx="838" cy="275" r="6"/>
+        </g>
+        <text x="57" y="236">01 Inquire about</text><text x="57" y="250">your date</text>
+        <text x="248" y="268">02 Review packages</text><text x="248" y="282">&amp; Rates</text>
+        <text x="435" y="75">03 Sign contract</text><text x="435" y="89">&amp; Receive guide</text>
+        <text x="635" y="132">04 Secure date</text><text x="635" y="146">with deposit</text>
+        <text x="855" y="279">05 Online</text><text x="855" y="293">introduction &amp;</text><text x="855" y="307">support call</text>
+      </svg>
+      <ol class="steps__list">
+        <li>01 Inquire about your date</li>
+        <li>02 Review packages &amp; Rates</li>
+        <li>03 Sign contract &amp; Receive guide</li>
+        <li>04 Secure date with deposit</li>
+        <li>05 Online introduction &amp; support call</li>
+      </ol>
+    </section>
+
+    <section class="faq" id="faq">
+      <h2>Frequently Asked</h2>
+      <div class="faq__list">
+        <details>
+          <summary>Do you help with posing and directing?</summary>
+          <p>Yes, gently. I use simple prompts and guidance during your session so you feel relaxed and the photos still look natural, never stiff or staged.</p>
+        </details>
+        <details>
+          <summary>Do you offer engagement or pre-wedding photoshoots?</summary>
+          <p>Yes. Engagement and couples sessions are booked at my standard rate of R1,900 per hour (minimum booking of 1 hour), and can happen any time before your wedding day.</p>
+        </details>
+        <details>
+          <summary>Do you offer videography as well?</summary>
+          <p>My focus is photography. If you&rsquo;d like video alongside your photos, get in touch and we can talk it through.</p>
+        </details>
+        <details>
+          <summary>When will we receive our photographs?</summary>
+          <p>Your photographs are delivered in a private online gallery where you can view, download and share them. I&rsquo;ll confirm the delivery timeframe with you when you book.</p>
+        </details>
+        <details>
+          <summary>What happens if our wedding plans change?</summary>
+          <p>Life happens. Get in touch as soon as you can and we&rsquo;ll work out the best way forward together. The terms for changing a date are covered in your contract.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ===== Instagram ===== -->
+    <section class="insta" id="inquire">
+      <div class="insta__inner">
+        <div>
+          <h2>Take a peek at<br>my Instagram</h2>
+          <a class="handle" href="https://www.instagram.com/joyful_studios_/" target="_blank" rel="noopener">@joyful_studios_</a>
+        </div>
+        <a class="insta__photo" href="https://www.instagram.com/joyful_studios_/" target="_blank" rel="noopener" aria-label="Open Joyful Studios on Instagram">
+          <img class="insta__pin" src="pin.png" alt="">
+          <img class="insta__img" src="insta-bouquet.jpg" alt="A bride holding a bouquet of peach and cream flowers" loading="lazy">
+        </a>
+      </div>
+    </section>
+  
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="footer">
+      <p class="footer__left">Joy is a wedding, couples &amp; lifestyle photographer capturing film-inspired photos and special moments.</p>
+      <a class="logo" href="index.html" aria-label="Joyful Studios home">
+        <span class="logo__word">joyful</span>
+        <span class="logo__sub">STUDIOS</span>
+      </a>
+      <p class="footer__right">Based in Cape Town,<br>South Africa.<br>Available for travel.</p>
+    </div>
+    <div class="footer__bar">
+      <nav aria-label="Footer">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <div class="has-dropdown">
+          <button type="button" class="dd-toggle" aria-haspopup="true" aria-expanded="false">Pricing</button>
+          <ul class="dropdown">
+            <li><a href="rates.html">Rates &amp; Packages</a></li>
+            <li><a href="pricing.html#subscriptions">Subscription Plans</a></li>
+          </ul>
+        </div>
+        <a href="inquire.html">Inquire</a>
+      </nav>
+    </div>
+  </footer>
+
+  
+  <script src="script.js"></script>
+</body>
+</html>

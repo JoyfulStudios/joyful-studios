@@ -10,43 +10,75 @@
   <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Mrs+Saint+Delafield&family=Pinyon+Script&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <style>
-    .cat-hero {
-      position: relative; height: clamp(280px, 34vw, 420px);
-      background: var(--charcoal) url("images/about-cta.jpg") center 30% / cover no-repeat; color: var(--cream);
-      display: grid; place-items: center; text-align: center; padding: 70px var(--pad) 0;
-    }
-    .cat-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(20,18,10,.45), rgba(20,18,10,.3)); }
-    .cat-hero h1 { position: relative; z-index: 2; margin: 0; font-family: var(--font-hero); font-weight: 400; font-size: clamp(38px, 6.4vw, 84px); line-height: 1.12; text-shadow: 0 2px 24px rgba(0,0,0,.4); }
+    /* ---------- Hero ---------- */
+    .hero { position: relative; height: 47.3vw; min-height: 300px; overflow: hidden; color: var(--cream); background: var(--charcoal) url("inquire-hero.jpg") 0 35% / 110% auto no-repeat; }
+    .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(20,18,10,.38), rgba(20,18,10,.12) 45%, rgba(20,18,10,.2)); }
+    .hero__content { position: absolute; z-index: 2; left: 50%; top: 46%; transform: translate(-50%, -50%); text-align: center; width: min(92%, 900px); }
+    .hero h1 { margin: 0; font-family: var(--font-hero); font-weight: 400; font-size: clamp(30px, 4.6vw, 84px); line-height: 1.12; text-shadow: 0 2px 24px rgba(0,0,0,.4); }
 
-    .inquire { padding: clamp(36px, 6vw, 80px) var(--pad); }
-    .inquire__card { max-width: 760px; margin: 0 auto; background: var(--cream-bg); padding: clamp(24px, 4.5vw, 56px); border-radius: var(--radius); }
-    .inquire h2 { margin: 0 0 8px; font-family: var(--font-body); font-weight: 700; font-size: clamp(22px, 2.6vw, 30px); letter-spacing: .02em; text-transform: uppercase; }
-    .inquire__lead { margin: 0 0 28px; }
+    /* ---------- Form ---------- */
+    .inquire { background: #cdc1ab; padding: clamp(24px, 2.4vw, 40px) var(--pad) clamp(30px, 3.7vw, 60px); }
+    .inquire__card { max-width: 49.5vw; min-width: min(100%, 520px); margin: 0 auto; background: var(--cream-bg); padding: 3.1vw; border-radius: 0; }
+    .inquire h2 { margin: 0 0 .6vw; font-family: var(--font-body); font-weight: 700; font-size: clamp(18px, 1.75vw, 30px); letter-spacing: .04em; text-transform: uppercase; }
+    .inquire__lead { margin: 0 0 clamp(18px, 2vw, 32px); font-size: clamp(12px, 1.24vw, 23px); }
 
-    .field { margin-bottom: 20px; }
-    .field label { display: block; margin-bottom: 6px; font-weight: 700; font-size: 14px; letter-spacing: .06em; text-transform: uppercase; }
+    .field { margin-bottom: clamp(12px, 1.4vw, 22px); }
+    .field label { display: block; margin-bottom: .45vw; font-weight: 700; font-size: clamp(11px, .95vw, 17px); letter-spacing: .06em; text-transform: uppercase; }
     .field .opt { font-weight: 400; text-transform: none; letter-spacing: 0; opacity: .7; }
     .field input, .field select, .field textarea {
-      width: 100%; padding: 12px 14px; font: inherit; color: var(--ink);
-      background: #fff9ee; border: 1px solid rgba(53, 50, 43, .35); border-radius: 6px;
+      width: 100%; padding: .75vw 1vw; font: inherit; font-size: clamp(12px, 1.24vw, 23px); color: var(--ink);
+      background: #fff9ee; border: 1px solid rgba(53, 50, 43, .3); border-radius: .4vw;
     }
-    .field textarea { min-height: 140px; resize: vertical; }
+    .field textarea { min-height: 8vw; resize: vertical; }
     .field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid var(--charcoal); outline-offset: 1px; border-color: var(--charcoal); }
     .field select.is-prefilled { border-color: var(--charcoal); box-shadow: 0 0 0 2px rgba(45, 43, 37, .18); }
-    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; }
-    .prefill-note { margin: 8px 0 0; font-size: 14px; font-style: italic; }
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1.4vw; }
+    .prefill-note { margin: .6vw 0 0; font-size: clamp(11px, 1.1vw, 20px); font-style: italic; }
     .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
-    .submit { margin-top: 8px; padding: 12px 38px; font-size: 16px; color: var(--cream); background: var(--charcoal); border: 1px solid var(--charcoal); border-radius: 999px; cursor: pointer; letter-spacing: .06em; text-transform: uppercase; transition: background .25s, color .25s; }
+    .submit { margin-top: .6vw; padding: .65vw 2.6vw; font-size: clamp(11px, 1.1vw, 20px); color: var(--cream); background: var(--charcoal); border: 1px solid var(--charcoal); border-radius: 999px; cursor: pointer; letter-spacing: .06em; text-transform: uppercase; transition: background .25s, color .25s; }
     .submit:hover { background: transparent; color: var(--charcoal); }
     .submit:disabled { opacity: .6; cursor: wait; }
-    .form-msg { margin: 18px 0 0; padding: 12px 16px; border-radius: 6px; font-size: 15px; }
+    .form-msg { margin: 18px 0 0; padding: 12px 16px; border-radius: 6px; font-size: clamp(12px, 1.24vw, 20px); }
     .form-msg[hidden] { display: none; }
     .form-msg--error { background: #f3d9d3; color: #6b1f12; }
     .thanks { text-align: center; padding: 20px 0; }
     .thanks h2 { margin-bottom: 12px; }
 
-    @media (max-width: 600px) { .row2 { grid-template-columns: 1fr; } }
+    /* ---------- First steps + footer over the lake photo ---------- */
+    .steps-foot { position: relative; background: #1c2014 url("inquire-lake.jpg") center 60% / cover no-repeat; color: var(--cream); overflow: hidden; }
+    .steps-foot::before { content: ""; position: absolute; inset: 0; background: rgba(20,24,14,.14); pointer-events: none; }
+    .steps-foot__chart { position: relative; height: 33.8vw; }
+    .steps-foot h2 { position: absolute; z-index: 2; left: 5.7vw; top: 4.2vw; margin: 0; width: 34vw; font-family: var(--font-body); font-weight: 400; text-transform: uppercase; letter-spacing: .03em; font-size: clamp(20px, 2.8vw, 52px); line-height: 1.12; }
+    .steps-foot svg { position: absolute; left: 0; top: 0; width: 100%; height: 56.3vw; z-index: 2; pointer-events: none; }
+    .steps-foot svg text { font-family: var(--font-body); fill: #fff; font-size: 11.5px; letter-spacing: .02em; }
+    .steps__list { display: none; }
+    .steps-foot footer { position: relative; z-index: 3; }
+    .steps-foot .footer { background: rgba(45,43,37,.8); color: var(--cream); }
+    .steps-foot .footer p, .steps-foot .footer__left, .steps-foot .footer__right { color: var(--cream); }
+    .steps-foot .logo { color: var(--cream); }
+    .steps-foot .footer__bar { background: transparent; }
+
+    @media (max-width: 900px) {
+      .hero { height: 90vw; min-height: 340px; max-height: 620px; background-size: auto 100%; background-position: 28% center; }
+      .inquire__card { max-width: none; min-width: 0; padding: 26px 20px; }
+      .inquire h2 { font-size: 20px; margin-bottom: 8px; }
+      .inquire__lead, .prefill-note, .form-msg { font-size: 13.5px; }
+      .field { margin-bottom: 16px; }
+      .field label { font-size: 12px; margin-bottom: 6px; }
+      .field input, .field select, .field textarea { font-size: 16px; padding: 11px 12px; border-radius: 6px; }
+      .field textarea { min-height: 130px; }
+      .row2 { gap: 0 14px; }
+      .submit { font-size: 14px; padding: 11px 32px; }
+      .steps-foot__chart { height: auto; padding: 44px 24px 36px; }
+      .steps-foot svg { display: none; }
+      .steps-foot h2 { position: relative; left: auto; top: auto; width: auto; font-size: 24px; margin-bottom: 24px; }
+      .steps__list { display: block; position: relative; z-index: 2; margin: 0; padding: 0 0 0 22px; list-style: none; border-left: 2px solid #fff; }
+      .steps__list li { position: relative; padding: 0 0 20px 18px; font-size: 14px; line-height: 1.35; }
+      .steps__list li::before { content: ""; position: absolute; left: -29px; top: 3px; width: 12px; height: 12px; border: 2px solid #fff; border-radius: 50%; background: #fff; }
+      .steps__list li:last-child { padding-bottom: 0; }
+    }
+    @media (max-width: 560px) { .row2 { grid-template-columns: 1fr; } }
   </style>
 <style id="menu-uniform">
   .nav--right .has-dropdown .dropdown { left: auto; right: -20px; }
@@ -97,7 +129,9 @@
     <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="site-header">Menu</button>
   </header>
 
-  <section class="cat-hero"><h1>Let’s capture<br>your story</h1></section>
+  <section class="hero" aria-label="Let’s talk">
+    <div class="hero__content"><h1>Let’s talk!</h1></div>
+  </section>
 
   <main class="inquire">
     <div class="inquire__card" id="card">
@@ -129,12 +163,9 @@
           <label for="package">Package or service</label>
           <select id="package" name="package" required>
             <option value="" disabled selected>Please choose…</option>
-            <optgroup label="Hourly Rates &amp; Packages"><option value="standard-session">Standard Session</option><option value="extended-lifestyle">Extended Lifestyle</option><option value="intimate-wedding-package">Intimate Wedding Package</option><option value="full-wedding-package">Full Wedding Package</option></optgroup>
-            <optgroup label="Subscription Offers"><option value="creator-influencer-subscription">Creator &amp; Influencer Subscription</option><option value="family-lifestyle-subscription">Family &amp; Lifestyle Subscription</option><option value="the-wedding-journey-subscription">The Wedding Journey Subscription</option><option value="the-growing-family-subscription">The Growing Family Subscription</option></optgroup>
-            <optgroup label="Mini-sessions &amp; Gift Vouchers"><option value="photobooth-sessions">Photobooth Sessions</option><option value="mini-sessions">Mini-Sessions</option><option value="gift-vouchers">Gift Vouchers</option></optgroup>
-            <optgroup label="Something else">
-              <option value="general">General enquiry / not sure yet</option>
-            </optgroup>
+            <optgroup label="Rates &amp; Packages"><option value="standard-session">Standard Rates (hourly)</option><option value="extended-lifestyle">Extended Lifestyle (2 hours)</option><option value="essential-wedding-package">Essential Wedding Package</option><option value="celebration-wedding-package">Celebration Wedding Package</option></optgroup>
+            <optgroup label="Subscription"><option value="creator-influencer-subscription">Creator &amp; Influencer Subscription</option></optgroup>
+            <optgroup label="Something else"><option value="general">General enquiry / not sure yet</option></optgroup>
           </select>
           <p class="prefill-note" id="prefill-note" hidden></p>
           <p class="prefill-note" id="agreement-note" hidden>After your enquiry I’ll send you the subscription agreement to read before you commit. <a id="agreement-link" href="pricing.html#good-to-know" style="text-decoration:underline">See the subscription details</a>.</p>
@@ -170,9 +201,29 @@
     </div>
   </main>
 
-  <footer>
+  <div class="steps-foot">
+    <section class="steps-foot__chart" aria-labelledby="steps-title">
+      <h2 id="steps-title">First steps for booking your wedding</h2>
+      <svg viewBox="0 0 1000 563" preserveAspectRatio="none" aria-hidden="true">
+        <polyline points="86,185 275,223 412,87 600,135 816,258" fill="none" stroke="#fff" stroke-width="3.6" stroke-linejoin="round"/>
+        <g fill="#fff" stroke="#fff" stroke-width="3.2"><circle cx="86" cy="185" r="6"/><circle cx="275" cy="223" r="6"/><circle cx="412" cy="87" r="6"/><circle cx="600" cy="135" r="6"/><circle cx="816" cy="258" r="6"/></g>
+        <text x="56" y="214">01 Inquire about</text><text x="56" y="228">your date</text>
+        <text x="243" y="252">02 Review packages</text><text x="243" y="266">&amp; Rates</text>
+        <text x="424" y="64">03 Sign contract</text><text x="424" y="78">&amp; Receive guide</text>
+        <text x="617" y="112">04 Secure date</text><text x="617" y="126">with deposit</text>
+        <text x="830" y="263">05 Online</text><text x="830" y="277">introduction &amp;</text><text x="830" y="291">support call</text>
+      </svg>
+      <ol class="steps__list">
+        <li>01 Inquire about your date</li>
+        <li>02 Review packages &amp; Rates</li>
+        <li>03 Sign contract &amp; Receive guide</li>
+        <li>04 Secure date with deposit</li>
+        <li>05 Online introduction &amp; support call</li>
+      </ol>
+    </section>
+    <footer>
     <div class="footer">
-      <p class="footer__left">Joy is a wedding, family &amp; subscription based photographer capturing film-inspired photos and special moments.</p>
+      <p class="footer__left">Joy is a wedding, couples &amp; lifestyle photographer capturing film-inspired photos and special moments.</p>
       <a class="logo" href="index.html" aria-label="Joyful Studios home">
         <span class="logo__word">joyful</span>
         <span class="logo__sub">STUDIOS</span>
@@ -194,8 +245,8 @@
       </nav>
     </div>
   </footer>
+  </div>
 
-  <script src="script.js"></script>
   <script>
     (function () {
       var form = document.getElementById('inquiry-form');
@@ -210,17 +261,14 @@
         if (match) {
           select.value = match.value;
           select.classList.add('is-prefilled');
-          note.innerHTML = 'Pre-selected from the packages page: <b></b>. You can change this if you like.';
+          note.innerHTML = 'Pre-selected from the pricing page: <b></b>. You can change this if you like.';
           note.querySelector('b').textContent = match.textContent;
           note.hidden = false;
         }
       }
       var agreementNote = document.getElementById('agreement-note');
       var agreementPlans = {
-        'creator-influencer-subscription': '#gtk-sessions',
-        'family-lifestyle-subscription': '#gtk-sessions',
-        'the-wedding-journey-subscription': '#gtk-milestones',
-        'the-growing-family-subscription': '#gtk-milestones'
+        'creator-influencer-subscription': '#good-to-know'
       };
       function updateAgreementNote() {
         var target = agreementPlans[select.value];
@@ -230,7 +278,7 @@
       updateAgreementNote();
       select.addEventListener('change', function () { select.classList.remove('is-prefilled'); note.hidden = true; updateAgreementNote(); });
 
-      // Pre-fill the chosen plan (e.g. "Priority, 12 months (R500 / month)") when it comes from the subscription tables
+      // Pre-fill the chosen plan (e.g. "Starter, 12 months (R500 / month)") when it comes from the subscription tables
       var plan = new URLSearchParams(window.location.search).get('plan');
       if (plan) {
         document.getElementById('plan').value = plan;

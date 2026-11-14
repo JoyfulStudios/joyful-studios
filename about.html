@@ -11,17 +11,17 @@
   <link rel="stylesheet" href="styles.css">
   <style>
     /* ---------- Hero ---------- */
-    .hero { position: relative; height: clamp(340px, 55vw, 780px); overflow: hidden; color: var(--cream); background: var(--charcoal) url("images/about-hero2.jpg") center 45% / cover no-repeat; }
+    .hero { position: relative; height: 55.2vw; min-height: 340px; overflow: hidden; color: var(--cream); background: var(--charcoal) url("about-hero-road.jpg") center 50% / cover no-repeat; }
     .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(20,18,10,.3), rgba(20,18,10,.05) 45%, rgba(20,18,10,.15)); }
-    .hero__content { position: absolute; z-index: 2; left: 50%; top: 46%; transform: translate(-50%, -50%); text-align: center; width: min(92%, 900px); }
-    .hero h1 { margin: 0; font-family: var(--font-hero); font-weight: 400; font-size: clamp(38px, 6.6vw, 88px); line-height: 1.12; text-shadow: 0 2px 24px rgba(0,0,0,.4); }
+    .hero__content { position: absolute; z-index: 2; left: 50%; top: 49%; transform: translate(-50%, -50%); text-align: center; width: min(92%, 900px); }
+    .hero h1 { margin: 0; font-family: var(--font-hero); font-weight: 400; font-size: clamp(30px, 4.6vw, 84px); line-height: 1.12; text-shadow: 0 2px 24px rgba(0,0,0,.4); }
 
     /* ---------- Get to know my why ---------- */
     .why { background: var(--cream-bg); padding: clamp(32px, 5vw, 60px) var(--pad); }
     .why__inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 5vw, 80px); align-items: center; }
-    .why__text { max-width: 440px; }
-    .why h2 { margin: 0 0 14px; font-family: var(--font-display); font-weight: 400; font-size: clamp(26px, 3vw, 36px); letter-spacing: .02em; text-transform: uppercase; line-height: 1.2; }
-    .why p { margin: 0 0 1.1em; font-size: 16.5px; line-height: 1.45; }
+    .why__text { max-width: 560px; }
+    .why h2 { margin: 0 0 14px; font-family: var(--font-display); font-weight: 400; font-size: 24px; letter-spacing: .02em; text-transform: uppercase; line-height: 1.2; }
+    .why p { margin: 0 0 1.1em; font-size: 13.5px; line-height: 1.5; }
 
     /* film strip graphic */
     .film { position: relative; width: 100%; max-width: 540px; aspect-ratio: 1036 / 1153; justify-self: center; }
@@ -40,30 +40,52 @@
     .film__frame .film__mark { color: #cfcac0; font-size: clamp(7px, 1vw, 12px); }
 
     /* ---------- About me ---------- */
-    .me { background: var(--charcoal); color: var(--soft); padding: clamp(36px, 5vw, 60px) var(--pad) clamp(40px, 6vw, 70px); }
+    .me { background: var(--charcoal); color: var(--soft); padding: clamp(36px, 5vw, 60px) var(--pad) clamp(28px, 3vw, 40px); }
     .me__inner { max-width: 1180px; margin: 0 auto; }
-    .me h2 { margin: 0 0 clamp(24px, 3vw, 40px); font-family: var(--font-display); font-weight: 400; font-size: clamp(26px, 3vw, 36px); letter-spacing: .02em; text-transform: uppercase; color: var(--cream); }
+    .me h2 { margin: 0 0 clamp(24px, 3vw, 40px); font-family: var(--font-display); font-weight: 400; font-size: 24px; letter-spacing: .02em; text-transform: uppercase; color: var(--cream); }
     .me__cols { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(18px, 3vw, 44px); padding: 0 clamp(0px, 2vw, 28px); }
-    .me__num { font-size: 13px; letter-spacing: .08em; margin-bottom: 14px; }
-    .me__col h3 { margin: 0 0 14px; font-family: var(--font-body); font-weight: 400; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.1; color: var(--cream); }
-    .me__col p { margin: 0 0 1em; font-size: 15px; line-height: 1.4; max-width: 230px; }
+    .me__num { font-size: 12px; letter-spacing: .08em; margin-bottom: 12px; }
+    .me__col h3 { margin: 0 0 12px; font-family: var(--font-body); font-weight: 400; font-size: 22px; line-height: 1.1; color: var(--cream); }
+    .me__col p { margin: 0 0 1em; font-size: 13.5px; line-height: 1.5; max-width: 250px; }
 
     .lace { height: clamp(40px, 5.2vw, 76px); background: var(--charcoal) url("images/lace-cream.png") repeat-x left center / auto 100%; }
 
     /* ---------- CTA ---------- */
-    .cta { padding: clamp(36px, 5vw, 60px) var(--pad); }
-    .cta__inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(24px, 5vw, 60px); align-items: start; }
-    .cta__text { padding: clamp(10px, 3vw, 40px) 0 0 clamp(0px, 2vw, 24px); }
-    .cta h2 { margin: 0 0 22px; font-family: var(--font-body); font-weight: 700; font-size: clamp(30px, 4vw, 52px); line-height: 1.15; }
-    .cta__photo { max-width: 340px; justify-self: end; border-radius: var(--radius); overflow: hidden; }
-    .cta__photo img { width: 100%; aspect-ratio: 1 / 1.1; object-fit: cover; object-position: center 30%; }
+    .cta { display: grid; grid-template-columns: 69.2fr 30.8fr; min-height: 35.9vw; background: #cdc1ab; color: var(--charcoal); }
+    .cta__text { padding: 7.4vw 4vw 4vw 8.7vw; }
+    .cta h2 { margin: 0 0 1.6vw; font-family: var(--font-body); font-weight: 700; font-size: 3vw; line-height: 1.15; }
+    .cta .btn { color: var(--charcoal); border-color: var(--charcoal); font-size: 1.24vw; padding: .45vw 2.6vw; }
+    .cta .btn:hover { background: var(--charcoal); color: var(--cream); }
+    .cta__photo { background: #2d2b25 url("about-cta2.jpg") center 30% / cover no-repeat; min-height: 100%; }
 
-    /* ---------- Responsive ---------- */
+    /* ---------- Desktop: sizes taken from the design; body text = home-page intro size ---------- */
+    @media (min-width: 901px) {
+      .why { padding: 0; min-height: 47.8vw; display: flex; align-items: center; }
+      .why__inner { max-width: none; margin: 0; padding: 0 0 0 11.8vw; grid-template-columns: 34.4vw 37vw; gap: 5.6vw; justify-content: start; }
+      .why__text { max-width: none; }
+      .why h2 { font-size: 2.5vw; margin-bottom: 1.4vw; }
+      .why p { font-size: clamp(12px, 1.24vw, 23px); }
+      .film { max-width: none; }
+      .me { padding: 5vw 6vw 2vw 5.9vw; }
+      .me__inner { max-width: none; margin: 0; }
+      .me h2 { font-size: 2.5vw; margin-bottom: 3.2vw; }
+      .me__cols { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 3vw; padding: 0 0 0 2.9vw; }
+      .me__num { font-size: 1vw; margin-bottom: 1vw; }
+      .me__col h3 { font-size: 2.2vw; margin-bottom: 1vw; }
+      .me__col p { font-size: clamp(12px, 1.24vw, 23px); max-width: 17vw; }
+    }
+
+    /* ---------- Phone / tablet ---------- */
     @media (max-width: 900px) {
-      .why__inner, .cta__inner { grid-template-columns: 1fr; }
+      .hero { background-position: 50% 72%; }
+      .why__inner { grid-template-columns: 1fr; }
       .why__text { max-width: 560px; }
       .me__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 32px; }
-      .cta__photo { justify-self: start; max-width: 420px; }
+      .cta { grid-template-columns: 1fr; min-height: 0; }
+      .cta__text { padding: 34px 22px 38px; }
+      .cta h2 { font-size: 26px; margin-bottom: 18px; }
+      .cta .btn { font-size: 13.5px; padding: 6px 26px; }
+      .cta__photo { aspect-ratio: 4 / 3.4; }
     }
     @media (max-width: 480px) {
       .me__cols { grid-template-columns: 1fr; }
@@ -120,7 +142,9 @@
   </header>
 
   <section class="hero" aria-label="A glance behind the camera">
-    <div class="hero__content"><h1>A glance behind<br>the camera</h1></div>
+    <div class="hero__content">
+      <h1>A glance behind<br>the camera</h1>
+    </div>
   </section>
 
   <main>
@@ -129,9 +153,9 @@
         <div class="film">
           <div class="film__strip">
             <span class="film__mark film__mark--l" style="top:5%">▲ 7 ▼</span>
-            <figure><img src="images/film-1.jpg" alt="Black and white photo of Joy standing in a field of tall grass, holding her camera" loading="lazy"></figure>
-            <figure><img src="images/film-2.jpg" alt="Joy and her husband in a black and white selfie" loading="lazy" style="object-position:left center"></figure>
-            <figure><img src="images/film-3.jpg" alt="Joy taking a mirror selfie with a film camera" loading="lazy"></figure>
+            <figure><img src="about-film-1.jpg" alt="Black and white photo of Joy standing in tall grass, holding her camera" loading="lazy"></figure>
+            <figure><img src="about-film-2.jpg" alt="A couple walking along a city street, in black and white" loading="lazy"></figure>
+            <figure><img src="about-film-3.jpg" alt="A person standing in a park with a city skyline behind, in black and white" loading="lazy"></figure>
             <span class="film__oval" style="left:3.6%; top:62%"></span><span class="film__mark film__mark--l" style="top:65.5%">7</span>
             <span class="film__mark film__mark--r" style="top:90%">7</span><span class="film__oval" style="right:3.6%; top:93%"></span>
           </div>
@@ -139,7 +163,7 @@
             <span class="film__mark" style="left:12.5%; top:4%">15</span>
             <span class="film__mark" style="left:21%; top:4%">2030</span>
             <span class="film__mark" style="right:7%; top:3%">16</span>
-            <img src="images/film-4.jpg" alt="Joy photographing the greenery beside a lake" loading="lazy" style="object-position:center 40%">
+            <img src="about-film-4.jpg" alt="Joy photographing among greenery by a lake" loading="lazy" style="object-position:center 40%">
             <span class="film__mark" style="left:6%; bottom:2.5%">▶ 20</span>
             <span class="film__mark" style="right:7%; bottom:2.5%">▶</span>
           </figure>
@@ -147,10 +171,10 @@
 
         <div class="why__text">
           <h2>Get to know my why</h2>
-          <p>I believe that I was created by the Creator to create. I seek to be a disciple of Jesus in everything I do.</p>
-          <p>I picked up a camera at the age of 14 and haven’t really stopped since. My love for photography has grown out of a love for making things beautiful. I strive for every photo to feel alive - like a still from your own film.</p>
-          <p>My work is inspired by the nostalgia of old films with lots of warmth, raw emotion and dreamy light. I prefer this to a rigid, ultra-polished approach and rather seek to document the moment as it’s felt.</p>
-          <p>Photos are such a unique gift because they act as a kind of timeless moment that you can return to - and I think that every season of life is worth capturing.</p>
+          <p>I believe that I was created by the Creator to create.<br>I seek to follow Jesus in everything I do.</p>
+          <p>I picked up a camera at the age of 14 and haven’t really stopped since. My love for photography has grown out of a love for making things beautiful. I strive for every photo to feel alive - full of intention, emotion and feeling.</p>
+          <p>My work is inspired by the nostalgia of old films with lots of warmth, raw emotion and dreamy light. I prefer this to a rigid, ultra-polished approach and I rather seek to document the moment as it’s felt.</p>
+          <p>Photos are such a unique gift because you never know when you might have this moment again - and I think that every season of life is worth capturing.</p>
         </div>
       </div>
     </section>
@@ -162,23 +186,23 @@
           <div class="me__col">
             <div class="me__num">01</div>
             <h3>I’m Joy</h3>
-            <p>I was born and raised in Cape Town, South Africa.</p>
-            <p>One of my biggest blessings was getting married young to my high-school sweetheart.</p>
+            <p>I was born and raised in Cape Town, South Africa, and I’d love to visit Scotland one day to explore my heritage.</p>
+            <p>One of my biggest blessings in life, was getting married at a young age to my high-school sweetheart.</p>
           </div>
           <div class="me__col">
             <div class="me__num">02</div>
             <h3>Hobbies</h3>
-            <p>I am what you might call a true romantic: I paint, sculpt, write, studied ancient history and languages etc.<br>My favorite piece of literature is Tolkien’s Silmarillion.<br>Cooking is my love-language. And a matcha latte is how I feel loved;)</p>
+            <p>I am what you might call a true romantic: I paint, sculpt, write, studied ancient history and languages etc.<br>My favorite piece of literature is Tolkien’s Silmarillion.<br>Cooking is my love-language. And I would love to live on a farm one day.</p>
           </div>
           <div class="me__col">
             <div class="me__num">03</div>
             <h3>Photography</h3>
-            <p>From picking up a DSLR at the age of 14, to finally getting a camera of my own, to running a photography business - there hasn’t been a moment where I’ve not loved the artistry and craft of photography.</p>
+            <p>From picking up a DSLR at the age of 14, to finally getting a camera of my own, to running a photography business - there hasn’t been a moment where I’ve not loved the craft of photography.<br>I love photos that tell a story of depth and emotion.</p>
           </div>
           <div class="me__col">
             <div class="me__num">04</div>
             <h3>Also</h3>
-            <p>Alongside my photography, my husband and I serve at a local church where we lead the next generation ministries.<br>I will not force Jesus onto anyone - but if you want to hear the Good News, ask me about it!</p>
+            <p>Alongside photography, my husband and I serve at a local church where we lead the next generation ministries.<br>I will not force Jesus onto anyone - but if you want to hear about being a disciple of Jesus, ask me about it!</p>
           </div>
         </div>
       </div>
@@ -186,21 +210,17 @@
     <div class="lace" role="presentation"></div>
 
     <section class="cta">
-      <div class="cta__inner">
-        <div class="cta__text">
-          <h2>Let’s capture your story!</h2>
-          <a class="btn" href="inquire.html">Connect</a>
-        </div>
-        <div class="cta__photo">
-          <img src="images/about-cta.jpg" alt="A couple holding hands in a green park, the woman smiling back at the camera" loading="lazy">
-        </div>
+      <div class="cta__text">
+        <h2>Let’s capture your story!</h2>
+        <a class="btn" href="inquire.html">Connect</a>
       </div>
+      <div class="cta__photo" role="img" aria-label="A woman leaning over a man resting his head back, in warm golden light"></div>
     </section>
   </main>
 
   <footer class="footer--cream">
     <div class="footer">
-      <p class="footer__left">Joy is a wedding, family &amp; subscription based photographer capturing film-inspired photos and special moments.</p>
+      <p class="footer__left">Joy is a wedding, couples &amp; lifestyle photographer capturing film-inspired photos and special moments.</p>
       <a class="logo" href="index.html" aria-label="Joyful Studios home">
         <span class="logo__word">joyful</span>
         <span class="logo__sub">STUDIOS</span>

@@ -190,6 +190,23 @@
     @media (max-width: 760px) {
       .site-header.is-open .nav { font-size: 14px; }
     }
+        /* ---------- Round 2 tweaks: phone slide 1, smaller dots, bigger category words, Abramo signature ---------- */
+    @font-face { font-family: 'Abramo Script'; src: local('Abramo Script'), local('AbramoScript-Regular'), url('abramo-script.woff2') format('woff2'), url('abramo-script.woff') format('woff'); font-display: swap; }
+    .signature { font-family: 'Abramo Script', 'Mrs Saint Delafield', 'Pinyon Script', cursive; }
+    .moments__script { font-family: 'Mrs Saint Delafield', 'Pinyon Script', cursive; }
+    .slide--1 { background-image: url('hero-1.jpg'); background-position: center 32%; }
+    .hero__dots { gap: 7px; }
+    .hero__dots button { width: 8px; height: 8px; }
+    @media (max-width: 900px) {
+      .slide--1 { background-image: url('hero-1-phone.jpg'); background-size: auto 135%; background-position: 40% 12%; }
+      .gallery__cats { font-size: 3vw; letter-spacing: .02em; }
+    }
+    @media (min-width: 901px) {
+      .hero__dots { gap: .55vw; }
+      .hero__dots button { width: .8vw; height: .8vw; min-width: 6px; min-height: 6px; }
+      .gallery__cats { font-size: clamp(12px, 2.8vw, 50px); letter-spacing: .08em; line-height: 1.722; margin-bottom: 9.3vw; }
+    }
+  
     /* ---------- Hero photos: full photo on desktop (no zoom), phone crops to portrait ---------- */
     .slide--2 { background-position: center 35%; }
     .slide--3 { background-image: url('hero-3.jpg'); background-position: center 50%; }
@@ -250,7 +267,7 @@
   </header>
 
   <section class="hero" aria-roledescription="carousel" aria-label="Featured photography">
-    <div class="slide is-active" style="background-image:url('hero-1.jpg'); background-position: center 32%" role="group" aria-label="Slide 1 of 3"></div>
+    <div class="slide slide--1 is-active" role="group" aria-label="Slide 1 of 3"></div>
     <div class="slide slide--2" style="background-image:url('hero-2.jpg')" role="group" aria-label="Slide 2 of 3: a woman smiles up as she is handed a bouquet"></div>
     <div class="slide slide--3" role="group" aria-label="Slide 3 of 3"></div>
 

@@ -85,7 +85,6 @@
       .cta__text { padding: 34px 22px 38px; }
       .cta h2 { font-size: 26px; margin-bottom: 18px; }
       .cta .btn { font-size: 13.5px; padding: 6px 26px; }
-      .cta__photo { aspect-ratio: 4 / 3.4; }
     }
     @media (max-width: 480px) {
       .me__cols { grid-template-columns: 1fr; }
@@ -112,7 +111,17 @@
     .footer__bar nav { flex-wrap: nowrap; justify-content: space-between; align-items: flex-start; gap: 0; font-size: clamp(8px, 2.8vw, 13px); letter-spacing: 0; line-height: 1.55; }
     .footer__bar .dd-toggle, .footer__bar .dropdown a { font-size: inherit; letter-spacing: inherit; }
   }
-</style>
+
+    /* ---------- Phone: identical hero size and headline placement on every inner page ---------- */
+    @media (max-width: 900px) {
+      .hero { height: 112vw; min-height: 420px; max-height: 640px; }
+      .hero__content { top: 54%; }
+      .hero h1 { font-size: 30px; line-height: 1.12; }
+      .hero .btn { font-size: 11px; padding: 6px 26px; min-width: 0; letter-spacing: .1em; }
+      .hero { background-size: 170% auto; background-position: 40% 42%; }
+      .cta__photo { aspect-ratio: 1 / 1.1; background-position: center 56%; }
+    }
+  </style>
 </head>
 
 <body>

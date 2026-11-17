@@ -229,6 +229,16 @@
     .readphoto { background: #2d2b25; padding-bottom: 5.6vw; }
     .readphoto__img { height: 30vw; background: #2d2b25 url("sub-closing-couple.jpg") center 28% / cover no-repeat; }
     @media (max-width: 760px) { .readphoto { padding-bottom: 28px; } .readphoto__img { height: 62vw; } }
+
+
+    /* ---------- Phone: identical hero size and headline placement on every inner page ---------- */
+    @media (max-width: 900px) {
+      .hero { height: 112vw; min-height: 420px; max-height: 640px; }
+      .hero__content { top: 54%; }
+      .hero h1 { font-size: 30px; line-height: 1.12; }
+      .hero .btn { font-size: 11px; padding: 6px 26px; min-width: 0; letter-spacing: .1em; }
+      
+    }
   </style>
 <style id="menu-uniform">
   .nav--right .has-dropdown .dropdown { left: auto; right: -20px; }
@@ -325,7 +335,8 @@
 </div>
 </div>
 
-<noscript><style>.gtk-panel[hidden] { display: block; } .gtk-hint { display: none; }</style></noscript>
+<noscript><style>.gtk-panel[hidden] { display: block; } .gtk-hint { display: none; }
+  </style></noscript>
 </div>
 </section>
 

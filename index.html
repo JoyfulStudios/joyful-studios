@@ -8,7 +8,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Quattrocento (body), Pinyon Script (hero headline), Italiana (stand-in for Hatton), Mrs Saint Delafield (stand-in for Abramo Script) -->
+  <!-- Quattrocento (body), Pinyon Script (hero headline), Italiana (stand-in for Hatton), Mrs Saint Delafield (signature and script accents) -->
   <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Mrs+Saint+Delafield&family=Pinyon+Script&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css">
@@ -153,7 +153,7 @@
       .moments__script { font-size: clamp(36px, 6.3vw, 117px); line-height: 1.111; }
       .moments__title { font-size: clamp(18px, 2.7vw, 50px); line-height: 1.722; }
       .moments .btn { font-size: clamp(9px, 1.04vw, 18px); line-height: 1.722; }
-      .insta h2 { font-size: clamp(23px, 4.32vw, 79px); line-height: 1.222; }
+      .insta h2 { font-size: clamp(20px, 3.4vw, 62px); line-height: 1.222; }
       .insta a.handle { font-size: clamp(12px, 1.58vw, 27px); line-height: 1.722; }
     }
     /* ---------- Phone / tablet: smaller text, side-by-side Instagram, one-row footer menu ---------- */
@@ -177,7 +177,7 @@
       .moments .btn { font-size: 11px; }
 
       .insta__inner { grid-template-columns: 1fr auto; justify-items: stretch; align-items: center; gap: 16px; }
-      .insta h2 { font-size: clamp(20px, 6vw, 34px); }
+      .insta h2 { font-size: clamp(17px, 5vw, 28px); }
       .insta a.handle { font-size: 13.5px; margin-top: 10px; }
       .insta__photo { width: clamp(110px, 36vw, 220px); }
 
@@ -190,9 +190,8 @@
     @media (max-width: 760px) {
       .site-header.is-open .nav { font-size: 14px; }
     }
-        /* ---------- Round 2 tweaks: phone slide 1, smaller dots, bigger category words, Abramo signature ---------- */
-    @font-face { font-family: 'Abramo Script'; src: local('Abramo Script'), local('AbramoScript-Regular'), url('abramo-script.woff2') format('woff2'), url('abramo-script.woff') format('woff'); font-display: swap; }
-    .signature { font-family: 'Abramo Script', 'Mrs Saint Delafield', 'Pinyon Script', cursive; }
+        /* ---------- Round 2 tweaks: phone slide 1, smaller dots, phone category words, signature font ---------- */
+    .signature { font-family: 'Mrs Saint Delafield', 'Pinyon Script', cursive; }
     .moments__script { font-family: 'Mrs Saint Delafield', 'Pinyon Script', cursive; }
     .slide--1 { background-image: url('hero-1.jpg'); background-position: center 32%; }
     .hero__dots { gap: 7px; }
@@ -200,11 +199,12 @@
     @media (max-width: 900px) {
       .slide--1 { background-image: url('hero-1-phone.jpg'); background-size: auto 135%; background-position: 40% 12%; }
       .gallery__cats { font-size: 3vw; letter-spacing: .02em; }
+      .signature { right: 4%; }
     }
     @media (min-width: 901px) {
       .hero__dots { gap: .55vw; }
       .hero__dots button { width: .8vw; height: .8vw; min-width: 6px; min-height: 6px; }
-      .gallery__cats { font-size: clamp(12px, 2.8vw, 50px); letter-spacing: .08em; line-height: 1.722; margin-bottom: 9.3vw; }
+      .gallery__cats { font-size: clamp(10px, 1.8vw, 32px); letter-spacing: .22em; line-height: 1.722; margin-bottom: 11vw; }
     }
   
     /* ---------- Hero photos: full photo on desktop (no zoom), phone crops to portrait ---------- */
@@ -301,7 +301,7 @@
       <div class="postcard">
         <img class="postcard__clip" src="clip.png" alt="" aria-hidden="true">
         <div class="postcard__card">
-          <img src="images/joy.jpg" alt="Joy, the photographer behind Joyful Studios, standing beside a tree in warm evening light" loading="lazy">
+          <img src="joy-new.jpg" alt="Joy, the photographer behind Joyful Studios, standing beside a tree in warm evening light" loading="lazy">
         </div>
         <span class="signature" aria-hidden="true">love, Joy</span>
       </div>

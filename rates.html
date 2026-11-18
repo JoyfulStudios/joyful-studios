@@ -31,6 +31,7 @@
     .rates .block { position: relative; z-index: 2; max-width: 72vw; }
     .rates h2 { font-size: clamp(24px, 3.4vw, 62px); }
     .rates ul { margin-top: 2vw; font-size: clamp(13px, 1.6vw, 29px); line-height: 1.12; }
+    .rates ul ul { margin-top: 0; padding-left: 1.3em; list-style: circle; }
     .rates .btn { color: var(--ink); border-color: var(--ink); margin-top: 2.8vw; font-size: clamp(12px, 1.5vw, 27px); padding: .4vw 2.6vw; border-width: 1.5px; }
     .rates__branch { position: absolute; z-index: 1; right: -7vw; top: -6vw; width: 50vw; opacity: .3; mix-blend-mode: multiply; pointer-events: none; }
     .rates__letter { position: absolute; z-index: 2; right: 6.4vw; top: -2vw; width: 8.6vw; transform: rotate(1deg); filter: drop-shadow(0 .3vw .5vw rgba(45,43,37,.25)); }
@@ -38,8 +39,8 @@
 
     /* ---------- Wedding packages (split rows) ---------- */
     .pkg { display: grid; min-height: 49vw; }
-    .pkg--essential { grid-template-columns: 41fr 59fr; background: var(--charcoal); color: var(--cream); }
-    .pkg--celebration { grid-template-columns: 59fr 41fr; background: #8d8d59; color: var(--cream); }
+    .pkg--essential { grid-template-columns: 41fr 59fr; background: #8d8d59; color: var(--cream); }
+    .pkg--celebration { grid-template-columns: 59fr 41fr; background: var(--charcoal); color: var(--cream); }
     .pkg__photo { background-size: cover; background-position: center; min-height: 100%; }
     .pkg--essential .pkg__photo { background-image: url('rates-bride.jpg'); background-position: center 30%; }
     .pkg--celebration .pkg__photo { background-image: url('rates-chair.jpg'); background-position: center 40%; }
@@ -231,9 +232,19 @@
         <ul>
           <li>R1,900 per hour</li>
           <li>Minimum booking of 1 hour.</li>
+          <li>Preferred hourly rate for extended bookings of 2 hours or more.</li>
           <li>40+ professionally edited images per hour.</li>
           <li>Private online gallery for viewing, downloading and sharing.</li>
           <li>Travel fee included within 30km radius of Durbanville, Cape Town.</li>
+          <li>Suitable for:
+            <ul>
+              <li>Dances &amp; formal events</li>
+              <li>Engagements and couples</li>
+              <li>Maternity &amp; family sessions</li>
+              <li>Group &amp; friendship sessions</li>
+              <li>Special celebrations and events</li>
+            </ul>
+          </li>
         </ul>
         <a class="btn btn--soft" href="inquire.html?package=standard-session">Inquire Now</a>
       </div>
@@ -249,7 +260,7 @@
           <li>Approximately 250&ndash;350+ professionally edited images.</li>
           <li>Online gallery to view, download and share your photographs.</li>
           <li>Pre-wedding consultation to discuss your plans and preferences.</li>
-          <li>Emotional, documentary-style photography that covers every moment of your celebration from start to finish.</li>
+          <li>Emotional, documentary-style photography that covers all the important moments of your special day.</li>
         </ul>
         <a class="btn" href="inquire.html?package=essential-wedding-package">Inquire Now</a>
       </div>
@@ -268,7 +279,7 @@
         </ul>
         <a class="btn" href="inquire.html?package=celebration-wedding-package">Inquire Now</a>
       </div>
-      <div class="pkg__photo" role="img" aria-label="A bride in a white dress sitting in an armchair by a window"></div>
+      <div class="pkg__photo" role="img" aria-label="A couple sharing a kiss beneath a willow tree, the bride holding a bouquet"></div>
     </section>
 
     <section class="steps" id="steps" aria-labelledby="steps-title">
@@ -298,23 +309,23 @@
       <div class="faq__list">
         <details>
           <summary>Do you help with posing and directing?</summary>
-          <p>Yes, gently. I use simple prompts and guidance during your session so you feel relaxed and the photos still look natural, never stiff or staged.</p>
+          <p>Absolutely, and always gently. I&rsquo;ll offer simple, relaxed prompts along the way so you can enjoy the moment, and your photos feel natural and true to you.</p>
         </details>
         <details>
           <summary>Do you offer engagement or pre-wedding photoshoots?</summary>
-          <p>Yes. Engagement and couples sessions are booked at my standard rate of R1,900 per hour (minimum booking of 1 hour), and can happen any time before your wedding day.</p>
+          <p>I&rsquo;d love to! Engagement and couples sessions are booked at my standard rate of R1,900 per hour (minimum booking of 1 hour), and can take place any time before your wedding day.</p>
         </details>
         <details>
           <summary>Do you offer videography as well?</summary>
-          <p>My focus is photography. If you&rsquo;d like video alongside your photos, get in touch and we can talk it through.</p>
+          <p>My heart is in photography. If you&rsquo;d love video alongside your photos, please feel free to get in touch and we can talk through what might work for you.</p>
         </details>
         <details>
           <summary>When will we receive our photographs?</summary>
-          <p>Your photographs are delivered in a private online gallery where you can view, download and share them. I&rsquo;ll confirm the delivery timeframe with you when you book.</p>
+          <p>Your photographs are delivered in a private online gallery where you can view, download and share them. I&rsquo;ll happily confirm the delivery timeframe with you when you book.</p>
         </details>
         <details>
           <summary>What happens if our wedding plans change?</summary>
-          <p>Life happens. Get in touch as soon as you can and we&rsquo;ll work out the best way forward together. The terms for changing a date are covered in your contract.</p>
+          <p>Life happens, and that&rsquo;s completely okay. Please get in touch as soon as you can and we&rsquo;ll find the best way forward together. The details for changing a date are covered in your contract.</p>
         </details>
       </div>
     </section>

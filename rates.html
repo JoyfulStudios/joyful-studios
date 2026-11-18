@@ -33,9 +33,6 @@
     .rates ul { margin-top: 2vw; font-size: clamp(13px, 1.6vw, 29px); line-height: 1.12; }
     .rates ul ul { margin-top: 0; padding-left: 1.3em; list-style: circle; }
     .rates .btn { color: var(--ink); border-color: var(--ink); margin-top: 2.8vw; font-size: clamp(12px, 1.5vw, 27px); padding: .4vw 2.6vw; border-width: 1.5px; }
-    .rates__branch { position: absolute; z-index: 1; right: -7vw; top: -6vw; width: 50vw; opacity: .3; mix-blend-mode: multiply; pointer-events: none; }
-    .rates__letter { position: absolute; z-index: 2; right: 6.4vw; top: -2vw; width: 8.6vw; transform: rotate(1deg); filter: drop-shadow(0 .3vw .5vw rgba(45,43,37,.25)); }
-    .rates__hands { position: absolute; z-index: 3; right: -1vw; bottom: 3.4vw; width: 11.6vw; aspect-ratio: 1 / 1.05; object-fit: cover; transform: rotate(-6deg); box-shadow: 0 .6vw 1.2vw rgba(45,43,37,.35); }
 
     /* ---------- Wedding packages (split rows) ---------- */
     .pkg { display: grid; min-height: 49vw; }
@@ -43,7 +40,7 @@
     .pkg--celebration { grid-template-columns: 59fr 41fr; background: var(--charcoal); color: var(--cream); }
     .pkg__photo { background-size: cover; background-position: center; min-height: 100%; }
     .pkg--essential .pkg__photo { background-image: url('rates-bride.jpg'); background-position: center 30%; }
-    .pkg--celebration .pkg__photo { background-image: url('rates-chair.jpg'); background-position: center 40%; }
+    .pkg--celebration .pkg__photo { background-image: url('rates-couple.jpg'); background-position: center 40%; }
     .pkg__text { display: flex; flex-direction: column; justify-content: center; padding: 4vw 4vw 4vw 3.9vw; }
     .pkg h2 { font-size: clamp(22px, 3.35vw, 60px); }
     .pkg ul { margin-top: 2.2vw; font-size: clamp(12px, 1.6vw, 29px); line-height: 1.1; max-width: 51vw; }
@@ -116,9 +113,6 @@
       .rates h2 { font-size: 24px; }
       .rates ul { margin-top: 12px; font-size: 13px; line-height: 1.4; }
       .rates .btn { margin-top: 18px; font-size: 14px; padding: 5px 24px; }
-      .rates__branch { width: 70vw; right: -24vw; top: auto; bottom: -14vw; opacity: .22; }
-      .rates__letter { width: 40px; right: 88px; top: 14px; bottom: auto; }
-      .rates__hands { width: 66px; right: 12px; top: 26px; bottom: auto; transform: rotate(-6deg); }
 
       .pkg { grid-template-columns: 1fr !important; min-height: 0; }
       .pkg__photo { aspect-ratio: 4 / 4.4; order: -1; }
@@ -224,9 +218,6 @@
     </section>
 
     <section class="rates block" id="standard-rates">
-      <img class="rates__branch" src="rates-branch.png" alt="" aria-hidden="true">
-      <img class="rates__letter" src="rates-letter.png" alt="" aria-hidden="true">
-      <img class="rates__hands" src="rates-hands.jpg" alt="Two hands reaching toward each other at sunset" loading="lazy">
       <div class="block">
         <h2>Standard Rates</h2>
         <ul>
@@ -339,7 +330,7 @@
         </div>
         <a class="insta__photo" href="https://www.instagram.com/joyful_studios_/" target="_blank" rel="noopener" aria-label="Open Joyful Studios on Instagram">
           <img class="insta__pin" src="pin.png" alt="">
-          <img class="insta__img" src="insta-bouquet.jpg" alt="A bride holding a bouquet of peach and cream flowers" loading="lazy">
+          <img class="insta__img" src="rates-insta.jpg" alt="A black-and-white photo of a bride laughing with friends in dark dresses on a lawn by a lake" loading="lazy">
         </a>
       </div>
     </section>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inquire | Joyful Studios</title>
+  <meta name="description" content="Inquire about a session, wedding package or subscription with Joyful Studios in Cape Town.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Mrs+Saint+Delafield&family=Pinyon+Script&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ---------- Hero ---------- */
+    .hero { position: relative; height: 47.3vw; min-height: 300px; overflow: hidden; color: var(--cream); background: var(--charcoal) url("inquire-hero2.jpg") center 47% / cover no-repeat; }
+    .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(20,18,10,.38), rgba(20,18,10,.12) 45%, rgba(20,18,10,.2)); }
+    .hero__content { position: absolute; z-index: 2; left: 50%; top: 46%; transform: translate(-50%, -50%); text-align: center; width: min(92%, 900px); }
+    .hero h1 { margin: 0; font-family: var(--font-hero); font-weight: 400; font-size: clamp(30px, 4.6vw, 84px); line-height: 1.12; text-shadow: 0 2px 24px rgba(0,0,0,.4); }
+
+    /* ---------- Form ---------- */
+    .inquire { background: #cdc1ab; padding: clamp(24px, 2.4vw, 40px) var(--pad) clamp(30px, 3.7vw, 60px); }
+    .inquire__card { max-width: 49.5vw; min-width: min(100%, 520px); margin: 0 auto; background: var(--cream-bg); padding: 3.1vw; border-radius: 0; }
+    .inquire h2 { margin: 0 0 .6vw; font-family: var(--font-body); font-weight: 700; font-size: clamp(18px, 1.75vw, 30px); letter-spacing: .04em; text-transform: uppercase; }
+    .inquire__lead { margin: 0 0 clamp(18px, 2vw, 32px); font-size: clamp(12px, 1.24vw, 23px); }
+
+    .field { margin-bottom: clamp(12px, 1.4vw, 22px); }
+    .field label { display: block; margin-bottom: .45vw; font-weight: 700; font-size: clamp(11px, .95vw, 17px); letter-spacing: .06em; text-transform: uppercase; }
+    .field .opt { font-weight: 400; text-transform: none; letter-spacing: 0; opacity: .7; }
+    .field input, .field select, .field textarea {
+      width: 100%; padding: .75vw 1vw; font: inherit; font-size: clamp(12px, 1.24vw, 23px); color: var(--ink);
+      background: #fff9ee; border: 1px solid rgba(53, 50, 43, .3); border-radius: .4vw;
+    }
+    .field textarea { min-height: 8vw; resize: vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid var(--charcoal); outline-offset: 1px; border-color: var(--charcoal); }
+    .field select.is-prefilled { border-color: var(--charcoal); box-shadow: 0 0 0 2px rgba(45, 43, 37, .18); }
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1.4vw; }
+    .prefill-note { margin: .6vw 0 0; font-size: clamp(11px, 1.1vw, 20px); font-style: italic; }
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+    .submit { margin-top: .6vw; padding: .65vw 2.6vw; font-size: clamp(11px, 1.1vw, 20px); color: var(--cream); background: var(--charcoal); border: 1px solid var(--charcoal); border-radius: 999px; cursor: pointer; letter-spacing: .06em; text-transform: uppercase; transition: background .25s, color .25s; }
+    .submit:hover { background: transparent; color: var(--charcoal); }
+    .submit:disabled { opacity: .6; cursor: wait; }
+    .form-msg { margin: 18px 0 0; padding: 12px 16px; border-radius: 6px; font-size: clamp(12px, 1.24vw, 20px); }
+    .form-msg[hidden] { display: none; }
+    .form-msg--error { background: #f3d9d3; color: #6b1f12; }
+    .thanks { text-align: center; padding: 20px 0; }
+    .thanks h2 { margin-bottom: 12px; }
+
+    /* ---------- Search-stage question + vision hint ---------- */
+    .field--choice { border: 0; padding: 0; min-width: 0; }
+    .field--choice legend { padding: 0; margin-bottom: .6vw; font-weight: 700; font-size: clamp(11px, .95vw, 17px); letter-spacing: .06em; text-transform: uppercase; }
+    .field--choice .choice { display: flex; align-items: center; gap: .8vw; margin: 0 0 .55vw; cursor: pointer; font-size: clamp(12px, 1.24vw, 23px); line-height: 1.35; font-weight: 400; letter-spacing: 0; text-transform: none; }
+    .field--choice .choice input { appearance: none; -webkit-appearance: none; flex: 0 0 auto; width: clamp(14px, 1.15vw, 22px); height: clamp(14px, 1.15vw, 22px); padding: 0; margin: 0; border: 1.5px solid var(--charcoal); border-radius: 50%; background: #fff9ee; display: grid; place-content: center; cursor: pointer; }
+    .field--choice .choice input::before { content: ""; width: 55%; height: 55%; border-radius: 50%; background: var(--charcoal); transform: scale(0); transition: transform .15s ease; }
+    .field--choice .choice input:checked::before { transform: scale(1); }
+    .field--choice .choice input:focus-visible { outline: 2px solid var(--charcoal); outline-offset: 2px; }
+    .field__hint { margin: 0 0 .6vw; font-size: clamp(11px, 1.1vw, 20px); font-style: italic; opacity: .8; }
+    .field textarea { min-height: 10vw; }
+    @media (max-width: 900px) {
+      .field--choice legend { font-size: 12px; margin-bottom: 8px; }
+      .field--choice .choice { font-size: 14px; gap: 10px; margin-bottom: 8px; }
+      .field--choice .choice input { width: 18px; height: 18px; }
+      .field__hint { font-size: 13px; margin-bottom: 8px; }
+    }
+
+    /* ---------- First steps + footer over the lake photo ---------- */
+    .steps-foot { position: relative; background: #1c2014 url("inquire-lake.jpg") center 60% / cover no-repeat; color: var(--cream); overflow: hidden; }
+    .steps-foot::before { content: ""; position: absolute; inset: 0; background: rgba(20,24,14,.14); pointer-events: none; }
+    .steps-foot__chart { position: relative; height: 33.8vw; }
+    .steps-foot h2 { position: absolute; z-index: 2; left: 5.7vw; top: 4.2vw; margin: 0; width: 34vw; font-family: var(--font-body); font-weight: 400; text-transform: uppercase; letter-spacing: .03em; font-size: clamp(20px, 2.8vw, 52px); line-height: 1.12; }
+    .steps-foot svg { position: absolute; left: 0; top: 0; width: 100%; height: 56.3vw; z-index: 2; pointer-events: none; }
+    .steps-foot svg text { font-family: var(--font-body); fill: #fff; font-size: 11.5px; letter-spacing: .02em; }
+    .steps__list { display: none; }
+    .steps-foot footer { position: relative; z-index: 3; }
+    .steps-foot .footer { background: rgba(45,43,37,.8); color: var(--cream); }
+    .steps-foot .footer p, .steps-foot .footer__left, .steps-foot .footer__right { color: var(--cream); }
+    .steps-foot .logo { color: var(--cream); }
+    .steps-foot .footer__bar { background: transparent; }
+
+    @media (max-width: 900px) {
+      .hero { height: 90vw; min-height: 340px; max-height: 620px; background-size: auto 100%; background-position: 50% center; }
+      .inquire__card { max-width: none; min-width: 0; padding: 26px 20px; }
+      .inquire h2 { font-size: 20px; margin-bottom: 8px; }
+      .inquire__lead, .prefill-note, .form-msg { font-size: 13.5px; }
+      .field { margin-bottom: 16px; }
+      .field label { font-size: 12px; margin-bottom: 6px; }
+      .field input, .field select, .field textarea { font-size: 16px; padding: 11px 12px; border-radius: 6px; }
+      .field textarea { min-height: 130px; }
+      .row2 { gap: 0 14px; }
+      .submit { font-size: 14px; padding: 11px 32px; }
+      .steps-foot__chart { height: auto; padding: 44px 24px 36px; }
+      .steps-foot svg { display: none; }
+      .steps-foot h2 { position: relative; left: auto; top: auto; width: auto; font-size: 24px; margin-bottom: 24px; }
+      .steps__list { display: block; position: relative; z-index: 2; margin: 0; padding: 0 0 0 22px; list-style: none; border-left: 2px solid #fff; }
+      .steps__list li { position: relative; padding: 0 0 20px 18px; font-size: 14px; line-height: 1.35; }
+      .steps__list li::before { content: ""; position: absolute; left: -29px; top: 3px; width: 12px; height: 12px; border: 2px solid #fff; border-radius: 50%; background: #fff; }
+      .steps__list li:last-child { padding-bottom: 0; }
+    }
+    @media (max-width: 560px) { .row2 { grid-template-columns: 1fr; } }
+  </style>
+<style id="menu-uniform">
+  .nav--right .has-dropdown .dropdown { left: auto; right: -20px; }
+  /* Same menu text size and spacing on every page (header + footer) */
+  @media (min-width: 901px) {
+    .site-header { grid-template-columns: 1fr auto 1fr; }
+    .site-header .nav { font-size: clamp(12px, 1.44vw, 26px); line-height: 1.722; letter-spacing: .02em; gap: 9.9vw; }
+    .site-header .nav--left { justify-content: flex-end; margin-right: 12vw; }
+    .site-header .nav--right { justify-content: flex-start; margin-left: 11.6vw; }
+    .site-header .logo__word { font-size: clamp(44px, 6vw, 120px); }
+    .site-header .logo__sub { font-size: clamp(8px, .8vw, 15px); }
+    .footer__bar nav { justify-content: center; gap: 9vw; font-size: clamp(12px, 1.44vw, 26px); line-height: 1.722; letter-spacing: .02em; }
+    .footer__bar .has-dropdown { margin-left: 23vw; }
+    .site-header .dd-toggle, .footer__bar .dd-toggle { font-size: inherit; letter-spacing: inherit; line-height: inherit; }
+  }
+  @media (max-width: 900px) {
+    .site-header .nav { font-size: 14px; letter-spacing: .02em; }
+    .footer__bar { padding-left: 14px; padding-right: 14px; }
+    .footer__bar nav { flex-wrap: nowrap; justify-content: space-between; align-items: flex-start; gap: 0; font-size: clamp(8px, 2.8vw, 13px); letter-spacing: 0; line-height: 1.55; }
+    .footer__bar .dd-toggle, .footer__bar .dropdown a { font-size: inherit; letter-spacing: inherit; }
+  }
+
+    /* ---------- Phone: identical hero size and headline placement on every inner page ---------- */
+    @media (max-width: 900px) {
+      .hero { height: 112vw; min-height: 420px; max-height: 640px; }
+      .hero__content { top: 54%; }
+      .hero h1 { font-size: 30px; line-height: 1.12; }
+      .hero .btn { font-size: 11px; padding: 6px 26px; min-width: 0; letter-spacing: .1em; }
+      
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header" id="site-header">
+    <nav class="nav nav--left" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+    </nav>
+
+    <a class="logo" href="index.html" aria-label="Joyful Studios home">
+      <span class="logo__word">joyful</span>
+      <span class="logo__sub">STUDIOS</span>
+    </a>
+
+    <nav class="nav nav--right" aria-label="Secondary">
+      <div class="has-dropdown">
+        <button type="button" class="dd-toggle" aria-haspopup="true" aria-expanded="false">Pricing</button>
+        <ul class="dropdown">
+          <li><a href="rates.html">Rates &amp; Packages</a></li>
+          <li><a href="pricing.html#subscriptions">Subscription Plans</a></li>
+        </ul>
+      </div>
+      <a href="inquire.html" aria-current="page">Inquire</a>
+    </nav>
+
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="site-header">Menu</button>
+  </header>
+
+  <section class="hero" aria-label="Let’s talk">
+    <div class="hero__content"><h1>Let’s talk!</h1></div>
+  </section>
+
+  <main class="inquire">
+    <div class="inquire__card" id="card">
+      <h2>Inquire</h2>
+      <p class="inquire__lead">Tell me a little about what you have in mind and I’ll get back to you as soon as I can.</p>
+
+      <!--
+        FORM SETUP: this form sends to Formspree (free). Create a form at formspree.io, then replace
+        YOUR_FORM_ID below with your own form ID. Until then the form shows a "not connected yet" message.
+      -->
+      <form id="inquiry-form" data-endpoint="https://formspree.io/f/YOUR_FORM_ID" novalidate>
+        <div class="field">
+          <label for="name">Your name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required>
+        </div>
+
+        <div class="row2">
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="phone">Phone / WhatsApp <span class="opt">(optional)</span></label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="package">Package or service</label>
+          <select id="package" name="package" required>
+            <option value="" disabled selected>Please choose…</option>
+            <optgroup label="Rates &amp; Packages"><option value="standard-session">Standard Rates (hourly)</option><option value="extended-lifestyle">Extended Lifestyle (2 hours)</option><option value="essential-wedding-package">Essential Wedding Package</option><option value="celebration-wedding-package">Celebration Wedding Package</option></optgroup>
+            <optgroup label="Subscription"><option value="creator-influencer-subscription">Creator &amp; Influencer Subscription</option></optgroup>
+            <optgroup label="Something else"><option value="general">General enquiry / not sure yet</option></optgroup>
+          </select>
+          <p class="prefill-note" id="prefill-note" hidden></p>
+          <p class="prefill-note" id="agreement-note" hidden>After your enquiry I’ll send you the subscription agreement to read before you commit. <a id="agreement-link" href="pricing.html#good-to-know" style="text-decoration:underline">See the subscription details</a>.</p>
+        </div>
+
+        <div class="field" id="plan-field" hidden>
+          <label for="plan">Chosen plan <span class="opt">(optional)</span></label>
+          <input id="plan" name="chosen_plan" type="text">
+        </div>
+
+        <div class="row2">
+          <div class="field">
+            <label for="date">Preferred date <span class="opt">(optional)</span></label>
+            <input id="date" name="preferred_date" type="date">
+          </div>
+          <div class="field">
+            <label for="location">Location / venue <span class="opt">(optional)</span></label>
+            <input id="location" name="location" type="text">
+          </div>
+        </div>
+
+        <fieldset class="field field--choice">
+          <legend>Where are you at in your photographer search?</legend>
+          <label class="choice"><input type="radio" name="search_stage" value="Still looking around" required><span>Still looking around</span></label>
+          <label class="choice"><input type="radio" name="search_stage" value="I love your work, but still deciding"><span>I love your work, but still deciding</span></label>
+          <label class="choice"><input type="radio" name="search_stage" value="I am ready to book with you!"><span>I am ready to book with you!</span></label>
+        </fieldset>
+
+        <div class="field">
+          <label for="message">Tell me all about your vision</label>
+          <p class="field__hint" id="message-hint">Do you have any dream inspo? Link your Pinterest board or tell me about what you have in mind.</p>
+          <textarea id="message" name="message" aria-describedby="message-hint" placeholder="Pinterest board link, ideas, the feeling you’re after…" required></textarea>
+        </div>
+
+        <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+        <input type="hidden" name="_subject" value="New enquiry from the Joyful Studios website">
+
+        <button class="submit" type="submit">Send enquiry</button>
+        <p class="form-msg form-msg--error" id="form-error" role="alert" hidden></p>
+      </form>
+    </div>
+  </main>
+
+  <div class="steps-foot">
+    <section class="steps-foot__chart" aria-labelledby="steps-title">
+      <h2 id="steps-title">First steps for booking your wedding</h2>
+      <svg viewBox="0 0 1000 563" preserveAspectRatio="none" aria-hidden="true">
+        <polyline points="86,185 275,223 412,87 600,135 816,258" fill="none" stroke="#fff" stroke-width="3.6" stroke-linejoin="round"/>
+        <g fill="#fff" stroke="#fff" stroke-width="3.2"><circle cx="86" cy="185" r="6"/><circle cx="275" cy="223" r="6"/><circle cx="412" cy="87" r="6"/><circle cx="600" cy="135" r="6"/><circle cx="816" cy="258" r="6"/></g>
+        <text x="56" y="214">01 Inquire about</text><text x="56" y="228">your date</text>
+        <text x="243" y="252">02 Review packages</text><text x="243" y="266">&amp; Rates</text>
+        <text x="424" y="64">03 Sign contract</text><text x="424" y="78">&amp; Receive guide</text>
+        <text x="617" y="112">04 Secure date</text><text x="617" y="126">with deposit</text>
+        <text x="830" y="263">05 Online</text><text x="830" y="277">introduction &amp;</text><text x="830" y="291">support call</text>
+      </svg>
+      <ol class="steps__list">
+        <li>01 Inquire about your date</li>
+        <li>02 Review packages &amp; Rates</li>
+        <li>03 Sign contract &amp; Receive guide</li>
+        <li>04 Secure date with deposit</li>
+        <li>05 Online introduction &amp; support call</li>
+      </ol>
+    </section>
+    <footer>
+    <div class="footer">
+      <p class="footer__left">Joy is a wedding, couples &amp; lifestyle photographer capturing film-inspired photos and special moments.</p>
+      <a class="logo" href="index.html" aria-label="Joyful Studios home">
+        <span class="logo__word">joyful</span>
+        <span class="logo__sub">STUDIOS</span>
+      </a>
+      <p class="footer__right">Based in Cape Town,<br>South Africa.<br>Available for travel.</p>
+    </div>
+    <div class="footer__bar">
+      <nav aria-label="Footer">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <div class="has-dropdown">
+          <button type="button" class="dd-toggle" aria-haspopup="true" aria-expanded="false">Pricing</button>
+          <ul class="dropdown">
+            <li><a href="rates.html">Rates &amp; Packages</a></li>
+            <li><a href="pricing.html#subscriptions">Subscription Plans</a></li>
+          </ul>
+        </div>
+        <a href="inquire.html">Inquire</a>
+      </nav>
+    </div>
+  </footer>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    (function () {
+      var form = document.getElementById('inquiry-form');
+      var select = document.getElementById('package');
+      var note = document.getElementById('prefill-note');
+      var errorBox = document.getElementById('form-error');
+
+      // 1. Pre-fill the package from the link the visitor clicked (e.g. inquire.html?package=intimate-wedding-package)
+      var wanted = new URLSearchParams(window.location.search).get('package');
+      if (wanted) {
+        var match = Array.prototype.find.call(select.options, function (o) { return o.value === wanted; });
+        if (match) {
+          select.value = match.value;
+          select.classList.add('is-prefilled');
+          note.innerHTML = 'Pre-selected from the pricing page: <b></b>. You can change this if you like.';
+          note.querySelector('b').textContent = match.textContent;
+          note.hidden = false;
+        }
+      }
+      var agreementNote = document.getElementById('agreement-note');
+      var agreementPlans = {
+        'creator-influencer-subscription': '#good-to-know'
+      };
+      function updateAgreementNote() {
+        var target = agreementPlans[select.value];
+        agreementNote.hidden = !target;
+        if (target) document.getElementById('agreement-link').setAttribute('href', 'pricing.html' + target);
+      }
+      updateAgreementNote();
+      select.addEventListener('change', function () { select.classList.remove('is-prefilled'); note.hidden = true; updateAgreementNote(); });
+
+      // Pre-fill the chosen plan (e.g. "Starter, 12 months (R500 / month)") when it comes from the subscription tables
+      var plan = new URLSearchParams(window.location.search).get('plan');
+      if (plan) {
+        document.getElementById('plan').value = plan;
+        document.getElementById('plan-field').hidden = false;
+      }
+
+      // 2. Send the enquiry
+      function showError(msg) { errorBox.textContent = msg; errorBox.hidden = false; }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        errorBox.hidden = true;
+
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        var endpoint = form.getAttribute('data-endpoint');
+        if (endpoint.indexOf('YOUR_FORM_ID') !== -1) {
+          showError('This form isn’t connected to an email address yet. (Site owner: add your Formspree form ID in inquire.html.)');
+          return;
+        }
+
+        var btn = form.querySelector('.submit');
+        btn.disabled = true; btn.textContent = 'Sending…';
+
+        fetch(endpoint, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
+          .then(function (r) {
+            if (!r.ok) throw new Error('bad response');
+            document.getElementById('card').innerHTML =
+              '<div class="thanks"><h2>Thank you!</h2><p>Your enquiry is on its way. I’ll be in touch very soon.</p></div>';
+          })
+          .catch(function () {
+            btn.disabled = false; btn.textContent = 'Send enquiry';
+            showError('Something went wrong sending your enquiry. Please try again in a moment.');
+          });
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -8,8 +8,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Quattrocento (body), Pinyon Script (hero headline), Italiana (stand-in for Hatton), Mrs Saint Delafield (signature and script accents) -->
-  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Mrs+Saint+Delafield&family=Pinyon+Script&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Quattrocento (body), Pinyon Script (hero headline), Italiana (stand-in for Hatton), Mrs Saint Delafield (script accents), Birthstone (red "love, Joy" signature) -->
+  <link href="https://fonts.googleapis.com/css2?family=Birthstone&family=Italiana&family=Mrs+Saint+Delafield&family=Pinyon+Script&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css">
   <style>
@@ -41,7 +41,6 @@
     .postcard { position: relative; max-width: 440px; justify-self: start; width: 100%; }
     .postcard__card { background: url("images/postcard.png") center / 100% 100% no-repeat; padding: 3.2% 3.2% 3.2% 4.2%; }
     .postcard__card img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center top; }
-    .postcard__clip { position: absolute; z-index: 2; top: -26px; left: 5%; width: clamp(20px, 3vw, 30px); transform: rotate(-3deg); filter: drop-shadow(0 2px 3px rgba(0,0,0,.3)); pointer-events: none; }
     .signature { position: absolute; right: -4%; bottom: -9%; font-family: var(--font-sign); color: var(--red); font-size: clamp(54px, 7vw, 92px); line-height: .9; transform: rotate(-6deg); white-space: nowrap; pointer-events: none; }
 
     /* ---------- Services strip over the calla photo ---------- */
@@ -113,7 +112,6 @@
       .about .btn { font-size: clamp(11px, 1.25vw, 22px); padding: .5vw 2.2vw; }
       .postcard { max-width: none; width: 29.5vw; justify-self: start; }
       .postcard__card img { aspect-ratio: 4 / 5; }
-      .postcard__clip { width: clamp(20px, 2.6vw, 46px); top: -3vw; }
       .signature { font-size: clamp(40px, 4.6vw, 90px); right: -12%; bottom: -6%; transform: rotate(-10deg); }
 
       .gallery { padding: 2.4vw 0 12.3vw; background-position: center 28%; }
@@ -191,7 +189,7 @@
       .site-header.is-open .nav { font-size: 14px; }
     }
         /* ---------- Round 2 tweaks: phone slide 1, smaller dots, phone category words, signature font ---------- */
-    .signature { font-family: 'Mrs Saint Delafield', 'Pinyon Script', cursive; }
+    .signature { font-family: 'Birthstone', 'Abramo Script', cursive; }
     .moments__script { font-family: 'Mrs Saint Delafield', 'Pinyon Script', cursive; }
     .slide--1 { background-image: url('hero-1.jpg'); background-position: center 32%; }
     .hero__dots { gap: 7px; }
@@ -299,9 +297,8 @@
       </div>
 
       <div class="postcard">
-        <img class="postcard__clip" src="clip.png" alt="" aria-hidden="true">
         <div class="postcard__card">
-          <img src="joy-new.jpg" alt="Joy, the photographer behind Joyful Studios, standing beside a tree in warm evening light" loading="lazy">
+          <img src="joy-photographer.jpg" alt="Joy, the photographer behind Joyful Studios, smiling beside a eucalyptus tree in a white sundress" loading="lazy">
         </div>
         <span class="signature" aria-hidden="true">love, Joy</span>
       </div>

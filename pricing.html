@@ -68,13 +68,13 @@
     .pcard__btn { align-self: center; margin-top: auto; padding: 8px 30px; border: 1px solid #faf1e1; border-radius: 999px; color: #faf1e1; font-size: clamp(15px, 1.5vw, 19px); letter-spacing: .03em; transition: background .25s, color .25s; }
     .pcard__btn:hover, .pcard__btn:focus-visible { background: #2d2b25; border-color: #2d2b25; color: #faf1e1; }
 
-    .tl { grid-column: 1; grid-row: 2; position: relative; display: flex; flex-direction: column; justify-content: space-between; --dot: 24px; padding: 4px 0; }
-    .tl::before { content: ""; position: absolute; top: 18px; bottom: 18px; right: calc(var(--dot) / 2 - 2px); width: 4px; border-radius: 2px; background: #faf1e1; }
+    .tl { grid-column: 1; grid-row: 2; position: relative; display: grid; grid-auto-rows: 1fr; --dot: 24px; padding: 0; }
+    .tl::before { content: ""; position: absolute; top: 12.5%; bottom: 12.5%; right: calc(var(--dot) / 2 - 2px); width: 4px; border-radius: 2px; background: #faf1e1; }
     .tl__node { position: relative; z-index: 1; display: flex; align-items: center; justify-content: flex-end; gap: 14px; padding: 6px 0; background: none; border: 0; color: inherit; font: inherit; font-size: clamp(14px, 1.55vw, 21px); line-height: 1.15; text-align: right; cursor: pointer; }
-    .tl__dot { flex: none; box-sizing: border-box; width: var(--dot); height: var(--dot); border: 5px solid #faf1e1; border-radius: 50%; background: #2d2b25; transition: background .2s, transform .2s; }
-    .tl__node[aria-checked="true"] .tl__dot { background: #faf1e1; transform: scale(1.3); }
-    .tl__node:hover .tl__dot { background: rgba(250, 241, 225, .55); }
-    .tl__node[aria-checked="true"]:hover .tl__dot { background: #faf1e1; }
+    .tl__dot { flex: none; box-sizing: border-box; width: var(--dot); height: var(--dot); border: 0; border-radius: 50%; background: #faf1e1; transition: transform .2s; }
+    .tl__node[aria-checked="true"] .tl__dot { transform: scale(1.45); }
+    .tl__node:hover .tl__dot { transform: scale(1.2); }
+    .tl__node[aria-checked="true"]:hover .tl__dot { transform: scale(1.45); }
     .tl__node:focus-visible { outline: 2px solid #faf1e1; outline-offset: 2px; border-radius: 6px; }
 
     .pricer__info { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(20px, 3.4vw, 50px); max-width: 1000px; margin: clamp(32px, 4vw, 54px) auto 0; align-items: start; }
@@ -103,9 +103,9 @@
       .pricer__grid { grid-template-columns: 1fr; row-gap: 10px; }
       .pset > .pcard:nth-child(n) > * { grid-column: 1; grid-row: auto; }
       .pcard__tier { margin-top: 10px; }
-      .tl { grid-column: 1; grid-row: 1; flex-direction: row; justify-content: space-between; padding: 0 2px; margin-bottom: 6px; }
-      .tl::before { top: 16px; bottom: auto; left: 12%; right: 12%; width: auto; height: 4px; }
-      .tl__node { flex: 1; flex-direction: column-reverse; align-items: center; justify-content: flex-start; gap: 8px; text-align: center; font-size: 13px; padding: 6px 2px; }
+      .tl { grid-column: 1; grid-row: 1; display: flex; flex-direction: row; padding: 0; margin-bottom: 6px; }
+      .tl::before { top: calc(6px + var(--dot) / 2 - 2px); bottom: auto; left: 12.5%; right: 12.5%; width: auto; height: 4px; }
+      .tl__node { flex: 1 1 0; min-width: 0; flex-direction: column-reverse; align-items: center; justify-content: flex-end; gap: 8px; text-align: center; font-size: 13px; padding: 6px 2px; }
       .pricer__info { grid-template-columns: 1fr; }
     }
     /* ---------- Good to know (one subscription group at a time) ---------- */
@@ -178,7 +178,6 @@
       .pcard__btn { font-size: 1.3vw; padding: .5vw 2.4vw; }
       .tl { --dot: 1.7vw; }
       .tl__node { font-size: 1.4vw; gap: 1vw; }
-      .tl__dot { border-width: .4vw; }
       .details__lead, .gtk-group__lead { font-size: 1.3vw; }
       .gtk-tab { font-size: 1.35vw; }
       .gtk-panel h3 { font-size: 2.6vw; }
@@ -260,6 +259,10 @@
       .pcard__list { font-size: 12px; padding-left: 1.1em; }
       .pcard__btn { font-size: 12.5px; padding: 8px 16px; }
     }
+    @media (max-width: 400px) {
+      .tl__node { font-size: 12px; }
+      .tl { --dot: 20px; }
+    }
   </style>
 <style id="menu-uniform">
   .nav--right .has-dropdown .dropdown { left: auto; right: -20px; }
@@ -310,9 +313,9 @@
     <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="site-header">Menu</button>
   </header>
 
-  <section class="hero" aria-label="Capturing your story">
+  <section class="hero" aria-label="Your creative partner">
     <div class="hero__content">
-      <h1>Capturing your story</h1>
+      <h1>Your creative partner</h1>
       <a class="btn" href="#pricing-table">Subscription plans</a>
     </div>
   </section>

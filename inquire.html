@@ -49,9 +49,8 @@
     .field--choice { border: 0; padding: 0; min-width: 0; }
     .field--choice legend { padding: 0; margin-bottom: .6vw; font-weight: 700; font-size: clamp(11px, .95vw, 17px); letter-spacing: .06em; text-transform: uppercase; }
     .field--choice .choice { display: flex; align-items: center; gap: .8vw; margin: 0 0 .55vw; cursor: pointer; font-size: clamp(12px, 1.24vw, 23px); line-height: 1.35; font-weight: 400; letter-spacing: 0; text-transform: none; }
-    .field--choice .choice input { appearance: none; -webkit-appearance: none; flex: 0 0 auto; width: clamp(14px, 1.15vw, 22px); height: clamp(14px, 1.15vw, 22px); padding: 0; margin: 0; border: 1.5px solid var(--charcoal); border-radius: 50%; background: #fff9ee; display: grid; place-content: center; cursor: pointer; }
-    .field--choice .choice input::before { content: ""; width: 55%; height: 55%; border-radius: 50%; background: var(--charcoal); transform: scale(0); transition: transform .15s ease; }
-    .field--choice .choice input:checked::before { transform: scale(1); }
+    .field--choice .choice input { appearance: none; -webkit-appearance: none; flex: 0 0 auto; width: clamp(14px, 1.15vw, 22px); height: clamp(14px, 1.15vw, 22px); padding: 0; margin: 0; border: 1.5px solid var(--charcoal); border-radius: 50%; background: #fff9ee; cursor: pointer; transition: background .15s ease, box-shadow .15s ease; }
+    .field--choice .choice input:checked { background: var(--charcoal); box-shadow: inset 0 0 0 3px #fff9ee; }
     .field--choice .choice input:focus-visible { outline: 2px solid var(--charcoal); outline-offset: 2px; }
     .field__hint { margin: 0 0 .6vw; font-size: clamp(11px, 1.1vw, 20px); font-style: italic; opacity: .8; }
     .field textarea { min-height: 10vw; }

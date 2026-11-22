@@ -16,7 +16,7 @@
   --font-display: "Hatton", "Italiana", "Cormorant Garamond", Georgia, serif;
   --font-body: "Quattrocento", Georgia, serif;
   --font-hero: "Pinyon Script", "Snell Roundhand", cursive;
-  --font-sign: "Abramo Script", "Mrs Saint Delafield", "Pinyon Script", cursive;
+  --font-sign: "Abramo Script", "Pinyon Script", cursive;
 
   --pad: clamp(20px, 5vw, 64px);
   --radius: 10px;
